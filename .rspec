@@ -1,0 +1,3 @@
+-r rails_helper
+--color
+#--tag focus
