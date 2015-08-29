@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829042945) do
+ActiveRecord::Schema.define(version: 20150829053712) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "steam_name"
+    t.integer  "steam_price"
+    t.integer  "steam_sale"
+    t.integer  "steam_reviews_ratio"
+    t.integer  "steam_reviews_count"
+    t.string   "steam_thumbnail"
+    t.datetime "launch_date"
+    t.integer  "platforms"
   end
 
 end
