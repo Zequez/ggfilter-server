@@ -5,8 +5,8 @@ ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use Posgtres as the database for Active Record
+gem 'pg'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -39,6 +39,11 @@ group :development, :test, :assets do
   gem 'susy', '~> 2.0'
 end
 
+# Models
+#####################
+# Sluggification of attributes
+gem 'friendly_id'
+
 # Other
 #####################
 # To parse HTML, for the scraper
@@ -47,6 +52,8 @@ gem 'nokogiri'
 gem 'typhoeus'
 # Use Unicorn as the app server
 gem 'unicorn'
+# Convert integers to roman numerals, for searching purposes
+gem 'roman-numerals'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829053712) do
+ActiveRecord::Schema.define(version: 20150829210522) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150829053712) do
     t.string   "steam_thumbnail"
     t.datetime "launch_date"
     t.integer  "platforms"
+    t.string   "name_slug"
   end
 
 end
