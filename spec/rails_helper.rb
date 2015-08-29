@@ -107,6 +107,20 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+
+  config.around :example do |example|
+    path = example.file_path.gsub(/^\.\/spec\/|_spec\.rb$/, '').split(File::SEPARATOR)
+    cassette = example.metadata[:cassette]
+    if cassette
+      path.push(cassette) unless cassette === true
+      VCR.use_cassette(path.join('/'), record: :new_episodes) do
+        example.run
+      end
+    else
+      example.run
+    end
+  end
+
   config.infer_spec_type_from_file_location!
 
   def response_json
