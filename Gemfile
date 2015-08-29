@@ -15,6 +15,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # ES6 transpiler
 gem 'sprockets-es6'
+# Users authentication
+gem 'devise'
+# Users permissions
+gem 'cancancan'
+# Needed by activeadmin. Shoudn't have updated to 4.2 *sigh*
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+# Administration panel. Cutting edge for Rails 4.2
+gem 'activeadmin', github: 'activeadmin/activeadmin'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
@@ -47,6 +55,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Make Rspec use spring to load faster
+  gem 'spring-commands-rspec'
   # Awesome test framework
   gem 'rspec-rails'
   # Guard plugin for Rspec

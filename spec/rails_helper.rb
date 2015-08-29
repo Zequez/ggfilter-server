@@ -55,10 +55,6 @@ end
 
 # Load the Formtastic inputs
 # See https://github.com/rails/spring/issues/95
-Spring.after_fork do
-  Dir["app/inputs/*_input.rb"].each { |f| require File.basename(f) }
-end
-
 
 RSpec.configure do |config|
   LL.info '############################################################################################'
@@ -67,6 +63,13 @@ RSpec.configure do |config|
   config.before(:suite) { FactoryGirl.reload }
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]
+    c.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+  config.mock_with :rspec do |mocks|
+    # Prevents you from mocking or stubbing a method that does not exist on
+    # a real object. This is generally recommended, and will default to
+    # `true` in RSpec 4.
+    mocks.verify_partial_doubles = true
   end
 
   # This is so the backtrace is shorter and only shows the project code
@@ -76,7 +79,6 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.include Paperclip::Shoulda::Matchers
   config.include Devise::TestHelpers, type: :controller
 
   # Transactions don't work with JS test drivers
