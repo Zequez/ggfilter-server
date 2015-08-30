@@ -1,3 +1,11 @@
+# Output
+# Array of
+#  :id
+#  :name
+#  :price
+#  :sale_price
+#  :released_at
+
 class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
   regexp %r{^http://store\.steampowered\.com/search/results}
 
@@ -7,9 +15,10 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
     @doc.search('.search_result_row').each do |a|
       game = {}
 
-      game[:steam_id] = read_id(a)
-      game[:steam_name] = a.search('.title').text.strip
-      game[:steam_price], game[:steam_sale_price] = read_prices(a)
+      game[:id] = read_id(a)
+      game[:name] = read_name(a)
+      game[:price], game[:sale_price] = read_prices(a)
+      game[:released_at] = read_released_at(a)
 
       data << game
     end
@@ -22,21 +31,32 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
     id ? Integer(id) : nil
   end
 
+  def read_name(a)
+    a.search('.title').text.strip
+  end
+
   def read_prices(a)
     text = a.search('.search_price').text
     if text
       price, sale_price = text.strip.scan(/\$\d+(?:\.\d+)?|[^\0-9]+/).flatten
       price = price ? parse_price(price) : 0
       sale_price = parse_price(sale_price)
-
-      # sale_price = a.search('.search_price strike').empty?
-
-      # steam_price = parse_price price
-      # steam_sale_price = parse_price striked_price
-
       [price, sale_price]
     else
       [nil, nil]
+    end
+  end
+
+  def read_released_at(a)
+    date = a.search('.search_released').text
+    if date.blank?
+      nil
+    else
+      begin
+        Time.parse(a.search('.search_released').text)
+      rescue ArgumentError
+        nil
+      end
     end
   end
 

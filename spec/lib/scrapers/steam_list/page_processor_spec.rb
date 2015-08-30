@@ -5,7 +5,7 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
   end
 
   def result_url(number_or_query)
-    param = number_or_query.kind_of?(String) ? "term=#{number_or_query}" : "page=#{number_or_query}"
+    param = number_or_query.kind_of?(String) ? "term=#{CGI.escape(number_or_query)}" : "page=#{number_or_query}"
     "http://store.steampowered.com/search/results?category1=998&sort_by=Name&sort_order=ASC&category1=998&cc=us&v5=1&#{param}"
   end
 
@@ -35,9 +35,9 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     end
   end
 
-  describe ':steam_id' do
+  describe ':id' do
     context 'regular page' do
-      attributes_subject('potato', :steam_id)
+      attributes_subject('potato', :id)
 
       it{ is_expected.to eq [
         374830,219910,363600,356200,374640,328500,319910
@@ -45,9 +45,9 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     end
   end
 
-  describe ':steam_name' do
+  describe ':name' do
     context 'regular page' do
-      attributes_subject(1, :steam_name)
+      attributes_subject(1, :name)
 
       it{ is_expected.to eq [
         "\"Glow Ball\" - The billiard puzzle game",
@@ -76,9 +76,9 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     end
   end
 
-  describe ':steam_price && :steam_sale_price' do
+  describe ':price && :sale_price' do
     context 'regular page without sales' do
-      attributes_subject(1, :steam_price)
+      attributes_subject(1, :price)
 
       it { is_expected.to eq [
         399,399,499,999,999,999,599,499,699,499,1499,299,299,299,499,999,0,299,999,999,999,1499,2499,699,599
@@ -87,14 +87,31 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
 
     context 'page with items on sale' do
       specific_subject('1954 Alcatraz', group: true)
-      its([:steam_price]) { is_expected.to eq 1999 }
-      its([:steam_sale_price]) { is_expected.to eq 199 }
+      its([:price]) { is_expected.to eq 1999 }
+      its([:sale_price]) { is_expected.to eq 199 }
     end
 
     context 'empty price' do
       specific_subject('200% Mixed Juice!', group: true)
-      its([:steam_price]) { is_expected.to eq 0 }
-      its([:steam_sale_price]) { is_expected.to eq nil }
+      its([:price]) { is_expected.to eq 0 }
+      its([:sale_price]) { is_expected.to eq nil }
+    end
+  end
+
+  describe ':released_at' do
+    context 'regular release date' do
+      specific_subject('1954 Alcatraz')
+      its([:released_at]) { is_expected.to be_within(1.hour).of Time.parse('Mar 11, 2014') }
+    end
+
+    context 'empty release date' do
+      specific_subject('LUXOR Mah Jong')
+      its([:released_at]) { is_expected.to eq nil }
+    end
+
+    context 'non-date release date' do
+      specific_subject('march of industry')
+      its([:released_at]) { is_expected.to eq nil }
     end
   end
 end
