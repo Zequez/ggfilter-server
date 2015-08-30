@@ -65,5 +65,32 @@ describe Scrapers::Loader do
         'http://www.purple.com' => ['Purple is the best!']
       })
     end
+
+    it 'should yield the data as each page loads to a block given in scrap' do
+      class Processor < s::BasePageProcessor
+        regexp %r{.}
+
+        def process_page
+          @@count ||= 0
+          @@count += 1
+        end
+      end
+
+      scraper = s::Loader.new(
+        ['http://www.zombo.com', 'http://www.purple.com', 'http://www.purple.com/potato'],
+        [Processor]
+      )
+
+      # Couldn't find a way to test calls that worked with currying
+      testYieldBlock = lambda{|data, initial_url, url|}
+      yieldBlock = lambda do |data, initial_url, url|
+        testYieldBlock.call(data, initial_url, url)
+      end
+
+      expect(testYieldBlock).to receive(:call).with(1, 'http://www.zombo.com', 'http://www.zombo.com')
+      expect(testYieldBlock).to receive(:call).with(2, 'http://www.purple.com', 'http://www.purple.com')
+      expect(testYieldBlock).to receive(:call).with(3, 'http://www.purple.com/potato', 'http://www.purple.com/potato')
+      scraper.scrap(&yieldBlock)
+    end
   end
 end

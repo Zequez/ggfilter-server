@@ -12,8 +12,9 @@ module Scrapers
       @urls_queued = []
     end
 
-    def scrap
+    def scrap(&block)
       @data = {}
+      @yieldBlock = block
       @initial_urls.each do |initial_url|
         @data[initial_url] = []
         add_to_queue initial_url, initial_url
@@ -29,7 +30,7 @@ module Scrapers
       processor = processor_class.new(response) do |url|
         add_to_queue(url, initial_url)
       end
-      add_page_data processor.process_page, initial_url
+      add_page_data processor.process_page, initial_url, response.request.url
     end
 
     def add_to_queue(url, initial_url)
@@ -49,11 +50,11 @@ module Scrapers
       raise NoPageProcessorFoundError.new("Couldn't find processor for #{url} \n Available processors: #{available_processors_names}")
     end
 
-    def add_page_data(page_data, initial_url)
-      if page_data.kind_of? Array
-        @data[initial_url].concat page_data
-      else
-        @data[initial_url].push page_data
+    def add_page_data(page_data, initial_url, url)
+      page_data = [page_data] unless page_data.kind_of? Array
+      page_data.each do |data|
+        @yieldBlock.curry[data, initial_url, url] if @yieldBlock
+        @data[initial_url].push data
       end
     end
 
