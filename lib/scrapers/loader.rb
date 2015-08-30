@@ -25,10 +25,7 @@ module Scrapers
 
     private
 
-    def process_response(response, initial_url)
-      processor_class = @processors.detect{ |pc| pc.regexp.match response.request.url }
-      return no_processor_error(response.request.url) unless processor_class
-
+    def process_response(response, initial_url, processor_class)
       processor = processor_class.new(response) do |url|
         add_to_queue(url, initial_url)
       end
@@ -37,9 +34,10 @@ module Scrapers
 
     def add_to_queue(url, initial_url)
       unless @urls_queued.include? url
+        processor_class = find_processor_for_url(url)
         request = Typhoeus::Request.new(url)
         request.on_complete do |response|
-          process_response response, initial_url
+          process_response response, initial_url, processor_class
         end
         @urls_queued << url
         @hydra.queue request
@@ -57,6 +55,12 @@ module Scrapers
       else
         @data[initial_url].push page_data
       end
+    end
+
+    def find_processor_for_url(url)
+      processor_class = @processors.detect{ |pc| pc.regexp.match url }
+      return no_processor_error(url) unless processor_class
+      processor_class
     end
   end
 end
