@@ -5,6 +5,10 @@
 #  :price
 #  :sale_price
 #  :released_at
+#  :platforms
+#  :reviews_count
+#  :reviews_ratio
+#  :thumbnail
 
 class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
   regexp %r{^http://store\.steampowered\.com/search/results}
@@ -19,6 +23,9 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
       game[:name] = read_name(a)
       game[:price], game[:sale_price] = read_prices(a)
       game[:released_at] = read_released_at(a)
+      game[:platforms] = read_platforms(a)
+      game[:reviews_count], game[:reviews_ratio] = read_reviews(a)
+      game[:thumbnail] = read_thumbnail(a)
 
       data << game
     end
@@ -58,6 +65,29 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
         nil
       end
     end
+  end
+
+  def read_platforms(a)
+    platforms = []
+    platforms.push(:win) if a.search('.platform_img.win').first
+    platforms.push(:mac) if a.search('.platform_img.mac').first
+    platforms.push(:linux) if a.search('.platform_img.linux').first
+    platforms
+  end
+
+  def read_reviews(a)
+    reviews_e = a.search('.search_review_summary').first
+    if reviews_e
+      tooltip = reviews_e['data-store-tooltip']
+      tooltip.gsub(',', '').scan(/\d+/).map{|n| Integer(n)}.reverse
+    else
+      [nil, nil]
+    end
+  end
+
+  def read_thumbnail(a)
+    img_e = a.search('.search_capsule img').first
+    img_e ? img_e['src'] : nil
   end
 
   def parse_price(price)

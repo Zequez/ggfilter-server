@@ -5,12 +5,20 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
   end
 
   def result_url(number_or_query)
-    param = number_or_query.kind_of?(String) ? "term=#{CGI.escape(number_or_query)}" : "page=#{number_or_query}"
+    param = number_or_query.kind_of?(String) ? "term=#{CGI.escape(number_or_query)}&sort_by=_ASC" : "page=#{number_or_query}"
     "http://store.steampowered.com/search/results?category1=998&sort_by=Name&sort_order=ASC&category1=998&cc=us&v5=1&#{param}"
   end
 
   def self.attributes_subject(page, name)
-    subject{ scrap(result_url(page)).map{|h| h[name]} }
+    subject do
+      scrap(result_url(page)).map do |h|
+        if name.kind_of? Array
+          name.map{|n| h[n]}
+        else
+          h[name]
+        end
+      end
+    end
   end
 
   def self.specific_subject(page, options = {})
@@ -40,7 +48,7 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
       attributes_subject('potato', :id)
 
       it{ is_expected.to eq [
-        374830,219910,363600,356200,374640,328500,319910
+        219910,363600,328500,319910,374830,374640,356200
       ] }
     end
   end
@@ -112,6 +120,41 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     context 'non-date release date' do
       specific_subject('march of industry')
       its([:released_at]) { is_expected.to eq nil }
+    end
+  end
+
+  describe ':platforms' do
+    context 'all 3 platforms' do
+      specific_subject('race the sun')
+      its([:platforms]) { are_expected.to match_array [:mac, :win, :linux] }
+    end
+  end
+
+  describe ':reviews_count, :reviews_ratio' do
+    context 'a simple page' do
+      attributes_subject('race the sun', [:reviews_count, :reviews_ratio])
+
+      it { is_expected.to eq [
+        [3566, 94],
+        [272, 26],
+        [99, 86],
+        [34, 61],
+        [162, 67]
+      ] }
+    end
+  end
+
+  describe ':thumbnail' do
+    context 'a simple page' do
+      attributes_subject('race the sun', :thumbnail)
+
+      it { is_expected.to eq [
+        "http://cdn.akamai.steamstatic.com/steam/apps/253030/capsule_sm_120.jpg?t=1440181925",
+        "http://cdn.akamai.steamstatic.com/steam/apps/246940/capsule_sm_120.jpg?t=1413426525",
+        "http://cdn.akamai.steamstatic.com/steam/apps/293880/capsule_sm_120.jpg?t=1435972880",
+        "http://cdn.akamai.steamstatic.com/steam/apps/336630/capsule_sm_120.jpg?t=1418112532",
+        "http://cdn.akamai.steamstatic.com/steam/apps/253880/capsule_sm_120.jpg?t=1440146509"
+      ] }
     end
   end
 end

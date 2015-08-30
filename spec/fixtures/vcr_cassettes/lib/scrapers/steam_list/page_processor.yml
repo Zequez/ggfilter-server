@@ -23,15 +23,15 @@ http_interactions:
       Content-Type:
       - text/html; charset=UTF-8
       X-Varnish:
-      - '2611188533'
+      - '2768076494'
       Date:
-      - Sat, 29 Aug 2015 22:52:08 GMT
+      - Sun, 30 Aug 2015 04:38:14 GMT
       Content-Length:
       - '32124'
       Connection:
       - keep-alive
       Set-Cookie:
-      - browserid=347129467792721568; expires=Sun, 28-Aug-2016 22:52:07 GMT; path=/
+      - browserid=935975119072717713; expires=Mon, 29-Aug-2016 04:38:13 GMT; path=/
     body:
       encoding: UTF-8
       string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
@@ -50,7 +50,7 @@ http_interactions:
         class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_released\">Jul 20, 2015</div>\r\n\t\t\t\t\t<div class=\"col
         search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        negative\" data-store-tooltip=\"Negative&lt;br&gt;6% of the 16 user reviews
+        negative\" data-store-tooltip=\"Negative&lt;br&gt;5% of the 17 user reviews
         for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
         class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
@@ -64,7 +64,7 @@ http_interactions:
         class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_released\">Feb 13, 2014</div>\r\n\t\t\t\t\t<div class=\"col
         search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;33% of the 724 user
+        negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;33% of the 725 user
         reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
         class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
@@ -160,7 +160,7 @@ http_interactions:
         win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
         search_released\">May 16, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
         class=\"search_review_summary positive\" data-store-tooltip=\"Very Positive&lt;br&gt;92%
-        of the 3,315 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        of the 3,318 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
         class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
         href=\"http://store.steampowered.com/app/205690/?snr=1_7_7_230_150_1\"  data-ds-appid=\"205690\"
@@ -248,7 +248,7 @@ http_interactions:
         class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_released\">Oct 16, 2013</div>\r\n\t\t\t\t\t<div class=\"col
         search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;93% of the 2,037 user
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;93% of the 2,038 user
         reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
         class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
@@ -403,10 +403,10 @@ http_interactions:
         onclick=\"SearchLinkClick( this ); return false;\" class=\"pagebtn\">&gt;</a>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t<div
         style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
     http_version: 
-  recorded_at: Sat, 29 Aug 2015 22:52:08 GMT
+  recorded_at: Sun, 30 Aug 2015 04:38:14 GMT
 - request:
     method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&page=2&sort_by=Name&sort_order=ASC&v5=1
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=_ASC&sort_order=ASC&term=potato&v5=1
     body:
       encoding: US-ASCII
       string: ''
@@ -427,1275 +427,24 @@ http_interactions:
       Content-Type:
       - text/html; charset=UTF-8
       X-Varnish:
-      - '3451757219'
+      - '2768077155'
       Date:
-      - Sun, 30 Aug 2015 02:19:31 GMT
-      Content-Length:
-      - '31529'
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - browserid=968626216376883520; expires=Mon, 29-Aug-2016 02:19:30 GMT; path=/
-    body:
-      encoding: UTF-8
-      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
-        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
-        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
-        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
-        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/325470/?snr=1_7_7_230_150_2\"
-        \ data-ds-appid=\"325470\" onmouseover=\"GameHover( this, event, 'global_hover',
-        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:325470,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/325470/capsule_sm_120.jpg?t=1417716274\"
-        alt=\"Buy 1953: NATO vs Warsaw Pact\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">1953:
-        NATO vs Warsaw Pact</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Dec 4, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;31%
-        of the 19 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/255280/?snr=1_7_7_230_150_2\"  data-ds-appid=\"255280\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:255280,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/255280/capsule_sm_120.jpg?t=1421418633\"
-        alt=\"Buy 1954 Alcatraz\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">1954
-        Alcatraz</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Mar 11, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;73%
-        of the 269 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-90%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
-        #888888;\"><strike>$19.99</strike></span><br>$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/355270/?snr=1_7_7_230_150_2\"  data-ds-appid=\"355270\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:355270,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/355270/capsule_sm_120.jpg?t=1427702733\"
-        alt=\"Buy 199X\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">199X</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Mar 10, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;81% of the 100 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/270190/?snr=1_7_7_230_150_2\"  data-ds-appid=\"270190\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:270190,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/270190/capsule_sm_120.jpg?t=1413644956\"
-        alt=\"Buy 1HEART\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">1HEART</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 13, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;70% of the 90 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/332710/?snr=1_7_7_230_150_2\"  data-ds-appid=\"332710\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:332710,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/332710/capsule_sm_120.jpg?t=1418717470\"
-        alt=\"Buy 1Quest\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">1Quest</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Dec 3, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;59% of the 81 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/335190/?snr=1_7_7_230_150_2\"  data-ds-appid=\"335190\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:335190,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/335190/capsule_sm_120.jpg?t=1437940846\"
-        alt=\"Buy 200% Mixed Juice!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">200%
-        Mixed Juice!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/322110/?snr=1_7_7_230_150_2\"  data-ds-appid=\"322110\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:322110,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/322110/capsule_sm_120.jpg?t=1440644994\"
-        alt=\"Buy 20XX\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">20XX</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Nov 25, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;96% of the 96 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$11.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/278530/?snr=1_7_7_230_150_2\"  data-ds-appid=\"278530\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:278530,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/278530/capsule_sm_120.jpg?t=1440535762\"
-        alt=\"Buy 3 Stars of Destiny\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3
-        Stars of Destiny</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Mar 28, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;58%
-        of the 133 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/301730/?snr=1_7_7_230_150_2\"  data-ds-appid=\"301730\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:301730,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/301730/capsule_sm_120.jpg?t=1403118615\"
-        alt=\"Buy 300 Dwarves\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">300
-        Dwarves</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jun 5, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;41% of the 24 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/259620/?snr=1_7_7_230_150_2\"  data-ds-appid=\"259620\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:259620,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/259620/capsule_sm_120.jpg?t=1432065953\"
-        alt=\"Buy 3079 -- Block Action RPG\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3079
-        -- Block Action RPG</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Nov 14, 2013</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;48% of the 320 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/263360/?snr=1_7_7_230_150_2\"  data-ds-appid=\"263360\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:263360,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/263360/capsule_sm_120.jpg?t=1432066128\"
-        alt=\"Buy 3089 -- Futuristic Action RPG\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3089
-        -- Futuristic Action RPG</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jan 10, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75% of the 438 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/358700/?snr=1_7_7_230_150_2\"  data-ds-appid=\"358700\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:358700,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/358700/capsule_sm_120.jpg?t=1439521170\"
-        alt=\"Buy 3d Bridges\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3d
-        Bridges</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Mar 23, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;55%
-        of the 9 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$11.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/345030/?snr=1_7_7_230_150_2\"  data-ds-appid=\"345030\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:345030,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/345030/capsule_sm_120.jpg?t=1439584669\"
-        alt=\"Buy 3d Engineers\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3d
-        Engineers</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Feb 10, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;50%
-        of the 6 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$18.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/362830/?snr=1_7_7_230_150_2\"  data-ds-appid=\"362830\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:362830,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/362830/capsule_sm_120.jpg?t=1433156640\"
-        alt=\"Buy 3D MiniGolf\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3D
-        MiniGolf</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">May 29, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;54% of the 11 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/367990/?snr=1_7_7_230_150_2\"  data-ds-appid=\"367990\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:367990,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/367990/capsule_sm_120.jpg?t=1438624874\"
-        alt=\"Buy 3D Paraglider\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3D
-        Paraglider</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Aug 3, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        negative\" data-store-tooltip=\"Negative&lt;br&gt;0% of the 4 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$8.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/10140/?snr=1_7_7_230_150_2\"  data-ds-appid=\"10140\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:10140,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/10140/capsule_sm_120.jpg?t=1420503037\"
-        alt=\"Buy 3D Ultra™ Minigolf Adventures\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3D
-        Ultra™ Minigolf Adventures</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 23, 2009</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;72% of the 29 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/206610/?snr=1_7_7_230_150_2\"  data-ds-appid=\"206610\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:206610,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/206610/capsule_sm_120.jpg?t=1428023966\"
-        alt=\"Buy 3SwitcheD\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">3SwitcheD</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Mar 29, 2012</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;40% of the 143 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/47000/?snr=1_7_7_230_150_2\"  data-ds-appid=\"47000\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:47000,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/47000/capsule_sm_120.jpg?t=1380825285\"
-        alt=\"Buy 4 Elements\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">4
-        Elements</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Jul 12, 2010</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Very Positive&lt;br&gt;88%
-        of the 391 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/361630/?snr=1_7_7_230_150_2\"  data-ds-appid=\"361630\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:361630,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/361630/capsule_sm_120.jpg?t=1429852125\"
-        alt=\"Buy 404Sight\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">404Sight</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 16, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;82% of the 940 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\tFree to Play\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/329770/?snr=1_7_7_230_150_2\"  data-ds-appid=\"329770\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:329770,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/329770/capsule_sm_120.jpg?t=1438621658\"
-        alt=\"Buy 4089: Ghost Within\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">4089:
-        Ghost Within</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jan 9, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;80% of the 51 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$7.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/281840/?snr=1_7_7_230_150_2\"  data-ds-appid=\"281840\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:281840,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/281840/capsule_sm_120.jpg?t=1407671762\"
-        alt=\"Buy 4PM\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">4PM</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;33% of the 202 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$2.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/313330/?snr=1_7_7_230_150_2\"  data-ds-appid=\"313330\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:313330,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/313330/capsule_sm_120.jpg?t=1405429847\"
-        alt=\"Buy 4x4 Dream Race\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">4x4
-        Dream Race</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Jul 15, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;37%
-        of the 35 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/357200/?snr=1_7_7_230_150_2\"  data-ds-appid=\"357200\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:357200,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/357200/capsule_sm_120.jpg?t=1429117184\"
-        alt=\"Buy 500 Years Act 1\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">500
-        Years Act 1</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Apr 15, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;20%
-        of the 10 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$7.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/368360/?snr=1_7_7_230_150_2\"  data-ds-appid=\"368360\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:368360,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/368360/capsule_sm_120.jpg?t=1436699795\"
-        alt=\"Buy 60 Seconds!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">60
-        Seconds!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">May 25, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;80% of the 845 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/299660/?snr=1_7_7_230_150_2\"  data-ds-appid=\"299660\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:299660,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/299660/capsule_sm_120.jpg?t=1429627743\"
-        alt=\"Buy 6180 the moon\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">6180
-        the moon</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Sep 19, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;91% of the 285 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
-        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
-        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 26 - 50 of 6275\t\t\t</div>\r\n\t\t\t<div
-        class=\"search_pagination_right\">\r\n\t\t\t\t<a href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&category1=998&page=1\"
-        onclick=\"SearchLinkClick( this ); return false;\" class=\"pagebtn\">&lt;</a>&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&category1=998&page=1\"
-        onclick=\"SearchLinkClick( this ); return false;\">1</a>\r\n\t\t\t\t\t&nbsp;&nbsp;2&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&category1=998&page=3\"
-        onclick=\"SearchLinkClick( this ); return false;\">3</a>\r\n\t\t\t\t\t&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&category1=998&page=4\"
-        onclick=\"SearchLinkClick( this ); return false;\">4</a>\r\n\t\t\t\t\t\t\t\t\t\t&nbsp;...&nbsp;&nbsp;<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&category1=998&page=251\"
-        onclick=\"SearchLinkClick( this ); return false;\">251</a>\r\n\t\t\t\t\t\t\t\t\t&nbsp;<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&category1=998&page=3\"
-        onclick=\"SearchLinkClick( this ); return false;\" class=\"pagebtn\">&gt;</a>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t<div
-        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
-    http_version: 
-  recorded_at: Sun, 30 Aug 2015 02:19:31 GMT
-- request:
-    method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=1954%20Alcatraz&v5=1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Typhoeus - https://github.com/typhoeus/typhoeus
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Cache-Control:
-      - private,max-age=240
-      Content-Type:
-      - text/html; charset=UTF-8
-      X-Varnish:
-      - '3452191645'
-      Date:
-      - Sun, 30 Aug 2015 02:31:08 GMT
-      Content-Length:
-      - '1949'
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - browserid=323485569756086016; expires=Mon, 29-Aug-2016 02:31:08 GMT; path=/
-    body:
-      encoding: UTF-8
-      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
-        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
-        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
-        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
-        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/255280/?snr=1_7_7_151_150_1\"
-        \ data-ds-appid=\"255280\" onmouseover=\"GameHover( this, event, 'global_hover',
-        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:255280,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/255280/capsule_sm_120.jpg?t=1421418633\"
-        alt=\"Buy 1954 Alcatraz\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">1954
-        Alcatraz</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Mar 11, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;73%
-        of the 269 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-90%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
-        #888888;\"><strike>$19.99</strike></span><br>$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
-        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
-        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 1 of 1\t\t\t</div>\r\n\t\t\t<div
-        class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
-        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
-    http_version: 
-  recorded_at: Sun, 30 Aug 2015 02:31:08 GMT
-- request:
-    method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=200%25%20Mixed%20Juice!&v5=1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Typhoeus - https://github.com/typhoeus/typhoeus
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Cache-Control:
-      - private,max-age=240
-      Content-Type:
-      - text/html; charset=UTF-8
-      X-Varnish:
-      - '2764416260'
-      Date:
-      - Sun, 30 Aug 2015 03:01:35 GMT
-      Content-Length:
-      - '30626'
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - browserid=961870816934983064; expires=Mon, 29-Aug-2016 03:01:35 GMT; path=/
-    body:
-      encoding: UTF-8
-      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
-        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
-        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
-        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
-        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/335190/?snr=1_7_7_151_150_1\"
-        \ data-ds-appid=\"335190\" onmouseover=\"GameHover( this, event, 'global_hover',
-        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:335190,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/335190/capsule_sm_120.jpg?t=1436384104\"
-        alt=\"Buy 200% Mixed Juice!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">200%
-        Mixed Juice!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/228320/?snr=1_7_7_151_150_1\"  data-ds-appid=\"228320\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:228320,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/228320/capsule_sm_120.jpg?t=1405553914\"
-        alt=\"Buy A Valley Without Wind 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">A
-        Valley Without Wind 2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Feb 18, 2013</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;48% of the 162 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/322930/?snr=1_7_7_151_150_1\"  data-ds-appid=\"322930\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:322930,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/322930/capsule_sm_120.jpg?t=1415400022\"
-        alt=\"Buy aerofly RC 7\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">aerofly
-        RC 7</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Nov 6, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;73%
-        of the 42 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$39.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/289580/?snr=1_7_7_151_150_1\"  data-ds-appid=\"289580\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:289580,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/289580/capsule_sm_120.jpg?t=1434997042\"
-        alt=\"Buy Aggression: Europe Under Fire\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Aggression:
-        Europe Under Fire</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Apr 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;51%
-        of the 39 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/338080/?snr=1_7_7_151_150_1\"  data-ds-appid=\"338080\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:338080,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/338080/capsule_sm_120.jpg?t=1420782648\"
-        alt=\"Buy A列車で行こう8\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">A列車で行こう8</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jan 8, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 2 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$49.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/380990/?snr=1_7_7_151_150_1\"  data-ds-appid=\"\"
-        \ class=\"search_result_row ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col
-        search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/380990/capsule_sm_120.jpg?t=1435235400\"
-        alt=\"Buy Uninitialized\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Uninitialized</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\"></div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;42%
-        of the 7 user reviews for this video are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\tFree Demo\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/269490/?snr=1_7_7_151_150_1\"  data-ds-appid=\"269490\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:269490,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/269490/capsule_sm_120.jpg?t=1423543857\"
-        alt=\"Buy Bardbarian\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Bardbarian</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 1, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;92% of the 975 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$7.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/350310/?snr=1_7_7_151_150_1\"  data-ds-appid=\"350310\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:350310,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/350310/capsule_sm_120.jpg?t=1432949966\"
-        alt=\"Buy BLADESTORM: Nightmare\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">BLADESTORM:
-        Nightmare</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">May 28, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;51%
-        of the 115 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$59.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/313480/?snr=1_7_7_151_150_1\"  data-ds-appid=\"313480\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:313480,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/313480/capsule_sm_120.jpg?t=1412343485\"
-        alt=\"Buy Blitzkrieg Anthology\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Blitzkrieg
-        Anthology</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Sep 16, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Very Positive&lt;br&gt;96%
-        of the 128 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/380920/?snr=1_7_7_151_150_1\"  data-ds-appid=\"\"
-        \ class=\"search_result_row ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col
-        search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/380920/capsule_sm_120.jpg?t=1435550239\"
-        alt=\"Buy Uninitialized\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Uninitialized</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\"></div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\tFree Demo\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/335330/?snr=1_7_7_151_150_1\"  data-ds-appid=\"335330\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:335330,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/335330/capsule_sm_120.jpg?t=1423682818\"
-        alt=\"Buy Brick-Force\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Brick-Force</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Dec 11, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;35% of the 2,655
-        user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\tFree to Play\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/320300/?snr=1_7_7_151_150_1\"  data-ds-appid=\"320300\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:320300,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/320300/capsule_sm_120.jpg?t=1435965916\"
-        alt=\"Buy Car Mechanic Simulator 2015\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Car
-        Mechanic Simulator 2015</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 1, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Overwhelmingly Positive&lt;br&gt;95% of the
-        1,158 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-50%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
-        #888888;\"><strike>$19.99</strike></span><br>$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/32120/?snr=1_7_7_151_150_1\"  data-ds-appid=\"32120\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:32120,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/32120/capsule_sm_120.jpg?t=1247615160\"
-        alt=\"Buy Chainz 2: Relinked\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Chainz
-        2: Relinked</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\"></div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;66%
-        of the 18 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/348300/?snr=1_7_7_151_150_1\"  data-ds-appid=\"348300\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:348300,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/348300/capsule_sm_120.jpg?t=1433888788\"
-        alt=\"Buy Chip's Challenge 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Chip's
-        Challenge 2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">May 28, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Positive&lt;br&gt;94%
-        of the 34 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/375480/?snr=1_7_7_151_150_1\"  data-ds-appid=\"\"
-        \ class=\"search_result_row ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col
-        search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/375480/capsule_sm_120.jpg?t=1434213795\"
-        alt=\"Buy Uninitialized\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Uninitialized</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\"></div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Positive&lt;br&gt;100%
-        of the 9 user reviews for this video are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\tFree Demo\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/326630/?snr=1_7_7_151_150_1\"  data-ds-appid=\"326630\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:326630,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/326630/capsule_sm_120.jpg?t=1418738373\"
-        alt=\"Buy Club Manager 2015\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Club
-        Manager 2015</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Dec 4, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;46%
-        of the 43 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/321410/?snr=1_7_7_151_150_1\"  data-ds-appid=\"321410\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:321410,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/321410/capsule_sm_120.jpg?t=1425916709\"
-        alt=\"Buy Command: Modern Air / Naval Operations WOTY\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Command:
-        Modern Air / Naval Operations WOTY</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Sep 26, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;85% of the 90 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$79.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/266450/?snr=1_7_7_151_150_1\"  data-ds-appid=\"266450\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:266450,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/266450/capsule_sm_120.jpg?t=1425922717\"
-        alt=\"Buy Conquest of Champions\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Conquest
-        of Champions</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 23, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;60% of the 234 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\tFree to Play\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/289950/?snr=1_7_7_151_150_1\"  data-ds-appid=\"289950\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:289950,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/289950/capsule_sm_120.jpg?t=1432140799\"
-        alt=\"Buy Construction Simulator 2015\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Construction
-        Simulator 2015</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Nov 18, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;67% of the 821 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$29.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/241240/?snr=1_7_7_151_150_1\"  data-ds-appid=\"241240\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:241240,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/241240/capsule_sm_120.jpg?t=1431364658\"
-        alt=\"Buy Contraption Maker\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Contraption
-        Maker</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 7, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;93% of the 648 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/343440/?snr=1_7_7_151_150_1\"  data-ds-appid=\"343440\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:343440,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/343440/capsule_sm_120.jpg?t=1433166744\"
-        alt=\"Buy Crash Drive 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Crash
-        Drive 2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">May 28, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;84% of the 131 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/11390/?snr=1_7_7_151_150_1\"  data-ds-appid=\"11390\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:11390,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/11390/capsule_sm_120.jpg?t=1251478178\"
-        alt=\"Buy Crash Time 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Crash
-        Time 2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Aug 27, 2009</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;50%
-        of the 1,556 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/33620/?snr=1_7_7_151_150_1\"  data-ds-appid=\"33620\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:33620,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/33620/capsule_sm_120.jpg?t=1409663424\"
-        alt=\"Buy Crash Time 3\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Crash
-        Time 3</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Nov 25, 2009</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;73%
-        of the 96 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/341510/?snr=1_7_7_151_150_1\"  data-ds-appid=\"341510\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:341510,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/341510/capsule_sm_120.jpg?t=1430025780\"
-        alt=\"Buy Crayon Chronicles\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Crayon
-        Chronicles</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Mar 2, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;77%
-        of the 31 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/359290/?snr=1_7_7_151_150_1\"  data-ds-appid=\"359290\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:359290,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/359290/capsule_sm_120.jpg?t=1427471526\"
-        alt=\"Buy Crazy Cars - Hit the Road\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Crazy
-        Cars - Hit the Road</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Mar 27, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;51% of the 39 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$2.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
-        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
-        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 25 of 142\t\t\t</div>\r\n\t\t\t<div
-        class=\"search_pagination_right\">\r\n\t\t\t\t1&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&term=200%25&category1=998&page=2\"
-        onclick=\"SearchLinkClick( this ); return false;\">2</a>\r\n\t\t\t\t\t&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&term=200%25&category1=998&page=3\"
-        onclick=\"SearchLinkClick( this ); return false;\">3</a>\r\n\t\t\t\t\t&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&term=200%25&category1=998&page=4\"
-        onclick=\"SearchLinkClick( this ); return false;\">4</a>\r\n\t\t\t\t\t&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&term=200%25&category1=998&page=5\"
-        onclick=\"SearchLinkClick( this ); return false;\">5</a>\r\n\t\t\t\t\t&nbsp;&nbsp;\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&term=200%25&category1=998&page=6\"
-        onclick=\"SearchLinkClick( this ); return false;\">6</a>\r\n\t\t\t\t\t\t\t\t\t\t&nbsp;<a
-        href=\"http://store.steampowered.com/search/?sort_by=Name&sort_order=ASC&term=200%25&category1=998&page=2\"
-        onclick=\"SearchLinkClick( this ); return false;\" class=\"pagebtn\">&gt;</a>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t<div
-        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
-    http_version: 
-  recorded_at: Sun, 30 Aug 2015 03:01:36 GMT
-- request:
-    method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=Sid%20Meier%20Civilization&v5=1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Typhoeus - https://github.com/typhoeus/typhoeus
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Cache-Control:
-      - private,max-age=240
-      Content-Type:
-      - text/html; charset=UTF-8
-      X-Varnish:
-      - '2765838608'
-      Date:
-      - Sun, 30 Aug 2015 03:38:26 GMT
-      Content-Length:
-      - '30854'
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - browserid=932597419358237351; expires=Mon, 29-Aug-2016 03:38:25 GMT; path=/
-    body:
-      encoding: UTF-8
-      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
-        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
-        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
-        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
-        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/3980/?snr=1_7_7_151_150_1\"
-        \ data-ds-appid=\"3980\" onmouseover=\"GameHover( this, event, 'global_hover',
-        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3980,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3980/capsule_sm_120.jpg?t=1392654852\"
-        alt=\"Buy CivCity: Rome\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">CivCity:
-        Rome</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Apr 6, 2007</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Very Positive&lt;br&gt;82%
-        of the 79 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/8800/?snr=1_7_7_151_150_1\"  data-ds-appid=\"8800\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:8800,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/8800/capsule_sm_120.jpg?t=1392605410\"
-        alt=\"Buy Civilization IV: Beyond the Sword\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Civilization
-        IV: Beyond the Sword</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 24, 2007</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Overwhelmingly Positive&lt;br&gt;97% of the
-        555 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/3990/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3990\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3990,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3990/capsule_sm_120.jpg?t=1392605821\"
-        alt=\"Buy Civilization IV®: Warlords\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Civilization
-        IV®: Warlords</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 6, 2007</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;91% of the 48 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/228440/?snr=1_7_7_151_150_1\"  data-ds-appid=\"228440\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:228440,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/228440/capsule_sm_120.jpg?t=1393454596\"
-        alt=\"Buy Cubemen 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Cubemen
-        2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img win\"></span><span
-        class=\"platform_img mac\"></span><span class=\"platform_img linux\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 8, 2013</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75% of the 163 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$7.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/322540/?snr=1_7_7_151_150_1\"  data-ds-appid=\"322540\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:322540,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/322540/capsule_sm_120.jpg?t=1433868232\"
-        alt=\"Buy Galactic Inheritors\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Galactic
-        Inheritors</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Jun 9, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75%
-        of the 32 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/270830/?snr=1_7_7_151_150_1\"  data-ds-appid=\"270830\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:270830,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/270830/capsule_sm_120.jpg?t=1415606971\"
-        alt=\"Buy Global ATC Simulator\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Global
-        ATC Simulator</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Nov 10, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;72%
-        of the 25 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$34.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/295590/?snr=1_7_7_151_150_1\"  data-ds-appid=\"295590\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:295590,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/295590/capsule_sm_120.jpg?t=1429827221\"
-        alt=\"Buy Hero Generations\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Hero
-        Generations</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Apr 10, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;65% of the 129 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/253900/?snr=1_7_7_151_150_1\"  data-ds-appid=\"253900\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:253900,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/253900/capsule_sm_120.jpg?t=1439203358\"
-        alt=\"Buy Knights and Merchants\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Knights
-        and Merchants</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 14, 2013</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;81% of the 1,248 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/296010/?snr=1_7_7_151_150_1\"  data-ds-appid=\"296010\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:296010,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/296010/capsule_sm_120.jpg?t=1440757972\"
-        alt=\"Buy NeonXSZ\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">NeonXSZ</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Aug 22, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;97% of the 36 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$24.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/16810/?snr=1_7_7_151_150_1\"  data-ds-appid=\"16810\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:16810,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/16810/capsule_sm_120.jpg?t=1392605732\"
-        alt=\"Buy Sid Meier's Civilization IV: Colonization\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Civilization IV: Colonization</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Sep 23, 2008</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;79% of the 179 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/3910/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3910\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3910,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3910/capsule_sm_120.jpg?t=1400366001\"
-        alt=\"Buy Sid Meier's Civilization® III Complete\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Civilization® III Complete</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 25, 2006</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;89% of the 942 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/3900/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3900\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3900,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3900/capsule_sm_120.jpg?t=1435080042\"
-        alt=\"Buy Sid Meier's Civilization® IV\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Civilization® IV</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 25, 2006</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;92% of the 679 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/8930/?snr=1_7_7_151_150_1\"  data-ds-appid=\"8930\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:8930,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/8930/capsule_sm_120.jpg?t=1436891075\"
-        alt=\"Buy Sid Meier's Civilization® V\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Civilization® V</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Sep 21, 2010</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Overwhelmingly Positive&lt;br&gt;96% of the
-        61,943 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$29.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/65980/?snr=1_7_7_151_150_1\"  data-ds-appid=\"65980\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:65980,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/65980/capsule_sm_120.jpg?t=1440115937\"
-        alt=\"Buy Sid Meier's Civilization®: Beyond Earth™\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Civilization®: Beyond Earth™</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 24, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;51% of the 12,669 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$39.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/327400/?snr=1_7_7_151_150_1\"  data-ds-appid=\"327400\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:327400,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/327400/capsule_sm_120.jpg?t=1438106754\"
-        alt=\"Buy Sid Meier's Colonization (Classic)\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Colonization (Classic)</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;88% of the 78 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/327390/?snr=1_7_7_151_150_1\"  data-ds-appid=\"327390\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:327390,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/327390/capsule_sm_120.jpg?t=1440545317\"
-        alt=\"Buy Sid Meier's Covert Action (Classic)\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Covert Action (Classic)</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;80% of the 36 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-86%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
-        #888888;\"><strike>$6.99</strike></span><br>$0.97\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/3920/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3920\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3920,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3920/capsule_sm_120.jpg?t=1426726564\"
-        alt=\"Buy Sid Meier's Pirates!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Pirates!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Oct 25, 2006</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Overwhelmingly
-        Positive&lt;br&gt;95% of the 1,016 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-80%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
-        #888888;\"><strike>$9.99</strike></span><br>$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/327380/?snr=1_7_7_151_150_1\"  data-ds-appid=\"327380\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:327380,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/327380/capsule_sm_120.jpg?t=1438107911\"
-        alt=\"Buy Sid Meier's Pirates! Gold Plus (Classic)\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Pirates! Gold Plus (Classic)</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;60% of the 10 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-86%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
-        #888888;\"><strike>$6.99</strike></span><br>$0.97\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/7600/?snr=1_7_7_151_150_1\"  data-ds-appid=\"7600\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:7600,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/7600/capsule_sm_120.jpg?t=1409174609\"
-        alt=\"Buy Sid Meier's Railroads!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Railroads!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">May 4, 2007</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;67%
-        of the 738 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/282210/?snr=1_7_7_151_150_1\"  data-ds-appid=\"282210\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:282210,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/282210/capsule_sm_120.jpg?t=1426181510\"
-        alt=\"Buy Sid Meier's Starships\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier's Starships</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Mar 12, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;45% of the 1,346 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/244070/?snr=1_7_7_151_150_1\"  data-ds-appid=\"244070\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:244070,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/244070/capsule_sm_120.jpg?t=1392469582\"
-        alt=\"Buy Sid Meier’s Ace Patrol\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier’s Ace Patrol</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Aug 27, 2013</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;72%
-        of the 350 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/244090/?snr=1_7_7_151_150_1\"  data-ds-appid=\"244090\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:244090,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/244090/capsule_sm_120.jpg?t=1392469471\"
-        alt=\"Buy Sid Meier’s Ace Patrol: Pacific Skies\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
-        Meier’s Ace Patrol: Pacific Skies</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Nov 5, 2013</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;67% of the 209 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/329660/?snr=1_7_7_151_150_1\"  data-ds-appid=\"329660\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:329660,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/329660/capsule_sm_120.jpg?t=1438107842\"
-        alt=\"Buy Silent Service\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Silent
-        Service</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Nov 6, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75% of the 4 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/343280/?snr=1_7_7_151_150_1\"  data-ds-appid=\"343280\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:343280,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/343280/capsule_sm_120.jpg?t=1440590562\"
-        alt=\"Buy Zotrix\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Zotrix</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 24, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;85% of the 80 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$12.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
-        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
-        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 24 of 24\t\t\t</div>\r\n\t\t\t<div
-        class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
-        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
-    http_version: 
-  recorded_at: Sun, 30 Aug 2015 03:38:26 GMT
-- request:
-    method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=potato&v5=1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Typhoeus - https://github.com/typhoeus/typhoeus
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - Apache
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Cache-Control:
-      - private,max-age=240
-      Content-Type:
-      - text/html; charset=UTF-8
-      X-Varnish:
-      - '2766095405'
-      Date:
-      - Sun, 30 Aug 2015 03:45:01 GMT
+      - Sun, 30 Aug 2015 04:38:14 GMT
       Content-Length:
       - '9269'
       Connection:
       - keep-alive
       Set-Cookie:
-      - browserid=644367210807673515; expires=Mon, 29-Aug-2016 03:45:01 GMT; path=/
+      - browserid=665759307665434818; expires=Mon, 29-Aug-2016 04:38:14 GMT; path=/
     body:
       encoding: UTF-8
       string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
         = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
         class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
         Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
-        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/374830/?snr=1_7_7_151_150_1\"
-        \ data-ds-appid=\"374830\" onmouseover=\"GameHover( this, event, 'global_hover',
-        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:374830,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/374830/capsule_sm_120.jpg?t=1439184647\"
-        alt=\"Buy Defend The Highlands\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Defend
-        The Highlands</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 31, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 9 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/219910/?snr=1_7_7_151_150_1\"  data-ds-appid=\"219910\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:219910,&quot;public&quot;:1,&quot;v6&quot;:1}
+        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/219910/?snr=1_7_7_151_150_1\"
+        \ data-ds-appid=\"219910\" onmouseover=\"GameHover( this, event, 'global_hover',
+        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:219910,&quot;public&quot;:1,&quot;v6&quot;:1}
         );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
         ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/219910/capsule_sm_120.jpg?t=1415112012\"
         alt=\"Buy Edna &amp; Harvey: Harvey's New Eyes\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
@@ -1725,31 +474,6 @@ http_interactions:
         reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
         class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
         class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/356200/?snr=1_7_7_151_150_1\"  data-ds-appid=\"356200\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:356200,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/356200/capsule_sm_120.jpg?t=1440906230\"
-        alt=\"Buy Keen Dreams\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Keen
-        Dreams</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img linux\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Sep 30, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/374640/?snr=1_7_7_151_150_1\"  data-ds-appid=\"374640\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:374640,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/374640/capsule_sm_120.jpg?t=1439866229\"
-        alt=\"Buy March of Industry\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">March
-        of Industry</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Soon</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
         href=\"http://store.steampowered.com/app/328500/?snr=1_7_7_151_150_1\"  data-ds-appid=\"328500\"
         onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:328500,&quot;public&quot;:1,&quot;v6&quot;:1}
         );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
@@ -1778,16 +502,56 @@ http_interactions:
         mixed\" data-store-tooltip=\"Mixed&lt;br&gt;69% of the 820 user reviews for
         this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
         class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$21.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$21.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/374830/?snr=1_7_7_151_150_1\"  data-ds-appid=\"374830\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:374830,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/374830/capsule_sm_120.jpg?t=1439184647\"
+        alt=\"Buy Defend The Highlands\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Defend
+        The Highlands</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Jul 31, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 9 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/374640/?snr=1_7_7_151_150_1\"  data-ds-appid=\"374640\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:374640,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/374640/capsule_sm_120.jpg?t=1439866229\"
+        alt=\"Buy March of Industry\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">March
+        of Industry</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Soon</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/356200/?snr=1_7_7_151_150_1\"  data-ds-appid=\"356200\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:356200,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/356200/capsule_sm_120.jpg?t=1440906483\"
+        alt=\"Buy Keen Dreams\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Keen
+        Dreams</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img linux\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Sep 30, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
         End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
         class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 7 of 7\t\t\t</div>\r\n\t\t\t<div
         class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
         style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
     http_version: 
-  recorded_at: Sun, 30 Aug 2015 03:45:01 GMT
+  recorded_at: Sun, 30 Aug 2015 04:38:15 GMT
 - request:
     method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=LUXOR:%20Mah%20Jong&v5=1
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=_ASC&sort_order=ASC&term=1954%20Alcatraz&v5=1
     body:
       encoding: US-ASCII
       string: ''
@@ -1808,277 +572,45 @@ http_interactions:
       Content-Type:
       - text/html; charset=UTF-8
       X-Varnish:
-      - '3456018393'
+      - '3456779157'
       Date:
-      - Sun, 30 Aug 2015 04:16:21 GMT
+      - Sun, 30 Aug 2015 04:38:15 GMT
       Content-Length:
-      - '21964'
+      - '1949'
       Connection:
       - keep-alive
       Set-Cookie:
-      - browserid=324611469663329377; expires=Mon, 29-Aug-2016 04:16:21 GMT; path=/
+      - browserid=948360018047972356; expires=Mon, 29-Aug-2016 04:38:15 GMT; path=/
     body:
       encoding: UTF-8
       string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
         = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
         class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
         Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
-        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/275810/?snr=1_7_7_151_150_1\"
-        \ data-ds-appid=\"275810\" onmouseover=\"GameHover( this, event, 'global_hover',
-        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:275810,&quot;public&quot;:1,&quot;v6&quot;:1}
+        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/255280/?snr=1_7_7_151_150_1\"
+        \ data-ds-appid=\"255280\" onmouseover=\"GameHover( this, event, 'global_hover',
+        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:255280,&quot;public&quot;:1,&quot;v6&quot;:1}
         );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/275810/capsule_sm_120.jpg?t=1392831434\"
-        alt=\"Buy 7 Wonders of the Ancient World\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">7
-        Wonders of the Ancient World</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Feb 18, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;59% of the 22 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/223000/?snr=1_7_7_151_150_1\"  data-ds-appid=\"223000\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:223000,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/223000/capsule_sm_120.jpg?t=1351485185\"
-        alt=\"Buy 7 Wonders: Ancient Alien Makeover\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">7
-        Wonders: Ancient Alien Makeover</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Oct 24, 2012</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;89% of the 93 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/275830/?snr=1_7_7_151_150_1\"  data-ds-appid=\"275830\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:275830,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/275830/capsule_sm_120.jpg?t=1392831571\"
-        alt=\"Buy 7 Wonders: Magical Mystery Tour\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">7
-        Wonders: Magical Mystery Tour</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Feb 18, 2014</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 14 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/12440/?snr=1_7_7_151_150_1\"  data-ds-appid=\"12440\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:12440,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/12440/capsule_sm_120.jpg?t=1270602379\"
-        alt=\"Buy Ankh 2: Heart of Osiris \" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Ankh
-        2: Heart of Osiris </span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/255280/capsule_sm_120.jpg?t=1421418633\"
+        alt=\"Buy 1954 Alcatraz\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">1954
+        Alcatraz</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
         win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Jun 16, 2009</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;54%
-        of the 24 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/12450/?snr=1_7_7_151_150_1\"  data-ds-appid=\"12450\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:12450,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/12450/capsule_sm_120.jpg?t=1262214877\"
-        alt=\"Buy Ankh 3: Battle of the Gods\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Ankh
-        3: Battle of the Gods</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Jun 16, 2009</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;44%
-        of the 9 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/391580/?snr=1_7_7_151_150_1\"  data-ds-appid=\"391580\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:391580,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/391580/capsule_sm_120.jpg?t=1440863948\"
-        alt=\"Buy Egyptian Senet\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Egyptian
-        Senet</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Aug 20, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 2 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/383620/?snr=1_7_7_151_150_1\"  data-ds-appid=\"383620\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:383620,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/383620/capsule_sm_120.jpg?t=1436377669\"
-        alt=\"Buy Flight Unlimited Las Vegas\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Flight
-        Unlimited Las Vegas</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jul 8, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;42% of the 7 user reviews for
-        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/15970/?snr=1_7_7_151_150_1\"  data-ds-appid=\"15970\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:15970,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/15970/capsule_sm_120.jpg?t=1273687794\"
-        alt=\"Buy Luxor\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
-        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jun 10, 2008</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;84% of the 19 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/15920/?snr=1_7_7_151_150_1\"  data-ds-appid=\"15920\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:15920,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/15920/capsule_sm_120.jpg?t=1246669740\"
-        alt=\"Buy Luxor 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor 2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jun 10, 2008</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;36% of the 11 user
-        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/234350/?snr=1_7_7_151_150_1\"  data-ds-appid=\"234350\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:234350,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/234350/capsule_sm_120.jpg?t=1368452707\"
-        alt=\"Buy Luxor 2 HD\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor
-        2 HD</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">May 13, 2013</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Positive&lt;br&gt;91%
-        of the 36 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/15930/?snr=1_7_7_151_150_1\"  data-ds-appid=\"15930\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:15930,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/15930/capsule_sm_120.jpg?t=1422853292\"
-        alt=\"Buy Luxor 3\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
-        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor 3</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jun 10, 2008</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;80% of the 21 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/15910/?snr=1_7_7_151_150_1\"  data-ds-appid=\"15910\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:15910,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/15910/capsule_sm_120.jpg?t=1273682224\"
-        alt=\"Buy Luxor Amun Rising\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor
-        Amun Rising</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Jun 10, 2008</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75%
-        of the 4 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/205830/?snr=1_7_7_151_150_1\"  data-ds-appid=\"205830\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:205830,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/205830/capsule_sm_120.jpg?t=1331165380\"
-        alt=\"Buy Luxor Evolved\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor
-        Evolved</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Mar 1, 2012</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Very Positive&lt;br&gt;94%
-        of the 119 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/361020/?snr=1_7_7_151_150_1\"  data-ds-appid=\"361020\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:361020,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/361020/capsule_sm_120.jpg?t=1431362340\"
-        alt=\"Buy Luxor HD\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor
-        HD</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">May 11, 2015</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 2 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/60340/?snr=1_7_7_151_150_1\"  data-ds-appid=\"60340\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:60340,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/60340/capsule_sm_120.jpg?t=1307667129\"
-        alt=\"Buy Luxor: 5th Passage\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor:
-        5th Passage</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Jan 25, 2011</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;84% of the 26 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/216930/?snr=1_7_7_151_150_1\"  data-ds-appid=\"216930\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:216930,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/216930/capsule_sm_120.jpg?t=1346864209\"
-        alt=\"Buy Luxor: Amun Rising HD\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor:
-        Amun Rising HD</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
-        search_released\">Sep 3, 2012</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Positive&lt;br&gt;100%
-        of the 3 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/32110/?snr=1_7_7_151_150_1\"  data-ds-appid=\"32110\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:32110,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/32110/capsule_sm_120.jpg?t=1294348612\"
-        alt=\"Buy LUXOR: Mah Jong\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">LUXOR:
-        Mah Jong</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
-        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
-        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\"></div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
-        class=\"search_review_summary positive\" data-store-tooltip=\"Positive&lt;br&gt;82%
-        of the 17 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
-        href=\"http://store.steampowered.com/app/16040/?snr=1_7_7_151_150_1\"  data-ds-appid=\"16040\"
-        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:16040,&quot;public&quot;:1,&quot;v6&quot;:1}
-        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
-        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/16040/capsule_sm_120.jpg?t=1246669751\"
-        alt=\"Buy Luxor: Quest for the Afterlife \" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
-        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Luxor:
-        Quest for the Afterlife </span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
-        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_released\">Dec 15, 2008</div>\r\n\t\t\t\t\t<div class=\"col
-        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
-        positive\" data-store-tooltip=\"Positive&lt;br&gt;80% of the 10 user reviews
-        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
-        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
-        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
+        search_released\">Mar 11, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;73%
+        of the 269 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-90%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
+        #888888;\"><strike>$19.99</strike></span><br>$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
         End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
-        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 18 of 18\t\t\t</div>\r\n\t\t\t<div
+        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 1 of 1\t\t\t</div>\r\n\t\t\t<div
         class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
         style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
     http_version: 
-  recorded_at: Sun, 30 Aug 2015 04:16:21 GMT
+  recorded_at: Sun, 30 Aug 2015 04:38:15 GMT
 - request:
     method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=LUXOR%20Mah%20Jong&v5=1
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=_ASC&sort_order=ASC&term=200%25%20Mixed%20Juice!&v5=1
     body:
       encoding: US-ASCII
       string: ''
@@ -2099,15 +631,71 @@ http_interactions:
       Content-Type:
       - text/html; charset=UTF-8
       X-Varnish:
-      - '2939024623'
+      - '2768077770'
       Date:
-      - Sun, 30 Aug 2015 04:20:58 GMT
+      - Sun, 30 Aug 2015 04:38:16 GMT
+      Content-Length:
+      - '1675'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - browserid=953989517588519956; expires=Mon, 29-Aug-2016 04:38:15 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
+        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
+        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
+        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
+        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/335190/?snr=1_7_7_151_150_1\"
+        \ data-ds-appid=\"335190\" onmouseover=\"GameHover( this, event, 'global_hover',
+        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:335190,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/335190/capsule_sm_120.jpg?t=1437940846\"
+        alt=\"Buy 200% Mixed Juice!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">200%
+        Mixed Juice!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
+        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
+        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 1 of 1\t\t\t</div>\r\n\t\t\t<div
+        class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
+        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
+    http_version: 
+  recorded_at: Sun, 30 Aug 2015 04:38:16 GMT
+- request:
+    method: get
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=_ASC&sort_order=ASC&term=LUXOR%20Mah%20Jong&v5=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private,max-age=240
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Varnish:
+      - '3456779683'
+      Date:
+      - Sun, 30 Aug 2015 04:38:16 GMT
       Content-Length:
       - '1920'
       Connection:
       - keep-alive
       Set-Cookie:
-      - browserid=960744917028405480; expires=Mon, 29-Aug-2016 04:20:58 GMT; path=/
+      - browserid=944982318333772634; expires=Mon, 29-Aug-2016 04:38:16 GMT; path=/
     body:
       encoding: UTF-8
       string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
@@ -2134,10 +722,10 @@ http_interactions:
         class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
         style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
     http_version: 
-  recorded_at: Sun, 30 Aug 2015 04:20:58 GMT
+  recorded_at: Sun, 30 Aug 2015 04:38:16 GMT
 - request:
     method: get
-    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=march%20of%20industry&v5=1
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=_ASC&sort_order=ASC&term=march%20of%20industry&v5=1
     body:
       encoding: US-ASCII
       string: ''
@@ -2158,15 +746,15 @@ http_interactions:
       Content-Type:
       - text/html; charset=UTF-8
       X-Varnish:
-      - '2767596651'
+      - '2768078355'
       Date:
-      - Sun, 30 Aug 2015 04:24:59 GMT
+      - Sun, 30 Aug 2015 04:38:16 GMT
       Content-Length:
       - '1797'
       Connection:
       - keep-alive
       Set-Cookie:
-      - browserid=961870816935296470; expires=Mon, 29-Aug-2016 04:24:59 GMT; path=/
+      - browserid=353884867235063800; expires=Mon, 29-Aug-2016 04:38:16 GMT; path=/
     body:
       encoding: UTF-8
       string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
@@ -2191,5 +779,121 @@ http_interactions:
         class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
         style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
     http_version: 
-  recorded_at: Sun, 30 Aug 2015 04:24:59 GMT
+  recorded_at: Sun, 30 Aug 2015 04:38:16 GMT
+- request:
+    method: get
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=_ASC&sort_order=ASC&term=race%20the%20sun&v5=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private,max-age=240
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Varnish:
+      - '2939617062'
+      Date:
+      - Sun, 30 Aug 2015 04:38:17 GMT
+      Content-Length:
+      - '6828'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - browserid=948360018047972477; expires=Mon, 29-Aug-2016 04:38:17 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
+        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
+        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
+        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
+        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/253030/?snr=1_7_7_151_150_1\"
+        \ data-ds-appid=\"253030\" onmouseover=\"GameHover( this, event, 'global_hover',
+        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:253030,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/253030/capsule_sm_120.jpg?t=1440181925\"
+        alt=\"Buy Race The Sun\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Race
+        The Sun</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Dec 9, 2013</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;94% of the 3,566 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/246940/?snr=1_7_7_151_150_1\"  data-ds-appid=\"246940\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:246940,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/246940/capsule_sm_120.jpg?t=1413426525\"
+        alt=\"Buy Lords of the Black Sun\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Lords
+        of the Black Sun</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Sep 12, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary negative\" data-store-tooltip=\"Mostly Negative&lt;br&gt;26%
+        of the 272 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$29.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/293880/?snr=1_7_7_151_150_1\"  data-ds-appid=\"293880\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:293880,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/293880/capsule_sm_120.jpg?t=1435972880\"
+        alt=\"Buy Dark Scavenger\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Dark
+        Scavenger</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">May 16, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;86% of the 99 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/336630/?snr=1_7_7_151_150_1\"  data-ds-appid=\"336630\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:336630,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/336630/capsule_sm_120.jpg?t=1418112532\"
+        alt=\"Buy Crash And Burn Racing\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Crash
+        And Burn Racing</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Dec 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;61%
+        of the 34 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/253880/?snr=1_7_7_151_150_1\"  data-ds-appid=\"253880\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:253880,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/253880/capsule_sm_120.jpg?t=1440146509\"
+        alt=\"Buy Earth 2150 Trilogy\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Earth
+        2150 Trilogy</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Nov 1, 2013</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;67% of the 162 user reviews for
+        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
+        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
+        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 5 of 5\t\t\t</div>\r\n\t\t\t<div
+        class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
+        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
+    http_version: 
+  recorded_at: Sun, 30 Aug 2015 04:38:17 GMT
 recorded_with: VCR 2.9.3
