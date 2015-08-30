@@ -13,8 +13,14 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     subject{ scrap(result_url(page)).map{|h| h[name]} }
   end
 
-  def self.specific_subject(page, game_number = 0)
-    subject{ scrap(result_url(page))[game_number] }
+  def self.specific_subject(page, options = {})
+    group_run = options[:group] || false
+    game_number = options[:n] || 0
+    group_result = nil
+    subject do
+      group_result = nil unless group_run
+      group_result ||= scrap(result_url(page))[game_number]
+    end
   end
 
   describe 'URL detection' do
@@ -26,6 +32,16 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     it 'should not detect non-steam search result URLs' do
       url = "http://store.steampowered.com/search"
       expect{ scrap(url) }.to raise_error Scrapers::NoPageProcessorFoundError
+    end
+  end
+
+  describe ':steam_id' do
+    context 'regular page' do
+      attributes_subject('potato', :steam_id)
+
+      it{ is_expected.to eq [
+        374830,219910,363600,356200,374640,328500,319910
+      ] }
     end
   end
 
@@ -70,13 +86,13 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     end
 
     context 'page with items on sale' do
-      specific_subject('1954 Alcatraz')
+      specific_subject('1954 Alcatraz', group: true)
       its([:steam_price]) { is_expected.to eq 1999 }
       its([:steam_sale_price]) { is_expected.to eq 199 }
     end
 
     context 'empty price' do
-      specific_subject('200% Mixed Juice!')
+      specific_subject('200% Mixed Juice!', group: true)
       its([:steam_price]) { is_expected.to eq 0 }
       its([:steam_sale_price]) { is_expected.to eq nil }
     end

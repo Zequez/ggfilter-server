@@ -7,16 +7,19 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
     @doc.search('.search_result_row').each do |a|
       game = {}
 
+      game[:steam_id] = read_id(a)
       game[:steam_name] = a.search('.title').text.strip
-
       game[:steam_price], game[:steam_sale_price] = read_prices(a)
-      LA game
-
 
       data << game
     end
 
     data
+  end
+
+  def read_id(a)
+    id = a['href'].scan(/app\/([0-9]+)/).flatten.first
+    id ? Integer(id) : nil
   end
 
   def read_prices(a)

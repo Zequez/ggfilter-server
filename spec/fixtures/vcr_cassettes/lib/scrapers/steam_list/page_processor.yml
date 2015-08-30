@@ -1248,4 +1248,541 @@ http_interactions:
         style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
     http_version: 
   recorded_at: Sun, 30 Aug 2015 03:01:36 GMT
+- request:
+    method: get
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=Sid%20Meier%20Civilization&v5=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private,max-age=240
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Varnish:
+      - '2765838608'
+      Date:
+      - Sun, 30 Aug 2015 03:38:26 GMT
+      Content-Length:
+      - '30854'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - browserid=932597419358237351; expires=Mon, 29-Aug-2016 03:38:25 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
+        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
+        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
+        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
+        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/3980/?snr=1_7_7_151_150_1\"
+        \ data-ds-appid=\"3980\" onmouseover=\"GameHover( this, event, 'global_hover',
+        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3980,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3980/capsule_sm_120.jpg?t=1392654852\"
+        alt=\"Buy CivCity: Rome\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">CivCity:
+        Rome</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Apr 6, 2007</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary positive\" data-store-tooltip=\"Very Positive&lt;br&gt;82%
+        of the 79 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/8800/?snr=1_7_7_151_150_1\"  data-ds-appid=\"8800\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:8800,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/8800/capsule_sm_120.jpg?t=1392605410\"
+        alt=\"Buy Civilization IV: Beyond the Sword\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Civilization
+        IV: Beyond the Sword</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Jul 24, 2007</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Overwhelmingly Positive&lt;br&gt;97% of the
+        555 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/3990/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3990\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3990,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3990/capsule_sm_120.jpg?t=1392605821\"
+        alt=\"Buy Civilization IV®: Warlords\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Civilization
+        IV®: Warlords</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Apr 6, 2007</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Positive&lt;br&gt;91% of the 48 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/228440/?snr=1_7_7_151_150_1\"  data-ds-appid=\"228440\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:228440,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/228440/capsule_sm_120.jpg?t=1393454596\"
+        alt=\"Buy Cubemen 2\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Cubemen
+        2</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img win\"></span><span
+        class=\"platform_img mac\"></span><span class=\"platform_img linux\"></span><span
+        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Apr 8, 2013</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75% of the 163 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$7.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/322540/?snr=1_7_7_151_150_1\"  data-ds-appid=\"322540\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:322540,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/322540/capsule_sm_120.jpg?t=1433868232\"
+        alt=\"Buy Galactic Inheritors\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Galactic
+        Inheritors</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Jun 9, 2015</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75%
+        of the 32 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/270830/?snr=1_7_7_151_150_1\"  data-ds-appid=\"270830\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:270830,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/270830/capsule_sm_120.jpg?t=1415606971\"
+        alt=\"Buy Global ATC Simulator\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Global
+        ATC Simulator</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Nov 10, 2014</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;72%
+        of the 25 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$34.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/295590/?snr=1_7_7_151_150_1\"  data-ds-appid=\"295590\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:295590,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/295590/capsule_sm_120.jpg?t=1429827221\"
+        alt=\"Buy Hero Generations\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Hero
+        Generations</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Apr 10, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;65% of the 129 user reviews for
+        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/253900/?snr=1_7_7_151_150_1\"  data-ds-appid=\"253900\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:253900,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/253900/capsule_sm_120.jpg?t=1439203358\"
+        alt=\"Buy Knights and Merchants\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Knights
+        and Merchants</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 14, 2013</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;81% of the 1,248 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/296010/?snr=1_7_7_151_150_1\"  data-ds-appid=\"296010\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:296010,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/296010/capsule_sm_120.jpg?t=1440757972\"
+        alt=\"Buy NeonXSZ\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
+        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">NeonXSZ</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Aug 22, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Positive&lt;br&gt;97% of the 36 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$24.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/16810/?snr=1_7_7_151_150_1\"  data-ds-appid=\"16810\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:16810,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/16810/capsule_sm_120.jpg?t=1392605732\"
+        alt=\"Buy Sid Meier's Civilization IV: Colonization\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Civilization IV: Colonization</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Sep 23, 2008</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;79% of the 179 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/3910/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3910\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3910,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3910/capsule_sm_120.jpg?t=1400366001\"
+        alt=\"Buy Sid Meier's Civilization® III Complete\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Civilization® III Complete</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 25, 2006</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;89% of the 942 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/3900/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3900\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3900,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3900/capsule_sm_120.jpg?t=1435080042\"
+        alt=\"Buy Sid Meier's Civilization® IV\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Civilization® IV</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 25, 2006</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;92% of the 679 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$19.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/8930/?snr=1_7_7_151_150_1\"  data-ds-appid=\"8930\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:8930,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/8930/capsule_sm_120.jpg?t=1436891075\"
+        alt=\"Buy Sid Meier's Civilization® V\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Civilization® V</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Sep 21, 2010</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Overwhelmingly Positive&lt;br&gt;96% of the
+        61,943 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$29.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/65980/?snr=1_7_7_151_150_1\"  data-ds-appid=\"65980\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:65980,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/65980/capsule_sm_120.jpg?t=1440115937\"
+        alt=\"Buy Sid Meier's Civilization®: Beyond Earth™\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Civilization®: Beyond Earth™</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 24, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;51% of the 12,669 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$39.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/327400/?snr=1_7_7_151_150_1\"  data-ds-appid=\"327400\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:327400,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/327400/capsule_sm_120.jpg?t=1438106754\"
+        alt=\"Buy Sid Meier's Colonization (Classic)\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Colonization (Classic)</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;88% of the 78 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/327390/?snr=1_7_7_151_150_1\"  data-ds-appid=\"327390\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:327390,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/327390/capsule_sm_120.jpg?t=1440545317\"
+        alt=\"Buy Sid Meier's Covert Action (Classic)\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Covert Action (Classic)</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Positive&lt;br&gt;80% of the 36 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-86%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
+        #888888;\"><strike>$6.99</strike></span><br>$0.97\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/3920/?snr=1_7_7_151_150_1\"  data-ds-appid=\"3920\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:3920,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/3920/capsule_sm_120.jpg?t=1426726564\"
+        alt=\"Buy Sid Meier's Pirates!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Pirates!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Oct 25, 2006</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary positive\" data-store-tooltip=\"Overwhelmingly
+        Positive&lt;br&gt;95% of the 1,016 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-80%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
+        #888888;\"><strike>$9.99</strike></span><br>$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/327380/?snr=1_7_7_151_150_1\"  data-ds-appid=\"327380\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:327380,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/327380/capsule_sm_120.jpg?t=1438107911\"
+        alt=\"Buy Sid Meier's Pirates! Gold Plus (Classic)\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Pirates! Gold Plus (Classic)</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 9, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;60% of the 10 user reviews for
+        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-86%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
+        #888888;\"><strike>$6.99</strike></span><br>$0.97\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/7600/?snr=1_7_7_151_150_1\"  data-ds-appid=\"7600\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:7600,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/7600/capsule_sm_120.jpg?t=1409174609\"
+        alt=\"Buy Sid Meier's Railroads!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Railroads!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">May 4, 2007</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary mixed\" data-store-tooltip=\"Mixed&lt;br&gt;67%
+        of the 738 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/282210/?snr=1_7_7_151_150_1\"  data-ds-appid=\"282210\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:282210,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/282210/capsule_sm_120.jpg?t=1426181510\"
+        alt=\"Buy Sid Meier's Starships\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier's Starships</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Mar 12, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;45% of the 1,346 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/244070/?snr=1_7_7_151_150_1\"  data-ds-appid=\"244070\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:244070,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/244070/capsule_sm_120.jpg?t=1392469582\"
+        alt=\"Buy Sid Meier’s Ace Patrol\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier’s Ace Patrol</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"col
+        search_released\">Aug 27, 2013</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span
+        class=\"search_review_summary positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;72%
+        of the 350 user reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/244090/?snr=1_7_7_151_150_1\"  data-ds-appid=\"244090\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:244090,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/244090/capsule_sm_120.jpg?t=1392469471\"
+        alt=\"Buy Sid Meier’s Ace Patrol: Pacific Skies\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Sid
+        Meier’s Ace Patrol: Pacific Skies</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Nov 5, 2013</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;67% of the 209 user reviews for
+        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$4.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/329660/?snr=1_7_7_151_150_1\"  data-ds-appid=\"329660\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:329660,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/329660/capsule_sm_120.jpg?t=1438107842\"
+        alt=\"Buy Silent Service\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Silent
+        Service</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Nov 6, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Mostly Positive&lt;br&gt;75% of the 4 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$6.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/343280/?snr=1_7_7_151_150_1\"  data-ds-appid=\"343280\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:343280,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/343280/capsule_sm_120.jpg?t=1440590562\"
+        alt=\"Buy Zotrix\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div class=\"col
+        search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Zotrix</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Jul 24, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;85% of the 80 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$12.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
+        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
+        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 24 of 24\t\t\t</div>\r\n\t\t\t<div
+        class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
+        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
+    http_version: 
+  recorded_at: Sun, 30 Aug 2015 03:38:26 GMT
+- request:
+    method: get
+    uri: http://store.steampowered.com/search/results?category1=998&cc=us&sort_by=Name&sort_order=ASC&term=potato&v5=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private,max-age=240
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Varnish:
+      - '2766095405'
+      Date:
+      - Sun, 30 Aug 2015 03:45:01 GMT
+      Content-Length:
+      - '9269'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - browserid=644367210807673515; expires=Mon, 29-Aug-2016 03:45:01 GMT; path=/
+    body:
+      encoding: UTF-8
+      string: "\r\n<script type = \"text/javascript\">\r\n\r\n\tfunction shareLinkClick(link){\r\n\t\t$('url_box').show();\r\n\t\t$('sharearrow').show();\r\n\t\t$('url_textarea').select();\r\n\t\tlink.style.color
+        = \"#7da6c8\";\r\n\r\n\t}\r\n\r\n</script>\r\n<div id = \"search_result_container\">\r\n\r\n\t<div
+        class=\"search_rule\"></div>\r\n\r\n\t\r\n\r\n\t\t<!-- List Items -->\r\n\t\t<div>\r\n\t\t\t<!--
+        Extra empty div to hack around lame IE7 layout bug -->\r\n\t\t\t<div></div>\r\n\t\t\t<!--
+        End Extra empty div -->\r\n\t\t\t\t\t\t\t<a href=\"http://store.steampowered.com/app/374830/?snr=1_7_7_151_150_1\"
+        \ data-ds-appid=\"374830\" onmouseover=\"GameHover( this, event, 'global_hover',
+        {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:374830,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/374830/capsule_sm_120.jpg?t=1439184647\"
+        alt=\"Buy Defend The Highlands\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Defend
+        The Highlands</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Jul 31, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Positive&lt;br&gt;100% of the 9 user reviews
+        for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$9.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/219910/?snr=1_7_7_151_150_1\"  data-ds-appid=\"219910\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:219910,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/219910/capsule_sm_120.jpg?t=1415112012\"
+        alt=\"Buy Edna &amp; Harvey: Harvey's New Eyes\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Edna
+        &amp; Harvey: Harvey's New Eyes</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Oct 16, 2012</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;93% of the 669 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t<span>-90%</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price discounted\">\r\n\t\t\t\t\t\t<span style=\"color:
+        #888888;\"><strike>$19.99</strike></span><br>$1.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/363600/?snr=1_7_7_151_150_1\"  data-ds-appid=\"363600\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:363600,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/363600/capsule_sm_120.jpg?t=1440156007\"
+        alt=\"Buy Holy Potatoes! A Weapon Shop?!\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Holy
+        Potatoes! A Weapon Shop?!</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span><span class=\"platform_img mac\"></span><span
+        class=\"platform_img linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Jul 13, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;81% of the 341 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$14.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/356200/?snr=1_7_7_151_150_1\"  data-ds-appid=\"356200\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:356200,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/356200/capsule_sm_120.jpg?t=1440906230\"
+        alt=\"Buy Keen Dreams\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Keen
+        Dreams</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img linux\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Sep 30, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/374640/?snr=1_7_7_151_150_1\"  data-ds-appid=\"374640\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:374640,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/374640/capsule_sm_120.jpg?t=1439866229\"
+        alt=\"Buy March of Industry\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">March
+        of Industry</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        linux\"></span><span class=\"platform_img steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Soon</div>\r\n\t\t\t\t\t<div class=\"col search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/328500/?snr=1_7_7_151_150_1\"  data-ds-appid=\"328500\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:328500,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/328500/capsule_sm_120.jpg?t=1432310960\"
+        alt=\"Buy Potatoman Seeks the Troof\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Potatoman
+        Seeks the Troof</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span class=\"platform_img
+        win\"></span><span class=\"platform_img mac\"></span><span class=\"platform_img
+        steamplay\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Dec 3, 2014</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        positive\" data-store-tooltip=\"Very Positive&lt;br&gt;86% of the 180 user
+        reviews for this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$3.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t\t<a
+        href=\"http://store.steampowered.com/app/319910/?snr=1_7_7_151_150_1\"  data-ds-appid=\"319910\"
+        onmouseover=\"GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:319910,&quot;public&quot;:1,&quot;v6&quot;:1}
+        );\" onmouseout=\"HideGameHover( this, event, 'global_hover' )\" class=\"search_result_row
+        ds_collapse_flag\" >\r\n\t\t\t\t\t<div class=\"col search_capsule\"><img src=\"http://cdn.akamai.steamstatic.com/steam/apps/319910/capsule_sm_120.jpg?t=1440082583\"
+        alt=\"Buy Trine 3: The Artifacts of Power\" width=\"120\" height=\"45\"></div>\r\n\t\t\t\t\t<div
+        class=\"col search_name ellipsis\">\r\n\t\t\t\t\t\t<span class=\"title\">Trine
+        3: The Artifacts of Power</span>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<span
+        class=\"platform_img win\"></span>\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_released\">Aug 20, 2015</div>\r\n\t\t\t\t\t<div class=\"col
+        search_reviewscore\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"search_review_summary
+        mixed\" data-store-tooltip=\"Mixed&lt;br&gt;69% of the 820 user reviews for
+        this game are positive.\">\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t<div
+        class=\"col search_discount\">\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div
+        class=\"col search_price \">\r\n\t\t\t\t\t\t$21.99\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t</a>\r\n\t\t\t\t\t\t<!--
+        End List Items -->\r\n\t\t</div>\r\n\r\n\t\t<div class=\"search_pagination\">\r\n\t\t\t<div
+        class=\"search_pagination_left\">\r\n\t\t\t\tshowing 1 - 7 of 7\t\t\t</div>\r\n\t\t\t<div
+        class=\"search_pagination_right\">\r\n\t\t\t\t1\t\t\t</div>\r\n\t\t\t<div
+        style=\"clear: both;\"></div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n"
+    http_version: 
+  recorded_at: Sun, 30 Aug 2015 03:45:01 GMT
 recorded_with: VCR 2.9.3
