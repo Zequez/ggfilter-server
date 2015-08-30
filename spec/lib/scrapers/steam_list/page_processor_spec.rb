@@ -1,13 +1,22 @@
 describe Scrapers::SteamList::PageProcessor, cassette: true do
-  def scrap(page_url)
+  def scrap(page_url, add_to_queue = nil)
     response = Typhoeus.get(page_url)
-    add_to_queue = lambda{|url|}
+    add_to_queue ||= lambda{|url|}
     Scrapers::SteamList::PageProcessor.new(response, &add_to_queue).process_page
   end
 
-  def result_url(number_or_query)
-    param = number_or_query.kind_of?(String) ? "term=#{CGI.escape(number_or_query)}&sort_by=_ASC" : "page=#{number_or_query}"
-    "http://store.steampowered.com/search/results?category1=998&sort_by=Name&sort_order=ASC&category1=998&cc=us&v5=1&#{param}"
+  def result_url(page_or_query, page = nil)
+    query = nil
+    if page_or_query.kind_of?(String)
+      query = CGI.escape(page_or_query)
+    else
+      page ||= page_or_query
+    end
+
+    query = "term=#{query}&sort_by=_ASC" if query
+    page = "page=#{page}" if page
+
+    "http://store.steampowered.com/search/results?category1=998&sort_by=Name&sort_order=ASC&category1=998&cc=us&v5=1&#{page}&#{query}"
   end
 
   def self.attributes_subject(page, name)
@@ -41,6 +50,17 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     it 'should not detect non-steam search result URLs' do
       url = "http://store.steampowered.com/search"
       expect(url).to_not match Scrapers::SteamList::PageProcessor.regexp
+    end
+  end
+
+  describe 'loading multiple pages' do
+    it 'should call the block given with all the next pages' do
+      url1 = result_url('civilization', 1)
+      add_to_queue = lambda {|url|}
+      expect(add_to_queue).to receive(:call).with('http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=2')
+      expect(add_to_queue).to receive(:call).with('http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=3')
+      expect(add_to_queue).to receive(:call).with('http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=10')
+      scrap(url1, add_to_queue)
     end
   end
 

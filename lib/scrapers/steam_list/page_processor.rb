@@ -30,6 +30,11 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
       data << game
     end
 
+    @doc.search('.search_pagination_right a:not(.pagebtn)').map do |a|
+      next_url = a['href'].sub(%r{/search/\?}, '/search/results?')
+      add_to_queue(next_url)
+    end
+
     data
   end
 
