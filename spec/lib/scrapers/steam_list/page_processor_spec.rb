@@ -57,9 +57,9 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     it 'should call the block given with all the next pages' do
       url1 = result_url('civilization', 1)
       add_to_queue = lambda {|url|}
-      expect(add_to_queue).to receive(:call).with('http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=2')
-      expect(add_to_queue).to receive(:call).with('http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=3')
-      expect(add_to_queue).to receive(:call).with('http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=10')
+      (2..10).each do |n|
+        expect(add_to_queue).to receive(:call).with("http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=#{n}")
+      end
       scrap(url1, add_to_queue)
     end
   end

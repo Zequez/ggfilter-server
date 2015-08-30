@@ -30,9 +30,15 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
       data << game
     end
 
-    @doc.search('.search_pagination_right a:not(.pagebtn)').map do |a|
-      next_url = a['href'].sub(%r{/search/\?}, '/search/results?')
-      add_to_queue(next_url)
+    pagination = @doc.search('.search_pagination_right')
+    if pagination.text.strip =~ /^1\b/ # if we are parsing the first page
+      last_page_e = pagination.search('a:not(.pagebtn)').last
+      last_page_link = last_page_e['href'].sub(%r{/search/\?}, '/search/results?')
+      last_page_number = Integer(last_page_link.scan(/page=(\d+)/).flatten.first)
+      (2..last_page_number).each do |n|
+        page_link = last_page_link.sub("page=#{last_page_number}", "page=#{n}")
+        add_to_queue page_link
+      end
     end
 
     data
