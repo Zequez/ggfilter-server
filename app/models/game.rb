@@ -1,6 +1,8 @@
 class Game < ActiveRecord::Base
   extend FriendlyId
   include FilteringHelpers
+  include Flaggable
+  include Scrapers::SteamList::GameExtension
 
   friendly_id :name, use: :slugged, slug_column: :name_slug
 
@@ -18,7 +20,7 @@ class Game < ActiveRecord::Base
     end.join('-')
 
     condition = sanitize_sql_array(["name_slug ~ ?", regex])
-    
+
     filter_and_or_highlight(:name, filter, condition)
   end)
 
