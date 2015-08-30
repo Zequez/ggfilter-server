@@ -86,6 +86,8 @@ group :development, :test do
   gem 'database_cleaner'
   # Handle JSON on specs
   gem 'json_spec'
+  # Virtual models for tests
+  gem 'with_model'
 end
 
 group :test do

@@ -12,7 +12,7 @@ require 'vcr'
 require 'rspec/its'
 require 'factory_girl'
 require 'custom_logger'
-
+require 'with_model'
 
 include ActionDispatch::TestProcess
 
@@ -60,6 +60,7 @@ RSpec.configure do |config|
   LL.info '############################################################################################'
   config.include FactoryGirl::Syntax::Methods
   config.include JsonSpec::Helpers
+  config.extend WithModel
   config.before(:suite) { FactoryGirl.reload }
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]
