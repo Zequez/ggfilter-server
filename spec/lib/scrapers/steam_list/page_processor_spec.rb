@@ -142,7 +142,7 @@ describe Scrapers::SteamList::PageProcessor, cassette: true, type: :steam_list d
       attributes_subject('race the sun', [:reviews_count, :reviews_ratio])
 
       it { is_expected.to eq [
-        [3566, 94],
+        [3578, 94],
         [272, 26],
         [99, 86],
         [34, 61],
