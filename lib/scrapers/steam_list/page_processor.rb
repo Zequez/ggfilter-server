@@ -37,7 +37,7 @@ class Scrapers::SteamList::PageProcessor < Scrapers::BasePageProcessor
         last_page_link = last_page_e['href'].sub(%r{/search/\?}, '/search/results?')
         last_page_number = Integer(last_page_link.scan(/page=(\d+)/).flatten.first)
         (2..last_page_number).each do |n|
-          page_link = last_page_link.sub("page=#{last_page_number}", "page=#{n}")
+          page_link = @url.sub("page=1", "page=#{n}")
           add_to_queue page_link
         end
       end

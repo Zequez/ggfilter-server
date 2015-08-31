@@ -5,6 +5,7 @@ module Scrapers
     def initialize(response, &add_to_queue)
       @response = response
       @request = response.request
+      @url = response.request.url
       @doc = Nokogiri::HTML(response.body)
       @add_to_queue = add_to_queue
     end

@@ -1,27 +1,13 @@
-describe Scrapers::SteamList::PageProcessor, cassette: true do
+describe Scrapers::SteamList::PageProcessor, cassette: true, type: :steam_list do
   def scrap(page_url, add_to_queue = nil)
     response = Typhoeus.get(page_url)
     add_to_queue ||= lambda{|url|}
     Scrapers::SteamList::PageProcessor.new(response, &add_to_queue).process_page
   end
 
-  def result_url(page_or_query, page = nil)
-    query = nil
-    if page_or_query.kind_of?(String)
-      query = CGI.escape(page_or_query)
-    else
-      page ||= page_or_query
-    end
-
-    query = "term=#{query}&sort_by=_ASC" if query
-    page = "page=#{page}" if page
-
-    "http://store.steampowered.com/search/results?category1=998&sort_by=Name&sort_order=ASC&category1=998&cc=us&v5=1&#{page}&#{query}"
-  end
-
   def self.attributes_subject(page, name)
     subject do
-      scrap(result_url(page)).map do |h|
+      scrap(steam_list_url(page)).map do |h|
         if name.kind_of? Array
           name.map{|n| h[n]}
         else
@@ -37,13 +23,13 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
     group_result = nil
     subject do
       group_result = nil unless group_run
-      group_result ||= scrap(result_url(page))[game_number]
+      group_result ||= scrap(steam_list_url(page))[game_number]
     end
   end
 
   describe 'URL detection' do
     it 'should detect the Steam search result URLs' do
-      url = result_url(1)
+      url = steam_list_url(1)
       expect(url).to match Scrapers::SteamList::PageProcessor.regexp
     end
 
@@ -55,10 +41,10 @@ describe Scrapers::SteamList::PageProcessor, cassette: true do
 
   describe 'loading multiple pages' do
     it 'should call the block given with all the next pages' do
-      url1 = result_url('civilization', 1)
+      url1 = steam_list_url('civilization', 1)
       add_to_queue = lambda {|url|}
       (2..10).each do |n|
-        expect(add_to_queue).to receive(:call).with("http://store.steampowered.com/search/results?sort_by=_ASC&sort_order=ASC&term=civilization&category1=998&page=#{n}")
+        expect(add_to_queue).to receive(:call).with(steam_list_url('civilization', n))
       end
       scrap(url1, add_to_queue)
     end

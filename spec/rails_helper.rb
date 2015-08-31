@@ -13,6 +13,7 @@ require 'rspec/its'
 require 'factory_girl'
 require 'custom_logger'
 require 'with_model'
+require 'steam_list_test_helpers'
 
 include ActionDispatch::TestProcess
 
@@ -81,6 +82,8 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include Devise::TestHelpers, type: :controller
+  config.include SteamListTestHelpers, type: :steam_list
+
 
   # Transactions don't work with JS test drivers
   # thus we need to change the cleaning strategy to
