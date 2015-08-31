@@ -4,7 +4,7 @@ class Scrapers::BaseRunner
   self.options = {}
 
 
-  def initialize(options)
+  def initialize(options = {})
     @options = self.class.options.merge(options)
   end
 end
