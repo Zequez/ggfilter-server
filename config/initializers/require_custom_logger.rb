@@ -1,21 +1,9 @@
-if Rails.env.production?
-  def L(*a); end
-  def LL(*a); end
-else
-  require 'custom_logger'
+LL = begin
   logfile = File.open("#{Rails.root}/log/custom.log", 'a')  # create log file
   logfile.sync = true  # automatically flushes data to file
-  LL = CustomLogger.new(logfile)  # constant accessible anywhere
-
-  def L(msg)
-    LL.debug msg.inspect
-  end
-
-  def LN(msg)
-    LL.debug msg
-  end
-
-  def LA(msg)
-    LL.ap msg
-  end
+  CustomLogger.new(logfile)  # constant accessible anywhere
 end
+
+define_method :L, &LL.method(:l)
+define_method :LA, &LL.method(:la)
+define_method :LN, &LL.method(:ln)
