@@ -9,5 +9,6 @@ dates = dates.map do |d|
   t.strftime('%Y-%m-%d')
 end
 
-data = dates.zip(logs).reverse
-puts data.map{|d| d.join("\t\t")}.join("\n")
+puts logs.reverse.join("\n")
+# data = dates.zip(logs).reverse
+# puts data.map{|d| d.join("\t\t")}.join("\n")
