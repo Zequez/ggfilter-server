@@ -12,6 +12,8 @@ class Scrapers::SteamList::Runner < Scrapers::BaseRunner
   }
 
   def run
+    Scrapers.logger.info "SteamList running for " + (sale? ? 'games on sale' : 'all games')
+
     url = sale? ? options[:on_sale_url] : options[:all_games_url]
     @on_sale_ids = []
     @loader = Scrapers::Loader.new(url, Scrapers::SteamList::PageProcessor)
@@ -24,14 +26,25 @@ class Scrapers::SteamList::Runner < Scrapers::BaseRunner
     end
   end
 
+  private
+
   def data_process(data, game)
     processor = Scrapers::SteamList::DataProcessor.new(data, game)
     game = processor.process
+    was_new = game.new_record?
     game.save!
+    log_game(game, was_new)
     @on_sale_ids.push(game.id) if game.steam_sale_price
   end
 
   def sale?
     @options[:on_sale]
+  end
+
+  def log_game(game, was_new)
+    log_id = game.steam_id.to_s.ljust(10)
+    log_text = "#{log_id} #{game.name}"
+    log_text = log_text.green if was_new
+    Scrapers.logger.ln log_text
   end
 end

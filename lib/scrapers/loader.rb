@@ -30,6 +30,7 @@ module Scrapers
       processor = processor_class.new(response) do |url|
         add_to_queue(url, initial_url)
       end
+      Scrapers.logger.info "Parsing #{response.request.url}"
       add_page_data processor.process_page, initial_url, response.request.url
     end
 

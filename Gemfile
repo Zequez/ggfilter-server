@@ -54,6 +54,8 @@ gem 'typhoeus'
 gem 'unicorn'
 # Convert integers to roman numerals, for searching purposes
 gem 'roman-numerals'
+# Log colorization
+gem 'colorize'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

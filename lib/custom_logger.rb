@@ -1,6 +1,16 @@
 class CustomLogger < Logger
+  @@colors = {
+    fatal: :red,
+    error: :red,
+    warn: :orange,
+    info: :blue
+  }
+
   def format_message(severity, timestamp, progname, msg)
-    "#{timestamp.to_formatted_s(:db)} #{severity} #{msg}\n"
+    output = "#{timestamp.to_formatted_s(:db)} #{severity} #{msg}\n"
+    sev = severity.downcase.to_sym
+    output = output.send(@@colors[sev]) if @@colors[sev]
+    output
   end
 
   def l(msg)

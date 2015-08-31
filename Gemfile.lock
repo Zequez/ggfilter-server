@@ -100,6 +100,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    colorize (0.7.7)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.4.1)
@@ -348,6 +349,7 @@ DEPENDENCIES
   cancancan
   capybara
   coffee-rails (~> 4.1.0)
+  colorize
   database_cleaner
   devise
   factory_girl_rails
