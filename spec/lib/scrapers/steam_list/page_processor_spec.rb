@@ -1,9 +1,5 @@
 describe Scrapers::SteamList::PageProcessor, cassette: true, type: :steam_list do
-  def scrap(page_url, add_to_queue = nil)
-    response = Typhoeus.get(page_url)
-    add_to_queue ||= lambda{|url|}
-    Scrapers::SteamList::PageProcessor.new(response, &add_to_queue).process_page
-  end
+  let(:processor_class) { Scrapers::SteamList::PageProcessor }
 
   def self.attributes_subject(page, name)
     subject do
@@ -30,12 +26,12 @@ describe Scrapers::SteamList::PageProcessor, cassette: true, type: :steam_list d
   describe 'URL detection' do
     it 'should detect the Steam search result URLs' do
       url = steam_list_url(1)
-      expect(url).to match Scrapers::SteamList::PageProcessor.regexp
+      expect(url).to match processor_class.regexp
     end
 
     it 'should not detect non-steam search result URLs' do
       url = "http://store.steampowered.com/search"
-      expect(url).to_not match Scrapers::SteamList::PageProcessor.regexp
+      expect(url).to_not match processor_class.regexp
     end
   end
 
