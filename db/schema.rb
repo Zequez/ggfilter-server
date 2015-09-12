@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830211748) do
+ActiveRecord::Schema.define(version: 20150829210522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,15 @@ ActiveRecord::Schema.define(version: 20150830211748) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "steam_name"
+    t.integer  "steam_id"
     t.integer  "steam_price"
+    t.integer  "steam_sale_price"
     t.integer  "steam_reviews_ratio"
     t.integer  "steam_reviews_count"
     t.string   "steam_thumbnail"
-    t.string   "name_slug"
-    t.integer  "steam_id"
-    t.integer  "steam_sale_price"
     t.datetime "released_at"
     t.integer  "platforms",           default: 0, null: false
+    t.string   "name_slug"
   end
 
 end
