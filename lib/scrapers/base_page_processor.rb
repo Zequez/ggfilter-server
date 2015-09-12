@@ -23,5 +23,9 @@ module Scrapers
     def self.regexp(value = nil)
       (@regexp = value if value) || @regexp || /(?!)/
     end
+
+    def css(matcher)
+      @doc.search(matcher)
+    end
   end
 end

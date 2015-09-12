@@ -1,5 +1,5 @@
 describe Scrapers::SteamList::PageProcessor, cassette: true, type: :steam_list do
-  let(:processor_class) { Scrapers::SteamList::PageProcessor }
+  def processor_class; Scrapers::SteamList::PageProcessor end
 
   def self.attributes_subject(page, name)
     subject do
@@ -42,7 +42,7 @@ describe Scrapers::SteamList::PageProcessor, cassette: true, type: :steam_list d
       (2..10).each do |n|
         expect(add_to_queue).to receive(:call).with(steam_list_url('civilization', n))
       end
-      scrap(url1, add_to_queue)
+      scrap(url1, &add_to_queue)
     end
   end
 

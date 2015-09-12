@@ -50,6 +50,11 @@ VCR.configure do |config|
     i.response.body.force_encoding('UTF-8')
   end
 
+  config.preserve_exact_body_bytes do |http_message|
+    http_message.body.encoding.name == 'ASCII-8BIT' ||
+    !http_message.body.valid_encoding?
+  end
+
   config.cassette_library_dir = "#{::Rails.root}/spec/fixtures/vcr_cassettes"
   config.hook_into :webmock # or :fakeweb
   config.configure_rspec_metadata!
@@ -113,17 +118,36 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  def cassette_name(file_path, name)
+    path = file_path.gsub(/^\.\/spec\/|_spec\.rb$/, '').split(File::SEPARATOR)
+    path.push(name) unless name === true
+    path.join('/')
+  end
 
   config.around :example do |example|
-    path = example.file_path.gsub(/^\.\/spec\/|_spec\.rb$/, '').split(File::SEPARATOR)
     cassette = example.metadata[:cassette]
+
     if cassette
-      path.push(cassette) unless cassette === true
-      VCR.use_cassette(path.join('/'), record: :new_episodes) do
+      path = cassette_name(example.file_path, cassette)
+      VCR.use_cassette(path, record: :new_episodes, preserve_exact_body_bytes: true) do
         example.run
       end
     else
       example.run
+    end
+  end
+
+  # config.before :all do |example_group|
+  #   LA example_group.file_path
+  # end
+
+  def before_all_cassette(name = true, &block)
+    path = cassette_name(file_path, name)
+
+    before :all do
+      VCR.use_cassette(path, record: :new_episodes) do
+        self.instance_eval(&block)
+      end
     end
   end
 
