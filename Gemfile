@@ -23,6 +23,8 @@ gem 'cancancan'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 # Administration panel. Cutting edge for Rails 4.2
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+# Scrapers!
+gem 'scrapers', path: '../scrapers'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
@@ -43,6 +45,8 @@ end
 #####################
 # Sluggification of attributes
 gem 'friendly_id'
+# Simple binary flags!
+gem 'simple_flaggable_column'
 
 # Other
 #####################

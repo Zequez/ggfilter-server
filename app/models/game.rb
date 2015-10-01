@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   extend FriendlyId
   include FilteringHelpers
-  include Flaggable
+  include SimpleFlaggableColumn
   include Scrapers::SteamList::GameExtension
 
   friendly_id :name, use: :slugged, slug_column: :name_slug

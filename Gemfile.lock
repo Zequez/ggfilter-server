@@ -26,6 +26,16 @@ GIT
       railties (>= 3.2, < 5)
       responders
 
+PATH
+  remote: ../scrapers
+  specs:
+    scrapers (0.0.1)
+      activerecord (~> 4.2)
+      colorize (~> 0.7)
+      nokogiri (~> 1.6)
+      simple_flaggable_column (~> 0.0.1)
+      typhoeus (~> 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -287,6 +297,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    simple_flaggable_column (0.0.1)
+      activesupport (~> 4.2)
     slop (3.6.0)
     spring (1.3.6)
     spring-commands-rspec (1.0.4)
@@ -369,7 +381,9 @@ DEPENDENCIES
   rspec-mocks
   rspec-rails
   sass-rails (~> 5.0)
+  scrapers!
   sdoc (~> 0.4.0)
+  simple_flaggable_column
   spring
   spring-commands-rspec
   sprockets-es6
