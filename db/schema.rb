@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20151009051452) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "name"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "name"
     t.string   "steam_name"
     t.integer  "steam_id"
     t.integer  "steam_price"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151009051452) do
     t.integer  "steam_reviews_count"
     t.string   "steam_thumbnail"
     t.datetime "released_at"
+    t.datetime "steam_list_scraped_at"
     t.integer  "platforms",                    default: 0, null: false
     t.string   "name_slug"
     t.string   "tags"
@@ -48,8 +49,10 @@ ActiveRecord::Schema.define(version: 20151009051452) do
     t.integer  "features"
     t.integer  "positive_steam_reviews_count"
     t.integer  "negative_steam_reviews_count"
+    t.datetime "steam_game_scraped_at"
     t.text     "positive_steam_reviews"
     t.text     "negative_steam_reviews"
+    t.datetime "steam_reviews_scraped_at"
   end
 
 end
