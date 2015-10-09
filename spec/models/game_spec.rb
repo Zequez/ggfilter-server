@@ -5,10 +5,6 @@ describe Game, type: :model do
   it { is_expected.to respond_to :created_at }
   it { is_expected.to respond_to :updated_at }
 
-  describe '.for_steam_game_scraping' do
-    it 'should return new'
-  end
-
   describe '.filter_by_name' do
     it 'should return only the games with the same name' do
       create :game, name: 'Potato'
