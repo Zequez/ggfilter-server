@@ -27,6 +27,11 @@ GIT
       responders
 
 PATH
+  remote: ../client/gem
+  specs:
+    ggfilter_client (0.0.1)
+
+PATH
   remote: ../scrapers
   specs:
     scrapers (0.1.0)
@@ -158,9 +163,22 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.6)
+      tilt
+    haml-rails (0.9.0)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 4.0.6, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    html2haml (2.0.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (0.7.0)
     i18n_data (0.7.0)
     jbuilder (2.3.1)
@@ -286,6 +304,8 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    ruby_parser (3.7.0)
+      sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.17)
     sass-rails (5.0.3)
@@ -299,6 +319,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sexp_processor (4.6.0)
     shellany (0.0.1)
     simple_flaggable_column (0.0.2)
       activesupport (~> 4.2)
@@ -370,7 +391,9 @@ DEPENDENCIES
   factory_girl_rails
   forgery
   friendly_id
+  ggfilter_client!
   guard-rspec
+  haml-rails
   inherited_resources!
   jbuilder (~> 2.0)
   json_spec

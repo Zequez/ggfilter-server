@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
+
+# Scrapers!
+gem 'scrapers', path: '../scrapers'
+# Front end client!
+gem 'ggfilter_client', path: '../client/gem'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use Posgtres as the database for Active Record
@@ -23,8 +29,8 @@ gem 'cancancan'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 # Administration panel. Cutting edge for Rails 4.2
 gem 'activeadmin', github: 'activeadmin/activeadmin'
-# Scrapers!
-gem 'scrapers', path: '../scrapers'
+# Sexy HTML!
+gem 'haml-rails'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
