@@ -76,6 +76,46 @@ describe Game, type: :model do
     end
   end
 
+  describe '.filter_by_steam_id' do
+    it 'should match exact games' do
+      _g1 = create :game, steam_id: 1234
+      g2 = create :game, steam_id: 123
+
+      games = Game.filter_by_steam_id(value: 123, filter: true)
+      expect(games).to match_array [g2]
+    end
+
+    it 'should work with highlight in combination with other filters' do
+      g1 = create :game, name: 'Potato', steam_id: 1234
+      g2 = create :game, name: 'Potasium', steam_id: 333
+      _g3 = create :game, name: 'Galaxy', steam_id: 123
+
+      games = Game
+        .filter_by_name(value: 'Pot', filter: true)
+        .filter_by_steam_id(value: 333, highlight: true)
+
+      expect(games).to match_array [g1, g2]
+      expect(games.map(&:hl_steam_id)).to match [false, true]
+    end
+  end
+
+  describe '.range_filter' do
+    it 'should filter a column by a number range' do
+      _g1 = create :game, steam_reviews_count: 200
+      g2 = create :game, steam_reviews_count: 340
+      g3 = create :game, steam_reviews_count: 360
+      _g4 = create :game, steam_reviews_count: 700
+
+      games = Game.range_filter(:steam_reviews_count, {
+        gt: 300,
+        lt: 600,
+        filter: true
+      })
+
+      expect(games).to match_array [g2, g3]
+    end
+  end
+
   describe '.sort_by_name' do
     it 'should sort alphanumerically ascending by name' do
       g1 = create :game, name: 'Potato'

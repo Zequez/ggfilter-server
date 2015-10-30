@@ -6,5 +6,15 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    #app
-    = javascript_include_tag 'app'
+    %table
+      %tr
+        %th Game
+        %th Minimum
+        %th Recommended
+      - @games.each do |game|
+        %tr
+          %td= game.name
+          %td= game.system_requirements[:minimum] && game.system_requirements[:minimum][:video_card]
+          %td= game.system_requirements[:recommended] && game.system_requirements[:recommended][:video_card]
+    -# #app
+    -# = javascript_include_tag 'app'

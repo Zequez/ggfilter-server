@@ -9,8 +9,6 @@ class Game < ActiveRecord::Base
 
   friendly_id :name, use: :slugged, slug_column: :name_slug
 
-  default_scope { select('games.*') }
-
   ### Scraping time selectors ###
   ###############################
 
@@ -36,6 +34,36 @@ class Game < ActiveRecord::Base
   ### Filters ###
   ###############
 
+  # Input: value
+  def self.exact_filter(column, filter)
+    filter_and_or_highlight(:steam_id, filter, ["#{column} = ?",filter[:value]])
+  end
+
+  # Input: gt, lt
+  def self.range_filter(column, filter)
+    vals = []
+    conds = []
+    gt = filter[:gt]
+    lt = filter[:lt]
+
+    if gt.kind_of? Fixnum
+      conds << "#{column} > ?"
+      vals << gt
+    end
+
+    if lt.kind_of? Fixnum
+      conds << "#{column} < ?"
+      vals << lt
+    end
+
+    if conds.empty?
+      scope
+    else
+      filter_and_or_highlight column, filter, [conds.join(' AND '), *vals]
+    end
+  end
+
+  # Input: value
   register_filter :name, (lambda do |filter|
     value = filter[:value].to_s.parameterize.split('-')
 
@@ -51,6 +79,9 @@ class Game < ActiveRecord::Base
 
     filter_and_or_highlight(:name, filter, condition)
   end)
+
+  register_filter :steam_id, :exact_filter
+  register_filter :steam_reviews_count, :range_filter
 
   register_simple_sort :name, :name_slug
 end

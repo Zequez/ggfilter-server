@@ -7,7 +7,12 @@ module FilteringHelpers
 
   module ClassMethods
     def register_filter(filter_name, proc_block)
-      (@@filters ||= []) << filter_name
+      if proc_block.kind_of? Symbol
+        proc_block = method(proc_block).to_proc.curry.call(filter_name)
+      end
+
+      @@filters ||= {}
+      @@filters[filter_name] = proc_block
       scope :"filter_by_#{filter_name}", proc_block
     end
 
@@ -23,6 +28,25 @@ module FilteringHelpers
       end)
     end
 
+    def apply_filters(filters)
+      filtered = all
+      if filters.kind_of? Hash
+        filters.each_pair do |name, params|
+          filtered = filtered.apply_filter(name, params)
+        end
+      end
+      filtered
+    end
+
+    def apply_filter(name, params)
+      name = name.to_sym
+      if @@filters[name]
+        @@filters[name].call(params.symbolize_keys)
+      else
+        all
+      end
+    end
+
     # Condition and name should be sanitized!
     def filter_and_or_highlight(name, filter, condition)
       scope = all
@@ -33,8 +57,11 @@ module FilteringHelpers
       end
 
       if filter[:highlight]
-        hl_column = "#{condition} AS hl_#{name}"
-        scope = scope.select hl_column
+        condition_str = condition.kind_of?(Array) ? sanitize_sql_array(condition) : condition
+
+        hl_column = "#{condition_str} AS hl_#{name}"
+        scope.select_values = ['games.*'] if scope.select_values.empty?
+        scope.select_values += [hl_column]
       end
 
       scope
