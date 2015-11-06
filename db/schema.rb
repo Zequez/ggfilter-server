@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106192204) do
+ActiveRecord::Schema.define(version: 20151106221455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,8 @@ ActiveRecord::Schema.define(version: 20151106192204) do
     t.float    "playtime_sd"
     t.float    "playtime_rsd"
     t.string   "playtime_ils"
-    t.float    "playtime_ftb"
+    t.float    "playtime_mean_ftb"
+    t.float    "playtime_median_ftb"
   end
 
   create_table "named_filters", force: :cascade do |t|

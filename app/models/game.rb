@@ -91,7 +91,8 @@ class Game < ActiveRecord::Base
   register_filter :playtime_mean, :range_filter
   register_filter :playtime_median, :range_filter
   register_filter :playtime_rsd, :range_filter
-  register_filter :playtime_ftb, :range_filter
+  register_filter :playtime_mean_ftb, :range_filter
+  register_filter :playtime_median_ftb, :range_filter
 
   register_simple_sort :name, :name_slug
 
@@ -99,9 +100,10 @@ class Game < ActiveRecord::Base
   ### Computed attributes ###
   ###########################
 
-  serialize :playtime_ils
+  serialize :playtime_ils, JSON
+  before_save :compute_values
 
-  before_save do
+  def compute_values
     sp = steam_price
     ssp = steam_sale_price
     self.lowest_steam_price = [sp, ssp].compact.min
@@ -117,7 +119,8 @@ class Game < ActiveRecord::Base
         self.playtime_rsd = stats.relative_standard_deviation
         self.playtime_ils = (5..95).step(5).map{ |p| stats.value_from_percentile(p) }
         if (lowest_steam_price and lowest_steam_price != 0)
-          self.playtime_ftb = playtime_mean/(lowest_steam_price/100)
+          self.playtime_mean_ftb = playtime_mean/(lowest_steam_price.to_f/100)
+          self.playtime_median_ftb = playtime_median/(lowest_steam_price.to_f/100)
         end
       end
     end

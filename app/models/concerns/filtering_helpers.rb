@@ -71,5 +71,9 @@ module FilteringHelpers
 
       scope
     end
+
+    def available_filters
+      @@filters.keys
+    end
   end
 end

@@ -62,7 +62,7 @@ describe Game, type: :model do
         g = create :game, positive_steam_reviews: [1,2,5], negative_steam_reviews: [3,4]
         g.save!
         # Not matching for some reason, freaky
-        # expect(g.playtime_sd).to eq be_within(0.01).of(1.34)
+        # expect(g.playtime_sd).to eq be_within(0.01).of(1.58)
       end
     end
 
@@ -70,7 +70,7 @@ describe Game, type: :model do
       it 'should be the mean value of the playtime' do
         g = create :game, positive_steam_reviews: [1,2,5], negative_steam_reviews: [3,4]
         g.save!
-        expect(g.playtime_rsd).to be_within(1).of(39)
+        expect(g.playtime_rsd).to be_within(1).of(47)
       end
     end
 
@@ -80,12 +80,12 @@ describe Game, type: :model do
           positive_steam_reviews: (1..50).to_a,
           negative_steam_reviews: (51..100).to_a
         g.save!
-        expect(g.playtime_ils).to eq [9, 16, 24, 31, 39, 46, 52, 56, 60, 63, 67, 71, 75, 78, 82, 86, 90, 93, 97]
+        expect(g.playtime_ils).to eq [6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 57, 61, 66, 71, 76, 81, 86, 91, 96]
       end
     end
 
-    describe '#playtime_ftb', focus: true do
-      it 'should return the playtime for the buck' do
+    describe '#playtime_mean_ftb', focus: true do
+      it 'should return the mean playtime for the buck' do
         g = create :game,
           positive_steam_reviews: [1,2,5],
           negative_steam_reviews: [3,4,6],
@@ -93,7 +93,20 @@ describe Game, type: :model do
           steam_sale_price: 300
         mean = (1+2+3+4+5+6).to_f/6
         g.save!
-        expect(g.playtime_ftb).to eq mean/3
+        expect(g.playtime_mean_ftb).to eq mean/3
+      end
+    end
+
+
+    describe '#playtime_median_ftb', focus: true do
+      it 'should return the median playtime for the buck' do
+        g = create :game,
+          positive_steam_reviews: [1,2,5],
+          negative_steam_reviews: [3,4,6,7],
+          steam_price: 400,
+          steam_sale_price: 300
+        g.save!
+        expect(g.playtime_median_ftb).to eq 4.0/3
       end
     end
   end
