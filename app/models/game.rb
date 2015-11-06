@@ -47,12 +47,12 @@ class Game < ActiveRecord::Base
     lt = filter[:lt]
 
     if gt.kind_of? Fixnum
-      conds << "#{column} > ?"
+      conds << "#{column} >= ?"
       vals << gt
     end
 
     if lt.kind_of? Fixnum
-      conds << "#{column} < ?"
+      conds << "#{column} <= ?"
       vals << lt
     end
 
@@ -85,7 +85,43 @@ class Game < ActiveRecord::Base
   register_filter :metacritic, :range_filter
   register_filter :steam_reviews_count, :range_filter
 
+  register_filter :lowest_steam_price, :range_filter
+  register_filter :steam_discount, :range_filter
+
+  register_filter :playtime_mean, :range_filter
+  register_filter :playtime_median, :range_filter
+  register_filter :playtime_rsd, :range_filter
+  register_filter :playtime_ftb, :range_filter
+
   register_simple_sort :name, :name_slug
+
+
+  ### Computed attributes ###
+  ###########################
+
+  serialize :playtime_ils
+
+  before_save do
+    sp = steam_price
+    ssp = steam_sale_price
+    self.lowest_steam_price = [sp, ssp].compact.min
+    self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
+
+    if positive_steam_reviews and negative_steam_reviews
+      steam_reviews = positive_steam_reviews + negative_steam_reviews
+      if not steam_reviews.empty?
+        stats = DescriptiveStatistics::Stats.new(steam_reviews)
+        self.playtime_mean = stats.mean
+        self.playtime_median = stats.median
+        self.playtime_sd = stats.standard_deviation
+        self.playtime_rsd = stats.relative_standard_deviation
+        self.playtime_ils = (5..95).step(5).map{ |p| stats.value_from_percentile(p) }
+        if (lowest_steam_price and lowest_steam_price != 0)
+          self.playtime_ftb = playtime_mean/(lowest_steam_price/100)
+        end
+      end
+    end
+  end
 
   ### Utils ###
   #############

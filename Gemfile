@@ -31,6 +31,8 @@ gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 # Sexy HTML!
 gem 'haml-rails'
+# Statistics!
+gem 'descriptive-statistics'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets

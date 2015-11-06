@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027003134) do
+ActiveRecord::Schema.define(version: 20151106192204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20151027003134) do
     t.text     "positive_steam_reviews"
     t.text     "negative_steam_reviews"
     t.datetime "steam_reviews_scraped_at"
+    t.integer  "lowest_steam_price"
+    t.integer  "steam_discount"
+    t.float    "playtime_mean"
+    t.float    "playtime_median"
+    t.float    "playtime_sd"
+    t.float    "playtime_rsd"
+    t.string   "playtime_ils"
+    t.float    "playtime_ftb"
   end
 
   create_table "named_filters", force: :cascade do |t|
