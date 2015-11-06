@@ -5,6 +5,30 @@ describe Game, type: :model do
   it { is_expected.to respond_to :created_at }
   it { is_expected.to respond_to :updated_at }
 
+  describe '.entil' do
+    context '2 il' do
+      it 'should return an array with the median value' do
+        create :game, metacritic: 10
+        create :game, metacritic: 10
+        create :game, metacritic: 30
+        create :game, metacritic: 10
+        create :game, metacritic: 100
+        create :game, metacritic: 500
+        create :game, metacritic: 1000
+        expect(Game.entil(:metacritic, 2)).to eq [30]
+      end
+    end
+
+    context '4 il' do
+      it 'should return an array with the quartiles' do
+        20.times.map.to_a.shuffle.each do |i|
+          create :game, metacritic: i
+        end
+        expect(Game.entil(:metacritic, 4)).to eq [4.5,9.5,14.5]
+      end
+    end
+  end
+
   describe '.filter_by_name' do
     it 'should return only the games with the same name' do
       create :game, name: 'Potato'
@@ -218,7 +242,7 @@ describe Game, type: :model do
 
         context 'last update > 1 month ago' do
           it 'should return the game' do
-            game.steam_reviews_scraped_at = 31.days.ago
+            game.steam_reviews_scraped_at = 33.days.ago
             game.save!
             Game.get_for_steam_reviews_scraping.should eq [game]
           end

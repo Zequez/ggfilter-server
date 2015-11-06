@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    L params[:filters]
+
     @games = Game
       .select(columns)
       .apply_filters(params[:filters])
@@ -15,7 +15,7 @@ class GamesController < ApplicationController
 
   def allowed_columns
     @allowed_columns ||= [
-      'id', 'steam_id', 'name',
+      'steam_id', 'name',
       'steam_price', 'steam_sale_price', 'released_at',
       'platforms', 'tags', 'genre', 'metacritic', 'summary',
       'players', 'controller_support', 'features',
@@ -24,7 +24,7 @@ class GamesController < ApplicationController
   end
 
   def columns
-    columns = (allowed_columns - (allowed_columns - params[:columns]))
-    columns.empty? ? allowed_columns : columns
+    columns = (allowed_columns - (allowed_columns - (params[:columns] || [])))
+    (columns.empty? ? allowed_columns : columns) + ['id']
   end
 end

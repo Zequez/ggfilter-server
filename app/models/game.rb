@@ -81,7 +81,27 @@ class Game < ActiveRecord::Base
   end)
 
   register_filter :steam_id, :exact_filter
+  register_filter :steam_price, :range_filter
+  register_filter :metacritic, :range_filter
   register_filter :steam_reviews_count, :range_filter
 
   register_simple_sort :name, :name_slug
+
+  ### Utils ###
+  #############
+
+  def self.entil(column, il = 10)
+    values = all.order(column).pluck(column)
+    il_size = (values.size+1).to_f/il
+    (il-1).times.map do |i|
+      n = (il_size*(i+1))-1
+      r = n-n.floor
+      n = n.floor
+      if r == 0
+        values[n]
+      else
+        (values[n]+values[n+1]).to_f/2
+      end
+    end
+  end
 end

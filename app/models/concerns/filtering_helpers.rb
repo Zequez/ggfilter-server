@@ -30,6 +30,11 @@ module FilteringHelpers
 
     def apply_filters(filters)
       filtered = all
+
+      if filters.kind_of? String
+        filters = JSON.parse(filters)
+      end
+
       if filters.kind_of? Hash
         filters.each_pair do |name, params|
           filtered = filtered.apply_filter(name, params)
@@ -43,7 +48,7 @@ module FilteringHelpers
       if @@filters[name]
         @@filters[name].call(params.symbolize_keys)
       else
-        all
+        raise "Filter #{name} doesn't"
       end
     end
 
