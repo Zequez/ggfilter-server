@@ -26,10 +26,10 @@ class GamesController < ApplicationController
   def allowed_columns
     @allowed_columns ||= [
       'steam_id', 'name',
-      'steam_price', 'steam_sale_price', 'steam_discount', 'released_at',
+      'steam_price', 'steam_reviews_ratio', 'steam_sale_price', 'steam_discount', 'released_at',
       'platforms', 'tags', 'genre', 'metacritic', 'summary',
       'players', 'controller_support', 'features',
-      'positive_steam_reviews_count', 'negative_steam_reviews_count',
+      'steam_reviews_count', 'positive_steam_reviews_count', 'negative_steam_reviews_count',
       'playtime_mean', 'playtime_median', 'playtime_sd', 'playtime_rsd', 'playtime_ils',
       'playtime_mean_ftb', 'playtime_median_ftb'
     ]

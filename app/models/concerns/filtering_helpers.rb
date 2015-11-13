@@ -56,20 +56,16 @@ module FilteringHelpers
     def filter_and_or_highlight(name, filter, condition)
       scope = all
 
-      if filter[:filter]
-        scope = scope.where(condition)
-        condition = true # Avoid running the condition again
-      end
-
-      if filter[:highlight]
+      if not filter[:highlight]
+        scope.where(condition)
+      else
         condition_str = condition.kind_of?(Array) ? sanitize_sql_array(condition) : condition
 
         hl_column = "#{condition_str} AS hl_#{name}"
         scope.select_values = ['games.*'] if scope.select_values.empty?
         scope.select_values += [hl_column]
+        scope
       end
-
-      scope
     end
 
     def available_filters

@@ -156,28 +156,13 @@ describe Game, type: :model do
       expect(highlighted).to match_array [true, false]
     end
 
-    it 'should be able to highlight AND filter' do
-      create :game, name: 'Potato'
-      g2 = create :game, name: 'Galaxy'
-
-      games = Game.filter_by_name(value: 'Galaxy', filter: true, highlight: true)
-
-      expect(games).to match_array [g2]
-      highlighted = games.map(&:hl_name)
-
-      expect(highlighted).to match_array [true]
-    end
-
     it 'should match partial names' do
       create :game, name: 'Potato'
       g2 = create :game, name: 'Galaxy'
 
-      games = Game.filter_by_name(value: 'Ga', filter: true, highlight: true)
+      games = Game.filter_by_name(value: 'Ga')
 
       expect(games).to match_array [g2]
-      highlighted = games.map(&:hl_name)
-
-      expect(highlighted).to match_array [true]
     end
 
     it 'should match the first part of each word' do
@@ -243,6 +228,40 @@ describe Game, type: :model do
       })
 
       expect(games).to match_array [g2, g3]
+    end
+  end
+
+  describe '.boolean_filter' do
+    before :each do
+      @games = []
+      @games.push create :game, platforms: 0b100
+      @games.push create :game, platforms: 0b010
+      @games.push create :game, platforms: 0b001
+      @games.push create :game, platforms: 0b110
+      @games.push create :game, platforms: 0b011
+      @games.push create :game, platforms: 0b101
+      @games.push create :game, platforms: 0b111
+    end
+
+    it 'should filter with AND' do
+      games = Game.boolean_filter(:platforms, {
+        or: false,
+        value: 0b101
+      })
+
+      L games.to_sql
+      L games.pluck(:platforms).map{|v| v.to_s(2).rjust(3, '0')}
+
+      expect(games).to match_array([@games[5], @games[6]])
+    end
+
+    it 'should filter with OR' do
+      games = Game.boolean_filter(:platforms, {
+        or: true,
+        value: 0b101
+      })
+
+      expect(games).to match_array([@games[0], @games[2], @games[3], @games[4], @games[5], @games[6]])
     end
   end
 

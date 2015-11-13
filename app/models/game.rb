@@ -63,6 +63,29 @@ class Game < ActiveRecord::Base
     end
   end
 
+  # Input: value, "or" ("and" by default)
+  def self.boolean_filter(column, filter)
+    val = filter[:value]
+
+    if val.kind_of? Fixnum
+      if filter[:or]
+        vals = [val]
+      else
+        vals = []
+        n = 1
+        Math.log2(val).ceil.times do
+          vals.push(n) if n & val > 0
+          n = n << 1
+        end
+      end
+
+      conditions = [vals.map{|v| "#{column} & ? > 0" }.join(' AND '), *vals]
+      filter_and_or_highlight column, filter, conditions
+    else
+      scope
+    end
+  end
+
   # Input: value
   register_filter :name, (lambda do |filter|
     value = filter[:value].to_s.parameterize.split('-')
@@ -72,8 +95,9 @@ class Game < ActiveRecord::Base
         roman = RomanNumerals.to_roman(Integer v).downcase
         v = "(#{v}|#{roman})"
       end
-      '[[:<:]]' + v + '[^-]*'
-    end.join('-')
+      # [[:<:]] begining of a word
+      '[[:<:]]' + v + '.*?'
+    end.join
 
     condition = sanitize_sql_array(["name_slug ~ ?", regex])
 
@@ -84,6 +108,7 @@ class Game < ActiveRecord::Base
   register_filter :steam_price, :range_filter
   register_filter :metacritic, :range_filter
   register_filter :steam_reviews_count, :range_filter
+  register_filter :steam_reviews_ratio, :range_filter
 
   register_filter :lowest_steam_price, :range_filter
   register_filter :steam_discount, :range_filter
@@ -93,6 +118,10 @@ class Game < ActiveRecord::Base
   register_filter :playtime_rsd, :range_filter
   register_filter :playtime_mean_ftb, :range_filter
   register_filter :playtime_median_ftb, :range_filter
+
+  register_filter :features, :boolean_filter
+  register_filter :players, :boolean_filter
+  register_filter :controller_support, :boolean_filter
 
   register_simple_sort :name, :name_slug
 
