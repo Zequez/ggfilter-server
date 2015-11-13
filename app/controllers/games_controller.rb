@@ -8,7 +8,9 @@ class GamesController < ApplicationController
 
     respond_to do |f|
       f.html
-      f.json { render json: @games }
+      f.json do
+        render json: @games.map(&:attributes)
+      end
     end
     # @requirements = Game.all.pluck(:system_requirements)
   end
@@ -36,7 +38,9 @@ class GamesController < ApplicationController
   end
 
   def columns
-    columns = (allowed_columns - (allowed_columns - (params[:columns] || [])))
-    (columns.empty? ? allowed_columns : columns) + ['id']
+    @columns ||= begin
+      columns = (allowed_columns - (allowed_columns - (params[:columns] || [])))
+      (columns.empty? ? allowed_columns : columns) + ['id']
+    end
   end
 end
