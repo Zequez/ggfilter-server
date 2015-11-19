@@ -6,6 +6,22 @@ describe Game, type: :model do
   it { is_expected.to respond_to :updated_at }
   it { is_expected.to respond_to :lowest_steam_price }
 
+  describe 'tags' do
+    it 'should create new tags when assigning non-existing tags' do
+      g = create :game, tags: ['potato', 'galaxy']
+      expect(Tag.pluck(:name)).to eq ['potato', 'galaxy']
+      expect(g.tags).to eq Tag.pluck(:id)
+    end
+
+    it 'should reuse existing tags when assigning existing tags' do
+      t1 = create :tag, name: 'galaxy'
+      g = create :game, tags: ['potato', 'galaxy']
+      t2 = Tag.last
+      expect(t2.name).to eq 'potato'
+      expect(g.tags).to eq [t2.id, t1.id]
+    end
+  end
+
   describe 'computed attributes' do
     describe '#lowest_steam_price' do
       it "should be the steam price if it's lower" do
@@ -248,9 +264,6 @@ describe Game, type: :model do
         or: false,
         value: 0b101
       })
-
-      L games.to_sql
-      L games.pluck(:platforms).map{|v| v.to_s(2).rjust(3, '0')}
 
       expect(games).to match_array([@games[5], @games[6]])
     end

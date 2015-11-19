@@ -67,25 +67,27 @@ class Game < ActiveRecord::Base
   def self.boolean_filter(column, filter)
     val = filter[:value]
 
-    if val.kind_of? Fixnum
+    if val.kind_of?(Fixnum) and val > 0
       if filter[:or]
         vals = [val]
       else
         vals = []
         n = 1
-        Math.log2(val).ceil.times do
+        (Math.log2(val).ceil+1).times do
           vals.push(n) if n & val > 0
           n = n << 1
         end
       end
 
       conditions = [vals.map{|v| "#{column} & ? > 0" }.join(' AND '), *vals]
+
       filter_and_or_highlight column, filter, conditions
     else
       scope
     end
   end
 
+  # Sort by this http://stackoverflow.com/questions/21104366/how-to-get-position-of-regexp-match-in-string-in-postgresql
   # Input: value
   register_filter :name, (lambda do |filter|
     value = filter[:value].to_s.parameterize.split('-')
@@ -119,8 +121,10 @@ class Game < ActiveRecord::Base
   register_filter :playtime_mean_ftb, :range_filter
   register_filter :playtime_median_ftb, :range_filter
 
+  register_filter :platforms, :boolean_filter
   register_filter :features, :boolean_filter
   register_filter :players, :boolean_filter
+  register_filter :vr, :boolean_filter
   register_filter :controller_support, :boolean_filter
 
   register_simple_sort :name, :name_slug
@@ -154,6 +158,22 @@ class Game < ActiveRecord::Base
       end
     end
   end
+
+  ### Tags ###
+  ############
+
+  def tags=(value)
+    super value.map{|v|
+      if v.kind_of? String
+        Tag.find_or_create_by(name: v).id
+      elsif v.kind_of? Fixnum
+        v
+      else
+        nil
+      end
+    }.compact
+  end
+
 
   ### Utils ###
   #############
