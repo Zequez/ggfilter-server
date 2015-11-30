@@ -3,7 +3,7 @@ class VideoCardAnalyzer
     nvidia_deco: /(gt|ti|gtx|gts|gs|mx|fx)/,
     nvidia_number: /([0-9]+x*m?)/,
     amd_number: /x?m?([0-9]+(?:x{2,})?m?)x?/, # Allow xx but not x at the end of number
-    amd_deco: /(hd|r5|r7|r9)/,
+    amd_deco: /(hd|r5|r7|r9|rage)/,
     intel_number: /i?([0-9]+)/,
     intel_deco: /(hd|iris|gma|mhd)/,
   }
@@ -20,29 +20,28 @@ class VideoCardAnalyzer
     /[0-9]+(mb|gb|kb|mhz|ghz)/,
     /amd/,
     /intel/,
-    /directx[0-9]{0,2}/,
-    /opengl[0-9]?/,
-    /[0-9]+x[0-9]+/,
+    /\bdirectx[0-9]{0,2}\b/,
+    /\bopengl[0-9]?\b/,
+    /\b[0-9]+x[^0][0-9]+\b/,
     /\bintegrated\b/,
     /\bnegation\b/
   ]
 
   GSUBS = [
     # Units
-    [/([0-9]+) (mb|gb|kb|mhz|ghz)/, '\1\2'],
-    [/([0-9]+) (hd)/, '\1\2'],
-    [/(hd) ([0-9x]+)\b/, '\1\2'],
-
-    # Tech
-    [/direct ?x ?([0-9]+)/, 'directx\1 '],
-    [/dx([0-9])/, 'directx\1 '],
-    [/opengl ?([0-9])/, 'opengl\1'],
+    [/mbytes?/, 'mb'],
+    [/\b([a-z]*)([0-9]+) ?(mb|gb|kb|mhz|ghz)/, '\2\3'],
+    # [/([0-9]+)(\.[0-9]+)? ?(mb|gb|kb|mhz|ghz)/, '\1\3'],
+    [/([0-9x]+) (hd)/, '\1'],
+    [/(hd) ([0-9x]+)\b/, '\2'],
 
     # Nvidia
     [/(\b|[0-9])#{W[:nvidia_deco]}(\b|[0-9])/, '\1\3'],
-    [/nvidia( geforce[0-9]?)?/, 'nvidia'],
-    [/geforce[0-9]?/, 'nvidia'],
-    [/nvidia #{W[:nvidia_number]}\b/, 'nvidia\1'],
+    [/geforece/, 'geforce'],
+    [/nvidia( ?geforce)?/, 'nvidia'],
+    [/geforce/, 'nvidia'],
+    [/nvidia#{W[:nvidia_deco]}/, 'nvidia'],
+    [/(nvidia[0-9]?) ?#{W[:nvidia_number]}\b/, '\1\2'],
 
     # AMD
     [/(\b|[0-9])#{W[:amd_deco]}(\b|[0-9])/, '\1\3'],
@@ -58,6 +57,11 @@ class VideoCardAnalyzer
 
     # Resolutions
     [/\b([0-9]+) ?x ?([0-9]+)( ?x ?[0-9]+)?\b/, '\1x\2'],
+
+    # Tech
+    [/direct ?x ?([0-9]+)/, 'directx\1 '],
+    [/dx([0-9])/, 'directx\1 '],
+    [/opengl ?([0-9])[^d]/, 'opengl\1 '],
 
     # Negations
     [/\bnot supported\b/, 'negation'],
@@ -78,6 +82,7 @@ class VideoCardAnalyzer
 
     str = str
       .downcase
+      .gsub(/([0-9]+)(\.[0-9]+)/, '\1')
       .gsub(/[^a-z0-9 ]/i, ' ')
       .squeeze(' ')
 
@@ -86,6 +91,7 @@ class VideoCardAnalyzer
     end
 
     GSUBS.each do |m|
+      L str
       str = str.gsub(m[0], m[1]).squeeze(' ')
     end
 

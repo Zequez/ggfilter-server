@@ -1,21 +1,8 @@
 describe VideoCardAnalyzer do
-  before :all do
-    @videos = system_reqs.values.inject([]) do |arr, s|
-      arr.push s['minimum']['video_card'] if s['minimum']
-      arr.push s['recommended']['video_card'] if s['recommended']
-      arr
-    end
-    @videos.compact!
-  end
-
   describe '#tokens' do
     def ana
       @ana ||= VideoCardAnalyzer.new
     end
-
-    # it 'test' do
-    #   LA ana.tokens_count(@videos.join(' '))
-    # end
 
     [
       [
@@ -112,7 +99,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'Geforce4 4200 or Radeon 9200',
-        %w{nvidia4200 amd9200}
+        %w{nvidia44200 amd9200}
       ],
       [
         'Integrated Graphics (256MB)',
@@ -177,6 +164,54 @@ describe VideoCardAnalyzer do
       [
         'nVidia 570 or similar ATI, 1GB dedicated video memory, Pixel Shaders 3.0',
         %w{nvidia570 amd 1gb}
+      ],
+      [
+        'OpenGL 3.0 compliant with 1.0GB of video RAM.',
+        %w{opengl3 1gb}
+      ],
+      [
+        'nVidia GeForce256 or TNT2 ultra, PowerVR Kyro, S3 Savage2000, 3Dfx Voodoo3, ATI Rage128 pro',
+        %w{nvidia256 amd128}
+      ],
+      [
+        'NvidiaGeforce 9600GT, ATI Radeon 4670HD or equivalent',
+        %w{nvidia9600 amd4670}
+      ],
+      [
+        'Direct3D compatible VRAM32MB or faster 3D Accelerator Card',
+        %w{32mb}
+      ],
+      [
+        'Nvidia GeForce 8600+ / AMD Radeon HD X2600+',
+        %w{nvidia8600 amd2600}
+      ],
+      [
+        'NVidia Geforce FX, 6x00, 7x00, 8x00, 9x00 and GTX 2x0 and newer. ATI Radeon 9x00, Xx00, X1x00, HD2x00 and HD3x00 series and newer. Intel® HD Graphics NVidia Geforce FX, 6x00, 7x00, 8x00, 9x00 and GTX 2x0 and newer. ATI Radeon 9x00, Xx00, X1x00, HD2x00 and HD3x00 series and newer. Intel® HD Graphics nvidia 6x00 7x00 8x00 9x00 2x0 amd x1x002x003x00 intel',
+        %w{nvidia amd intel}
+      ],
+      [
+        '128 MB OpenGL 3D video card supporting Shaders 2.0 (NVIDIA GeForce FX 5600 or better)',
+        %w{128mb opengl nvidia5600}
+      ],
+      [
+        'nVidia Geforece 8600GT (9600GT) DDR2 / ATI HD 3670 (HD 4670) DDR2',
+        %w{nvidia8600 amd3670}
+      ],
+      [
+        'NVidia Geforce 9xxx / AMD Radeon HD / IntelHD 3000 series or better',
+        %w{nvidia9xxx amd intel3000}
+      ],
+      [
+        'Nvidia 8600 GT (256Mbyte) / ATI Radeon HD3650 (256Mbyte)',
+        %w{nvidia8600 256mb amd3650}
+      ],
+      [
+        'DirectX 9 compatible 256 MB graphics card with support for pixel/vertex shader 3.0 (GeForce 6/Radeon x1x00 and above)',
+        %w{directx9 256mb nvidia6 amd}
+      ],
+      [
+        'GeForceFX5200, RADEON 9500 GeForce8600/RADEON HD2600',
+        %w{nvidia5200 amd9500 nvidia8600 amd2600}
       ]
     ].each do |test|
       it test[0] do
