@@ -1,11 +1,11 @@
 class VideoCardAnalyzer
   W = {
-    nvidia_deco: /(gt|ti|gtx|gts|gs|mx|fx)/,
+    nvidia_deco: /(?:ti|gtx|gts|gt|gs|mx|fx|tm| )/,
     nvidia_number: /([0-9]+x*m?)/,
     amd_number: /x?m?([0-9]+(?:x{2,})?m?)x?/, # Allow xx but not x at the end of number
-    amd_deco: /(hd|r5|r7|r9|rage)/,
+    amd_deco: /(?:hd|r5|r7|r9|rage| )/,
     intel_number: /i?([0-9]+)/,
-    intel_deco: /(hd|iris|gma|mhd)/,
+    intel_deco: /(?:hd|iris|gma|mhd| )/,
   }
 
   REJECT_WORDS = [
@@ -31,32 +31,28 @@ class VideoCardAnalyzer
     # Units
     [/mbytes?/, 'mb'],
     [/\b([a-z]*)([0-9]+) ?(mb|gb|kb|mhz|ghz)/, '\2\3'],
-    # [/([0-9]+)(\.[0-9]+)? ?(mb|gb|kb|mhz|ghz)/, '\1\3'],
+    [/([0-9]+(?:mb|gb|kb|mhz|ghz))/, '<\1>'],
     [/([0-9x]+) (hd)/, '\1'],
     [/(hd) ([0-9x]+)\b/, '\2'],
 
+    # Resolutions
+    [/\b([0-9]+) ?x ?([0-9]+)( ?x ?[0-9]+)?\b/, '<\1x\2>'],
+
     # Nvidia
-    [/(\b|[0-9])#{W[:nvidia_deco]}(\b|[0-9])/, '\1\3'],
     [/geforece/, 'geforce'],
     [/nvidia( ?geforce)?/, 'nvidia'],
     [/geforce/, 'nvidia'],
-    [/nvidia#{W[:nvidia_deco]}/, 'nvidia'],
-    [/(nvidia[0-9]?) ?#{W[:nvidia_number]}\b/, '\1\2'],
+    [/(nvidia[0-9]*)#{W[:nvidia_deco]}*#{W[:nvidia_number]}(?:\b|#{W[:nvidia_deco]})/, '\1\2 '],
 
     # AMD
-    [/(\b|[0-9])#{W[:amd_deco]}(\b|[0-9])/, '\1\3'],
     [/\bati( amd)?|amd( ati)?\b/, 'amd'],
     [/amd radeon/, 'amd'],
     [/radeon/, 'amd'],
-    [/amd #{W[:amd_number]}\b/, 'amd\1'],
+    [/(amd)#{W[:amd_deco]}*#{W[:amd_number]}(?:\b|#{W[:amd_deco]})/, '\1\2 '],
 
     # Intel
-    [/(\b|[0-9])#{W[:intel_deco]}(\b|[0-9])/, '\1\3'],
-    [/intel #{W[:intel_number]}\b/, 'intel\1'],
+    [/(intel[0-9]*)#{W[:intel_deco]}*#{W[:intel_number]}(?:\b|#{W[:intel_deco]})/, '\1\2 '],
     [/\bi([357])\b/, 'intel\1'],
-
-    # Resolutions
-    [/\b([0-9]+) ?x ?([0-9]+)( ?x ?[0-9]+)?\b/, '\1x\2'],
 
     # Tech
     [/direct ?x ?([0-9]+)/, 'directx\1 '],
@@ -90,13 +86,14 @@ class VideoCardAnalyzer
       str = str.gsub(m, ' ').squeeze(' ')
     end
 
+    L str
     GSUBS.each do |m|
-      L str
       str = str.gsub(m[0], m[1]).squeeze(' ')
+      L str
     end
 
 
-    str.split(/\s+/).each do |word|
+    str.gsub(/<|>/, ' ').squeeze(' ').split(/\s+/).each do |word|
       if VALID_WORDS.any?{ |m| word =~ m}
         tokens[word] ||= 0
         tokens[word] += 1

@@ -212,6 +212,18 @@ describe VideoCardAnalyzer do
       [
         'GeForceFX5200, RADEON 9500 GeForce8600/RADEON HD2600',
         %w{nvidia5200 amd9500 nvidia8600 amd2600}
+      ],
+      [
+        'nVidia® GeForceTM 5700 or ATI Radeon® 9500',
+        %w{nvidia5700 amd9500}
+      ],
+      [
+        'GeForceGTX 650 Ti or better w/ 1024MB VRAM',
+        %w{nvidia650 1024mb}
+      ],
+      [
+        'GeForce6600 or better, RadeonX1600 or better, VRAM256MB or more',
+        %w{nvidia6600 amd1600 256mb}
       ]
     ].each do |test|
       it test[0] do
