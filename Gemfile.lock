@@ -370,6 +370,7 @@ GEM
     websocket-driver (0.6.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    will_paginate (3.0.7)
     with_model (1.2.1)
       activerecord (>= 3.0)
     xpath (2.0.0)
@@ -423,4 +424,5 @@ DEPENDENCIES
   vcr
   web-console (~> 2.0)
   webmock
+  will_paginate
   with_model

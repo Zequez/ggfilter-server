@@ -6,6 +6,21 @@ describe Game, type: :model do
   it { is_expected.to respond_to :updated_at }
   it { is_expected.to respond_to :lowest_steam_price }
 
+  describe 'system requirements analysis' do
+    describe 'tokens extraction' do
+      describe '#sysreq_video_tokens' do
+        it 'should extract all the tokens from #system_requirements' do
+          game = create :game, system_requirements: {
+            minimum: { video_card: 'geforce gtx8500, ati 1500, or intel hd3000' },
+            recommended: { video_card: 'geforce 970TI, amd radeon R9 200, or intel iris pro hd5200' }
+          }
+
+          expect(game.sysreq_video_tokens.split(' ')).to match_array %w{nvidia8500 amd1500 intel3000 nvidia970 amd200 intel5200}
+        end
+      end
+    end
+  end
+
   describe 'tags' do
     it 'should create new tags when assigning non-existing tags' do
       g = create :game, tags: ['potato', 'galaxy']
@@ -146,7 +161,7 @@ describe Game, type: :model do
         20.times.map.to_a.shuffle.each do |i|
           create :game, metacritic: i
         end
-        expect(Game.entil(:metacritic, 4)).to eq [4.5,9.5,14.5]
+        expect(Game.entil(:metacritic, 4)).to eq [5,10,15]
       end
     end
   end
@@ -275,6 +290,22 @@ describe Game, type: :model do
       })
 
       expect(games).to match_array([@games[0], @games[2], @games[3], @games[4], @games[5], @games[6]])
+    end
+  end
+
+  describe '.filter_by_tags' do
+    it 'should return games with the given tags ids' do
+      t1 = create :tag
+      t2 = create :tag
+      t3 = create :tag
+      g1 = create :game, tags: [t1.id, t3.id]
+      _g2 = create :game, tags: [t1.id, t2.id]
+      _g3 = create :game, tags: [t2.id, t3.id]
+      _g4 = create :game, tags: [t2.id]
+      g5 = create :game, tags: [t2.id, t3.id, t1.id]
+
+      games = Game.filter_by_tags({ tags: [t1.id, t3.id] })
+      expect(games).to match_array [g1, g5]
     end
   end
 

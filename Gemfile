@@ -33,6 +33,8 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'haml-rails'
 # Statistics!
 gem 'descriptive-statistics'
+# Pagination!
+gem 'will_paginate'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets

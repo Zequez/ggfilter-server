@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118232428) do
+ActiveRecord::Schema.define(version: 20151122014853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "name"
     t.string   "steam_name"
     t.integer  "steam_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20151118232428) do
     t.string   "steam_thumbnail"
     t.datetime "released_at"
     t.datetime "steam_list_scraped_at"
-    t.integer  "platforms",                    default: 0, null: false
+    t.integer  "platforms",                    default: 0,  null: false
     t.string   "name_slug"
     t.string   "tags"
     t.string   "genre"
@@ -62,7 +62,9 @@ ActiveRecord::Schema.define(version: 20151118232428) do
     t.string   "playtime_ils"
     t.float    "playtime_mean_ftb"
     t.float    "playtime_median_ftb"
-    t.integer  "vr",                           default: 0, null: false
+    t.integer  "vr",                           default: 0,  null: false
+    t.string   "sysreq_video_tokens",          default: "", null: false
+    t.integer  "sysreq_video_index"
   end
 
   create_table "named_filters", force: :cascade do |t|
@@ -71,6 +73,16 @@ ActiveRecord::Schema.define(version: 20151118232428) do
     t.text     "filters"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sysreq_tokens", force: :cascade do |t|
+    t.string   "name",                          null: false
+    t.integer  "value"
+    t.integer  "token_type",    default: 0,     null: false
+    t.integer  "games_count",   default: 0,     null: false
+    t.boolean  "year_analysis", default: false, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "tags", force: :cascade do |t|

@@ -46,12 +46,12 @@ class Game < ActiveRecord::Base
     gt = filter[:gt]
     lt = filter[:lt]
 
-    if gt.kind_of? Fixnum
+    if gt.kind_of? Numeric
       conds << "#{column} >= ?"
       vals << gt
     end
 
-    if lt.kind_of? Fixnum
+    if lt.kind_of? Numeric
       conds << "#{column} <= ?"
       vals << lt
     end
@@ -106,6 +106,18 @@ class Game < ActiveRecord::Base
     filter_and_or_highlight(:name, filter, condition)
   end)
 
+  register_filter :tags, (lambda do |filter|
+    tags = filter[:tags]
+    if tags.kind_of? Array
+      tags.reject!{ |t| !t.kind_of?(Fixnum) }
+      tags.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
+      condition = tags.map{ |id| "tags ~ '#{id}'" }.join(' AND ')
+      filter_and_or_highlight(:tags, filter, condition)
+    else
+      all
+    end
+  end)
+
   register_filter :steam_id, :exact_filter
   register_filter :steam_price, :range_filter
   register_filter :metacritic, :range_filter
@@ -121,11 +133,43 @@ class Game < ActiveRecord::Base
   register_filter :playtime_mean_ftb, :range_filter
   register_filter :playtime_median_ftb, :range_filter
 
+  register_filter :controller_support, :range_filter
+
   register_filter :platforms, :boolean_filter
   register_filter :features, :boolean_filter
   register_filter :players, :boolean_filter
   register_filter :vr, :boolean_filter
-  register_filter :controller_support, :boolean_filter
+
+  register_filter :system_requirements, (lambda do |filter|
+    @@videos = begin
+      syst = Game.pluck(:steam_id, :system_requirements)
+      # syst = JSON.load(File.read(Rails.root + 'spec/fixtures/system_req_examples.json'))
+      syst.inject([]) do |arr, value|
+        s = value[1]
+        val = ''
+        val += s[:minimum][:video_card] if s[:minimum] and s[:minimum][:video_card]
+        val += s[:recommended][:video_card] if s[:recommended] and s[:recommended][:video_card]
+        a = [value[0], val]
+        arr.push(a)
+        arr
+      end
+    end
+
+    if filter[:value]
+      query = Regexp.new(filter[:value], 'i')
+      L query
+      ids = @@videos.inject([]) do |arr, val|
+        arr.push(val[0].to_i) if val[1] =~ query
+        arr
+      end
+      L ids.size
+      where(steam_id: ids)
+      # L syst.select{|s| s['minimum'] query}.keys
+    else
+      all
+    end
+  end)
+
 
   register_simple_sort :name, :name_slug
 
@@ -136,26 +180,49 @@ class Game < ActiveRecord::Base
   serialize :playtime_ils, JSON
   before_save :compute_values
 
-  def compute_values
-    sp = steam_price
-    ssp = steam_sale_price
-    self.lowest_steam_price = [sp, ssp].compact.min
-    self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
+  def compute_values(force = false)
+    if (
+      steam_price_changed? ||
+      steam_sale_price_changed? ||
+      positive_steam_reviews_changed? ||
+      negative_steam_reviews_changed? ||
+      force
+    )
+      sp = steam_price
+      ssp = steam_sale_price
+      self.lowest_steam_price = [sp, ssp].compact.min
+      self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
 
-    if positive_steam_reviews and negative_steam_reviews
-      steam_reviews = positive_steam_reviews + negative_steam_reviews
-      if not steam_reviews.empty?
-        stats = DescriptiveStatistics::Stats.new(steam_reviews)
-        self.playtime_mean = stats.mean
-        self.playtime_median = stats.median
-        self.playtime_sd = stats.standard_deviation
-        self.playtime_rsd = stats.relative_standard_deviation
-        self.playtime_ils = (5..95).step(5).map{ |p| stats.value_from_percentile(p) }
-        if (lowest_steam_price and lowest_steam_price != 0)
-          self.playtime_mean_ftb = playtime_mean/(lowest_steam_price.to_f/100)
-          self.playtime_median_ftb = playtime_median/(lowest_steam_price.to_f/100)
+      if positive_steam_reviews and negative_steam_reviews
+        steam_reviews = positive_steam_reviews + negative_steam_reviews
+        if not steam_reviews.empty?
+          stats = DescriptiveStatistics::Stats.new(steam_reviews)
+          self.playtime_mean = stats.mean
+          self.playtime_median = stats.median
+          self.playtime_sd = stats.standard_deviation
+          self.playtime_rsd = stats.relative_standard_deviation
+          self.playtime_ils = (5..95).step(5).map{ |p| stats.value_from_percentile(p) }
+          if (lowest_steam_price and lowest_steam_price != 0)
+            self.playtime_mean_ftb = playtime_mean/(lowest_steam_price.to_f/100)
+            self.playtime_median_ftb = playtime_median/(lowest_steam_price.to_f/100)
+          end
         end
       end
+    end
+
+    if system_requirements_changed? || force
+      tokens = []
+      ana = VideoCardAnalyzer.new
+      sysreq = system_requirements
+      if sysreq
+        if sysreq[:minimum] && sysreq[:minimum][:video_card]
+          tokens.concat ana.tokens sysreq[:minimum][:video_card]
+        end
+        if sysreq[:recommended] && sysreq[:recommended][:video_card]
+          tokens.concat ana.tokens sysreq[:recommended][:video_card]
+        end
+      end
+      self.sysreq_video_tokens = tokens.uniq.join(' ')
     end
   end
 
@@ -178,18 +245,44 @@ class Game < ActiveRecord::Base
   ### Utils ###
   #############
 
-  def self.entil(column, il = 10)
-    values = all.order(column).pluck(column)
-    il_size = (values.size+1).to_f/il
-    (il-1).times.map do |i|
-      n = (il_size*(i+1))-1
-      r = n-n.floor
-      n = n.floor
-      if r == 0
-        values[n]
-      else
-        (values[n]+values[n+1]).to_f/2
-      end
+  def sysreq_video
+    texts = []
+    s = system_requirements
+    if s[:minimum] && s[:minimum][:video_card]
+      texts.push s[:minimum][:video_card]
     end
+    if s[:recommended] && s[:recommended][:video_card]
+      texts.push s[:recommended][:video_card]
+    end
+    texts.join('|||')
+  end
+
+  def steam_url
+    "http://store.steampowered.com/app/#{steam_id}/"
+  end
+
+  def sysreq(type, value)
+    type = :minimum if type == :min
+    type = :recommended if type == :rec
+    value = :video_card if value == :gpu
+    value = :processor if value == :cpu
+    value = :memory if value == :ram
+    value = :hard_drive if value == :hdd
+    system_requirements[type] && system_requirements[type][value]
+  end
+
+  def self.entil(column, il = 10)
+    values = (column.kind_of?(Array) ? column : all.pluck(column)).compact#.reject(&:nan?)
+    stats = DescriptiveStatistics::Stats.new(values)
+    return [stats.median] if il == 2
+    return (0..99).step(100/il).to_a[1..-1].map{ |p| stats.value_from_percentile(p) }
+  end
+
+  def self.multi_entil(columns, il = 10)
+    values = all.pluck(*columns)
+    result = columns.each_with_index.map do |column, i|
+      [column, entil(values.map{|v| v[i]})]
+    end
+    Hash[result]
   end
 end

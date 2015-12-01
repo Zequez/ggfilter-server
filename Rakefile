@@ -19,3 +19,30 @@ namespace :karma do
     exec('karma start karma.config.js')
   end
 end
+
+namespace :sysreq do
+  desc 'Run SysreqToken.analyze_games'
+  task :analyze => :environment do
+    SysreqToken.analyze_games
+  end
+
+  desc 'Remove Sysreqs without games'
+  task :clean => :environment do
+    SysreqToken.where(games_count: 0).delete_all
+  end
+end
+
+namespace :games do
+  desc 'Re-save the games'
+  task :resave => :environment do
+    Game.find_in_batches(batch_size: 250).with_index do |games, i|
+      puts "Saving #{i} batch"
+      ActiveRecord::Base.transaction do
+        games.each do |game|
+          game.compute_values true
+          game.save!
+        end
+      end
+    end
+  end
+end
