@@ -86,12 +86,9 @@ class VideoCardAnalyzer
       str = str.gsub(m, ' ').squeeze(' ')
     end
 
-    L str
     GSUBS.each do |m|
       str = str.gsub(m[0], m[1]).squeeze(' ')
-      L str
     end
-
 
     str.gsub(/<|>/, ' ').squeeze(' ').split(/\s+/).each do |word|
       if VALID_WORDS.any?{ |m| word =~ m}

@@ -230,10 +230,5 @@ describe VideoCardAnalyzer do
         expect(ana.tokens(test[0])).to eq test[1]
       end
     end
-
-    # it{ expect(tokens('NVIDIA GeForce 6800 or ATI Radeon x1950 256 Mb and higher'))
-    #     .to eq(%w{nvidia6800 amdx1950 256mb}) }
-
-    # it{ expect(tokens('nvidia')).to eq({'nvidia' => 1})}
   end
 end
