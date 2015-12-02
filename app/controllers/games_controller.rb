@@ -35,7 +35,7 @@ class GamesController < ApplicationController
       .select(columns)
       .apply_filters(params[:filters])
       .order(allowed_sort(params[:sort]))
-      .paginate(page: params[:page].to_i+1, per_page: per_page)
+      .page(params[:page].to_i+1).per(per_page)
       .limit(20)
 
     games = @games.map(&:attributes)

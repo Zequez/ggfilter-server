@@ -34,7 +34,7 @@ gem 'haml-rails'
 # Statistics!
 gem 'descriptive-statistics'
 # Pagination!
-gem 'will_paginate'
+gem 'kaminari'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
