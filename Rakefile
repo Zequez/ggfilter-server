@@ -45,6 +45,11 @@ namespace :sysreq do
   task :infer_values => :environment do
     SysreqToken.infer_values!
   end
+
+  desc 'Infer lacking resolution values from already-inferred resolutions'
+  task :infer_resolution_values => :environment do
+    SysreqToken.infer_resolution_values!
+  end
 end
 
 namespace :games do

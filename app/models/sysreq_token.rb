@@ -14,7 +14,8 @@ class SysreqToken < ActiveRecord::Base
     manual: 1,
     gpu_benchmarks: 2,
     wildcard: 3,
-    inferred: 4
+    inferred: 4,
+    inferred_resolution: 5
   }
 
   before_save do
@@ -90,11 +91,44 @@ class SysreqToken < ActiveRecord::Base
     end
   end
 
+  # Using already-inferred resolutions, infer the roslution by projecting the pixel count
+  # with the resolution values
+  def infer_resolution_value(avg_slope = SysreqToken.average_resolution_slope)
+    if name =~ /\A[0-9]+x[0-9]+\Z/
+      self.value = (avg_slope * pixels).round
+      self.source = :inferred_resolution
+      value
+    else
+      nil
+    end
+  end
+
+  def self.infer_resolution_values!
+    avg_slope = SysreqToken.average_resolution_slope
+    SysreqToken.where(source: source_enum[:none]).each do |token|
+      if token.infer_resolution_value(avg_slope)
+        token.save!
+      end
+    end
+  end
+
   def games
     @games ||= Game.where("sysreq_video_tokens ~ '\\m#{name}\\M'")
   end
 
   def self.average_value
     where.not(value: nil).average(:value)
+  end
+
+  def self.average_resolution_slope
+    @average_resolution_slope ||= begin
+      tokens = SysreqToken.where("name ~ '[0-9]+x[0-9]+'").where(source: source_enum[:inferred])
+      slopes = tokens.map{ |t| t.value.to_f / t.pixels }
+      slopes.reduce(&:+).to_f / slopes.size
+    end
+  end
+
+  def pixels
+    name.split('x').map(&:to_i).reduce(:*)
   end
 end

@@ -92,6 +92,19 @@ describe SysreqToken, type: :model do
     end
   end
 
+  describe '#infer_resolution_value' do
+    it 'should use the projected value from the pixels count' do
+      create :sysreq_token, name: '150x150', value: 100, source: :inferred # 22,500
+      create :sysreq_token, name: '800x600', value: 1200, source: :inferred # 480,000
+      create :sysreq_token, name: '300x500', value: 500, source: :inferred # 150,000
+      token = SysreqToken.new name: '50x50', source: :none
+      token.infer_resolution_value
+      average_slope = (1200.0 / (800*600) + 500.0 / (300*500) + 100.0 / (150*150)) / 3
+      expect(token.value).to eq (average_slope * 50*50).round
+      expect(token.source).to eq :inferred_resolution
+    end
+  end
+
   describe '.infer_values!' do
     # it 'call #infer_value for all :none or :inferred tokens' do
     #
