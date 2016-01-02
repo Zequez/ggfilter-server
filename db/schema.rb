@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160102125943) do
+ActiveRecord::Schema.define(version: 20160102130750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,10 +68,11 @@ ActiveRecord::Schema.define(version: 20160102125943) do
   end
 
   create_table "gpus", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
     t.integer  "value"
+    t.string   "tokenized_name"
   end
 
   create_table "named_filters", force: :cascade do |t|
