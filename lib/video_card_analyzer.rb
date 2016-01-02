@@ -10,7 +10,6 @@ class VideoCardAnalyzer
 
   REJECT_WORDS = [
     /\bshader model ?[0-9.]+\b/,
-    /\b(of|or|and)\b/,
     /\b(1st|2nd|3rd|4th|5th)\b/,
     /\b(gen|pro|graphics|media|accelerator|core|series|gpu)\b/,
   ]

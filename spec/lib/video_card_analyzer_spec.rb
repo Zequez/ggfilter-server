@@ -228,6 +228,10 @@ describe VideoCardAnalyzer do
       [
         '2GB of video RAM, support for 4096 x 4096 textures, Shader Model 3.0',
         %w{2gb}
+      ],
+      [
+        'DirectX 8.0/8.1 compliant or low-end DirectX 9 3D accelerator (nVidia GeForce3 and 4 series (not MX), GeForceFX 5200 through 5700 series, ATI Radeon 8500 through 9200 and X300 series, S3 DeltaChrome or XGI Volari)',
+        %w{directx8 directx9 nvidia3 nvidia5200 amd8500}
       ]
     ].each do |test|
       it test[0] do
