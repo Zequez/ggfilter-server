@@ -38,19 +38,6 @@ describe SysreqToken, type: :model do
     end
   end
 
-  describe '.with_loaded_games' do
-    it 'should return the SysreqToken with the #games already loaded' do
-      g1 = create :game, system_requirements: { recommended: { video_card: 'intel hd4000' } }
-      g2 = create :game, system_requirements: { recommended: { video_card: 'intel hd4400' } }
-      g3 = create :game, system_requirements: { recommended: { video_card: 'intel hd4000' } }
-
-      SysreqToken.analyze_games
-      tokens = SysreqToken.all.order('games_count ASC').with_loaded_games
-      expect(tokens[0].instance_variable_get :@games).to match_array [g2]
-      expect(tokens[1].instance_variable_get :@games).to match_array [g1, g3]
-    end
-  end
-
   describe '.values_from_gpus_benchmarks!' do
     it 'should extract values from the GPUs benchmarks' do
       Gpu.create name: 'Radeon HD 8950', value: 100
@@ -82,5 +69,32 @@ describe SysreqToken, type: :model do
       expect(t.value).to eq 400
       expect(t.source).to eq :wildcard
     end
+  end
+
+  describe '#infer_value' do
+    it 'should set the value of the average of all the other tokens of games that contain this token' do
+      create :sysreq_token, name: 'intel4000', value: 100, source: :gpu_benchmarks
+      create :sysreq_token, name: 'intel4400', value: 200, source: :gpu_benchmarks
+      create :sysreq_token, name: 'amd7000', value: 300, source: :gpu_benchmarks
+      create :sysreq_token, name: 'nvidia8000', value: 400, source: :gpu_benchmarks
+      create :sysreq_token, name: 'nvidia8300', value: 500, source: :gpu_benchmarks
+      create :sysreq_token, name: 'potato', value: 600, source: :manual
+      token = create :sysreq_token, name: '800x600', value: nil, source: :none
+
+      create :game, sysreq_video_tokens: 'intel4000 intel4400 amd7000 800x600'
+      create :game, sysreq_video_tokens: 'nvidia8000'
+      create :game, sysreq_video_tokens: 'nvidia8300 intel4400 potato 800x600'
+      create :game, sysreq_video_tokens: '800x600'
+
+      token.infer_value
+      expect(token.value).to eq (100+200+300+500+600).to_f/5 # 340
+      expect(token.source).to eq :inferred
+    end
+  end
+
+  describe '.infer_values!' do
+    # it 'call #infer_value for all :none or :inferred tokens' do
+    #
+    # end
   end
 end

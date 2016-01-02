@@ -13,16 +13,14 @@ class SysreqToken < ActiveRecord::Base
     none: 0,
     manual: 1,
     gpu_benchmarks: 2,
-    wildcard: 3
+    wildcard: 3,
+    inferred: 4
   }
 
   before_save do
     if linked_to_changed?
       tokens_names = linked_to.split(/\s+/)
-      values = SysreqToken.where(name: tokens_names).where.not(value: nil).pluck(:value)
-      if values.size > 0
-        self.value = values.reduce(&:+) / values.size
-      end
+      self.value = SysreqToken.where(name: tokens_names).average_value
     end
   end
 
@@ -70,25 +68,33 @@ class SysreqToken < ActiveRecord::Base
     end
   end
 
+  def infer_value
+    names = games.pluck(:sysreq_video_tokens).join(' ').split(/\s+/).uniq
+    self.value = SysreqToken.where(
+      name: names,
+      source: [source_enum[:gpu_benchmarks], source_enum[:manual]]
+    ).average_value
+    if value
+      self.source = :inferred
+      value
+    else
+      nil
+    end
+  end
+
+  def self.infer_values!
+    SysreqToken.where(source: [source_enum[:none], source_enum[:inferred]]).each do |token|
+      if token.infer_value
+        token.save!
+      end
+    end
+  end
+
   def games
     @games ||= Game.where("sysreq_video_tokens ~ '\\m#{name}\\M'")
   end
 
-  def games=(games)
-    @games = games
-  end
-
-  def self.with_loaded_games
-    tokens = all.to_a
-    selected_tokens = tokens.select{|t| t.games_count <= 10}
-    names = selected_tokens.select{|t| t.games_count <= 10}.map(&:name).join('|') # Performance reasons
-    names = "sysreq_video_tokens ~ '\\m#{names}\\M'"
-    games = Game.where(names).to_a
-    selected_tokens.map do |t|
-      regex = /\b#{t.name}\b/
-      gg = games.select{|g| g.sysreq_video_tokens =~ regex }
-      t.games = gg
-    end
-    tokens
+  def self.average_value
+    where.not(value: nil).average(:value)
   end
 end

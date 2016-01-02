@@ -18,8 +18,8 @@ ActiveAdmin.register SysreqToken do
         f.label :year_analysis, 'Y.A.'
       end
     end
+    column :source
     column :games_count
-    column :year_analysis
     actions
   end
 
@@ -30,6 +30,7 @@ ActiveAdmin.register SysreqToken do
       row :token_type
       row :name
       row :value
+      row :source
       row :games_count
       row :year_analysis
       row :games do

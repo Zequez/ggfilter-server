@@ -40,6 +40,11 @@ namespace :sysreq do
   task :link_wildcards => :environment do
     SysreqToken.link_wildcards!
   end
+
+  desc 'Infer values from existing relationships'
+  task :infer_values => :environment do
+    SysreqToken.infer_values!
+  end
 end
 
 namespace :games do
