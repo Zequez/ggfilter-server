@@ -224,6 +224,10 @@ describe VideoCardAnalyzer do
       [
         'GeForce6600 or better, RadeonX1600 or better, VRAM256MB or more',
         %w{nvidia6600 amd1600 256mb}
+      ],
+      [
+        '2GB of video RAM, support for 4096 x 4096 textures, Shader Model 3.0',
+        %w{2gb}
       ]
     ].each do |test|
       it test[0] do

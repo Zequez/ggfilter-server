@@ -36,7 +36,7 @@ class VideoCardAnalyzer
     [/(hd) ([0-9x]+)\b/, '\2'],
 
     # Resolutions
-    [/\b([0-9]+) ?x ?([0-9]+)( ?x ?[0-9]+)?\b/, '<\1x\2>'],
+    [/\b([0-9]+) ?x ?([0-9]+)( ?x ?[0-9]+)?\b(?! textures)/, '<\1x\2>'],
 
     # Nvidia
     [/geforece/, 'geforce'],
@@ -87,6 +87,7 @@ class VideoCardAnalyzer
     end
 
     GSUBS.each do |m|
+      # L str
       str = str.gsub(m[0], m[1]).squeeze(' ')
     end
 
