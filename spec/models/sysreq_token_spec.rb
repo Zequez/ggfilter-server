@@ -50,4 +50,37 @@ describe SysreqToken, type: :model do
       expect(tokens[1].instance_variable_get :@games).to match_array [g1, g3]
     end
   end
+
+  describe '.values_from_gpus_benchmarks!' do
+    it 'should extract values from the GPUs benchmarks' do
+      Gpu.create name: 'Radeon HD 8950', value: 100
+      token = create :sysreq_token, name: 'amd8950', value: 10
+      SysreqToken.values_from_gpus_benchmarks!
+      token.reload
+      expect(token.value).to eq 100
+      expect(token.source).to eq :gpu_benchmarks
+    end
+  end
+
+  describe '#linked_to' do
+    it 'should set the value to the average of the value of the tokens specified on this attribute' do
+      create :sysreq_token, name: 'intel4000', value: 300
+      create :sysreq_token, name: 'intel4400', value: 500
+      t = create :sysreq_token, name: 'intel4xxx', linked_to: 'intel4000 intel4400'
+      expect(t.value).to eq 400
+    end
+  end
+
+  describe '.link_wildcards!' do
+    it 'should link tokens with xxx with the corresponding other tokens' do
+      create :sysreq_token, name: 'intel4000', value: 300
+      create :sysreq_token, name: 'intel4400', value: 500
+      t = create :sysreq_token, name: 'intel4xxx'
+      SysreqToken.link_wildcards!
+      t.reload
+      expect(t.linked_to).to eq 'intel4000 intel4400'
+      expect(t.value).to eq 400
+      expect(t.source).to eq :wildcard
+    end
+  end
 end

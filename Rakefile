@@ -30,6 +30,16 @@ namespace :sysreq do
   task :clean => :environment do
     SysreqToken.where(games_count: 0).delete_all
   end
+
+  desc 'Try to match the Sysreq with the GPUs'
+  task :match_gpus => :environment do
+    SysreqToken.values_from_gpus_benchmarks!
+  end
+
+  desc 'Link the wildcard GPU names like 8xxx to 8800 and 8500'
+  task :link_wildcards => :environment do
+    SysreqToken.link_wildcards!
+  end
 end
 
 namespace :games do

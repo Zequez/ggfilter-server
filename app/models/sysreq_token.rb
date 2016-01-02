@@ -1,6 +1,29 @@
 class SysreqToken < ActiveRecord::Base
-  def self.token_type_enum
-    { no: 0, gpu: 1, cpu: 2, mem: 3, hdd: 4 }
+  include SimpleEnum
+
+  simple_enum_column :token_type, {
+    no:  0,
+    gpu: 1,
+    cpu: 2,
+    mem: 3,
+    hdd: 4
+  }
+
+  simple_enum_column :source, {
+    none: 0,
+    manual: 1,
+    gpu_benchmarks: 2,
+    wildcard: 3
+  }
+
+  before_save do
+    if linked_to_changed?
+      tokens_names = linked_to.split(/\s+/)
+      values = SysreqToken.where(name: tokens_names).where.not(value: nil).pluck(:value)
+      if values.size > 0
+        self.value = values.reduce(&:+) / values.size
+      end
+    end
   end
 
   def self.analyze_games
@@ -28,6 +51,25 @@ class SysreqToken < ActiveRecord::Base
     nil
   end
 
+  def self.values_from_gpus_benchmarks!
+    SysreqToken.all.each do |token|
+      if ( gpu = Gpu.where(tokenized_name: token.name).first )
+        token.value = gpu.value
+        token.source = :gpu_benchmarks
+        token.save!
+      end
+    end
+  end
+
+  def self.link_wildcards!
+    SysreqToken.where("name ~ 'x{2,}'").each do |token|
+      regex_name = token.name.gsub(/x/, '[0-9]')
+      token.linked_to = SysreqToken.where("name ~ '\\m#{regex_name}\\M'").pluck(:name).join(' ')
+      token.source = :wildcard
+      token.save!
+    end
+  end
+
   def games
     @games ||= Game.where("sysreq_video_tokens ~ '\\m#{name}\\M'")
   end
@@ -48,19 +90,5 @@ class SysreqToken < ActiveRecord::Base
       t.games = gg
     end
     tokens
-  end
-
-  ### token_type enum
-
-  def token_type_enum
-    self.class.token_type_enum
-  end
-
-  def token_type=(support)
-    write_attribute :token_type, token_type_enum[support.to_sym]
-  end
-
-  def token_type
-    token_type_enum.invert[read_attribute :token_type]
   end
 end

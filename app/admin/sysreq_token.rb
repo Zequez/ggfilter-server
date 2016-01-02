@@ -3,7 +3,7 @@ ActiveAdmin.register SysreqToken do
   config.per_page = 9999
   config.batch_actions = false
   config.sort_order = 'value_desc'
-  permit_params :value, :year_analysis
+  permit_params :value, :linked_to, :year_analysis
 
   index do
     column :token_type
@@ -13,6 +13,7 @@ ActiveAdmin.register SysreqToken do
     column :value, sortable: :value do |t|
       form_for(t, url: admin_sysreq_token_path(t, format: :json), remote: true) do |f|
         f.text_field :value
+        f.text_field :linked_to
         f.check_box :year_analysis
         f.label :year_analysis, 'Y.A.'
       end
@@ -33,7 +34,13 @@ ActiveAdmin.register SysreqToken do
       row :year_analysis
       row :games do
         t.games.map do |g|
+          # a = link_to g.name, [:admin, g]
           content_tag :div, "#{g.steam_id} - #{g.name} - #{g.sysreq(:min, :gpu)} - #{g.sysreq(:rec, :gpu)}"
+        end.join('').html_safe
+      end
+      row :gpu do
+        Gpu.where(tokenized_name: t.name).map do |gpu|
+          content_tag :div, "#{gpu.name} - #{gpu.value}"
         end.join('').html_safe
       end
       row :created_at
