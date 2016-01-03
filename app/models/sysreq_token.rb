@@ -15,7 +15,7 @@ class SysreqToken < ActiveRecord::Base
     gpu_benchmarks: 2,
     wildcard: 3,
     inferred: 4,
-    inferred_resolution: 5
+    inferred_projection: 5
   }
 
   before_save do
@@ -91,24 +91,36 @@ class SysreqToken < ActiveRecord::Base
     end
   end
 
-  # Using already-inferred resolutions, infer the roslution by projecting the pixel count
-  # with the resolution values
-  def infer_resolution_value(avg_slope = SysreqToken.average_resolution_slope)
-    if name =~ /\A[0-9]+x[0-9]+\Z/
-      self.value = (avg_slope * pixels).round
-      self.source = :inferred_resolution
-      value
-    else
-      nil
+  def infer_projection_resolution
+    infer_projection(/^[0-9]+x[0-9]+$/) do |name|
+      name.split('x').map(&:to_i).reduce(:*)
     end
   end
 
-  def self.infer_resolution_values!
-    avg_slope = SysreqToken.average_resolution_slope
-    SysreqToken.where(source: source_enum[:none]).each do |token|
-      if token.infer_resolution_value(avg_slope)
-        token.save!
-      end
+  def infer_projection_directx
+    infer_projection(/^directx[0-9]+$/) do |name|
+      name.match(/[0-9]+$/)[0].to_i
+    end
+  end
+
+  # def infer_projection_video_memory
+  #   infer_projection(/^[0-9]+mb$/, true) do |name|
+  #     m = name.match(/([0-9]+)/)
+  #     val = m[1].to_i
+  #     unit = m[2]
+  #     if unit == 'gb'
+  #       val = val * 1024
+  #     end
+  #     val
+  #   end
+  # end
+
+  def self.infer_projected_values!
+    SysreqToken.where(source: [source_enum[:none], source_enum[:inferred_projection]]).each do |token|
+      token.infer_projection_resolution
+      token.infer_projection_directx
+      # token.infer_projection_video_memory
+      token.save!
     end
   end
 
@@ -120,15 +132,21 @@ class SysreqToken < ActiveRecord::Base
     where.not(value: nil).average(:value)
   end
 
-  def self.average_resolution_slope
-    @average_resolution_slope ||= begin
-      tokens = SysreqToken.where("name ~ '[0-9]+x[0-9]+'").where(source: source_enum[:inferred])
-      slopes = tokens.map{ |t| t.value.to_f / t.pixels }
-      slopes.reduce(&:+).to_f / slopes.size
-    end
-  end
+  private
 
-  def pixels
-    name.split('x').map(&:to_i).reduce(:*)
+  def infer_projection(name_regex, weighted = false, &name_to_linear_value)
+    if name =~ name_regex
+      tokens = SysreqToken
+        .where("name ~ '#{name_regex.source}'")
+        .where(source: source_enum[:inferred])
+        .where.not(value: nil)
+      name_values = tokens.map{ |t| Array.new t.games_count, name_to_linear_value.call(t.name) }.flatten
+      values = tokens.map{ |t| Array.new t.games_count, t.value }.flatten
+      lr = SimpleLinearRegression.new name_values, values
+      L lr.slope
+      L lr.y_intercept
+      self.value = (lr.y_intercept + lr.slope * name_to_linear_value.call(name)).round
+      self.source = :inferred_projection
+    end
   end
 end

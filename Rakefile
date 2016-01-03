@@ -21,6 +21,11 @@ namespace :karma do
 end
 
 namespace :sysreq do
+  desc 'Remove all SysreqTokens'
+  task :delete_all => :environment do
+    SysreqToken.all.delete_all
+  end
+
   desc 'Run SysreqToken.analyze_games'
   task :analyze => :environment do
     SysreqToken.analyze_games
@@ -47,9 +52,12 @@ namespace :sysreq do
   end
 
   desc 'Infer lacking resolution values from already-inferred resolutions'
-  task :infer_resolution_values => :environment do
-    SysreqToken.infer_resolution_values!
+  task :infer_projected_values => :environment do
+    SysreqToken.infer_projected_values!
   end
+
+  desc 'Analyze, match GPUs, link wildcards, infer values, and infer projected values'
+  task :all => [:analyze, :match_gpus, :infer_values, :infer_projected_values]
 end
 
 namespace :games do

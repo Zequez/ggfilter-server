@@ -92,18 +92,45 @@ describe SysreqToken, type: :model do
     end
   end
 
-  describe '#infer_resolution_value' do
+  describe '#infer_projection_resolution' do
     it 'should use the projected value from the pixels count' do
-      create :sysreq_token, name: '150x150', value: 100, source: :inferred # 22,500
       create :sysreq_token, name: '800x600', value: 1200, source: :inferred # 480,000
       create :sysreq_token, name: '300x500', value: 500, source: :inferred # 150,000
+      create :sysreq_token, name: '150x150', value: 100, source: :inferred # 22,500
       token = SysreqToken.new name: '50x50', source: :none
-      token.infer_resolution_value
-      average_slope = (1200.0 / (800*600) + 500.0 / (300*500) + 100.0 / (150*150)) / 3
-      expect(token.value).to eq (average_slope * 50*50).round
-      expect(token.source).to eq :inferred_resolution
+      token.infer_projection_resolution
+      slr = SimpleLinearRegression.new [800*600, 300*500, 150*150], [1200, 500, 100]
+      expect(token.value).to eq (slr.y_intercept + slr.slope * 50*50).round
+      expect(token.source).to eq :inferred_projection
     end
   end
+
+  describe '#infer_projection_directx' do
+    it 'should use the projected directX version' do
+      create :sysreq_token, name: 'directx8', value: 229, source: :inferred # 8
+      create :sysreq_token, name: 'directx9', value: 1213, source: :inferred # 9
+      create :sysreq_token, name: 'directx10', value: 1714, source: :inferred # 10
+      create :sysreq_token, name: 'directx11', value: 2227, source: :inferred # 10
+      token = SysreqToken.new name: 'directx7', source: :none
+      token.infer_projection_directx
+      slr = SimpleLinearRegression.new [11, 10, 9, 8], [2227, 1714, 1213, 229]
+      expect(token.value).to eq (slr.y_intercept + slr.slope * 7).round
+      expect(token.source).to eq :inferred_projection
+    end
+  end
+
+  # describe '#infer_projection_video_memory' do
+  #   it 'should use the projected video memory' do
+  #     create :sysreq_token, name: '15mb', value: 100, source: :inferred, games_count: 1 # 8
+  #     create :sysreq_token, name: '1200mb', value: 300, source: :inferred, games_count: 2 # 9
+  #     create :sysreq_token, name: '2gb', value: 800, source: :inferred, games_count: 1 # 10
+  #     token = SysreqToken.new name: '1gb', source: :none
+  #     token.infer_projection_video_memory
+  #     slr = SimpleLinearRegression.new [2048, 1200, 1200, 15], [800, 300, 300, 100]
+  #     expect(token.value).to eq (slr.y_intercept + slr.slope * 1024).round
+  #     expect(token.source).to eq :inferred_projection
+  #   end
+  # end
 
   describe '.infer_values!' do
     # it 'call #infer_value for all :none or :inferred tokens' do
