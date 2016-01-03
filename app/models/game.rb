@@ -140,6 +140,8 @@ class Game < ActiveRecord::Base
   register_filter :players, :boolean_filter
   register_filter :vr, :boolean_filter
 
+  register_filter :sysreq_video_index, :range_filter
+
   register_filter :system_requirements, (lambda do |filter|
     @@videos = begin
       syst = Game.pluck(:steam_id, :system_requirements)
@@ -234,12 +236,23 @@ class Game < ActiveRecord::Base
     end
 
     tokens.push "year#{released_at.year}" if released_at
-    
+
     self.sysreq_video_tokens = tokens.uniq.join(' ')
   end
 
   def compute_sysreq_video_index
-    # sysreq_video_tokens
+    heavier = /nvidia|amd|intel|mb/
+    tokens = SysreqToken.where(name: sysreq_video_tokens.split(' ')).where.not(value: nil)
+    if tokens.size > 0
+      values = []
+      tokens.each do |t|
+        values << t.value
+        if t.name =~ heavier
+          values << t.value
+        end
+      end
+      self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
+    end
   end
 
   ### Tags ###

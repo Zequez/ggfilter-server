@@ -19,6 +19,18 @@ describe Game, type: :model do
         end
       end
     end
+
+    describe '#compute_sysreq_video_index' do
+      it 'should average the values from SysreqTokens' do
+        create :sysreq_token, name: 'nvidia8500', value: 700
+        create :sysreq_token, name: 'intel4000', value: 500
+        create :sysreq_token, name: '512mb', value: 100
+        create :sysreq_token, name: 'directx10', value: 150
+        g = create :game, sysreq_video_tokens: 'nvidia8500 intel4000 512mb directx10'
+        g.compute_sysreq_video_index
+        expect(g.sysreq_video_index).to eq ((700 + 700 + 500 + 500 + 100 + 100 + 150).to_f / 7).round
+      end
+    end
   end
 
   describe 'tags' do
