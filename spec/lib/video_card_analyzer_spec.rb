@@ -67,7 +67,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'DirectX® 11 compatible card with 1 GB of memory, nVidia® 4XX+/AMD® 5XXX+',
-        %w{directx11 1gb nvidia4xx amd5xxx}
+        %w{directx11 1024mb nvidia4xx amd5xxx}
       ],
       [
         'NVIDIA GeForce 4 MX or better, ATI Radeon 8500 or better, Intel i915 chipset or better 1024x600 resolution',
@@ -163,11 +163,11 @@ describe VideoCardAnalyzer do
       ],
       [
         'nVidia 570 or similar ATI, 1GB dedicated video memory, Pixel Shaders 3.0',
-        %w{nvidia570 amd 1gb}
+        %w{nvidia570 amd 1024mb}
       ],
       [
         'OpenGL 3.0 compliant with 1.0GB of video RAM.',
-        %w{opengl3 1gb}
+        %w{opengl3 1024mb}
       ],
       [
         'nVidia GeForce256 or TNT2 ultra, PowerVR Kyro, S3 Savage2000, 3Dfx Voodoo3, ATI Rage128 pro',
@@ -227,11 +227,43 @@ describe VideoCardAnalyzer do
       ],
       [
         '2GB of video RAM, support for 4096 x 4096 textures, Shader Model 3.0',
-        %w{2gb}
+        %w{2048mb}
       ],
       [
         'DirectX 8.0/8.1 compliant or low-end DirectX 9 3D accelerator (nVidia GeForce3 and 4 series (not MX), GeForceFX 5200 through 5700 series, ATI Radeon 8500 through 9200 and X300 series, S3 DeltaChrome or XGI Volari)',
         %w{directx8 directx9 nvidia3 nvidia5200 amd8500}
+      ],
+      [
+        ' NVidia or ATI-based graphics card with shader model 2.0 support. NVidia GeForce 6100 or newer (6100-6800, 7100-7950, 8300-8800, GTS/GTX series), ATI Radeon 9600 or newer (9600-9800, X300-X1950, HD 2400 or newer)',
+        %w{nvidia amd nvidia6100 amd9600}
+      ],
+      [
+        '1GB+ DX10 GPU',
+        %w{1024mb directx10}
+      ],
+      [
+        'Nvidia Geforce 512GB or more',
+        %w{nvidia}
+      ],
+      [
+        'Ati X800/nVidia 6800256 MB or higher',
+        %w{amd800 nvidia}
+      ],
+      [
+        '1GB, ATI HD3870, Shader Model, 512 MB (does not support integrated graphics card)',
+        %w{1024mb amd3870 512mb integrated}
+      ],
+      [
+        'Intel HD Graphics 3000 with 384 MB of RAM',
+        %w{intel3000 512mb}
+      ],
+      [
+        'Nvidia GeForce GTX 570 or AMD Radeon HD7870 (1250MB VRAM &amp; Shader Model 5.0) or better',
+        %w{nvidia570 amd7870 1024mb}
+      ],
+      [
+        '4 Mb Video Card',
+        %w{16mb}
       ]
     ].each do |test|
       it test[0] do

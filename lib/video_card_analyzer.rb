@@ -9,12 +9,12 @@ class VideoCardAnalyzer
   }
 
   REJECT_WORDS = [
-    /\bshader model ?[0-9.]+\b/,
+    /\bshader model ?[0-9](\.[0-9])?\b/,
     /\b(1st|2nd|3rd|4th|5th)\b/,
     /\b(gen|pro|graphics|media|accelerator|core|series|gpu)\b/,
   ]
 
-  VALID_WORDS = [
+  VALID_TOKENS = [
     /nvidia/,
     /[0-9]+(mb|gb|kb|mhz|ghz)/,
     /amd/,
@@ -26,6 +26,11 @@ class VideoCardAnalyzer
     /\bnegation\b/
   ]
 
+  INVALID_TOKENS = [
+    /[0-9]{2,}gb/,
+    /[0-9]{5,}mb/
+  ]
+
   GSUBS = [
     # Units
     [/mbytes?/, 'mb'],
@@ -35,7 +40,7 @@ class VideoCardAnalyzer
     [/(hd) ([0-9x]+)\b/, '\2'],
 
     # Resolutions
-    [/\b([0-9]+) ?x ?([0-9]+)( ?x ?[0-9]+)?\b(?! textures)/, '<\1x\2>'],
+    [/\b(?:([0-9]+)x([0-9]+)|([0-9]+) x ([0-9]+))\b(?! textures)/, '<\1\3x\2\4>'],
 
     # Nvidia
     [/geforece/, 'geforce'],
@@ -55,7 +60,7 @@ class VideoCardAnalyzer
 
     # Tech
     [/direct ?x ?([0-9]+)/, 'directx\1 '],
-    [/dx([0-9])/, 'directx\1 '],
+    [/dx([0-9]+)/, 'directx\1 '],
     [/opengl ?([0-9])[^d]/, 'opengl\1 '],
 
     # Negations
@@ -82,6 +87,7 @@ class VideoCardAnalyzer
       .squeeze(' ')
 
     REJECT_WORDS.each do |m|
+      # L str
       str = str.gsub(m, ' ').squeeze(' ')
     end
 
@@ -91,7 +97,8 @@ class VideoCardAnalyzer
     end
 
     str.gsub(/<|>/, ' ').squeeze(' ').split(/\s+/).each do |word|
-      if VALID_WORDS.any?{ |m| word =~ m}
+      if VALID_TOKENS.any?{ |m| word =~ m } and not INVALID_TOKENS.any?{ |m| word =~ m }
+        word = round_data_units(word)
         tokens[word] ||= 0
         tokens[word] += 1
       end
@@ -109,5 +116,28 @@ class VideoCardAnalyzer
     end
 
     tokens
+  end
+
+  def round_data_units(token)
+    if ( m = token.match(/([0-9]+)(mb|gb)/) )
+      val = m[1].to_i
+      unit = m[2]
+      if unit == 'gb'
+        val = val * 1024
+      end
+
+      n = 5
+      n += 1 while val > 2**n
+
+      if (2**n - val) - (val - 2**(n-1)) > 0
+        val = 2**(n-1)
+      else
+        val = 2**n
+      end
+
+      "#{val}mb"
+    else
+      token
+    end
   end
 end
