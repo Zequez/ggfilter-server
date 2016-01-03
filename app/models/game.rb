@@ -188,42 +188,58 @@ class Game < ActiveRecord::Base
       negative_steam_reviews_changed? ||
       force
     )
-      sp = steam_price
-      ssp = steam_sale_price
-      self.lowest_steam_price = [sp, ssp].compact.min
-      self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
-
-      if positive_steam_reviews and negative_steam_reviews
-        steam_reviews = positive_steam_reviews + negative_steam_reviews
-        if not steam_reviews.empty?
-          stats = DescriptiveStatistics::Stats.new(steam_reviews)
-          self.playtime_mean = stats.mean
-          self.playtime_median = stats.median
-          self.playtime_sd = stats.standard_deviation
-          self.playtime_rsd = stats.relative_standard_deviation
-          self.playtime_ils = (5..95).step(5).map{ |p| stats.value_from_percentile(p) }
-          if (lowest_steam_price and lowest_steam_price != 0)
-            self.playtime_mean_ftb = playtime_mean/(lowest_steam_price.to_f/100)
-            self.playtime_median_ftb = playtime_median/(lowest_steam_price.to_f/100)
-          end
-        end
-      end
+      compute_playtime_stats
     end
 
     if system_requirements_changed? || force
-      tokens = []
-      ana = VideoCardAnalyzer.new
-      sysreq = system_requirements
-      if sysreq
-        if sysreq[:minimum] && sysreq[:minimum][:video_card]
-          tokens.concat ana.tokens sysreq[:minimum][:video_card]
-        end
-        if sysreq[:recommended] && sysreq[:recommended][:video_card]
-          tokens.concat ana.tokens sysreq[:recommended][:video_card]
+      compute_sysreq_tokens
+      compute_sysreq_video_index
+    end
+  end
+
+  def compute_playtime_stats
+    sp = steam_price
+    ssp = steam_sale_price
+    self.lowest_steam_price = [sp, ssp].compact.min
+    self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
+
+    if positive_steam_reviews and negative_steam_reviews
+      steam_reviews = positive_steam_reviews + negative_steam_reviews
+      if not steam_reviews.empty?
+        stats = DescriptiveStatistics::Stats.new(steam_reviews)
+        self.playtime_mean = stats.mean
+        self.playtime_median = stats.median
+        self.playtime_sd = stats.standard_deviation
+        self.playtime_rsd = stats.relative_standard_deviation
+        self.playtime_ils = (5..95).step(5).map{ |p| stats.value_from_percentile(p) }
+        if (lowest_steam_price and lowest_steam_price != 0)
+          self.playtime_mean_ftb = playtime_mean/(lowest_steam_price.to_f/100)
+          self.playtime_median_ftb = playtime_median/(lowest_steam_price.to_f/100)
         end
       end
-      self.sysreq_video_tokens = tokens.uniq.join(' ')
     end
+  end
+
+  def compute_sysreq_tokens
+    tokens = []
+    ana = VideoCardAnalyzer.new
+    sysreq = system_requirements
+    if sysreq
+      if sysreq[:minimum] && sysreq[:minimum][:video_card]
+        tokens.concat ana.tokens sysreq[:minimum][:video_card]
+      end
+      if sysreq[:recommended] && sysreq[:recommended][:video_card]
+        tokens.concat ana.tokens sysreq[:recommended][:video_card]
+      end
+    end
+
+    tokens.push "year#{released_at.year}" if released_at
+    
+    self.sysreq_video_tokens = tokens.uniq.join(' ')
+  end
+
+  def compute_sysreq_video_index
+    # sysreq_video_tokens
   end
 
   ### Tags ###

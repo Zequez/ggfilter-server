@@ -29,6 +29,7 @@ class SysreqToken < ActiveRecord::Base
     tokens = SysreqToken.where(token_type: token_type_enum[:gpu]).all
     hashed_tokens = Hash[tokens.map do |t|
       t.games_count = 0
+      t.value = nil
       [t.name, t]
     end]
 
