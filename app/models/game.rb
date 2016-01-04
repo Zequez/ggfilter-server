@@ -59,6 +59,7 @@ class Game < ActiveRecord::Base
   register_filter :vr,                   :boolean_filter
 
   register_filter :sysreq_video_index,   :range_filter
+  register_filter :sysreq_index_centile, :range_filter
   # register_filter :system_requirements,  :system_requirements_filter
 
   ### Computed attributes ###
@@ -137,6 +138,17 @@ class Game < ActiveRecord::Base
         end
       end
       self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
+    end
+  end
+
+  def self.compute_sysreq_index_centiles
+    id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
+    indexes = id_indexes.map{ |a| a[1] }
+    stats = DescriptiveStatistics::Stats.new(indexes)
+    id_indexes.each do |a|
+      percentile = stats.percentile_from_value a[1]
+      L percentile
+      Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
     end
   end
 

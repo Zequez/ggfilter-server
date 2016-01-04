@@ -31,6 +31,42 @@ describe Game, type: :model do
         expect(g.sysreq_video_index).to eq ((700 + 700 + 500 + 500 + 100 + 100 + 150).to_f / 7).round
       end
     end
+
+    describe '.compute_sysreq_index_centiles' do
+      it 'should assign a the system requirements percentile to each game' do
+        g0 = create :game, sysreq_video_index: 0
+        g1 = create :game, sysreq_video_index: 100
+        g2 = create :game, sysreq_video_index: 200
+        g3 = create :game, sysreq_video_index: 300
+        g4 = create :game, sysreq_video_index: 400
+        g5 = create :game, sysreq_video_index: 500
+        g6 = create :game, sysreq_video_index: 600
+        g7 = create :game, sysreq_video_index: 700
+        g8 = create :game, sysreq_video_index: 800
+        g9 = create :game, sysreq_video_index: 900
+        Game.compute_sysreq_index_centiles
+        g0.reload
+        g1.reload
+        g2.reload
+        g3.reload
+        g4.reload
+        g5.reload
+        g6.reload
+        g7.reload
+        g8.reload
+        g9.reload
+        expect(g0.sysreq_index_centile).to be_within(10).of(5)
+        expect(g1.sysreq_index_centile).to be_within(10).of(15)
+        expect(g2.sysreq_index_centile).to be_within(10).of(25)
+        expect(g3.sysreq_index_centile).to be_within(10).of(35)
+        expect(g4.sysreq_index_centile).to be_within(10).of(45)
+        expect(g5.sysreq_index_centile).to be_within(10).of(55)
+        expect(g6.sysreq_index_centile).to be_within(10).of(65)
+        expect(g7.sysreq_index_centile).to be_within(10).of(75)
+        expect(g8.sysreq_index_centile).to be_within(10).of(85)
+        expect(g9.sysreq_index_centile).to be_within(10).of(95)
+      end
+    end
   end
 
   describe 'tags' do

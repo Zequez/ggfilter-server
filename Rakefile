@@ -73,4 +73,9 @@ namespace :games do
       end
     end
   end
+
+  desc 'Compute system requirements index centiles'
+  task :compute_sysreq_index_centiles => :environment do
+    Game.compute_sysreq_index_centiles
+  end
 end

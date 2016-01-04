@@ -62,7 +62,7 @@ class GamesController < ApplicationController
       'playtime_mean', 'playtime_median', 'playtime_sd', 'playtime_rsd', 'playtime_ils',
       'playtime_mean_ftb', 'playtime_median_ftb',
       'steam_thumbnail', 'images', 'videos',
-      'system_requirements', 'sysreq_video_index'
+      'system_requirements', 'sysreq_video_index', 'sysreq_index_centile',
     ]
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160102195352) do
+ActiveRecord::Schema.define(version: 20160104000808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160102195352) do
     t.integer  "vr",                           default: 0,  null: false
     t.string   "sysreq_video_tokens",          default: "", null: false
     t.integer  "sysreq_video_index"
+    t.integer  "sysreq_index_centile"
   end
 
   create_table "gpus", force: :cascade do |t|
