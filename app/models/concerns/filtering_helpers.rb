@@ -1,31 +1,17 @@
 module FilteringHelpers
   extend ActiveSupport::Concern
 
-  included do
+  class_methods do
+    def register_filter(filter_name, filter_type)
 
-  end
-
-  module ClassMethods
-    def register_filter(filter_name, proc_block)
-      if proc_block.kind_of? Symbol
-        proc_block = method(proc_block).to_proc.curry.call(filter_name)
-      end
+      raise "No such filter type #{filter_type}" unless respond_to? filter_type
 
       @@filters ||= {}
-      @@filters[filter_name] = proc_block
-      scope :"filter_by_#{filter_name}", proc_block
-    end
+      @@filters[filter_name] = filter_type
 
-    def register_sort(sort_name, proc_block)
-      (@sorts ||= []) << sort_name
-      scope :"sort_by_#{sort_name}", proc_block
-    end
-
-    def register_simple_sort(name, column_name = nil)
-      column_name ||= name
-      register_sort name, (lambda do |direction|
-        order "#{column_name} " + (direction == :asc ? 'ASC' : 'DESC')
-      end)
+      scope :"filter_by_#{filter_name}", (lambda{ |params|
+        apply_filter(filter_name, params)
+      })
     end
 
     def apply_filters(filters)
@@ -40,23 +26,25 @@ module FilteringHelpers
           filtered = filtered.apply_filter(name, params)
         end
       end
+
       filtered
     end
 
     def apply_filter(name, params)
       name = name.to_sym
-      if @@filters[name]
-        @@filters[name].call(params.symbolize_keys)
+      raise "No such filter #{name}" unless @@filters[name]
+      if ( condition = method(@@filters[name]).call(name, params.symbolize_keys) )
+        filter_and_or_highlight name, params, condition
       else
-        raise "Filter #{name} doesn't"
+        scope
       end
     end
 
     # Condition and name should be sanitized!
-    def filter_and_or_highlight(name, filter, condition)
+    def filter_and_or_highlight(name, params, condition)
       scope = all
 
-      if not filter[:highlight]
+      if not params[:highlight]
         scope.where(condition)
       else
         condition_str = condition.kind_of?(Array) ? sanitize_sql_array(condition) : condition

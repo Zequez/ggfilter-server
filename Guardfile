@@ -28,6 +28,10 @@ guard :rspec, cmd: "spring rspec" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
+  # Other files
+  watch(%r{^app/models/concerns/filtering_helpers\.rb$}) { "spec/models/game_spec.rb" }
+  # watch(%r{^lib/game_filters\.rb$}) { "spec/models/game_spec.rb" }
+
   # Feel free to open issues for suggestions and improvements
 
   # RSpec files

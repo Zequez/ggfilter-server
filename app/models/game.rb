@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   extend FriendlyId
+  include GameFilters
   include FilteringHelpers
   include SimpleFlaggableColumn
   include GetForXScraping
@@ -34,147 +35,31 @@ class Game < ActiveRecord::Base
   ### Filters ###
   ###############
 
-  # Input: value
-  def self.exact_filter(column, filter)
-    filter_and_or_highlight(:steam_id, filter, ["#{column} = ?",filter[:value]])
-  end
+  register_filter :name,                 :name_filter
+  register_filter :tags,                 :tags_filter
+  register_filter :steam_id,             :exact_filter
+  register_filter :steam_price,          :range_filter
+  register_filter :metacritic,           :range_filter
+  register_filter :steam_reviews_count,  :range_filter
+  register_filter :steam_reviews_ratio,  :range_filter
 
-  # Input: gt, lt
-  def self.range_filter(column, filter)
-    vals = []
-    conds = []
-    gt = filter[:gt]
-    lt = filter[:lt]
+  register_filter :lowest_steam_price,   :range_filter
+  register_filter :steam_discount,       :range_filter
 
-    if gt.kind_of? Numeric
-      conds << "#{column} >= ?"
-      vals << gt
-    end
+  register_filter :playtime_mean,        :range_filter
+  register_filter :playtime_median,      :range_filter
+  register_filter :playtime_rsd,         :range_filter
+  register_filter :playtime_mean_ftb,    :range_filter
+  register_filter :playtime_median_ftb,  :range_filter
 
-    if lt.kind_of? Numeric
-      conds << "#{column} <= ?"
-      vals << lt
-    end
+  register_filter :controller_support,   :range_filter
+  register_filter :platforms,            :boolean_filter
+  register_filter :features,             :boolean_filter
+  register_filter :players,              :boolean_filter
+  register_filter :vr,                   :boolean_filter
 
-    if conds.empty?
-      scope
-    else
-      filter_and_or_highlight column, filter, [conds.join(' AND '), *vals]
-    end
-  end
-
-  # Input: value, "or" ("and" by default)
-  def self.boolean_filter(column, filter)
-    val = filter[:value]
-
-    if val.kind_of?(Fixnum) and val > 0
-      if filter[:or]
-        vals = [val]
-      else
-        vals = []
-        n = 1
-        (Math.log2(val).ceil+1).times do
-          vals.push(n) if n & val > 0
-          n = n << 1
-        end
-      end
-
-      conditions = [vals.map{|v| "#{column} & ? > 0" }.join(' AND '), *vals]
-
-      filter_and_or_highlight column, filter, conditions
-    else
-      scope
-    end
-  end
-
-  # Sort by this http://stackoverflow.com/questions/21104366/how-to-get-position-of-regexp-match-in-string-in-postgresql
-  # Input: value
-  register_filter :name, (lambda do |filter|
-    value = filter[:value].to_s.parameterize.split('-')
-
-    regex = value.map do |v|
-      if v =~ /^\d+$/
-        roman = RomanNumerals.to_roman(Integer v).downcase
-        v = "(#{v}|#{roman})"
-      end
-      # [[:<:]] begining of a word
-      '[[:<:]]' + v + '.*?'
-    end.join
-
-    condition = sanitize_sql_array(["name_slug ~ ?", regex])
-
-    filter_and_or_highlight(:name, filter, condition)
-  end)
-
-  register_filter :tags, (lambda do |filter|
-    tags = filter[:tags]
-    if tags.kind_of? Array
-      tags.reject!{ |t| !t.kind_of?(Fixnum) }
-      tags.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
-      condition = tags.map{ |id| "tags ~ '#{id}'" }.join(' AND ')
-      filter_and_or_highlight(:tags, filter, condition)
-    else
-      all
-    end
-  end)
-
-  register_filter :steam_id, :exact_filter
-  register_filter :steam_price, :range_filter
-  register_filter :metacritic, :range_filter
-  register_filter :steam_reviews_count, :range_filter
-  register_filter :steam_reviews_ratio, :range_filter
-
-  register_filter :lowest_steam_price, :range_filter
-  register_filter :steam_discount, :range_filter
-
-  register_filter :playtime_mean, :range_filter
-  register_filter :playtime_median, :range_filter
-  register_filter :playtime_rsd, :range_filter
-  register_filter :playtime_mean_ftb, :range_filter
-  register_filter :playtime_median_ftb, :range_filter
-
-  register_filter :controller_support, :range_filter
-
-  register_filter :platforms, :boolean_filter
-  register_filter :features, :boolean_filter
-  register_filter :players, :boolean_filter
-  register_filter :vr, :boolean_filter
-
-  register_filter :sysreq_video_index, :range_filter
-
-  register_filter :system_requirements, (lambda do |filter|
-    @@videos = begin
-      syst = Game.pluck(:steam_id, :system_requirements)
-      # syst = JSON.load(File.read(Rails.root + 'spec/fixtures/system_req_examples.json'))
-      syst.inject([]) do |arr, value|
-        s = value[1]
-        val = ''
-        val += s[:minimum][:video_card] if s[:minimum] and s[:minimum][:video_card]
-        val += s[:recommended][:video_card] if s[:recommended] and s[:recommended][:video_card]
-        a = [value[0], val]
-        arr.push(a)
-        arr
-      end
-    end
-
-    if filter[:value]
-      query = Regexp.new(filter[:value], 'i')
-      L query
-      ids = @@videos.inject([]) do |arr, val|
-        arr.push(val[0].to_i) if val[1] =~ query
-        arr
-      end
-      L ids.size
-      where(steam_id: ids)
-      # L syst.select{|s| s['minimum'] query}.keys
-    else
-      all
-    end
-  end)
-
-
-  register_simple_sort :name, :name_slug
-
+  register_filter :sysreq_video_index,   :range_filter
+  # register_filter :system_requirements,  :system_requirements_filter
 
   ### Computed attributes ###
   ###########################
