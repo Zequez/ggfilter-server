@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104000808) do
+ActiveRecord::Schema.define(version: 20160912213105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "filters", force: :cascade do |t|
+    t.string   "sid",                        null: false
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "user_id"
+    t.boolean  "official",   default: false, null: false
+    t.text     "filter",     default: "{}",  null: false
+    t.integer  "visits",     default: 0,     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "filters", ["sid"], name: "index_filters_on_sid", using: :btree
+  add_index "filters", ["slug"], name: "index_filters_on_slug", using: :btree
+  add_index "filters", ["user_id"], name: "index_filters_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at",                                null: false
@@ -120,4 +136,5 @@ ActiveRecord::Schema.define(version: 20160104000808) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "filters", "users"
 end
