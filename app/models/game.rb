@@ -1,3 +1,59 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id                           :integer          not null, primary key
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  name                         :string
+#  steam_name                   :string
+#  steam_id                     :integer
+#  steam_price                  :integer
+#  steam_sale_price             :integer
+#  steam_reviews_ratio          :integer
+#  steam_reviews_count          :integer
+#  steam_thumbnail              :string
+#  released_at                  :datetime
+#  steam_list_scraped_at        :datetime
+#  platforms                    :integer          default(0), not null
+#  name_slug                    :string
+#  tags                         :string
+#  genre                        :string
+#  dlc_count                    :integer
+#  steam_achievements_count     :integer
+#  audio_languages              :string
+#  subtitles_languages          :string
+#  metacritic                   :integer
+#  esrb_rating                  :string
+#  videos                       :text
+#  images                       :text
+#  summary                      :text
+#  early_access                 :boolean
+#  system_requirements          :text
+#  players                      :integer
+#  controller_support           :integer
+#  features                     :integer
+#  positive_steam_reviews_count :integer
+#  negative_steam_reviews_count :integer
+#  steam_game_scraped_at        :datetime
+#  positive_steam_reviews       :text
+#  negative_steam_reviews       :text
+#  steam_reviews_scraped_at     :datetime
+#  lowest_steam_price           :integer
+#  steam_discount               :integer
+#  playtime_mean                :float
+#  playtime_median              :float
+#  playtime_sd                  :float
+#  playtime_rsd                 :float
+#  playtime_ils                 :string
+#  playtime_mean_ftb            :float
+#  playtime_median_ftb          :float
+#  vr                           :integer          default(0), not null
+#  sysreq_video_tokens          :string           default(""), not null
+#  sysreq_video_index           :integer
+#  sysreq_index_centile         :integer
+#
+
 class Game < ActiveRecord::Base
   extend FriendlyId
   include GameFilters
@@ -42,6 +98,7 @@ class Game < ActiveRecord::Base
   register_filter :metacritic,           :range_filter
   register_filter :steam_reviews_count,  :range_filter
   register_filter :steam_reviews_ratio,  :range_filter
+  register_filter :released_at,          :relative_date_filter
 
   register_filter :lowest_steam_price,   :range_filter
   register_filter :steam_discount,       :range_filter
@@ -147,7 +204,6 @@ class Game < ActiveRecord::Base
     stats = DescriptiveStatistics::Stats.new(indexes)
     id_indexes.each do |a|
       percentile = stats.percentile_from_value a[1]
-      L percentile
       Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
     end
   end

@@ -68,6 +68,38 @@ describe GameFilters do
 
       expect(games).to match_array [g2, g3]
     end
+
+    it 'should accept date-columns and filter from unix timestamps' do
+      _g1 = create :game, released_at: 1.years.ago
+      g2 = create :game, released_at: 3.years.ago
+      g3 = create :game, released_at: 4.years.ago
+      _g4 = create :game, released_at: 7.years.ago
+
+      games = Game.where Game.range_filter(:released_at, {
+        gt: 5.years.ago.to_i,
+        lt: 2.years.ago.to_i,
+        filter: true
+      })
+
+      expect(games).to match_array [g2, g3]
+    end
+  end
+
+  describe '.relative_date_range_filter' do
+    it 'should accept date-columns and filter from time in seconds relative to now' do
+      _g1 = create :game, released_at: 1.years.ago
+      g2 = create :game, released_at: 3.years.ago
+      g3 = create :game, released_at: 4.years.ago
+      _g4 = create :game, released_at: 7.years.ago
+
+      games = Game.where Game.relative_date_filter(:released_at, {
+        gt: 5.years.to_i,
+        lt: 2.years.to_i,
+        filter: true
+      })
+
+      expect(games).to match_array [g2, g3]
+    end
   end
 
   describe '.boolean_filter' do

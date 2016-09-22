@@ -8,23 +8,34 @@ module GameFilters
     end
 
     # Input: gt, lt
-    def range_filter(column, filter)
+    def range_filter(column, filter, relative_time_mode = false)
       vals = []
       conds = []
       gt = filter[:gt]
       lt = filter[:lt]
+      is_date_column = columns_hash[column.to_s].type == :datetime
 
       if gt.kind_of? Numeric
+        if is_date_column
+          gt = relative_time_mode ? Time.now - gt : Time.at(gt)
+        end
         conds << "#{column} >= ?"
         vals << gt
       end
 
       if lt.kind_of? Numeric
+        if is_date_column
+          lt = relative_time_mode ? Time.now - lt : Time.at(lt)
+        end
         conds << "#{column} <= ?"
         vals << lt
       end
 
       conds.empty? ? nil : [conds.join(' AND '), *vals]
+    end
+
+    def relative_date_filter(column, filter)
+      range_filter(column, filter, true)
     end
 
     # Input: value, "or" ("and" by default)
