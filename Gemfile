@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 #source 'http://rails-assets.org'
 
-ruby '2.1.5'
+ruby '2.3.1'
 
 
 # Scrapers!
@@ -10,7 +10,7 @@ gem 'scrapers', path: '../scrapers'
 gem 'ggfilter_client', path: '../client/gem'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '~> 4.2.3'
 # Use Posgtres as the database for Active Record
 gem 'pg'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -49,6 +49,8 @@ group :development, :test, :assets do
   gem 'breakpoint'
   # Grids for SASS
   gem 'susy', '~> 2.0'
+  # Annotate models with the schema information
+  gem 'annotate'
 end
 
 # Models

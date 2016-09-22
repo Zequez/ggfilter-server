@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: sysreq_tokens
+#
+#  id            :integer          not null, primary key
+#  name          :string           not null
+#  value         :integer
+#  token_type    :integer          default(0), not null
+#  games_count   :integer          default(0), not null
+#  year_analysis :boolean          default(FALSE), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  linked_to     :string
+#  source        :integer          default(0), not null
+#
+
 class SysreqToken < ActiveRecord::Base
   include SimpleEnum
 
