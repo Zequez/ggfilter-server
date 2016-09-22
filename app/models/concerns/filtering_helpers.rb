@@ -33,7 +33,8 @@ module FilteringHelpers
     def apply_filter(name, params)
       name = name.to_sym
       raise "No such filter #{name}" unless @@filters[name]
-      if ( condition = method(@@filters[name]).call(name, params.symbolize_keys) )
+      params = params.symbolize_keys
+      if ( condition = method(@@filters[name]).call(name, params) )
         filter_and_or_highlight name, params, condition
       else
         scope
