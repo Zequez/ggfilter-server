@@ -30,6 +30,18 @@ class GamesController < ApplicationController
     render json: @game
   end
 
+  def params
+    @params ||= begin
+      if super[:filter]
+        ActiveSupport::HashWithIndifferentAccess.new JSON.parse(super[:filter])
+      else
+        super
+      end
+    rescue JSON::ParserError
+      super
+    end
+  end
+
   def index
     @games = Game
       .select(columns)
