@@ -38,17 +38,11 @@ gem 'kaminari'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 5.0'
+  gem 'sass-rails'
   # Use Uglifier as compressor for JavaScript assets
   gem 'uglifier', '>= 1.3.0'
   # Use CoffeeScript for .coffee assets and views
   gem 'coffee-rails', '~> 4.1.0'
-  # Compass bindings for Rails
-  # gem 'compass-rails', github: 'Compass/compass-rails'
-  # Media queries sugar
-  gem 'breakpoint'
-  # Grids for SASS
-  gem 'susy', '~> 2.0'
   # Annotate models with the schema information
   gem 'annotate'
 end
