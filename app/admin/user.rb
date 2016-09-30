@@ -1,6 +1,15 @@
 ActiveAdmin.register User do
+  permit_params :email, :is_admin, :password, :password_confirmation
 
-  permit_params :email, :password, :password_confirmation
+  controller do
+    def update
+      if params[:user][:password].blank?
+        params[:user].delete('password')
+        params[:user].delete('password_confirmation')
+      end
+      super
+    end
+  end
 
 
   index do
@@ -19,8 +28,9 @@ ActiveAdmin.register User do
   filter :created_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs 'Admin Details' do
       f.input :email
+      f.input :is_admin
       f.input :password
       f.input :password_confirmation
     end
