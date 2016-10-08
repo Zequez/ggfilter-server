@@ -11,26 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930204739) do
+ActiveRecord::Schema.define(version: 20160930212634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "filters", force: :cascade do |t|
-    t.string   "sid",                        null: false
+    t.string   "sid",                           null: false
     t.string   "name"
-    t.string   "slug"
+    t.string   "user_slug"
     t.integer  "user_id"
-    t.boolean  "official",   default: false, null: false
-    t.text     "filter",     default: "{}",  null: false
-    t.integer  "visits",     default: 0,     null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "official",      default: false, null: false
+    t.text     "filter",        default: "{}",  null: false
+    t.integer  "visits",        default: 0,     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "official_slug"
   end
 
-  add_index "filters", ["sid"], name: "index_filters_on_sid", using: :btree
-  add_index "filters", ["slug"], name: "index_filters_on_slug", using: :btree
+  add_index "filters", ["official_slug"], name: "index_filters_on_official_slug", unique: true, using: :btree
+  add_index "filters", ["sid"], name: "index_filters_on_sid", unique: true, using: :btree
   add_index "filters", ["user_id"], name: "index_filters_on_user_id", using: :btree
+  add_index "filters", ["user_slug"], name: "index_filters_on_user_slug", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at",                                null: false

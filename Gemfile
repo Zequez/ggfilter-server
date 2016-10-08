@@ -35,6 +35,8 @@ gem 'haml-rails'
 gem 'descriptive-statistics'
 # Pagination!
 gem 'kaminari'
+# Turn blanks to nils
+gem 'nilify_blanks'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets

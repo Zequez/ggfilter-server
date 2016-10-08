@@ -217,6 +217,9 @@ GEM
     minitest (5.9.1)
     multi_json (1.11.2)
     nenv (0.2.0)
+    nilify_blanks (1.2.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -402,6 +405,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   json_spec
   kaminari
+  nilify_blanks
   nokogiri
   pg
   poltergeist
