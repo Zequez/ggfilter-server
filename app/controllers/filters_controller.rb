@@ -9,13 +9,9 @@ class FiltersController < ApplicationController
   end
 
   def update
-    L session.id
-    L params[:id]
     @filter = Filter.find_by_sid!(params[:id])
-    L @filter
     if (current_user && @filter.user == current_user) || is_admin?
       @filter.update! filter_params
-      L @filter
       render json: @filter
     else
       render json: {}, status: :unauthorized
@@ -23,7 +19,6 @@ class FiltersController < ApplicationController
   end
 
   def show
-    L session.id
     @filter = if params[:id] != '0'
       Filter.find_by_sid!(params[:id])
     elsif params[:official_slug]
