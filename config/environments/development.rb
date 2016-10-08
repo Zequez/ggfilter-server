@@ -40,8 +40,10 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_dispatch.default_headers.merge!({
-    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Allow-Origin' => 'http://localhost:8001',
     'Access-Control-Request-Method' => '*',
-    'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept'
+    'Access-Control-Allow-Methods' => 'POST, PATCH, DELETE, GET, OPTIONS',
+    'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, X-CSRF-Token',
+    'Access-Control-Allow-Credentials' => 'true',
   })
 end
