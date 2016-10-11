@@ -193,4 +193,27 @@ describe FiltersController, type: :controller do
     # TODO:
     # it "should allow you to get a filter by it's session_id"
   end
+
+  describe 'index' do
+    it 'should list all the official filters by default' do
+      f1 = create :filter, official_slug: 'potato-galaxy', visits: 10
+      f2 = create :filter, official_slug: 'amasa', visits: 30
+      f3 = create :filter, official_slug: 'mayonesa', visits: 5
+      create :filter, official_slug: nil
+      get :index
+      expect(response.success?).to eq true
+      expect(JSON.parse(response.body).map{|v| v['sid']}).to eq [f2.sid, f1.sid, f3.sid]
+    end
+
+    it 'should list all the filters by certain user' do
+      u1 = create :user
+      u2 = create :user
+      f1 = create :filter, official_slug: 'potato-galaxy', user: u1
+      create :filter, official_slug: 'amasa', user: u2
+      f3 = create :filter, official_slug: 'mayonesa', user: u1
+      f4 = create :filter, official_slug: nil, user: u1
+      get :index, user_id: u1.id
+      expect(JSON.parse(response.body).map{|v| v['sid']}).to eq [f1.sid, f3.sid, f4.sid]
+    end
+  end
 end

@@ -1,4 +1,13 @@
 class FiltersController < ApplicationController
+  def index
+    if params[:user_id]
+      @filters = Filter.where(user_id: params[:user_id])
+    else
+      @filters = Filter.where.not(official_slug: nil).order('visits DESC')
+    end
+    render json: @filters
+  end
+
   def create
     @filter = Filter.new(filter_params)
     if current_user
