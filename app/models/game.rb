@@ -99,6 +99,7 @@ class Game < ActiveRecord::Base
   register_filter :steam_reviews_count,  :range_filter
   register_filter :steam_reviews_ratio,  :range_filter
   register_filter :released_at,          :relative_date_filter
+  register_filter :released_at_absolute, :range_filter, :released_at
 
   register_filter :lowest_steam_price,   :range_filter
   register_filter :steam_discount,       :range_filter

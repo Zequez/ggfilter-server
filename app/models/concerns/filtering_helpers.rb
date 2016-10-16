@@ -2,12 +2,15 @@ module FilteringHelpers
   extend ActiveSupport::Concern
 
   class_methods do
-    def register_filter(filter_name, filter_type)
+    def register_filter(filter_name, filter_type, filter_column = nil)
+      filter_column ||= filter_name
 
       raise "No such filter type #{filter_type}" unless respond_to? filter_type
 
       @@filters ||= {}
+      @@filters_columns ||= {}
       @@filters[filter_name] = filter_type
+      @@filters_columns[filter_name] = filter_column
 
       scope :"filter_by_#{filter_name}", (lambda{ |params|
         apply_filter(filter_name, params)
@@ -34,7 +37,9 @@ module FilteringHelpers
       name = name.to_sym
       raise "No such filter #{name}" unless @@filters[name]
       params = params.symbolize_keys
-      if ( condition = method(@@filters[name]).call(name, params) )
+      column = @@filters_columns[name]
+      L column
+      if ( condition = method(@@filters[name]).call(column, params) )
         filter_and_or_highlight name, params, condition
       else
         scope
