@@ -11,21 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930212634) do
+ActiveRecord::Schema.define(version: 20161023191729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "filters", force: :cascade do |t|
-    t.string   "sid",                           null: false
+    t.string   "sid",                          null: false
     t.string   "name"
     t.string   "user_slug"
     t.integer  "user_id"
-    t.boolean  "official",      default: false, null: false
-    t.text     "filter",        default: "{}",  null: false
-    t.integer  "visits",        default: 0,     null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.text     "filter",        default: "{}", null: false
+    t.integer  "visits",        default: 0,    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "official_slug"
   end
 
@@ -35,44 +34,10 @@ ActiveRecord::Schema.define(version: 20160930212634) do
   add_index "filters", ["user_slug"], name: "index_filters_on_user_slug", using: :btree
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "name"
-    t.string   "steam_name"
-    t.integer  "steam_id"
-    t.integer  "steam_price"
-    t.integer  "steam_sale_price"
-    t.integer  "steam_reviews_ratio"
-    t.integer  "steam_reviews_count"
-    t.string   "steam_thumbnail"
-    t.datetime "released_at"
-    t.datetime "steam_list_scraped_at"
-    t.integer  "platforms",                    default: 0,  null: false
     t.string   "name_slug"
-    t.string   "tags"
-    t.string   "genre"
-    t.integer  "dlc_count"
-    t.integer  "steam_achievements_count"
-    t.string   "audio_languages"
-    t.string   "subtitles_languages"
-    t.integer  "metacritic"
-    t.string   "esrb_rating"
-    t.text     "videos"
-    t.text     "images"
-    t.text     "summary"
-    t.boolean  "early_access"
-    t.text     "system_requirements"
-    t.integer  "players"
-    t.integer  "controller_support"
-    t.integer  "features"
-    t.integer  "positive_steam_reviews_count"
-    t.integer  "negative_steam_reviews_count"
-    t.datetime "steam_game_scraped_at"
-    t.text     "positive_steam_reviews"
-    t.text     "negative_steam_reviews"
-    t.datetime "steam_reviews_scraped_at"
-    t.integer  "lowest_steam_price"
-    t.integer  "steam_discount"
     t.float    "playtime_mean"
     t.float    "playtime_median"
     t.float    "playtime_sd"
@@ -80,26 +45,52 @@ ActiveRecord::Schema.define(version: 20160930212634) do
     t.string   "playtime_ils"
     t.float    "playtime_mean_ftb"
     t.float    "playtime_median_ftb"
-    t.integer  "vr",                           default: 0,  null: false
-    t.string   "sysreq_video_tokens",          default: "", null: false
+    t.string   "sysreq_video_tokens",  default: "", null: false
     t.integer  "sysreq_video_index"
     t.integer  "sysreq_index_centile"
   end
 
   create_table "gpus", force: :cascade do |t|
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "name"
-    t.integer  "value"
-    t.string   "tokenized_name"
+    t.string  "name"
+    t.integer "value", null: false
   end
 
-  create_table "named_filters", force: :cascade do |t|
+  create_table "steam_games", force: :cascade do |t|
+    t.integer  "steam_id",                           null: false
     t.string   "name"
-    t.string   "columns"
-    t.text     "filters"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "tags"
+    t.string   "genre"
+    t.text     "summary"
+    t.datetime "released_at"
+    t.string   "thumbnail"
+    t.text     "videos"
+    t.text     "images"
+    t.integer  "price"
+    t.integer  "sale_price"
+    t.integer  "reviews_ratio"
+    t.integer  "reviews_count"
+    t.integer  "positive_reviews_count"
+    t.integer  "negative_reviews_count"
+    t.text     "positive_reviews"
+    t.text     "negative_reviews"
+    t.integer  "dlc_count"
+    t.integer  "achievements_count"
+    t.string   "audio_languages"
+    t.string   "subtitles_languages"
+    t.integer  "metacritic"
+    t.string   "esrb_rating"
+    t.boolean  "early_access"
+    t.text     "system_requirements"
+    t.integer  "players",                default: 0, null: false
+    t.integer  "controller_support",     default: 0, null: false
+    t.integer  "features",               default: 0, null: false
+    t.integer  "platforms",              default: 0, null: false
+    t.integer  "vr_platforms",           default: 0, null: false
+    t.integer  "vr_mode",                default: 0, null: false
+    t.integer  "vr_controllers",         default: 0, null: false
+    t.datetime "game_scraped_at"
+    t.datetime "list_scraped_at"
+    t.datetime "reviews_scraped_at"
   end
 
   create_table "sysreq_tokens", force: :cascade do |t|
@@ -113,12 +104,6 @@ ActiveRecord::Schema.define(version: 20160930212634) do
     t.string   "linked_to"
     t.integer  "source",        default: 0,     null: false
   end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name", null: false
-  end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -139,5 +124,4 @@ ActiveRecord::Schema.define(version: 20160930212634) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "filters", "users"
 end

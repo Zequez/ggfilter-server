@@ -7,7 +7,6 @@
 #  name          :string
 #  user_slug     :string
 #  user_id       :integer
-#  official      :boolean          default(FALSE), not null
 #  filter        :text             default("{}"), not null
 #  visits        :integer          default(0), not null
 #  created_at    :datetime         not null
@@ -20,10 +19,6 @@
 #  index_filters_on_sid            (sid) UNIQUE
 #  index_filters_on_user_id        (user_id)
 #  index_filters_on_user_slug      (user_slug)
-#
-# Foreign Keys
-#
-#  fk_rails_f53aed9bb6  (user_id => users.id)
 #
 
 class Filter < ActiveRecord::Base
