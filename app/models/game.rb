@@ -52,7 +52,6 @@
 #  sysreq_video_tokens          :string           default(""), not null
 #  sysreq_video_index           :integer
 #  sysreq_index_centile         :integer
-#
 
 class Game < ActiveRecord::Base
   extend FriendlyId

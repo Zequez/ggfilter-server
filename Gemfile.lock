@@ -26,15 +26,11 @@ GIT
       railties (>= 3.2, < 5)
       responders
 
-PATH
-  remote: ../client/gem
+GIT
+  remote: https://Zequez@bitbucket.org/Zequez/ggfilter-scrapers.git
+  revision: 8aacf577c94f230e2d0dd3ddd4c59d99a805cd1c
   specs:
-    ggfilter_client (0.0.1)
-
-PATH
-  remote: ../scrapers
-  specs:
-    scrapers (0.1.0)
+    scrapers (0.2.0)
       activerecord (>= 4.2)
       awesome_print (~> 1.6)
       colorize (~> 0.7)
@@ -42,6 +38,11 @@ PATH
       nokogiri (~> 1.6)
       simple_flaggable_column (~> 0.0.2)
       typhoeus (~> 0.7)
+
+PATH
+  remote: ../client/gem
+  specs:
+    ggfilter_client (0.0.1)
 
 GEM
   remote: https://rubygems.org/
