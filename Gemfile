@@ -10,7 +10,7 @@ gem 'scrapers', git: 'https://Zequez@bitbucket.org/Zequez/ggfilter-scrapers.git'
 gem 'ggfilter_client', path: '../client/gem'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.3'
+gem 'rails', '~> 5.0'
 # Use Posgtres as the database for Active Record
 gem 'pg'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -25,9 +25,9 @@ gem 'sprockets-es6'
 gem 'devise'
 # Users permissions
 gem 'cancancan'
-# Needed by activeadmin. Shoudn't have updated to 4.2 *sigh*
-gem 'inherited_resources', github: 'josevalim/inherited_resources'
-# Administration panel. Cutting edge for Rails 4.2
+# Needed by activeadmin
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+# Administration panel. Cutting edge for Rails 5
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 # Sexy HTML!
 gem 'haml-rails'
@@ -54,7 +54,7 @@ end
 # Sluggification of attributes
 gem 'friendly_id'
 # Simple binary flags!
-gem 'simple_flaggable_column'
+# gem 'simple_flaggable_column'
 
 # Other
 #####################
