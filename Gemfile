@@ -58,10 +58,6 @@ gem 'friendly_id'
 
 # Other
 #####################
-# To parse HTML, for the scraper
-gem 'nokogiri'
-# Concurrent HTTP requests handler
-gem 'typhoeus'
 # Use Unicorn as the app server
 gem 'unicorn'
 # Convert integers to roman numerals, for searching purposes
@@ -83,8 +79,6 @@ group :development, :test do
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
   # Pretty prints
   gem 'awesome_print'
 
@@ -101,6 +95,11 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Create random text for testing, like lorem ipsum or random names
   gem 'forgery'
+end
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console'
 end
 
 group :test do
