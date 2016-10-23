@@ -70,43 +70,40 @@ gem 'roman-numerals'
 gem 'colorize'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  # Make Rspec use spring to load faster
-  gem 'spring-commands-rspec'
+  # Rspec Core
+  gem 'rspec-core'
   # Awesome test framework
   gem 'rspec-rails'
-  # Guard plugin for Rspec
-  gem 'guard-rspec', require: false
-  # Models factories for Rspec
-  gem 'factory_girl_rails'
-  # Create random text for testing, like lorem ipsum or random names
-  gem 'forgery'
-  # BDD test framework
-  gem 'capybara'
   # Add some RSPEC niceties
   gem 'rspec-its'
   # Mocks for RSPEC
   gem 'rspec-mocks'
+  # Guard plugin for Rspec
+  gem 'guard-rspec', require: false
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
   # Pretty prints
   gem 'awesome_print'
-  # PhantomJS Test runner
-  gem 'poltergeist'
+
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  # Make Rspec use spring to load faster
+  gem 'spring-commands-rspec'
   # Multiple database truncation and transaction methods for tests
   gem 'database_cleaner'
-  # Handle JSON on specs
-  gem 'json_spec'
-  # Virtual models for tests
-  gem 'with_model'
+
+
+  # Models factories for Rspec
+  gem 'factory_girl_rails'
+  # Create random text for testing, like lorem ipsum or random names
+  gem 'forgery'
 end
 
 group :test do
-  gem 'webmock'                 # To fake web requests on tests
-  gem 'vcr'
 end
 
 # Production
