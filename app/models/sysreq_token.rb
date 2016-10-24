@@ -160,8 +160,6 @@ class SysreqToken < ActiveRecord::Base
       name_values = tokens.map{ |t| Array.new t.games_count, name_to_linear_value.call(t.name) }.flatten
       values = tokens.map{ |t| Array.new t.games_count, t.value }.flatten
       lr = SimpleLinearRegression.new name_values, values
-      L lr.slope
-      L lr.y_intercept
       self.value = (lr.y_intercept + lr.slope * name_to_linear_value.call(name)).round
       self.source = :inferred_projection
     end

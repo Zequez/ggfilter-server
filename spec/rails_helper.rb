@@ -39,6 +39,9 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+
   # This is so the backtrace is shorter and only shows the project code
   # You might need to comment this out if you're doing some really hardcore debugging
   config.backtrace_exclusion_patterns << /\/gems\//
@@ -46,7 +49,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.include Devise::TestHelpers, type: :controller
+  # config.include Devise::Test::ControllerHelpers
 
 
   # Transactions don't work with JS test drivers

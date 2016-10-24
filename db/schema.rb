@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023202444) do
+ActiveRecord::Schema.define(version: 20161023234237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +25,11 @@ ActiveRecord::Schema.define(version: 20161023202444) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "official_slug"
+    t.index ["official_slug"], name: "index_filters_on_official_slug", unique: true, using: :btree
+    t.index ["sid"], name: "index_filters_on_sid", unique: true, using: :btree
+    t.index ["user_id"], name: "index_filters_on_user_id", using: :btree
+    t.index ["user_slug"], name: "index_filters_on_user_slug", using: :btree
   end
-
-  add_index "filters", ["official_slug"], name: "index_filters_on_official_slug", unique: true, using: :btree
-  add_index "filters", ["sid"], name: "index_filters_on_sid", unique: true, using: :btree
-  add_index "filters", ["user_id"], name: "index_filters_on_user_id", using: :btree
-  add_index "filters", ["user_slug"], name: "index_filters_on_user_slug", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -48,11 +46,15 @@ ActiveRecord::Schema.define(version: 20161023202444) do
     t.string   "sysreq_video_tokens",  default: "", null: false
     t.integer  "sysreq_video_index"
     t.integer  "sysreq_index_centile"
+    t.integer  "steam_game_id"
+    t.index ["steam_game_id"], name: "index_games_on_steam_game_id", using: :btree
   end
 
   create_table "gpus", force: :cascade do |t|
     t.string  "name"
-    t.integer "value", null: false
+    t.integer "value",          null: false
+    t.string  "tokenized_name"
+    t.index ["tokenized_name"], name: "index_gpus_on_tokenized_name", unique: true, using: :btree
   end
 
   create_table "steam_games", force: :cascade do |t|
@@ -107,9 +109,8 @@ ActiveRecord::Schema.define(version: 20161023202444) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
+    t.index ["name"], name: "index_tags_on_name", using: :btree
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -125,9 +126,9 @@ ActiveRecord::Schema.define(version: 20161023202444) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "is_admin",               default: false, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
+  add_foreign_key "games", "steam_games"
 end

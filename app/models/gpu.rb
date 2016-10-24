@@ -2,9 +2,14 @@
 #
 # Table name: gpus
 #
-#  id    :integer          not null, primary key
-#  name  :string
-#  value :integer          not null
+#  id             :integer          not null, primary key
+#  name           :string
+#  value          :integer          not null
+#  tokenized_name :string
+#
+# Indexes
+#
+#  index_gpus_on_tokenized_name  (tokenized_name) UNIQUE
 #
 
 class Gpu < Scrapers::Benchmarks::Gpu

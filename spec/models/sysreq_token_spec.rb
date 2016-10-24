@@ -3,9 +3,9 @@ describe SysreqToken, type: :model do
     it 'should read the games tokens and generate the rows' do
       create :sysreq_token, name: 'intel4000', games_count: 300, token_type: :gpu
 
-      create :game, system_requirements: { minimum: { video_card: 'intel hd4000 nvidia 980 ati 3000' } }
-      create :game, system_requirements: { minimum: { video_card: 'intel hd4400 nvidia 930 ati 3000' } }
-      create :game, system_requirements: { minimum: { video_card: 'intel hd4000 nvidia 910 ati 3000' } }
+      create :steam_game, system_requirements: { minimum: { video_card: 'intel hd4000 nvidia 980 ati 3000' } }
+      create :steam_game, system_requirements: { minimum: { video_card: 'intel hd4400 nvidia 930 ati 3000' } }
+      create :steam_game, system_requirements: { minimum: { video_card: 'intel hd4000 nvidia 910 ati 3000' } }
 
       SysreqToken.analyze_games
       tokens = SysreqToken.all.order('games_count ASC, name ASC')
@@ -27,9 +27,9 @@ describe SysreqToken, type: :model do
 
   describe '#games' do
     it 'should return all the games with this token' do
-      g1 = create :game, system_requirements: { recommended: { video_card: 'intel hd4000' } }
-      g2 = create :game, system_requirements: { recommended: { video_card: 'intel hd4400' } }
-      g3 = create :game, system_requirements: { recommended: { video_card: 'intel hd4000' } }
+      g1 = create(:steam_game, system_requirements: { recommended: { video_card: 'intel hd4000' } }).game
+      g2 = create(:steam_game, system_requirements: { recommended: { video_card: 'intel hd4400' } }).game
+      g3 = create(:steam_game, system_requirements: { recommended: { video_card: 'intel hd4000' } }).game
 
       SysreqToken.analyze_games
       tokens = SysreqToken.all.order('games_count ASC')

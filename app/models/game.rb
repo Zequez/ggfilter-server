@@ -17,41 +17,25 @@
 #  sysreq_video_tokens  :string           default(""), not null
 #  sysreq_video_index   :integer
 #  sysreq_index_centile :integer
+#  steam_game_id        :integer
+#
+# Indexes
+#
+#  index_games_on_steam_game_id  (steam_game_id)
+#
+# Foreign Keys
+#
+#  fk_rails_11ce781341  (steam_game_id => steam_games.id)
 #
 
 class Game < ActiveRecord::Base
   extend FriendlyId
-  include GameFilters
   include FilteringHelpers
-  include SimpleFlaggableColumn
-  include GetForXScraping
-  include Scrapers::SteamList::GameExtension
-  include Scrapers::SteamGame::GameExtension
-  include Scrapers::SteamReviews::GameExtension
+  include GameFilters
 
   friendly_id :name, use: :slugged, slug_column: :name_slug
 
-  ### Scraping time selectors ###
-  ###############################
-
-  # If it was launched less than X ago,
-  # then scrap it if Y time has passed since the last scraping
-
-  get_for_x_scraping :steam_reviews, [
-    [1.week,  1.day],
-    [1.month, 1.week],
-    [1.year,  1.month],
-    [3.years, 3.months],
-    [         1.year]
-  ]
-
-  get_for_x_scraping :steam_game, [
-    [1.week,  1.day],
-    [1.month, 1.week],
-    [1.year,  1.month],
-    [3.years, 3.months],
-    [         1.year]
-  ]
+  belongs_to :steam_game, optional: true
 
   ### Filters ###
   ###############
@@ -64,7 +48,7 @@ class Game < ActiveRecord::Base
   register_filter :steam_reviews_count,  :range_filter
   register_filter :steam_reviews_ratio,  :range_filter
   register_filter :released_at,          :relative_date_filter
-  register_filter :released_at_absolute, :range_filter, :released_at
+  register_filter :released_at_absolute, :range_filter,         :released_at
 
   register_filter :lowest_steam_price,   :range_filter
   register_filter :steam_discount,       :range_filter
@@ -89,23 +73,24 @@ class Game < ActiveRecord::Base
   ###########################
 
   serialize :playtime_ils, JSON
-  before_save :compute_values
 
-  def compute_values(force = false)
-    if (
-      steam_price_changed? ||
-      steam_sale_price_changed? ||
-      positive_steam_reviews_changed? ||
-      negative_steam_reviews_changed? ||
-      force
-    )
-      compute_playtime_stats
-    end
+  def process_steam_game_data(steam_game, force = false)
+    # if (
+    #   steam_game.price_changed? ||
+    #   steam_game.sale_price_changed? ||
+    #   steam_game.positive_reviews_changed? ||
+    #   steam_game.negative_reviews_changed? ||
+    #   force
+    # )
+    #   game.compute_playtime_stats
+    # end
 
-    if system_requirements_changed? || force
+    if steam_game.system_requirements_changed? || force
       compute_sysreq_tokens
-      compute_sysreq_video_index
+      # game.compute_sysreq_video_index
     end
+
+    self.save!
   end
 
   def compute_playtime_stats
@@ -134,7 +119,7 @@ class Game < ActiveRecord::Base
   def compute_sysreq_tokens
     tokens = []
     ana = VideoCardAnalyzer.new
-    sysreq = system_requirements
+    sysreq = steam_game.system_requirements
     if sysreq
       if sysreq[:minimum] && sysreq[:minimum][:video_card]
         tokens.concat ana.tokens sysreq[:minimum][:video_card]
@@ -144,35 +129,35 @@ class Game < ActiveRecord::Base
       end
     end
 
-    tokens.push "year#{released_at.year}" if released_at
+    tokens.push "year#{steam_game.released_at.year}" if steam_game.released_at
 
     self.sysreq_video_tokens = tokens.uniq.join(' ')
   end
 
-  def compute_sysreq_video_index
-    heavier = /nvidia|amd|intel|mb/
-    tokens = SysreqToken.where(name: sysreq_video_tokens.split(' ')).where.not(value: nil)
-    if tokens.size > 0
-      values = []
-      tokens.each do |t|
-        values << t.value
-        if t.name =~ heavier
-          values << t.value
-        end
-      end
-      self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
-    end
-  end
-
-  def self.compute_sysreq_index_centiles
-    id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
-    indexes = id_indexes.map{ |a| a[1] }
-    stats = DescriptiveStatistics::Stats.new(indexes)
-    id_indexes.each do |a|
-      percentile = stats.percentile_from_value a[1]
-      Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
-    end
-  end
+  # def compute_sysreq_video_index
+  #   heavier = /nvidia|amd|intel|mb/
+  #   tokens = SysreqToken.where(name: sysreq_video_tokens.split(' ')).where.not(value: nil)
+  #   if tokens.size > 0
+  #     values = []
+  #     tokens.each do |t|
+  #       values << t.value
+  #       if t.name =~ heavier
+  #         values << t.value
+  #       end
+  #     end
+  #     self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
+  #   end
+  # end
+  #
+  # def self.compute_sysreq_index_centiles
+  #   id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
+  #   indexes = id_indexes.map{ |a| a[1] }
+  #   stats = DescriptiveStatistics::Stats.new(indexes)
+  #   id_indexes.each do |a|
+  #     percentile = stats.percentile_from_value a[1]
+  #     Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
+  #   end
+  # end
 
   ### Tags ###
   ############
@@ -203,10 +188,6 @@ class Game < ActiveRecord::Base
       texts.push s[:recommended][:video_card]
     end
     texts.join('|||')
-  end
-
-  def steam_url
-    "http://store.steampowered.com/app/#{steam_id}/"
   end
 
   def sysreq(type, value)
