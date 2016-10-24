@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023234237) do
+ActiveRecord::Schema.define(version: 20161024014622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20161023234237) do
     t.integer  "sysreq_video_index"
     t.integer  "sysreq_index_centile"
     t.integer  "steam_game_id"
+    t.integer  "lowest_steam_price"
+    t.integer  "steam_discount"
+    t.string   "tags"
     t.index ["steam_game_id"], name: "index_games_on_steam_game_id", using: :btree
   end
 

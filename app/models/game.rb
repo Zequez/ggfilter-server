@@ -18,6 +18,9 @@
 #  sysreq_video_index   :integer
 #  sysreq_index_centile :integer
 #  steam_game_id        :integer
+#  lowest_steam_price   :integer
+#  steam_discount       :integer
+#  tags                 :string
 #
 # Indexes
 #
@@ -73,34 +76,64 @@ class Game < ActiveRecord::Base
   ###########################
 
   serialize :playtime_ils, JSON
+  serialize :tags, JSON
 
-  def process_steam_game_data(steam_game, force = false)
-    # if (
-    #   steam_game.price_changed? ||
-    #   steam_game.sale_price_changed? ||
-    #   steam_game.positive_reviews_changed? ||
-    #   steam_game.negative_reviews_changed? ||
-    #   force
-    # )
-    #   game.compute_playtime_stats
-    # end
+  def self.create_from_steam_game(steam_game, extra_attributes)
+    if not find_by_name(steam_game.name)
+      attrs = {name: steam_game.name, steam_game: steam_game}.merge(extra_attributes)
+      create(attrs)
+    end
+  end
 
-    if steam_game.system_requirements_changed? || force
-      compute_sysreq_tokens
-      # game.compute_sysreq_video_index
+  def self.process_steam_game_data
+    Game
+      .all
+      .in_batches
+      .each_record(&:process_steam_game_data)
+      .save_all
+  end
+
+  def process_steam_game_data(changed_attributes = nil)
+    ca = changed_attributes
+
+    self.compute_simple_steam_values
+
+    if !ca || ca.includes?('tags')
+      self.compute_steam_game_tags
     end
 
-    self.save!
+    if (
+      !ca ||
+      ca.includes?('price') ||
+      ca.includes?('sale_price') ||
+      ca.includes?('positive_reviews') ||
+      ca.includes?('negative_reviews')
+    )
+      self.compute_playtime_stats
+    end
+
+    if !ca || ca.includes?('system_requirements')
+      self.compute_sysreq_tokens
+      self.compute_sysreq_video_index
+    end
+  end
+
+  def compute_simple_steam_values
+    sp = steam_game.price
+    ssp = steam_game.sale_price
+    self.lowest_steam_price = [sp, ssp].compact.min
+    self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
+  end
+
+  def compute_steam_game_tags
+    if steam_game.tags && !steam_game.tags.empty?
+      self.tags = steam_game.tags
+    end
   end
 
   def compute_playtime_stats
-    sp = steam_price
-    ssp = steam_sale_price
-    self.lowest_steam_price = [sp, ssp].compact.min
-    self.steam_discount = ssp ? ((1-ssp.to_f/sp)*100).round : 0
-
-    if positive_steam_reviews and negative_steam_reviews
-      steam_reviews = positive_steam_reviews + negative_steam_reviews
+    if steam_game.positive_reviews and steam_game.negative_reviews
+      steam_reviews = steam_game.positive_reviews + steam_game.negative_reviews
       if not steam_reviews.empty?
         stats = DescriptiveStatistics::Stats.new(steam_reviews)
         self.playtime_mean = stats.mean
@@ -134,30 +167,31 @@ class Game < ActiveRecord::Base
     self.sysreq_video_tokens = tokens.uniq.join(' ')
   end
 
-  # def compute_sysreq_video_index
-  #   heavier = /nvidia|amd|intel|mb/
-  #   tokens = SysreqToken.where(name: sysreq_video_tokens.split(' ')).where.not(value: nil)
-  #   if tokens.size > 0
-  #     values = []
-  #     tokens.each do |t|
-  #       values << t.value
-  #       if t.name =~ heavier
-  #         values << t.value
-  #       end
-  #     end
-  #     self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
-  #   end
-  # end
-  #
-  # def self.compute_sysreq_index_centiles
-  #   id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
-  #   indexes = id_indexes.map{ |a| a[1] }
-  #   stats = DescriptiveStatistics::Stats.new(indexes)
-  #   id_indexes.each do |a|
-  #     percentile = stats.percentile_from_value a[1]
-  #     Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
-  #   end
-  # end
+  def compute_sysreq_video_index
+    heavier = /nvidia|amd|intel|mb/
+    tokens = SysreqToken.where(name: sysreq_video_tokens.split(' ')).where.not(value: nil)
+
+    if tokens.size > 0
+      values = []
+      tokens.each do |t|
+        values << t.value
+        if t.name =~ heavier
+          values << t.value
+        end
+      end
+      self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
+    end
+  end
+
+  def self.compute_sysreq_index_centiles
+    id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
+    indexes = id_indexes.map{ |a| a[1] }
+    stats = DescriptiveStatistics::Stats.new(indexes)
+    id_indexes.each do |a|
+      percentile = stats.percentile_from_value a[1]
+      Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
+    end
+  end
 
   ### Tags ###
   ############
@@ -173,7 +207,6 @@ class Game < ActiveRecord::Base
       end
     }.compact
   end
-
 
   ### Utils ###
   #############

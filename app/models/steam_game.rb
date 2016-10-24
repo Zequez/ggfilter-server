@@ -48,7 +48,7 @@ class SteamGame < Scrapers::Steam::SteamGame
   # If it was launched less than X ago,
   # then scrap it if Y time has passed since the last scraping
 
-  get_for_x_scraping :steam_reviews, [
+  get_for_x_scraping :reviews, [
     [1.week,  1.day],
     [1.month, 1.week],
     [1.year,  1.month],
@@ -56,43 +56,11 @@ class SteamGame < Scrapers::Steam::SteamGame
     [         1.year]
   ]
 
-  get_for_x_scraping :steam_game, [
+  get_for_x_scraping :game, [
     [1.week,  1.day],
     [1.month, 1.week],
     [1.year,  1.month],
     [3.years, 3.months],
     [         1.year]
   ]
-
-  after_create :link_to_game
-
-  def link_to_game
-    if not Game.find_by_name(name)
-      Game.create(name: name, steam_game: self)
-    end
-  end
-
-  after_create :process_data
-  after_update :process_data
-
-  def process_data
-    game.process_steam_game_data(self) if game
-  end
-
-  # def compute_values(force = false)
-  #   # if (
-  #   #   price_changed? ||
-  #   #   sale_price_changed? ||
-  #   #   positive_reviews_changed? ||
-  #   #   negative_reviews_changed? ||
-  #   #   force
-  #   # )
-  #   #   game.compute_playtime_stats
-  #   # end
-  #
-  #   if system_requirements_changed? || force
-  #     game.compute_sysreq_tokens
-  #     # game.compute_sysreq_video_index
-  #   end
-  # end
 end
