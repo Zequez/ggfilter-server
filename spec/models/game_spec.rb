@@ -17,11 +17,11 @@ describe Game, type: :model do
     describe 'tokens extraction' do
       describe '#sysreq_video_tokens' do
         it 'should extract all the tokens from #system_requirements' do
-
-          game = create_from_steam_game system_requirements: {
+          sg = create :steam_game, system_requirements: {
             minimum: { video_card: 'geforce gtx8500, ati 1500, or intel hd3000' },
             recommended: { video_card: 'geforce 970TI, amd radeon R9 200, or intel iris pro hd5200' }
           }
+          game = sg.game
 
           expect(game.sysreq_video_tokens.split(' ')).to match_array %w{nvidia8500 amd1500 intel3000 nvidia970 amd200 intel5200}
         end

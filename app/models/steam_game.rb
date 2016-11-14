@@ -63,4 +63,16 @@ class SteamGame < Scrapers::Steam::SteamGame
     [3.years, 3.months],
     [         1.year]
   ]
+
+  after_create :create_game_with_the_same_name
+  def create_game_with_the_same_name
+    Game.create_from_steam_game self
+  end
+
+  after_update :send_processing_signal
+  def send_processing_signal
+    if game
+      game.process_steam_game_data previous_changes.keys
+    end
+  end
 end

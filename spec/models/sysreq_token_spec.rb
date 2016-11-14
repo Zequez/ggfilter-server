@@ -47,6 +47,17 @@ describe SysreqToken, type: :model do
       expect(token.value).to eq 100
       expect(token.source).to eq :gpu_benchmarks
     end
+
+    fit 'should use the GPU with the highest value if multiple have the same token' do
+      Gpu.create name: 'Radeon HD 8950', value: 100
+      Gpu.create name: 'Radeon HD 8950x', value: 150
+      Gpu.create name: 'Radeon HD 8950 plus', value: 120
+      token = create :sysreq_token, name: 'amd8950', value: 10
+      SysreqToken.values_from_gpus_benchmarks!
+      token.reload
+      expect(token.value).to eq 150
+      expect(token.source).to eq :gpu_benchmarks
+    end
   end
 
   describe '#linked_to' do

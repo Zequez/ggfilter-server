@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: ggfilter_development
   pool: 5
-  username: factorio_mods
+  username: zequez
   password:
 
 test:
@@ -11,7 +11,7 @@ test:
   encoding: unicode
   database: ggfilter_test<%= ENV['TEST_ENV_NUMBER'] %>
   pool: 5
-  username: factorio_mods
+  username: zequez
   password:
 
 production:
@@ -19,5 +19,5 @@ production:
   encoding: unicode
   database: ggfilter_production
   pool: 5
-  username: factorio_mods
+  username: zequez
   password:

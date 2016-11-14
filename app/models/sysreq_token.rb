@@ -69,7 +69,7 @@ class SysreqToken < ActiveRecord::Base
 
   def self.values_from_gpus_benchmarks!
     SysreqToken.all.each do |token|
-      if ( gpu = Gpu.where(tokenized_name: token.name).first )
+      if ( gpu = Gpu.where(tokenized_name: token.name).order('value DESC').first )
         token.value = gpu.value
         token.source = :gpu_benchmarks
         token.save!

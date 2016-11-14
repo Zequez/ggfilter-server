@@ -43,34 +43,34 @@ class Game < ActiveRecord::Base
   ### Filters ###
   ###############
 
-  register_filter :name,                 :name_filter
-  register_filter :tags,                 :tags_filter
-  register_filter :steam_id,             :exact_filter
-  register_filter :steam_price,          :range_filter
-  register_filter :metacritic,           :range_filter
-  register_filter :steam_reviews_count,  :range_filter
-  register_filter :steam_reviews_ratio,  :range_filter
-  register_filter :released_at,          :relative_date_filter
-  register_filter :released_at_absolute, :range_filter,         :released_at
-
-  register_filter :lowest_steam_price,   :range_filter
-  register_filter :steam_discount,       :range_filter
-
-  register_filter :playtime_mean,        :range_filter
-  register_filter :playtime_median,      :range_filter
-  register_filter :playtime_rsd,         :range_filter
-  register_filter :playtime_mean_ftb,    :range_filter
-  register_filter :playtime_median_ftb,  :range_filter
-
-  register_filter :controller_support,   :range_filter
-  register_filter :platforms,            :boolean_filter
-  register_filter :features,             :boolean_filter
-  register_filter :players,              :boolean_filter
-  register_filter :vr,                   :boolean_filter
-
-  register_filter :sysreq_video_index,   :range_filter
-  register_filter :sysreq_index_centile, :range_filter
-  # register_filter :system_requirements,  :system_requirements_filter
+  # register_filter :name,                 :name_filter
+  # register_filter :tags,                 :tags_filter
+  # register_filter :steam_id,             :exact_filter
+  # register_filter :steam_price,          :range_filter
+  # register_filter :metacritic,           :range_filter
+  # register_filter :steam_reviews_count,  :range_filter
+  # register_filter :steam_reviews_ratio,  :range_filter
+  # register_filter :released_at,          :relative_date_filter
+  # register_filter :released_at_absolute, :range_filter,         :released_at
+  #
+  # register_filter :lowest_steam_price,   :range_filter
+  # register_filter :steam_discount,       :range_filter
+  #
+  # register_filter :playtime_mean,        :range_filter
+  # register_filter :playtime_median,      :range_filter
+  # register_filter :playtime_rsd,         :range_filter
+  # register_filter :playtime_mean_ftb,    :range_filter
+  # register_filter :playtime_median_ftb,  :range_filter
+  #
+  # register_filter :controller_support,   :range_filter
+  # register_filter :platforms,            :boolean_filter
+  # register_filter :features,             :boolean_filter
+  # register_filter :players,              :boolean_filter
+  # register_filter :vr,                   :boolean_filter
+  #
+  # register_filter :sysreq_video_index,   :range_filter
+  # register_filter :sysreq_index_centile, :range_filter
+  # # register_filter :system_requirements,  :system_requirements_filter
 
   ### Computed attributes ###
   ###########################
@@ -78,10 +78,19 @@ class Game < ActiveRecord::Base
   serialize :playtime_ils, JSON
   serialize :tags, JSON
 
-  def self.create_from_steam_game(steam_game, extra_attributes)
-    if not find_by_name(steam_game.name)
+  def self.create_from_steam_game(steam_game, extra_attributes = {})
+    game = find_by_name(steam_game.name)
+    if not game
       attrs = {name: steam_game.name, steam_game: steam_game}.merge(extra_attributes)
-      create(attrs)
+      game = create(attrs)
+      game.process_steam_game_data
+      game.save!
+    elsif not game.steam_game_id
+      game.steam_game = steam_game
+      game.process_steam_game_data
+      game.save!
+    else
+      raise 'Duplicate Steam Game?'
     end
   end
 
@@ -98,23 +107,22 @@ class Game < ActiveRecord::Base
 
     self.compute_simple_steam_values
 
-    if !ca || ca.includes?('tags')
+    if !ca || ca.include?('tags')
       self.compute_steam_game_tags
     end
 
     if (
       !ca ||
-      ca.includes?('price') ||
-      ca.includes?('sale_price') ||
-      ca.includes?('positive_reviews') ||
-      ca.includes?('negative_reviews')
+      ca.include?('price') ||
+      ca.include?('sale_price') ||
+      ca.include?('positive_reviews') ||
+      ca.include?('negative_reviews')
     )
       self.compute_playtime_stats
     end
 
-    if !ca || ca.includes?('system_requirements')
+    if !ca || ca.include?('system_requirements')
       self.compute_sysreq_tokens
-      self.compute_sysreq_video_index
     end
   end
 
@@ -184,6 +192,13 @@ class Game < ActiveRecord::Base
   end
 
   def self.compute_sysreq_index_centiles
+    Game.find_in_batches(batch_size: 250).with_index do |games, i|
+      games.each do |game|
+        game.compute_sysreq_video_index
+        game.save!
+      end
+    end
+
     id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
     indexes = id_indexes.map{ |a| a[1] }
     stats = DescriptiveStatistics::Stats.new(indexes)
