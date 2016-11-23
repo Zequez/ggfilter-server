@@ -38,6 +38,13 @@
 #  game_scraped_at        :datetime
 #  list_scraped_at        :datetime
 #  reviews_scraped_at     :datetime
+#  text_release_date      :string
+#  developer              :string
+#  publisher              :string
+#
+# Indexes
+#
+#  index_steam_games_on_steam_id  (steam_id) UNIQUE
 #
 
 class SteamGame < Scrapers::Steam::SteamGame

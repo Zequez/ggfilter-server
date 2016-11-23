@@ -8,9 +8,7 @@ describe Game, type: :model do
 
   def create_from_steam_game(steam_game_attrs, game_attrs = {})
     sg = create :steam_game, steam_game_attrs
-    game = Game.create_from_steam_game(sg, game_attrs)
-    game.process_steam_game_data
-    game
+    sg.game
   end
 
   describe 'system requirements analysis' do

@@ -12,9 +12,7 @@
 #  index_gpus_on_tokenized_name  (tokenized_name)
 #
 
-# Monkey patchin' is life
-Gpu = Scrapers::Benchmarks::Gpu
-class Gpu
+class Gpu < Scrapers::Benchmarks::Gpu
   before_save do
     vca = VideoCardAnalyzer.new
     self.tokenized_name = vca.tokens(name).select{ |v| v =~ /intel|amd|nvidia/ }.first

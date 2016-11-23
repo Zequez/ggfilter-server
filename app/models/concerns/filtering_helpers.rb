@@ -2,30 +2,61 @@ module FilteringHelpers
   extend ActiveSupport::Concern
 
   class_methods do
-    def register_filter(filter_name, filter_type, filter_column = nil)
-      filter_column ||= filter_name
-
-      raise "No such filter type #{filter_type}" unless respond_to? filter_type
-
+    def register_filter(name, type, options = {})
       @@filters ||= {}
-      @@filters_columns ||= {}
-      @@filters[filter_name] = filter_type
-      @@filters_columns[filter_name] = filter_column
 
-      scope :"filter_by_#{filter_name}", (lambda{ |params|
-        apply_filter(filter_name, params)
-      })
+      options = {
+        name: name,
+        type: type,
+        column: name,
+        select: nil,
+        as: nil,
+        joins: nil
+      }.merge(options)
+
+      options[:joins] = Array(options[:joins])
+      if options[:column].kind_of? Array
+        options[:joins].push(options[:column][0])
+        association_table = reflections[options[:column][0].to_s].table_name
+        options[:column] = "#{association_table}.#{options[:column][1]}"
+        options[:as] ||= options[:name]
+      end
+
+      options[:select] = Array(options[:select])
+      options[:select].push("#{options[:column]} as #{options[:as]}") if options[:as]
+      options[:select].push(options[:column]) if options[:select].empty?
+
+      @@filters[name] = options
+
+      if options[:type]
+        scope :"filter_by_#{name}", (lambda{ |params|
+          apply_filter(name, params)
+        })
+      end
+    end
+
+    def register_column(column, options = {})
+      register_filter(column, nil, options)
+    end
+
+    def sort_by_filter(sort)
+      name = sort[:filter]
+      if name && @@filters[name.to_sym]
+        name = name.to_sym
+        direction = sort[:asc] ? 'ASC NULLS FIRST' : 'DESC NULLS LAST'
+        all.joins_filter_tables(name).order("#{@@filters[name][:column]} #{direction}")
+      else
+        sort_by_filter({filter: :steam_id, asc: true})
+      end
     end
 
     def apply_filters(filters)
       filtered = all
 
-      if filters.kind_of? String
-        filters = JSON.parse(filters)
-      end
+      initialize_selected(filtered)
 
-      if filters.kind_of? Hash
-        filters.each_pair do |name, params|
+      filters.each_pair do |name, params|
+        if @@filters[name.to_sym]
           filtered = filtered.apply_filter(name, params)
         end
       end
@@ -34,32 +65,47 @@ module FilteringHelpers
     end
 
     def apply_filter(name, params)
-      name = name.to_sym
-      raise "No such filter #{name}" unless @@filters[name]
-      params = params.symbolize_keys
-      column = @@filters_columns[name]
-      L column
-      if ( condition = method(@@filters[name]).call(column, params) )
-        filter_and_or_highlight name, params, condition
+      filter = @@filters[name.to_sym]
+      raise "No such filter #{name}" unless filter
+
+      scope = all.joins_filter_tables(filter[:name])
+
+      initialize_selected(scope)
+      scope.select_values += filter[:select]
+
+      if params.kind_of?(Hash) && filter[:type]
+        params = params.symbolize_keys
+        condition = method(filter[:type]).call(filter[:column], params)
+        if (condition)
+          if params[:hl]
+            condition_str = condition.kind_of?(Array) ? sanitize_sql_array(condition) : condition
+
+            hl_column = "#{condition_str} AS hl_#{filter[:name]}"
+
+            scope.select_values += [hl_column]
+            scope
+          else
+            scope.where(condition)
+          end
+        else
+          scope
+        end
       else
         scope
       end
     end
 
-    # Condition and name should be sanitized!
-    def filter_and_or_highlight(name, params, condition)
+    def joins_filter_tables(name)
       scope = all
-
-      if not params[:highlight]
-        scope.where(condition)
-      else
-        condition_str = condition.kind_of?(Array) ? sanitize_sql_array(condition) : condition
-
-        hl_column = "#{condition_str} AS hl_#{name}"
-        scope.select_values = ['games.*'] if scope.select_values.empty?
-        scope.select_values += [hl_column]
-        scope
+      filter = @@filters[name]
+      filter[:joins].each do |j|
+        scope = scope.left_outer_joins(j) unless scope.left_outer_joins_values.include?(j)
       end
+      scope
+    end
+
+    def initialize_selected(scope)
+      scope.select_values = ['games.id'] if scope.select_values.empty?
     end
 
     def available_filters

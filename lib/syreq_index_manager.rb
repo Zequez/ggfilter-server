@@ -1,0 +1,3 @@
+class SysreqIndexManager
+  
+end

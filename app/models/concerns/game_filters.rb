@@ -1,5 +1,11 @@
 module GameFilters
   extend ActiveSupport::Concern
+  #
+  # class ExactFilter < FilteringHelpers::BaseFilter
+  #   def condition(params)
+  #     ["#{column} = ?", params[:value]]
+  #   end
+  # end
 
   class_methods do
     # Input: value
@@ -8,15 +14,14 @@ module GameFilters
     end
 
     # Input: gt, lt
-    def range_filter(column, filter, relative_time_mode = false)
+    def range_filter(column, filter, date_mode = false, relative_time_mode = false)
       vals = []
       conds = []
       gt = filter[:gt]
       lt = filter[:lt]
-      is_date_column = columns_hash[column.to_s].type == :datetime
 
       if gt.kind_of? Numeric
-        if is_date_column
+        if date_mode
           gt = relative_time_mode ? Time.now - gt : Time.at(gt)
         end
         conds << "#{column} >= ?"
@@ -24,7 +29,7 @@ module GameFilters
       end
 
       if lt.kind_of? Numeric
-        if is_date_column
+        if date_mode
           lt = relative_time_mode ? Time.now - lt : Time.at(lt)
         end
         conds << "#{column} <= ?"
@@ -34,8 +39,12 @@ module GameFilters
       conds.empty? ? nil : [conds.join(' AND '), *vals]
     end
 
-    def relative_date_filter(column, filter)
-      range_filter(column, filter, true)
+    def date_range_filter(column, filter)
+      range_filter(column, filter, true, false)
+    end
+
+    def relative_date_range_filter(column, filter)
+      range_filter(column, filter, true, true)
     end
 
     # Input: value, "or" ("and" by default)
@@ -63,6 +72,7 @@ module GameFilters
     # Sort by this http://stackoverflow.com/questions/21104366/how-to-get-position-of-regexp-match-in-string-in-postgresql
     # Input: value
     def name_filter(column, filter)
+      L 'rsarsars'
       value = filter[:value].to_s.parameterize.split('-')
 
       regex = value.map do |v|

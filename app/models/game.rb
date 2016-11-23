@@ -36,40 +36,50 @@ class Game < ActiveRecord::Base
   include FilteringHelpers
   include GameFilters
 
-  friendly_id :name, use: :slugged, slug_column: :name_slug
+  friendly_id :slug_candidates, use: :slugged, slug_column: :name_slug
+
+  def slug_candidates
+    [
+      :name
+    ]
+  end
 
   belongs_to :steam_game, optional: true
 
   ### Filters ###
   ###############
 
-  # register_filter :name,                 :name_filter
-  # register_filter :tags,                 :tags_filter
-  # register_filter :steam_id,             :exact_filter
-  # register_filter :steam_price,          :range_filter
-  # register_filter :metacritic,           :range_filter
-  # register_filter :steam_reviews_count,  :range_filter
-  # register_filter :steam_reviews_ratio,  :range_filter
-  # register_filter :released_at,          :relative_date_filter
-  # register_filter :released_at_absolute, :range_filter,         :released_at
-  #
-  # register_filter :lowest_steam_price,   :range_filter
-  # register_filter :steam_discount,       :range_filter
-  #
-  # register_filter :playtime_mean,        :range_filter
-  # register_filter :playtime_median,      :range_filter
-  # register_filter :playtime_rsd,         :range_filter
-  # register_filter :playtime_mean_ftb,    :range_filter
-  # register_filter :playtime_median_ftb,  :range_filter
-  #
-  # register_filter :controller_support,   :range_filter
-  # register_filter :platforms,            :boolean_filter
-  # register_filter :features,             :boolean_filter
-  # register_filter :players,              :boolean_filter
-  # register_filter :vr,                   :boolean_filter
-  #
-  # register_filter :sysreq_video_index,   :range_filter
-  # register_filter :sysreq_index_centile, :range_filter
+  register_filter :name, :name_filter
+  register_filter :tags, :tags_filter
+  register_filter :steam_id, :exact_filter, column: [:steam_game, :steam_id]
+  register_filter :steam_price, :range_filter, column: [:steam_game, :price]
+  register_filter :metacritic, :range_filter, column: [:steam_game, :metacritic]
+  register_filter :steam_reviews_count, :range_filter, column: [:steam_game, :reviews_count]
+  register_filter :steam_reviews_ratio, :range_filter, column: [:steam_game, :reviews_ratio]
+  register_filter :released_at, :relative_date_filter, column: [:steam_game, :released_at]
+  register_filter :released_at_absolute, :range_filter, column: [:steam_game, :released_at]
+  register_filter :lowest_steam_price, :range_filter,
+    column: [:steam_game, :price],
+    as: :steam_price,
+    select: ['steam_game.sale_price AS steam_sale_price']
+  register_filter :steam_discount, :range_filter
+
+  register_filter :playtime_mean, :range_filter
+  register_filter :playtime_median, :range_filter
+  register_filter :playtime_rsd, :range_filter
+  register_filter :playtime_mean_ftb, :range_filter
+  register_filter :playtime_median_ftb, :range_filter
+
+  register_filter :controller_support, :range_filter, column: [:steam_game, :controller_support]
+  register_filter :platforms, :boolean_filter, column: [:steam_game, :platforms]
+  register_filter :features, :boolean_filter, column: [:steam_game, :features]
+  register_filter :players, :boolean_filter, column: [:steam_game, :players]
+  register_filter :vr_platforms, :boolean_filter, column: [:steam_game, :vr_platforms]
+  register_filter :vr_mode, :boolean_filter, column: [:steam_game, :vr_mode]
+  register_filter :vr_controllers, :boolean_filter, column: [:steam_game, :vr_controllers]
+
+  register_filter :sysreq_video_index, :range_filter
+  register_filter :sysreq_index_centile, :range_filter
   # # register_filter :system_requirements,  :system_requirements_filter
 
   ### Computed attributes ###
@@ -80,17 +90,17 @@ class Game < ActiveRecord::Base
 
   def self.create_from_steam_game(steam_game, extra_attributes = {})
     game = find_by_name(steam_game.name)
-    if not game
+    if !game || (game.steam_game_id && game.steam_game_id != steam_game.id)
       attrs = {name: steam_game.name, steam_game: steam_game}.merge(extra_attributes)
       game = create(attrs)
       game.process_steam_game_data
       game.save!
-    elsif not game.steam_game_id
+    elsif !game.steam_game_id
       game.steam_game = steam_game
       game.process_steam_game_data
       game.save!
     else
-      raise 'Duplicate Steam Game?'
+      raise 'This really should not happen'
     end
   end
 
