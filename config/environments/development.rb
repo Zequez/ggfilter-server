@@ -40,6 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_dispatch.default_headers.merge!({
+    'Access-Control-Expose-Headers' => 'X-Pagination-Count',
     'Access-Control-Allow-Origin' => 'http://localhost:8001',
     'Access-Control-Request-Method' => '*',
     'Access-Control-Allow-Methods' => 'POST, PATCH, DELETE, GET, OPTIONS',

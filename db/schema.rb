@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124001408) do
+ActiveRecord::Schema.define(version: 20161124014730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20161124001408) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "name"
     t.string   "name_slug"
     t.float    "playtime_mean"
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 20161124001408) do
     t.string   "playtime_ils"
     t.float    "playtime_mean_ftb"
     t.float    "playtime_median_ftb"
-    t.string   "sysreq_video_tokens",  default: "", null: false
+    t.string   "sysreq_video_tokens",  default: "",   null: false
     t.integer  "sysreq_video_index"
     t.integer  "sysreq_index_centile"
     t.integer  "steam_game_id"
     t.integer  "lowest_steam_price"
     t.integer  "steam_discount"
-    t.string   "tags"
+    t.string   "tags",                 default: "[]", null: false
     t.index ["steam_game_id"], name: "index_games_on_steam_game_id", using: :btree
   end
 

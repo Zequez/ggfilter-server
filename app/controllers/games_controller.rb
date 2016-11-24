@@ -43,8 +43,8 @@ class GamesController < ApplicationController
       .apply_filters(filter[:params] || {})
       .sort_by_filter(filter[:sort] || {})
       .page(params[:page].to_i+1).per(per_page)
-      .limit(20)
 
+    response.headers['X-Pagination-Count'] = @games.total_count.to_s
     games = @games.map(&:attributes)
     render json: games
   end

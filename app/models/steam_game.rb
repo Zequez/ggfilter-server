@@ -81,6 +81,7 @@ class SteamGame < Scrapers::Steam::SteamGame
   def send_processing_signal
     if game
       game.process_steam_game_data previous_changes.keys
+      game.save!
     end
   end
 

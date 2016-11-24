@@ -25,9 +25,4 @@ namespace :scrap do
       ScrapingDirector.scrap_steam_reviews
     end
   end
-
-  desc 'Compute sysreq index centiles'
-  task :compute_sysreq => :environment do
-    ScrapingDirector.compute_sysreq_index_centiles
-  end
 end

@@ -72,7 +72,6 @@ module GameFilters
     # Sort by this http://stackoverflow.com/questions/21104366/how-to-get-position-of-regexp-match-in-string-in-postgresql
     # Input: value
     def name_filter(column, filter)
-      L 'rsarsars'
       value = filter[:value].to_s.parameterize.split('-')
 
       regex = value.map do |v|
@@ -92,7 +91,7 @@ module GameFilters
       if tags.kind_of? Array
         tags.reject!{ |t| !t.kind_of?(Fixnum) }
         tags.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
-        tags.map{ |id| "tags ~ '#{id}'" }.join(' AND ')
+        tags.map{ |id| "games.tags ~ '#{id}'" }.join(' AND ')
       else
         nil
       end

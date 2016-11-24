@@ -20,7 +20,7 @@
 #  steam_game_id        :integer
 #  lowest_steam_price   :integer
 #  steam_discount       :integer
-#  tags                 :string
+#  tags                 :string           default([]), not null
 #
 # Indexes
 #
@@ -56,12 +56,13 @@ class Game < ActiveRecord::Base
   register_filter :metacritic, :range_filter, column: [:steam_game, :metacritic]
   register_filter :steam_reviews_count, :range_filter, column: [:steam_game, :reviews_count]
   register_filter :steam_reviews_ratio, :range_filter, column: [:steam_game, :reviews_ratio]
-  register_filter :released_at, :relative_date_filter, column: [:steam_game, :released_at]
-  register_filter :released_at_absolute, :range_filter, column: [:steam_game, :released_at]
+  register_filter :released_at, :relative_date_range_filter, column: [:steam_game, :released_at]
+  register_filter :released_at_absolute, :date_range_filter,
+    column: [:steam_game, :released_at],
+    as: :released_at
   register_filter :lowest_steam_price, :range_filter,
-    column: [:steam_game, :price],
-    as: :steam_price,
-    select: ['steam_game.sale_price AS steam_sale_price']
+    joins: :steam_game,
+    select: [:lowest_steam_price, 'steam_games.price AS steam_price']
   register_filter :steam_discount, :range_filter
 
   register_filter :playtime_mean, :range_filter
@@ -82,11 +83,30 @@ class Game < ActiveRecord::Base
   register_filter :sysreq_index_centile, :range_filter
   # # register_filter :system_requirements,  :system_requirements_filter
 
+  register_column :images, column: [:steam_game, :images]
+  register_column :videos, column: [:steam_game, :videos]
+  register_column :steam_thumbnail, column: [:steam_game, :thumbnail]
+
   ### Computed attributes ###
   ###########################
 
   serialize :playtime_ils, JSON
   serialize :tags, JSON
+
+  # These are from steam_game but we need them here too so it deserialize them
+  # attr_accessor :images
+  # attr_accessor :videos
+  # serialize :images, JSON
+  # serialize :videos, JSON
+  # attribute :images
+  # attribute :videos
+
+  def attributes
+    attrs = super
+    attrs['images'] = JSON.load(attrs['images']) if attrs['images'].kind_of? String
+    attrs['videos'] = JSON.load(attrs['videos']) if attrs['videos'].kind_of? String
+    attrs
+  end
 
   def self.create_from_steam_game(steam_game, extra_attributes = {})
     game = find_by_name(steam_game.name)
@@ -108,8 +128,10 @@ class Game < ActiveRecord::Base
     Game
       .all
       .in_batches
-      .each_record(&:process_steam_game_data)
-      .save_all
+      .each_record do |game|
+        game.process_steam_game_data
+        game.save!
+      end
   end
 
   def process_steam_game_data(changed_attributes = nil)
