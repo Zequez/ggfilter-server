@@ -5,25 +5,25 @@
 #  id                     :integer          not null, primary key
 #  steam_id               :integer          not null
 #  name                   :string
-#  tags                   :string
+#  tags                   :string           default([]), not null
 #  genre                  :string
 #  summary                :text
 #  released_at            :datetime
 #  thumbnail              :string
-#  videos                 :text
-#  images                 :text
+#  videos                 :text             default([]), not null
+#  images                 :text             default([]), not null
 #  price                  :integer
 #  sale_price             :integer
 #  reviews_ratio          :integer
 #  reviews_count          :integer
 #  positive_reviews_count :integer
 #  negative_reviews_count :integer
-#  positive_reviews       :text
-#  negative_reviews       :text
+#  positive_reviews       :text             default([]), not null
+#  negative_reviews       :text             default([]), not null
 #  dlc_count              :integer
 #  achievements_count     :integer
-#  audio_languages        :string
-#  subtitles_languages    :string
+#  audio_languages        :string           default([]), not null
+#  subtitles_languages    :string           default([]), not null
 #  metacritic             :integer
 #  esrb_rating            :string
 #  early_access           :boolean
@@ -41,6 +41,7 @@
 #  text_release_date      :string
 #  developer              :string
 #  publisher              :string
+#  community_hub_id       :integer
 #
 # Indexes
 #
@@ -55,13 +56,13 @@ class SteamGame < Scrapers::Steam::SteamGame
   # If it was launched less than X ago,
   # then scrap it if Y time has passed since the last scraping
 
-  get_for_x_scraping :reviews, [
+  get_for_x_scraping(:reviews, [
     [1.week,  1.day],
     [1.month, 1.week],
     [1.year,  1.month],
     [3.years, 3.months],
     [         1.year]
-  ]
+  ]){ where('reviews_count > 0') }
 
   get_for_x_scraping :game, [
     [1.week,  1.day],
@@ -81,5 +82,9 @@ class SteamGame < Scrapers::Steam::SteamGame
     if game
       game.process_steam_game_data previous_changes.keys
     end
+  end
+
+  def self.games_with_a_broken_community_hub_that_makes_no_sense
+    where('positive_reviews = ? AND negative_reviews = ?', '[]', '[]').where.not(reviews_count: 0).includes(:game)
   end
 end

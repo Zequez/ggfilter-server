@@ -9,14 +9,12 @@ class ScrapingDirector
     end
 
     def scrap_steam_games
-      steam_games = SteamGame.get_for_game_scraping
+      steam_games = SteamGame.get_for_game_scraping.includes(:game)
       Scrapers::Steam::Game::Runner.new(resources: steam_games).run
     end
 
     def scrap_steam_reviews
-      steam_games = SteamGame.get_for_reviews_scraping
-      # steam_games = SteamGame.where(steam_id: 8870)
-      # steam_games = SteamGame.where(steam_id: [439260, 449940, 388390, 392190])
+      steam_games = SteamGame.get_for_reviews_scraping.includes(:game)
       Scrapers::Steam::Reviews::Runner.new(resources: steam_games).run
     end
 

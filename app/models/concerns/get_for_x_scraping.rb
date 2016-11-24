@@ -2,7 +2,7 @@ module GetForXScraping
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def get_for_x_scraping(attribute, timelines)
+    def get_for_x_scraping(attribute, timelines, &block)
       column = :"#{attribute}_scraped_at"
       method_name = :"get_for_#{attribute}_scraping"
 
@@ -18,7 +18,9 @@ module GetForXScraping
       end].join(' OR ')
 
       define_singleton_method method_name do
-        order(:name).where(where_query)
+        scope = order(:name).where(where_query)
+        scope = scope.merge(block.call()) if block
+        scope
       end
     end
   end

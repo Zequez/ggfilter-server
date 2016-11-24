@@ -6,6 +6,7 @@ ruby '2.3.1'
 
 # Scrapers!
 gem 'scrapers', git: 'https://Zequez@bitbucket.org/Zequez/ggfilter-scrapers.git'
+# gem 'scrapers', path: '../scrapers'
 # Front end client!
 gem 'ggfilter_client', path: '../client/gem'
 
