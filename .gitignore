@@ -17,7 +17,6 @@
 /tmp
 
 /node_modules
-/bin/*
 
 .DS_Store
 .byebug_history
