@@ -37,8 +37,6 @@ gem 'descriptive-statistics'
 gem 'kaminari'
 # Turn blanks to nils
 gem 'nilify_blanks'
-# Environment variables
-gem 'figaro'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
@@ -63,7 +61,7 @@ gem 'friendly_id'
 # Other
 #####################
 # Use Unicorn as the app server
-gem 'unicorn'
+gem 'puma'
 # Convert integers to roman numerals, for searching purposes
 gem 'roman-numerals'
 # Log colorization
@@ -99,6 +97,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Create random text for testing, like lorem ipsum or random names
   gem 'forgery'
+  # Environment variables
+  gem 'dotenv-rails', :groups => [:development, :test]
 end
 
 group :development do
