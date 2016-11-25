@@ -42,6 +42,7 @@
 #  developer              :string
 #  publisher              :string
 #  community_hub_id       :integer
+#  blacklist              :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -62,15 +63,15 @@ class SteamGame < Scrapers::Steam::SteamGame
     [1.year,  1.month],
     [3.years, 3.months],
     [         1.year]
-  ]){ where('reviews_count > 0') }
+  ]){ where('reviews_count > 0').where(blacklist: false) }
 
-  get_for_x_scraping :game, [
+  get_for_x_scraping(:game, [
     [1.week,  1.day],
     [1.month, 1.week],
     [1.year,  1.month],
     [3.years, 3.months],
     [         1.year]
-  ]
+  ]){ where(blacklist: false) }
 
   after_create :create_game_with_the_same_name
   def create_game_with_the_same_name
