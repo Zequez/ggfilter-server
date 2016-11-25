@@ -7,11 +7,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'app' %>
+  <%= stylesheet_link_tag 'app/app' %>
+  <%= favicon_link_tag 'app/favicon1.png' %>
 </head>
 <body>
   <div id='loading-spinner' className='loading'></div>
   <div id="app">APPLICATION CONTENT</div>
-  <%= javascript_include_tag 'app' %>
+  <%= javascript_include_tag 'app/app' %>
 </body>
 </html>

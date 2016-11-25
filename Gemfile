@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
-#source 'http://rails-assets.org'
 
 ruby '2.3.1'
 
-
 # Scrapers!
-gem 'scrapers', git: 'https://Zequez@bitbucket.org/Zequez/ggfilter-scrapers.git'
+gem 'scrapers', git: "https://bitbucket.org/Zequez/ggfilter-scrapers.git"
 # gem 'scrapers', path: '../scrapers'
 # Front end client!
-gem 'ggfilter_client', path: '../client/gem'
+gem 'ggfilter_client', git: "https://bitbucket.org/Zequez/ggfilter-client-gem.git"
+# gem 'ggfilter_client', path: '../client/gem'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'
@@ -38,6 +37,8 @@ gem 'descriptive-statistics'
 gem 'kaminari'
 # Turn blanks to nils
 gem 'nilify_blanks'
+# Environment variables
+gem 'figaro'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets
@@ -48,6 +49,8 @@ group :development, :test, :assets do
   gem 'coffee-rails', '~> 4.1.0'
   # Annotate models with the schema information
   gem 'annotate'
+  # Copy the digested fonts from the client to their original name
+  gem 'non-stupid-digest-assets'
 end
 
 # Models
