@@ -3,7 +3,7 @@ class VideoCardAnalyzer
     nvidia_deco: /(?:ti|gtx|gts|gt|gs|mx|fx|tm| )/,
     nvidia_number: /([0-9]+x*m?)/,
     amd_number: /x?m?([0-9]+(?:x{2,})?m?)x?/, # Allow xx but not x at the end of number
-    amd_deco: /(?:hd|r5|r7|r9|rage| )/,
+    amd_deco: /(?:hd|r5|r7|r9|rage|xt| )/,
     intel_number: /i?([0-9]+)/,
     intel_deco: /(?:hd|iris|gma|mhd| )/,
   }
@@ -46,7 +46,9 @@ class VideoCardAnalyzer
     [/geforece/, 'geforce'],
     [/nvidia( ?geforce)?/, 'nvidia'],
     [/geforce/, 'nvidia'],
+    [/\bnvidia([0-9]) ([0-9]+)\b/, 'nvidia\2'],
     [/(nvidia[0-9]*)#{W[:nvidia_deco]}*#{W[:nvidia_number]}(?:\b|#{W[:nvidia_deco]})/, '\1\2 '],
+    [/\bnvidia([0-9])\b/, 'nvidia\1xxx'],
 
     # AMD
     [/\bati( amd)?|amd( ati)?\b/, 'amd'],

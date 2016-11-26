@@ -71,7 +71,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'NVIDIA GeForce 4 MX or better, ATI Radeon 8500 or better, Intel i915 chipset or better 1024x600 resolution',
-        %w{nvidia4 amd8500 intel915 1024x600}
+        %w{nvidia4xxx amd8500 intel915 1024x600}
       ],
       [
         'Intel 915(900) or better',
@@ -99,7 +99,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'Geforce4 4200 or Radeon 9200',
-        %w{nvidia44200 amd9200}
+        %w{nvidia4200 amd9200}
       ],
       [
         'Integrated Graphics (256MB)',
@@ -143,7 +143,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'Intel GMA 950 GeForce 7 Series Radeon X1000 series',
-        %w{intel950 nvidia7 amd1000}
+        %w{intel950 nvidia7xxx amd1000}
       ],
       [
         'Nvidia GT400 series with 512MB RAM or better, ATI 4870HD with 512MB RAM or better',
@@ -207,7 +207,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'DirectX 9 compatible 256 MB graphics card with support for pixel/vertex shader 3.0 (GeForce 6/Radeon x1x00 and above)',
-        %w{directx9 256mb nvidia6 amd}
+        %w{directx9 256mb nvidia6xxx amd}
       ],
       [
         'GeForceFX5200, RADEON 9500 GeForce8600/RADEON HD2600',
@@ -231,7 +231,7 @@ describe VideoCardAnalyzer do
       ],
       [
         'DirectX 8.0/8.1 compliant or low-end DirectX 9 3D accelerator (nVidia GeForce3 and 4 series (not MX), GeForceFX 5200 through 5700 series, ATI Radeon 8500 through 9200 and X300 series, S3 DeltaChrome or XGI Volari)',
-        %w{directx8 directx9 nvidia3 nvidia5200 amd8500}
+        %w{directx8 directx9 nvidia3xxx nvidia5200 amd8500}
       ],
       [
         ' NVidia or ATI-based graphics card with shader model 2.0 support. NVidia GeForce 6100 or newer (6100-6800, 7100-7950, 8300-8800, GTS/GTX series), ATI Radeon 9600 or newer (9600-9800, X300-X1950, HD 2400 or newer)',
@@ -264,6 +264,10 @@ describe VideoCardAnalyzer do
       [
         '4 Mb Video Card',
         %w{16mb}
+      ],
+      [
+        'NVIDIA GeForce 6 series, ATI 1300XT series',
+        %w{nvidia6xxx amd1300}
       ]
     ].each do |test|
       it test[0] do

@@ -2,25 +2,26 @@
 #
 # Table name: games
 #
-#  id                   :integer          not null, primary key
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  name                 :string
-#  name_slug            :string
-#  playtime_mean        :float
-#  playtime_median      :float
-#  playtime_sd          :float
-#  playtime_rsd         :float
-#  playtime_ils         :string
-#  playtime_mean_ftb    :float
-#  playtime_median_ftb  :float
-#  sysreq_video_tokens  :string           default(""), not null
-#  sysreq_video_index   :integer
-#  sysreq_index_centile :integer
-#  steam_game_id        :integer
-#  lowest_steam_price   :integer
-#  steam_discount       :integer
-#  tags                 :string           default([]), not null
+#  id                         :integer          not null, primary key
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  name                       :string
+#  name_slug                  :string
+#  playtime_mean              :float
+#  playtime_median            :float
+#  playtime_sd                :float
+#  playtime_rsd               :float
+#  playtime_ils               :string
+#  playtime_mean_ftb          :float
+#  playtime_median_ftb        :float
+#  sysreq_video_tokens        :string           default(""), not null
+#  sysreq_video_index         :integer
+#  sysreq_index_centile       :integer
+#  steam_game_id              :integer
+#  lowest_steam_price         :integer
+#  steam_discount             :integer
+#  tags                       :string           default([]), not null
+#  sysreq_video_tokens_values :text
 #
 # Indexes
 #
@@ -86,10 +87,12 @@ class Game < ActiveRecord::Base
   register_column :images, column: [:steam_game, :images]
   register_column :videos, column: [:steam_game, :videos]
   register_column :steam_thumbnail, column: [:steam_game, :thumbnail]
+  register_column :sysreq_video_tokens_values
 
   ### Computed attributes ###
   ###########################
 
+  serialize :sysreq_video_tokens_values, JSON
   serialize :playtime_ils, JSON
   serialize :tags, JSON
 
@@ -132,6 +135,18 @@ class Game < ActiveRecord::Base
         game.process_steam_game_data
         game.save!
       end
+    nil
+  end
+
+  def self.digest_system_requirements
+    Game
+      .all
+      .in_batches
+      .each_record do |game|
+        game.compute_sysreq_tokens
+        game.save!
+      end
+    nil
   end
 
   def process_steam_game_data(changed_attributes = nil)
@@ -204,32 +219,43 @@ class Game < ActiveRecord::Base
 
     tokens.push "year#{steam_game.released_at.year}" if steam_game.released_at
 
+    # These tokens naked don't really tell us anything
+    tokens -= ['nvidia', 'amd', 'intel']
+
     self.sysreq_video_tokens = tokens.uniq.join(' ')
   end
 
   def compute_sysreq_video_index
-    heavier = /nvidia|amd|intel|mb/
-    tokens = SysreqToken.where(name: sysreq_video_tokens.split(' ')).where.not(value: nil)
+    # heavier = /nvidia|amd|intel|mb/
+    tokens = SysreqToken
+      .where(name: sysreq_video_tokens.split(' '))
+      .where.not(value: nil)
+      .order('value DESC')
 
     if tokens.size > 0
       values = []
       tokens.each do |t|
         values << t.value
-        if t.name =~ heavier
-          values << t.value
-        end
+        # if t.name =~ heavier
+        #   values << t.value
+        # end
       end
+
+      self.sysreq_video_tokens_values = tokens.inject({}){|h, t| h[t.name] = t.value; h}
       self.sysreq_video_index = (values.reduce(&:+).to_f / values.size).round
     end
   end
 
   def self.compute_sysreq_index_centiles
     Game.find_in_batches(batch_size: 250).with_index do |games, i|
+      puts "Compute sysreq video index batch #{i}"
       games.each do |game|
         game.compute_sysreq_video_index
         game.save!
       end
     end
+
+    puts 'Compute sysreq index centiles'
 
     id_indexes = Game.where.not(sysreq_video_index: nil).pluck(:id, :sysreq_video_index)
     indexes = id_indexes.map{ |a| a[1] }
@@ -238,6 +264,12 @@ class Game < ActiveRecord::Base
       percentile = stats.percentile_from_value a[1]
       Game.where(id: a[0]).update_all(sysreq_index_centile: percentile)
     end
+
+    nil
+  end
+
+  def self.findsid(steam_id)
+    SteamGame.find_by_steam_id(steam_id).game
   end
 
   ### Tags ###

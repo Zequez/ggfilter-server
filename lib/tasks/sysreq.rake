@@ -35,5 +35,23 @@ namespace :sysreq do
   end
 
   desc 'Analyze, match GPUs, link wildcards, infer values, and infer projected values'
-  task :all => [:analyze, :match_gpus, :infer_values, :infer_projected_values]
+  task :all => [:analyze, :clean, :match_gpus, :infer_values, :infer_projected_values]
+
+  desc 'Recreate GPUs names'
+  task :gpu_recreate => [:environment] do
+    Gpu.all.each(&:save!)
+  end
+
+  desc 'Digest the system requirements text into tokens on the games'
+  task :games_digest => :environment do
+    Game.digest_system_requirements
+  end
+
+  desc 'Compute system requirements index centiles'
+  task :games_centiles => :environment do
+    Game.compute_sysreq_index_centiles
+  end
+
+  desc 'All with games'
+  task :all_all => [:gpu_recreate, :games_digest, :all, :games_centiles]
 end
