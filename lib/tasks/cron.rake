@@ -7,6 +7,13 @@ task :nolog do
 end
 
 namespace :cron do
+  desc 'Hourly except 00:00 UTC'
+  task :hourly_heroku do
+    if Time.now.utc.hour != 0
+      Rake::Task['cron:hourly'].invoke
+    end
+  end
+
   desc 'Hourly cron that runs quick tasks and scrapings'
   task :hourly => [
       'nolog',
