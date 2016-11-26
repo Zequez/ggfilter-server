@@ -16,7 +16,7 @@ namespace :scrap do
     end
 
     desc 'Scrap steam games'
-    task :games => :environment do
+    task :games => [:environment, :nolog] do
       ScrapingDirector.scrap_steam_games
     end
 
