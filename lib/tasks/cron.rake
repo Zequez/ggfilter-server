@@ -30,6 +30,6 @@ namespace :cron do
     'scrap:steam:games',
     'scrap:steam:reviews',
     'sysreq:all',
-    'games:compute_sysreq_index_centiles'
+    'sysreq:games_centiles'
   ]
 end
