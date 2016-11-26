@@ -37,6 +37,8 @@ gem 'descriptive-statistics'
 gem 'kaminari'
 # Turn blanks to nils
 gem 'nilify_blanks'
+# Sendgrid emails
+gem 'sendgrid-ruby'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets

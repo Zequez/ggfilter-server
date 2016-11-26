@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-scrapers.git
-  revision: 608cc837c68cf1b201e7093f96c9af63b8040ddb
+  revision: 80cb870cf8fa7cbca91ce3419a29c4fb5451dc7b
   specs:
     scrapers (0.3.1)
       activerecord (>= 4.2)
@@ -43,6 +43,7 @@ GIT
       colorize (~> 0.7)
       i18n_data (~> 0.7)
       nokogiri (~> 1.6)
+      sendgrid-ruby (~> 4.0)
       simple_flaggable_column (>= 0.0.2)
       typhoeus (~> 0.7)
 
@@ -301,6 +302,7 @@ GEM
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
     ruby_dep (1.5.0)
+    ruby_http_client (3.0.0)
     ruby_parser (3.8.3)
       sexp_processor (~> 4.1)
     sass (3.4.22)
@@ -313,6 +315,8 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid-ruby (4.0.6)
+      ruby_http_client (~> 3.0.0)
     sexp_processor (4.7.0)
     shellany (0.0.1)
     simple_flaggable_column (0.0.3)
@@ -394,6 +398,7 @@ DEPENDENCIES
   sass-rails
   scrapers!
   sdoc (~> 0.4.0)
+  sendgrid-ruby
   spring
   spring-commands-rspec
   sprockets-es6
