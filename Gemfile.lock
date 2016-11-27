@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-client-gem.git
-  revision: 887ad918f26ec612cd59d6431db674557e540a19
+  revision: 2be19053853aa1f5892d85a028402af261ca3685
   specs:
     ggfilter_client (0.1.3)
 
