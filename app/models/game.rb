@@ -65,6 +65,7 @@ class Game < ActiveRecord::Base
     joins: :steam_game,
     select: [:lowest_steam_price, 'steam_games.price AS steam_price']
   register_filter :steam_discount, :range_filter
+  register_filter :steam_early_access, :exact_filter, column: [:steam_game, :early_access]
 
   register_filter :playtime_mean, :range_filter
   register_filter :playtime_median, :range_filter
