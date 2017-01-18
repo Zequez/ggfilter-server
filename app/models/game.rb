@@ -56,7 +56,9 @@ class Game < ActiveRecord::Base
   register_filter :steam_price, :range_filter, column: [:steam_game, :price]
   register_filter :metacritic, :range_filter, column: [:steam_game, :metacritic]
   register_filter :steam_reviews_count, :range_filter, column: [:steam_game, :reviews_count]
-  register_filter :steam_reviews_ratio, :range_filter, column: [:steam_game, :reviews_ratio]
+  register_filter :steam_reviews_ratio, :range_filter,
+    column: [:steam_game, :reviews_ratio],
+    select: ['steam_games.reviews_count AS steam_reviews_count']
   register_filter :released_at, :relative_date_range_filter, column: [:steam_game, :released_at]
   register_filter :released_at_absolute, :date_range_filter,
     column: [:steam_game, :released_at],
