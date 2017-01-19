@@ -17,18 +17,18 @@ namespace :cron do
   desc 'Hourly cron that runs quick tasks and scrapings'
   task :hourly => [
       'nolog',
-      'scrap:steam:list_on_sale',
-      'scrap:steam:games',
-      'scrap:steam:reviews'
+      'scrap:steam_list_on_sale',
+      'scrap:steam_games',
+      'scrap:steam_reviews'
   ]#.each{ |task| Rake::Task[task].invoke }
 
   desc 'Daily cron that runs all the tasks and deep scrapings'
   task :daily => [
     'nolog',
     'scrap:benchmarks',
-    'scrap:steam:list',
-    'scrap:steam:games',
-    'scrap:steam:reviews',
+    'scrap:steam_list',
+    'scrap:steam_games',
+    'scrap:steam_reviews',
     'sysreq:all',
     'sysreq:games_centiles'
   ]

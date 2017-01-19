@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :show]
   # resources :sysreq_tokens, only: [:index, :show, :update]
   resources :tags, only: :index
+  resources :scrap_logs, only: :index
 
   get '*path', to: 'app#index'
 

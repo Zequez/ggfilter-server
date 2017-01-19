@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126072928) do
+ActiveRecord::Schema.define(version: 20170119211216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20161126072928) do
     t.integer "value",          null: false
     t.string  "tokenized_name"
     t.index ["tokenized_name"], name: "index_gpus_on_tokenized_name", using: :btree
+  end
+
+  create_table "scrap_logs", force: :cascade do |t|
+    t.datetime "started_at",                  null: false
+    t.datetime "finished_at",                 null: false
+    t.string   "scraper",                     null: false
+    t.boolean  "error",       default: false, null: false
+    t.string   "msg",         default: "",    null: false
+    t.string   "task_name",   default: "",    null: false
   end
 
   create_table "steam_games", force: :cascade do |t|

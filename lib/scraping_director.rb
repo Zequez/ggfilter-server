@@ -1,25 +1,44 @@
+require 'scrapers_definitions'
+require 'rake'
+
 class ScrapingDirector
-  class << self
-    def scrap_steam_list
-      Scrapers::Steam::List::Runner.new(resource_class: SteamGame).run
-    end
+  TASKS = ScrapersDefinitions.new
 
-    def scrap_steam_list_on_sale
-      Scrapers::Steam::List::Runner.new(on_sale: true, resource_class: SteamGame).run
-    end
+  attr_reader :runner
+  alias_attribute :scraper, :runner
 
-    def scrap_steam_games
-      steam_games = SteamGame.get_for_game_scraping.includes(:game)
-      Scrapers::Steam::Game::Runner.new(resources: steam_games).run
-    end
+  def initialize(runner, task_name = nil)
+    @task_name = task_name
+    @runner = runner
+  end
 
-    def scrap_steam_reviews
-      steam_games = SteamGame.get_for_reviews_scraping.includes(:game)
-      Scrapers::Steam::Reviews::Runner.new(resources: steam_games).run
-    end
+  def run
+    @report = runner.run
+    @report.report_errors_if_any
+    scrap_log = ScrapLog.build_from_report(@report, @task_name)
+    scrap_log.save!
+  end
 
-    def scrap_benchmarks
-      Scrapers::Benchmarks::Runner.new(resource_class: Gpu).run
-    end
+  def self.task(task_name)
+    new TASKS.send(task_name), task_name.to_s
+  end
+
+  def self.tasks!
+    RakeTasks.new.tasks!
+  end
+
+  class RakeTasks
+     include Rake::DSL
+
+     def tasks!
+       namespace :scrap do
+         ScrapersDefinitions.public_instance_methods.each do |method|
+           desc "Scrap #{method.to_s.humanize}"
+           task method => :environment do
+             ScrapingDirector.task(method).run
+           end
+         end
+       end
+     end
   end
 end
