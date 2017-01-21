@@ -21,7 +21,7 @@ namespace :dist do
   end
 
   desc 'Deploy to Heroku'
-  task :deploy => [:update_deps] do
+  task :deploy do
     `git push heroku master && heroku rake db:migrate && heroku restart`
   end
 
