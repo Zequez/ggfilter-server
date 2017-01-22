@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-scrapers.git
-  revision: e046bcadeb3542d9466e601ad7929c1f3667b954
+  revision: 8ef21b72ad6b4bd98a27fd7cab50251cec974564
   specs:
     scrapers (0.3.2)
       activerecord (>= 4.2)
