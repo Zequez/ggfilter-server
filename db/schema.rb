@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119211216) do
+ActiveRecord::Schema.define(version: 20170122051037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,38 +71,38 @@ ActiveRecord::Schema.define(version: 20170119211216) do
   end
 
   create_table "steam_games", force: :cascade do |t|
-    t.integer  "steam_id",                              null: false
+    t.integer  "steam_id",                               null: false
     t.string   "name"
-    t.string   "tags",                   default: "[]", null: false
+    t.string   "tags",                   default: "[]",  null: false
     t.string   "genre"
     t.text     "summary"
     t.datetime "released_at"
     t.string   "thumbnail"
-    t.text     "videos",                 default: "[]", null: false
-    t.text     "images",                 default: "[]", null: false
+    t.text     "videos",                 default: "[]",  null: false
+    t.text     "images",                 default: "[]",  null: false
     t.integer  "price"
     t.integer  "sale_price"
     t.integer  "reviews_ratio"
     t.integer  "reviews_count"
     t.integer  "positive_reviews_count"
     t.integer  "negative_reviews_count"
-    t.text     "positive_reviews",       default: "[]", null: false
-    t.text     "negative_reviews",       default: "[]", null: false
+    t.text     "positive_reviews",       default: "[]",  null: false
+    t.text     "negative_reviews",       default: "[]",  null: false
     t.integer  "dlc_count"
     t.integer  "achievements_count"
-    t.string   "audio_languages",        default: "[]", null: false
-    t.string   "subtitles_languages",    default: "[]", null: false
+    t.string   "audio_languages",        default: "[]",  null: false
+    t.string   "subtitles_languages",    default: "[]",  null: false
     t.integer  "metacritic"
     t.string   "esrb_rating"
     t.boolean  "early_access"
     t.text     "system_requirements"
-    t.integer  "players",                default: 0,    null: false
-    t.integer  "controller_support",     default: 0,    null: false
-    t.integer  "features",               default: 0,    null: false
-    t.integer  "platforms",              default: 0,    null: false
-    t.integer  "vr_platforms",           default: 0,    null: false
-    t.integer  "vr_mode",                default: 0,    null: false
-    t.integer  "vr_controllers",         default: 0,    null: false
+    t.integer  "players",                default: 0,     null: false
+    t.integer  "controller_support",     default: 0,     null: false
+    t.integer  "features",               default: 0,     null: false
+    t.integer  "platforms",              default: 0,     null: false
+    t.integer  "vr_platforms",           default: 0,     null: false
+    t.integer  "vr_mode",                default: 0,     null: false
+    t.integer  "vr_controllers",         default: 0,     null: false
     t.datetime "game_scraped_at"
     t.datetime "list_scraped_at"
     t.datetime "reviews_scraped_at"
@@ -110,7 +110,8 @@ ActiveRecord::Schema.define(version: 20170119211216) do
     t.string   "developer"
     t.string   "publisher"
     t.integer  "community_hub_id"
-    t.boolean  "blacklist"
+    t.boolean  "blacklist",              default: false, null: false
+    t.datetime "steam_published_at"
     t.index ["steam_id"], name: "index_steam_games_on_steam_id", unique: true, using: :btree
   end
 

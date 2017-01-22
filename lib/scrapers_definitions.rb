@@ -12,6 +12,11 @@ class ScrapersDefinitions
     Scrapers::Steam::Game::Runner.new(resources: steam_games)
   end
 
+  def steam_games_force
+    steam_games = SteamGame.all.includes(:game)
+    Scrapers::Steam::Game::Runner.new(resources: steam_games)
+  end
+
   def steam_reviews
     steam_games = SteamGame.get_for_reviews_scraping.includes(:game)
     Scrapers::Steam::Reviews::Runner.new(resources: steam_games)
