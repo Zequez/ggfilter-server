@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-scrapers.git
-  revision: b336b272d45f3926af727e14fccb28cdbc3b5b54
+  revision: 324080935d313f96f2146cb0397e77342757d7a6
   specs:
     scrapers (0.3.2)
       activerecord (>= 4.2)
@@ -88,6 +88,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
@@ -191,6 +193,8 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
+    json-schema (2.7.0)
+      addressable (>= 2.4)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -231,6 +235,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_suffix (2.0.4)
     puma (3.6.2)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -385,6 +390,7 @@ DEPENDENCIES
   haml-rails
   inherited_resources!
   jbuilder (~> 2.0)
+  json-schema
   kaminari
   nilify_blanks
   non-stupid-digest-assets
