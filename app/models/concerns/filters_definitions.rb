@@ -1,5 +1,5 @@
 module FiltersDefinitions
-  extend ActiveSupport::Concern
+  # extend ActiveSupport::Concern
   #
   # class ExactFilter < FilteringHelpers::BaseFilter
   #   def condition(params)
@@ -7,7 +7,11 @@ module FiltersDefinitions
   #   end
   # end
 
-  class_methods do
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+
+  module ClassMethods
     # Input: value
     def exact_filter(column, filter)
       ["#{column} = ?", filter[:value]]
@@ -51,19 +55,42 @@ module FiltersDefinitions
     def boolean_filter(column, filter)
       val = filter[:value]
 
+      decompose = ->(flags) do
+        vals = []
+        n = 1
+        (Math.log2(flags).ceil+1).times do
+          vals.push(n) if n & flags > 0
+          n = n << 1
+        end
+        vals
+      end
+
+      m = ->(v) do
+        "(#{column} & #{v} > 0)"
+      end
+
+
       if val.kind_of?(Fixnum) and val > 0
-        if filter[:or]
-          vals = [val]
-        else
-          vals = []
-          n = 1
-          (Math.log2(val).ceil+1).times do
-            vals.push(n) if n & val > 0
-            n = n << 1
+
+        if filter[:xor]
+          vals = decompose.call(val)
+          if vals.size > 1
+            sql = vals.map{ |v, i|
+              other = (vals - [v]).map(&m)
+              sub_sql = [m.call(v), *other].join(' AND NOT ')
+              "(#{sub_sql})"
+            }.join(' OR ')
+          else
+            sql = "(#{column} = #{vals[0]})"
           end
+        elsif filter[:or]
+          sql = m.call(val)
+        else
+          vals = decompose.call(val)
+          sql = vals.map{|v| m.call(v) }.join(' AND ')
         end
 
-        [vals.map{|v| "#{column} & ? > 0" }.join(' AND '), *vals]
+        sql
       else
         nil
       end

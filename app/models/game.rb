@@ -59,15 +59,16 @@ class Game < ActiveRecord::Base
   extend FriendlyId
   include SimpleFlaggableColumn
   include SimpleEnum
-  extend GameFilters
-
-  friendly_id :name, use: :slugged, slug_column: :name_slug
 
   belongs_to :steam_game, optional: true
   belongs_to :oculus_game, optional: true
 
-  ### Computed attributes ###
-  ###########################
+  include GameFilters
+
+  friendly_id :name, use: :slugged, slug_column: :name_slug
+
+  ### Serialized ###
+  ##################
 
   serialize :sysreq_video_tokens_values, JSON
   serialize :tags, JSON

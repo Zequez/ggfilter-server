@@ -1,11 +1,11 @@
 module GameFilters
-  extend ActiveSupport::Concern
+  # extend ActiveSupport::Concern
 
   def self.included(base)
     base.class_eval do
       include Filterable
       include FiltersDefinitions
-
+      
       register_filter :name, :name_filter
       register_filter :tags, :tags_filter
       register_filter :steam_id, :exact_filter, column: [:steam_game, :steam_id]
