@@ -122,23 +122,18 @@ class Game < ActiveRecord::Base
     full: 3
   }
 
-  # These are from steam_game but we need them here too so it deserialize them
-  # attr_accessor :images
-  # attr_accessor :videos
-  # serialize :images, JSON
-  # serialize :videos, JSON
-  # attribute :images
-  # attribute :videos
-
-  def attributes
-    attrs = super
-    attrs['images'] = JSON.load(attrs['images']) if attrs['images'].kind_of? String
-    attrs['videos'] = JSON.load(attrs['videos']) if attrs['videos'].kind_of? String
-    attrs
-  end
-
   def self.find_or_build_from_name(name)
     where(name_slug: name.to_s.parameterize).first || new(name: name)
+  end
+
+  def self.re_compute_all
+    Game.all.in_batches do |game|
+      game.compute_all
+      game.save!
+    end
+
+    mass_compute_sysreq_index
+    compute_percentiles
   end
 
   # We need to compute this globally because
