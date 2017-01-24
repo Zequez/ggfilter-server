@@ -2,53 +2,46 @@
 #
 # Table name: games
 #
-#  id                         :integer          not null, primary key
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
-#  name                       :string
-#  name_slug                  :string
-#  playtime_mean              :float
-#  playtime_median            :float
-#  playtime_sd                :float
-#  playtime_rsd               :float
-#  playtime_ils               :string
-#  playtime_mean_ftb          :float
-#  playtime_median_ftb        :float
-#  sysreq_video_tokens        :string           default(""), not null
-#  sysreq_video_index         :integer
-#  sysreq_index_centile       :integer
-#  steam_game_id              :integer
-#  lowest_steam_price         :integer
-#  steam_discount             :integer
-#  tags                       :string           default([]), not null
-#  sysreq_video_tokens_values :text
-#  oculus_game_id             :integer
-#  steam_price                :integer
-#  steam_price_regular        :integer
-#  steam_price_discount       :integer
-#  oculus_price               :integer
-#  oculus_price_regular       :integer
-#  oculus_price_discount      :integer
-#  lowest_price               :integer
-#  ratings_count              :integer
-#  positive_ratings_count     :integer
-#  negative_ratings_count     :integer
-#  ratings_ratio              :integer
-#  released_at                :datetime
-#  players                    :integer          default(0), not null
-#  controllers                :integer          default(0), not null
-#  vr_modes                   :integer          default(0), not null
-#  vr_platforms               :integer          default(0), not null
-#  gamepad                    :integer          default(0), not null
-#  vr_only                    :boolean          default(FALSE), not null
-#  platforms                  :integer          default(0), not null
-#  sysreq_gpu_string          :string
-#  sysreq_gpu_tokens          :string
-#  sysreq_index               :integer
-#  sysreq_index_pct           :integer
-#  images                     :text
-#  videos                     :text
-#  thumbnail                  :string
+#  id                     :integer          not null, primary key
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  name                   :string
+#  name_slug              :string
+#  playtime_mean          :float
+#  playtime_median        :float
+#  playtime_sd            :float
+#  playtime_rsd           :float
+#  playtime_mean_ftb      :float
+#  playtime_median_ftb    :float
+#  steam_game_id          :integer
+#  tags                   :string           default([]), not null
+#  oculus_game_id         :integer
+#  steam_price            :integer
+#  steam_price_regular    :integer
+#  steam_price_discount   :integer
+#  oculus_price           :integer
+#  oculus_price_regular   :integer
+#  oculus_price_discount  :integer
+#  lowest_price           :integer
+#  ratings_count          :integer
+#  positive_ratings_count :integer
+#  negative_ratings_count :integer
+#  ratings_ratio          :integer
+#  released_at            :datetime
+#  players                :integer          default(0), not null
+#  controllers            :integer          default(0), not null
+#  vr_modes               :integer          default(0), not null
+#  vr_platforms           :integer          default(0), not null
+#  gamepad                :integer          default(0), not null
+#  vr_only                :boolean          default(FALSE), not null
+#  platforms              :integer          default(0), not null
+#  sysreq_gpu_string      :string
+#  sysreq_gpu_tokens      :string
+#  sysreq_index           :integer
+#  sysreq_index_pct       :integer
+#  images                 :text
+#  videos                 :text
+#  thumbnail              :string
 #
 # Indexes
 #
@@ -196,6 +189,7 @@ class Game < ActiveRecord::Base
     compute_players
 
     # Other stuff
+    compute_vr_only
     compute_playtime_stats
     compute_tags
     compute_sysreq_string
@@ -244,6 +238,10 @@ class Game < ActiveRecord::Base
       negative += oculus_negative
     end
 
+
+
+    self.ratings_count = positive + negative
+    self.ratings_ratio = positive / self.ratings_count if self.ratings_count > 0
     self.positive_ratings_count = positive
     self.negative_ratings_count = negative
   end
@@ -375,6 +373,20 @@ class Game < ActiveRecord::Base
       result.push target if (origin - source_flags).size < origin.size
     end
     result
+  end
+
+  def compute_vr_only
+    vr_only = false
+
+    if steam_game
+      vr_only = steam_game.vr_only
+    end
+
+    if oculus_game && !steam_game
+      vr_only = true
+    end
+
+    self.vr_only = vr_only
   end
 
   def compute_playtime_stats

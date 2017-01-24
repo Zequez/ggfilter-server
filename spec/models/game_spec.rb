@@ -4,7 +4,6 @@ describe Game, type: :model do
   it { is_expected.to respond_to :name_slug }
   it { is_expected.to respond_to :created_at }
   it { is_expected.to respond_to :updated_at }
-  it { is_expected.to respond_to :lowest_steam_price }
 
   def build_multigame(data = {})
     game = build :game
@@ -52,6 +51,7 @@ describe Game, type: :model do
       expect(game).to receive :compute_vr_modes
       expect(game).to receive :compute_players
 
+      expect(game).to receive :compute_vr_only
       expect(game).to receive :compute_playtime_stats
       expect(game).to receive :compute_tags
       expect(game).to receive :compute_sysreq_string
@@ -272,7 +272,7 @@ describe Game, type: :model do
       end
     end
 
-    describe 'VR platforms flags' do
+    describe '#compute_vr_platforms' do
       it 'should read them from Steam' do
         game = build_multigame steam: {
           vr_platforms: [:vive, :rift, :osvr]
@@ -290,7 +290,7 @@ describe Game, type: :model do
       end
     end
 
-    describe 'players flags' do
+    describe '#compute_players' do
       describe 'Steam game player flags' do
         {
           single_player:        [:single],
@@ -330,7 +330,7 @@ describe Game, type: :model do
       end
     end
 
-    describe 'VR modes flags' do
+    describe '#compute_vr_modes' do
       describe 'Steam VR modes flags' do
         it 'should read all the Steam flags' do
           game = build_multigame steam: {
@@ -350,6 +350,22 @@ describe Game, type: :model do
           expect(game.vr_modes).to match_array [:seated, :standing, :room_scale]
         end
       end
+    end
+  end
+
+  describe '#compute_vr_only' do
+    it 'should read it from Steam' do
+      game = build_multigame steam: {
+        vr_only: true
+      }
+      game.compute_vr_only
+      expect(game.vr_only).to eq true
+    end
+
+    it 'should be set to true if on the Oculus store' do
+      game = build_multigame oculus: {}
+      game.compute_vr_only
+      expect(game.vr_only).to eq true
     end
   end
 

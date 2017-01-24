@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124123422) do
+ActiveRecord::Schema.define(version: 20170124130732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,25 +32,18 @@ ActiveRecord::Schema.define(version: 20170124123422) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "name"
     t.string   "name_slug"
     t.float    "playtime_mean"
     t.float    "playtime_median"
     t.float    "playtime_sd"
     t.float    "playtime_rsd"
-    t.string   "playtime_ils"
     t.float    "playtime_mean_ftb"
     t.float    "playtime_median_ftb"
-    t.string   "sysreq_video_tokens",        default: "",    null: false
-    t.integer  "sysreq_video_index"
-    t.integer  "sysreq_index_centile"
     t.integer  "steam_game_id"
-    t.integer  "lowest_steam_price"
-    t.integer  "steam_discount"
-    t.string   "tags",                       default: "[]",  null: false
-    t.text     "sysreq_video_tokens_values"
+    t.string   "tags",                   default: "[]",  null: false
     t.integer  "oculus_game_id"
     t.integer  "steam_price"
     t.integer  "steam_price_regular"
@@ -64,13 +57,13 @@ ActiveRecord::Schema.define(version: 20170124123422) do
     t.integer  "negative_ratings_count"
     t.integer  "ratings_ratio"
     t.datetime "released_at"
-    t.integer  "players",                    default: 0,     null: false
-    t.integer  "controllers",                default: 0,     null: false
-    t.integer  "vr_modes",                   default: 0,     null: false
-    t.integer  "vr_platforms",               default: 0,     null: false
-    t.integer  "gamepad",                    default: 0,     null: false
-    t.boolean  "vr_only",                    default: false, null: false
-    t.integer  "platforms",                  default: 0,     null: false
+    t.integer  "players",                default: 0,     null: false
+    t.integer  "controllers",            default: 0,     null: false
+    t.integer  "vr_modes",               default: 0,     null: false
+    t.integer  "vr_platforms",           default: 0,     null: false
+    t.integer  "gamepad",                default: 0,     null: false
+    t.boolean  "vr_only",                default: false, null: false
+    t.integer  "platforms",              default: 0,     null: false
     t.string   "sysreq_gpu_string"
     t.string   "sysreq_gpu_tokens"
     t.integer  "sysreq_index"
@@ -179,6 +172,7 @@ ActiveRecord::Schema.define(version: 20170124123422) do
     t.integer  "community_hub_id"
     t.boolean  "blacklist",              default: false, null: false
     t.datetime "steam_published_at"
+    t.boolean  "vr_only",                default: false, null: false
     t.index ["steam_id"], name: "index_steam_games_on_steam_id", unique: true, using: :btree
   end
 

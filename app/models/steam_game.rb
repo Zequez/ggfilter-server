@@ -44,6 +44,7 @@
 #  community_hub_id       :integer
 #  blacklist              :boolean          default(FALSE), not null
 #  steam_published_at     :datetime
+#  vr_only                :boolean          default(FALSE), not null
 #
 # Indexes
 #
