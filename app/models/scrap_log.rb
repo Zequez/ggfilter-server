@@ -23,9 +23,9 @@ class ScrapLog < ApplicationRecord
     new(
       started_at: scrap_report.started_at,
       finished_at: scrap_report.finished_at,
-      msg: scrap_report.error? ?
+      msg: (scrap_report.error? ?
         scrap_report.exception.message
-        : scrap_report.scraper_report,
+        : scrap_report.scraper_report) || '',
       error: scrap_report.error?,
       scraper: scrap_report.scraper_name,
       task_name: task_name || scrap_report.scraper_name

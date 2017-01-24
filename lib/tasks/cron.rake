@@ -19,8 +19,10 @@ namespace :cron do
       'nolog',
       'scrap:steam_list_on_sale',
       'scrap:steam_games',
-      'scrap:steam_reviews'
-  ]#.each{ |task| Rake::Task[task].invoke }
+      'scrap:steam_reviews',
+      'scrap:oculus',
+      'compute_all_globals'
+  ]
 
   desc 'Daily cron that runs all the tasks and deep scrapings'
   task :daily => [
@@ -29,7 +31,7 @@ namespace :cron do
     'scrap:steam_list',
     'scrap:steam_games',
     'scrap:steam_reviews',
-    'sysreq:all',
-    'sysreq:games_centiles'
+    'scrap:oculus',
+    'compute_all_globals'
   ]
 end

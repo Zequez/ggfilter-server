@@ -42,7 +42,7 @@ class ScrapingDirector
 
      def tasks!
        namespace :scrap do
-         ScrapersDefinitions.public_instance_methods.each do |method|
+         ScrapersDefinitions.instance_methods(false).each do |method|
            desc "Scrap #{method.to_s.humanize}"
            task method => :environment do
              ScrapingDirector.task(method).run
