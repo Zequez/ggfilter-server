@@ -1,6 +1,6 @@
 describe SysreqAnalyzer do
   describe '#get_list_values_averages' do
-    fit 'should return the averages of each group' do
+    it 'should return the averages of each group' do
       sa = SysreqAnalyzer.new([['amd8950', 'amd8955'], ['unknown'], ['intel4000']], {
         'amd8950' => 100,
         'amd8955' => 200,
@@ -10,10 +10,10 @@ describe SysreqAnalyzer do
       expect(sa.tokens).to eq({
         'amd8950' => 100,
         'amd8955' => 200,
-        'intel4000' => 200,
+        'intel4000' => 300,
         'unknown' => nil
       })
-      expect(sa.get_list_values_averages).to eq [150, nil, 200]
+      expect(sa.get_list_values_averages).to eq [150.0, nil, 300.0]
     end
   end
 

@@ -43,7 +43,9 @@ describe ScrapingDirector do
   describe 'logging' do
     it 'should create a new scrap_log with the scrap report returned' do
       runner = double('Runner', run: ->{})
-      report = double('ScrapReport', report_errors_if_any: ->{})
+      report = double('ScrapReport')
+      expect(report).to receive(:report_errors_if_any)
+      expect(report).to receive(:output).and_return(nil)
       scrap_log = double('ScrapLog')
       expect(runner).to receive(:run).and_return(report)
       expect(scrap_log).to receive(:save!)

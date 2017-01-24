@@ -93,7 +93,7 @@ describe FiltersDefinitions do
     end
   end
 
-  fdescribe '.boolean_filter' do
+  describe '.boolean_filter' do
     use_filter :boolean_filter, :platforms
 
     before :each do

@@ -80,7 +80,7 @@ class SteamGame < Scrapers::Steam::SteamGame
 
   def propagate_to_game
     game = Game.find_or_build_from_name name
-    game.oculus_game = self
+    game.steam_game = self
     game.compute_all
     game.save!
     game

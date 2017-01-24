@@ -37,19 +37,26 @@ def valid_data(object = {})
 end
 
 describe OculusGame, type: :model do
-  def build_game!(attrs = {})
+  def create_game!(attrs = {})
     OculusGame.from_scraper!(valid_data(attrs))
   end
 
 
   describe '.from_scraper!' do
     it 'should not allow to be created with an invalid data JSON schema' do
-      expect{ build_game!(oculus_id: nil) }
+      expect{ create_game!(oculus_id: nil) }
         .to raise_error JSON::Schema::ValidationError
     end
 
     it 'should allow to be created with a valid data JSON schema' do
-      expect{ build_game! }.to_not raise_error
+      expect{ create_game! }.to_not raise_error
+    end
+
+    it 'should return an existing game if it already exists' do
+      game = create_game! oculus_id: 123, summary: 'aaa'
+      expect(create_game!(oculus_id: 123, summary: 'bbb')).to eq game
+      game.reload
+      expect(game.summary).to eq 'bbb'
     end
   end
 
@@ -69,7 +76,7 @@ describe OculusGame, type: :model do
       players: ["SINGLE_USER", "MULTI_USER", "CO_OP"]
     }.each_pair do |column, flags|
       it "#{column} should be flaggable" do
-        g = build_game!
+        g = create_game!
 
         g.send "#{column}=", []
         expect(g.send column).to eq []
@@ -80,12 +87,12 @@ describe OculusGame, type: :model do
     end
   end
 
-  fdescribe 'serializable columns' do
+  describe 'serializable columns' do
     [:genres, :languages, :screenshots].each do |column|
       it "#{column} should be serializable" do
         data = valid_data
         original_value = data[column]
-        build_game!.save!
+        create_game!
         g = OculusGame.first
         expect(g.send column).to eq original_value
       end

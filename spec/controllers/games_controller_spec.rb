@@ -72,20 +72,6 @@ describe GamesController, type: :controller do
       ])
     end
 
-    it 'should sort by ascending steam_id by default' do
-      g1 = create(:steam_game, steam_id: 123, name: 'Potato').game
-      g2 = create(:steam_game, steam_id: 50, name: 'Patota').game
-      g3 = create(:steam_game, steam_id: 66, name: 'Pelotudo').game
-
-      get_index filter: {params: {steam_id: true}, sort: { filter: 'rsarsarsa' }}
-
-      expect(response_json).to eq([
-        {'id' => g2.id, 'steam_id' => 50},
-        {'id' => g3.id, 'steam_id' => 66},
-        {'id' => g1.id, 'steam_id' => 123},
-      ])
-    end
-
     it 'should put the nulls at the begining when ascending' do
       g1 = create(:game, name: 'c')
       g2 = create(:game, name: 'a')

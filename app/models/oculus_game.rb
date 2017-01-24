@@ -87,7 +87,14 @@ class OculusGame < ApplicationRecord
 
   def self.from_scraper!(attributes)
     JSON::Validator.validate!(Scrapers::Oculus::SCHEMA, attributes)
-    OculusGame.new attributes
+    game = OculusGame.where(oculus_id: attributes[:oculus_id]).first
+    if game
+      game.assign_attributes attributes
+      game.save!
+      game
+    else
+      OculusGame.create(attributes)
+    end
   end
 
   # after_create :find_game_or_create_one

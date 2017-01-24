@@ -22,7 +22,7 @@ module GameFilters
       register_filter :oculus_price, :range_filter,
         select: [:oculus_price, :oculus_price_regular]
       register_filter :oculus_price_discount, :range_filter
-      register_filter :lowest_price,
+      register_filter :lowest_price, :range_filter,
         select: [
           :lowest_price,
           :oculus_price,

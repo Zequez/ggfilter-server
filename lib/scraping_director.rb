@@ -15,6 +15,16 @@ class ScrapingDirector
   def run
     @report = runner.run
     @report.report_errors_if_any
+    if @report.output
+      # TODO: This is quite hacky, shitty and brittle, let's just refactor later
+      if @report.output[0].is_a? ActiveRecord::Base
+        games = @report.output
+      else
+        games = @report.output.map{ |data| OculusGame.from_scraper! data }
+      end
+
+      @report.output.each(&:propagate_to_game)
+    end
     scrap_log = ScrapLog.build_from_report(@report, @task_name)
     scrap_log.save!
   end

@@ -22,6 +22,10 @@ class ScrapersDefinitions
     Scrapers::Steam::Reviews::Runner.new(resources: steam_games)
   end
 
+  def oculus_games
+    Scrapers::Oculus::Runner.new
+  end
+
   def benchmarks
     Scrapers::Benchmarks::Runner.new(resource_class: Gpu)
   end
