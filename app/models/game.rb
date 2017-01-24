@@ -70,7 +70,6 @@ class Game < ActiveRecord::Base
   ### Serialized ###
   ##################
 
-  serialize :sysreq_video_tokens_values, JSON
   serialize :tags, JSON
   serialize :images, JSON
   serialize :videos, JSON
@@ -252,8 +251,6 @@ class Game < ActiveRecord::Base
       positive += oculus_positive
       negative += oculus_negative
     end
-
-
 
     self.ratings_count = positive + negative
     self.ratings_ratio = positive / self.ratings_count if self.ratings_count > 0
