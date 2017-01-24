@@ -61,6 +61,7 @@
 class Game < ActiveRecord::Base
   extend FriendlyId
   include SimpleFlaggableColumn
+  include SimpleEnum
   extend GameFilters
 
   friendly_id :name, use: :slugged, slug_column: :name_slug
@@ -109,6 +110,12 @@ class Game < ActiveRecord::Base
     win:   0b1,
     mac:   0b10,
     linux: 0b100
+  }
+
+  simple_enum_column :gamepad, {
+    no: 1,
+    partial: 2,
+    full: 3
   }
 
   # These are from steam_game but we need them here too so it deserialize them
@@ -455,20 +462,5 @@ class Game < ActiveRecord::Base
         nil
       end
     }.compact.uniq
-  end
-
-  ### Utils ###
-  #############
-
-  def gamepad_enum
-    { no: 1, partial: 2, full: 3 }
-  end
-
-  def gamepad=(support)
-    write_attribute :gamepad, gamepad_enum[support.to_sym]
-  end
-
-  def gamepad
-    gamepad_enum.invert[read_attribute :gamepad]
   end
 end
