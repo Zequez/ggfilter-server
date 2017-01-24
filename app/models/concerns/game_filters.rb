@@ -18,10 +18,10 @@ module GameFilters
       # Prices
       register_filter :steam_price, :range_filter,
         select: [:steam_price, :steam_price_regular]
-      register_filter :steam_price_discount
+      register_filter :steam_price_discount, :range_filter
       register_filter :oculus_price, :range_filter,
         select: [:oculus_price, :oculus_price_regular]
-      register_filter :oculus_price_discount
+      register_filter :oculus_price_discount, :range_filter
       register_filter :lowest_price,
         select: [
           :lowest_price,
