@@ -46,6 +46,9 @@
 #  sysreq_gpu_tokens          :string
 #  sysreq_index               :integer
 #  sysreq_index_pct           :integer
+#  images                     :text
+#  videos                     :text
+#  thumbnail                  :string
 #
 # Indexes
 #
@@ -74,6 +77,8 @@ class Game < ActiveRecord::Base
 
   serialize :sysreq_video_tokens_values, JSON
   serialize :tags, JSON
+  serialize :images, JSON
+  serialize :videos, JSON
 
   ### Flag columns ###
   ####################
@@ -178,22 +183,28 @@ class Game < ActiveRecord::Base
   end
 
   def compute_all
+    # Basic game data
     compute_prices
     compute_ratings
     compute_released_at
-    compute_flags
-    compute_playtime_stats
-    compute_tags
-    compute_sysreq_string
-    compute_sysreq_tokens
-  end
 
-  def compute_flags
+    # Flags
     compute_platforms
     compute_controllers
     compute_vr_platforms
     compute_vr_modes
     compute_players
+
+    # Other stuff
+    compute_playtime_stats
+    compute_tags
+    compute_sysreq_string
+    compute_sysreq_tokens
+
+    # Media
+    compute_thumbnail
+    compute_videos
+    compute_images
   end
 
   def compute_prices
@@ -397,10 +408,7 @@ class Game < ActiveRecord::Base
     end
 
     if tags_groups.size > 0
-      self.tags = Array.new(tags_groups.map(&:size).max)
-        .zip(*tags_groups)
-        .flatten
-        .compact
+      self.tags = zip_arrays(tags_groups)
     end
   end
 
@@ -445,8 +453,52 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def self.compute_sysreq_index
+  def compute_thumbnail
+    thumbnail = nil
 
+    if steam_game && steam_game.thumbnail
+      thumbnail = steam_game.thumbnail
+    end
+
+    if !thumbnail && oculus_game && oculus_game.thumbnail
+      thumbnail = oculus_game.thumbnail
+    end
+
+    self.thumbnail = thumbnail
+  end
+
+  def compute_videos
+    videos = []
+
+    if steam_game && steam_game.videos.size > 0
+      videos = steam_game.videos
+    end
+
+    if oculus_game && oculus_game.trailer_video
+      videos.push oculus_game.trailer_video
+    end
+
+    self.videos = videos
+  end
+
+  # In the future we might want to process the images with some
+  # algorithm to detect which ones are repeated across the stores
+  # and use the unique ones. Besides, eventually we might want to
+  # hosts the images ourselves anyway.
+  def compute_images
+    images = nil
+
+    # We prioritise these for now because Steam images have thumbnails
+    # with the same name we can use
+    if steam_game
+      images = steam_game.images
+    end
+
+    if oculus_game && !images
+      images = oculus_game.screenshots
+    end
+
+    self.images = images
   end
 
   ### Tags ###
@@ -462,5 +514,15 @@ class Game < ActiveRecord::Base
         nil
       end
     }.compact.uniq
+  end
+
+  ### Utils ###
+  #############
+
+  def zip_arrays(arrs)
+    Array.new(arrs.map(&:size).max)
+      .zip(*arrs)
+      .flatten
+      .compact
   end
 end

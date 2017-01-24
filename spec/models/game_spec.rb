@@ -45,10 +45,22 @@ describe Game, type: :model do
       expect(game).to receive :compute_prices
       expect(game).to receive :compute_ratings
       expect(game).to receive :compute_released_at
-      expect(game).to receive :compute_flags
+
+      expect(game).to receive :compute_platforms
+      expect(game).to receive :compute_controllers
+      expect(game).to receive :compute_vr_platforms
+      expect(game).to receive :compute_vr_modes
+      expect(game).to receive :compute_players
+
       expect(game).to receive :compute_playtime_stats
       expect(game).to receive :compute_tags
       expect(game).to receive :compute_sysreq_string
+      expect(game).to receive :compute_sysreq_tokens
+
+      expect(game).to receive :compute_thumbnail
+      expect(game).to receive :compute_videos
+      expect(game).to receive :compute_images
+
       game.compute_all
     end
   end
@@ -177,29 +189,29 @@ describe Game, type: :model do
     end
   end
 
-  describe '#compute_flags' do
-    describe 'platform flags' do
+  describe 'flags computation' do
+    describe '#compute_platforms' do
       it 'should be set to Windows if available on the Oculus store' do
         oculus_game = create :oculus_game
         game = create :game, oculus_game: oculus_game
-        game.compute_flags
+        game.compute_platforms
 
         expect(game.platforms).to eq [:win]
       end
 
       it 'should use the Steam game data' do
         game = build_multigame oculus: {}, steam: { platforms: [:linux] }
-        game.compute_flags
+        game.compute_platforms
         expect(game.platforms).to match_array [:win, :linux]
       end
     end
 
-    describe 'controllers flags' do
+    describe '#compute_controllers' do
       it 'from Oculus should read touch and gamepad, ignore the rest' do
         game = build_multigame oculus: {
           vr_controllers: ['OCULUS_TOUCH', 'GAMEPAD', 'HYDRA', 'RACING_WHEEL']
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.controllers).to match_array [:tracked, :gamepad]
       end
 
@@ -209,7 +221,7 @@ describe Game, type: :model do
         }, steam: {
           vr_controllers: [:gamepad]
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.controllers).to match_array [:tracked, :gamepad, :keyboard_mouse]
       end
 
@@ -219,7 +231,7 @@ describe Game, type: :model do
           vr_controllers: [],
           controller_support: :no
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.controllers).to match_array [:keyboard_mouse]
       end
 
@@ -229,7 +241,7 @@ describe Game, type: :model do
           vr_controllers: [:gamepad, :tracked],
           controller_support: :no
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.controllers).to match_array [:gamepad, :tracked]
       end
 
@@ -237,7 +249,7 @@ describe Game, type: :model do
         game = build_multigame steam: {
           controller_support: :partial
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.gamepad).to eq :partial
       end
 
@@ -245,7 +257,7 @@ describe Game, type: :model do
         game = build_multigame oculus: {
           vr_controllers: ['GAMEPAD']
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.gamepad).to eq :full
       end
 
@@ -255,7 +267,7 @@ describe Game, type: :model do
         }, oculus: {
           vr_controllers: ['GAMEPAD']
         }
-        game.compute_flags
+        game.compute_controllers
         expect(game.gamepad).to eq :partial
       end
     end
@@ -265,7 +277,7 @@ describe Game, type: :model do
         game = build_multigame steam: {
           vr_platforms: [:vive, :rift, :osvr]
         }
-        game.compute_flags
+        game.compute_vr_platforms
         expect(game.vr_platforms).to eq [:vive, :rift, :osvr]
       end
 
@@ -273,7 +285,7 @@ describe Game, type: :model do
         game = build_multigame steam: {
           vr_platforms: [:vive]
         }, oculus: {}
-        game.compute_flags
+        game.compute_vr_platforms
         expect(game.vr_platforms).to eq [:vive, :rift]
       end
     end
@@ -482,6 +494,61 @@ describe Game, type: :model do
         Tag.find_by_name('potato').id,
         Tag.find_by_name('galaxy').id
       ])
+    end
+  end
+
+  describe '#compute_images' do
+    it 'should get the images from both Oculus and Steam, prioritise Steam' do
+      game = build_multigame steam: {
+        images: ['http://purple.com']
+      }, oculus: {
+        screenshots: ['http://example.com']
+      }
+      game.compute_images
+      expect(game.images).to eq ['http://purple.com']
+    end
+
+    it 'should get the images from Oculus if Steam not available' do
+      game = build_multigame oculus: {
+        screenshots: ['http://example.com']
+      }
+      game.compute_images
+      expect(game.images).to eq ['http://example.com']
+    end
+  end
+
+  describe '#compute_videos' do
+    it 'should add videos from Oculus and Steam' do
+      game = build_multigame steam: {
+        videos: ['http://purple.com']
+      }, oculus: {
+        trailer_video: 'http://example.com'
+      }
+      game.compute_videos
+
+      expect(game.videos).to eq ['http://purple.com', 'http://example.com']
+    end
+  end
+
+  describe '#compute_thumbnail' do
+    it 'should get the thumbnail from Steam' do
+      game = build_multigame steam: {
+        thumbnail: 'http://purple.com'
+      }, oculus: {
+        thumbnail: 'http://example.com'
+      }
+      game.compute_thumbnail
+
+      expect(game.thumbnail).to eq 'http://purple.com'
+    end
+
+    it 'should get the thumbnail from Oculus if not available from Steam' do
+      game = build_multigame oculus: {
+        thumbnail: 'http://example.com'
+      }
+      game.compute_thumbnail
+
+      expect(game.thumbnail).to eq 'http://example.com'
     end
   end
 
