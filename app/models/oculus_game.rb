@@ -3,7 +3,7 @@
 # Table name: oculus_games
 #
 #  id                :integer          not null, primary key
-#  oculus_id         :integer          not null
+#  oculus_id         :string           default(""), not null
 #  name              :string           not null
 #  price             :integer          not null
 #  price_regular     :integer

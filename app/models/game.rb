@@ -14,7 +14,7 @@
 #  playtime_mean_ftb      :float
 #  playtime_median_ftb    :float
 #  steam_game_id          :integer
-#  tags                   :string           default("[]"), not null
+#  tags                   :string           default([]), not null
 #  oculus_game_id         :integer
 #  steam_price            :integer
 #  steam_price_regular    :integer

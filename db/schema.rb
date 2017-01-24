@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124161130) do
+ActiveRecord::Schema.define(version: 20170124174154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170124161130) do
   end
 
   create_table "oculus_games", force: :cascade do |t|
-    t.integer  "oculus_id",                         null: false
+    t.string   "oculus_id",         default: "",    null: false
     t.string   "name",                              null: false
     t.integer  "price",                             null: false
     t.integer  "price_regular"
