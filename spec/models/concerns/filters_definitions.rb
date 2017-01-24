@@ -1,4 +1,4 @@
-describe GameFilters do
+describe FiltersDefinitions do
   # TODO: Convert it to a shared example...
 
   def create_from_steam_game(steam_game_attrs, game_attrs = {})

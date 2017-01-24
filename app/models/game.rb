@@ -60,8 +60,8 @@
 
 class Game < ActiveRecord::Base
   extend FriendlyId
-  include FilteringHelpers
-  include GameFilters
+  include Filterable
+  include FiltersDefinitions
   include SimpleFlaggableColumn
 
   friendly_id :name, use: :slugged, slug_column: :name_slug

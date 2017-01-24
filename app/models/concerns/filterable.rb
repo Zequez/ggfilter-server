@@ -1,4 +1,4 @@
-module FilteringHelpers
+module Filterable
   extend ActiveSupport::Concern
 
   class_methods do

@@ -1,4 +1,4 @@
-describe FilteringHelpers do
+describe Filterable do
   # TODO: Convert it to a shared example...
 
   describe '.apply_filter' do

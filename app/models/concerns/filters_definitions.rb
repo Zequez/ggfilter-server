@@ -1,4 +1,4 @@
-module GameFilters
+module FiltersDefinitions
   extend ActiveSupport::Concern
   #
   # class ExactFilter < FilteringHelpers::BaseFilter
