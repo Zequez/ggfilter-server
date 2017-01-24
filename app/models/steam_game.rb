@@ -74,18 +74,22 @@ class SteamGame < Scrapers::Steam::SteamGame
     [         1.year]
   ]){ where(blacklist: false) }
 
-  after_create :create_game_with_the_same_name
-  def create_game_with_the_same_name
-    Game.create_from_steam_game self
+  # after_create :create_game_with_the_same_name
+  # def create_game_with_the_same_name
+  #   Game.create_from_steam_game self
+  # end
+
+  def propagate_to_game
+
   end
 
-  after_update :send_processing_signal
-  def send_processing_signal
-    if game
-      game.process_steam_game_data previous_changes.keys
-      game.save!
-    end
-  end
+  # after_update :send_processing_signal
+  # def send_processing_signal
+  #   if game
+  #     game.process_steam_game_data previous_changes.keys
+  #     game.save!
+  #   end
+  # end
 
   def self.games_with_a_broken_community_hub_that_makes_no_sense
     where('positive_reviews = ? AND negative_reviews = ?', '[]', '[]').where.not(reviews_count: 0).includes(:game)

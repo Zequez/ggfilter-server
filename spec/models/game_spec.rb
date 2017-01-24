@@ -6,214 +6,562 @@ describe Game, type: :model do
   it { is_expected.to respond_to :updated_at }
   it { is_expected.to respond_to :lowest_steam_price }
 
-  def create_from_steam_game(steam_game_attrs, game_attrs = {})
-    sg = create :steam_game, steam_game_attrs
-    sg.game
+  def build_multigame(data = {})
+    game = build :game
+
+    if data[:oculus]
+      game.oculus_game = create :oculus_game, data[:oculus]
+    end
+
+    if data[:steam]
+      game.steam_game = create :steam_game, data[:steam]
+    end
+
+    game
   end
 
-  describe 'system requirements analysis' do
-    describe 'tokens extraction' do
-      describe '#sysreq_video_tokens' do
-        it 'should extract all the tokens from #system_requirements' do
-          sg = create :steam_game, system_requirements: {
-            minimum: { video_card: 'geforce gtx8500, ati 1500, or intel hd3000' },
-            recommended: { video_card: 'geforce 970TI, amd radeon R9 200, or intel iris pro hd5200' }
-          }
-          game = sg.game
+  describe '.find_or_build_from_name' do
+    context 'game with the same slug exists' do
+      it 'should returns an existing game' do
+        game = create :game, name: 'Potato'
+        found_game = Game.find_or_build_from_name('POTATO')
+        expect(found_game).to eq game
+        expect(found_game.name).to eq 'Potato'
+      end
+    end
 
-          expect(game.sysreq_video_tokens.split(' ')).to match_array %w{nvidia8500 amd1500 intel3000 nvidia970 amd200 intel5200}
+    context 'game does not exist with that slugged name' do
+      it 'returns a new game with the name prefilled' do
+        found_game = Game.find_or_build_from_name('POTATO')
+        expect(found_game.new_record?).to eq true
+        expect(found_game.name).to eq 'POTATO'
+      end
+    end
+  end
+
+  describe '#compute_all' do
+    it 'should call all the compute methods' do
+      game = create :game
+      expect(game).to receive :compute_prices
+      expect(game).to receive :compute_ratings
+      expect(game).to receive :compute_released_at
+      expect(game).to receive :compute_flags
+      expect(game).to receive :compute_playtime_stats
+      expect(game).to receive :compute_tags
+      expect(game).to receive :compute_sysreq_string
+      game.compute_all
+    end
+  end
+
+  describe '#compute_prices' do
+    context 'Oculus game only' do
+      it 'sets #oculus_price #oculus_price_regular #oculus_price_discount' do
+        oculus_game = create :oculus_game, price: 999, price_regular: 1999
+        game = build :game, oculus_game: oculus_game
+        game.compute_prices
+        expect(game.oculus_price).to eq 999
+        expect(game.oculus_price_regular).to eq 1999
+        expect(game.oculus_price_discount).to eq 50
+
+        expect(game.lowest_price).to eq 999
+      end
+    end
+
+    context 'Steam game only' do
+      it 'sets #steam_price #steam_price_regular #steam_price_discount' do
+        steam_game = create :steam_game, price: 1999, sale_price: 999
+        game = build :game, steam_game: steam_game
+        game.compute_prices
+        expect(game.steam_price).to eq 999
+        expect(game.steam_price_regular).to eq 1999
+        expect(game.steam_price_discount).to eq 50
+
+        expect(game.lowest_price).to eq 999
+      end
+    end
+
+    context 'Steam and Oculus games' do
+      it 'sets all the prices and the correct #lowest_price' do
+        steam_game = create :steam_game, price: 1999, sale_price: 999
+        oculus_game = create :oculus_game, price_regular: 1999, price: 499
+        game = build :game, steam_game: steam_game, oculus_game: oculus_game
+        game.compute_prices
+
+        expect(game.lowest_price).to eq 499
+      end
+    end
+  end
+
+  describe '#compute_ratings' do
+    context 'Oculus game only' do
+      it 'sets #ratings_count to the Oculus game ratings' do
+        oculus_game = create :oculus_game,
+          rating_1: 4,
+          rating_2: 2,
+          rating_3: 3,
+          rating_4: 4,
+          rating_5: 20
+        game = build :game, oculus_game: oculus_game
+        game.compute_ratings
+
+        total = (4+2+3+4+20)
+        ratio = (
+          (4*1 + 2*2 + 3*3 + 4*4 + 5*20).to_f / total
+        ).to_f / 5
+        positive = (total * ratio).floor
+        negative = total - positive
+
+        expect(game.positive_ratings_count).to eq positive
+        expect(game.negative_ratings_count).to eq negative
+      end
+    end
+
+    context 'Steam game only' do
+      it 'sets #ratings_count to the Steam game ratings' do
+        steam_game = create :steam_game,
+          positive_reviews_count: 99,
+          negative_reviews_count: 10
+        game = build :game, steam_game: steam_game
+        game.compute_ratings
+
+        expect(game.positive_ratings_count).to eq 99
+        expect(game.negative_ratings_count).to eq 10
+      end
+    end
+
+    context 'Steam and Oculus games' do
+      it 'sums both ratings' do
+        oculus_game = create :oculus_game,
+          rating_1: 4,
+          rating_2: 2,
+          rating_3: 3,
+          rating_4: 4,
+          rating_5: 20
+
+        total = (4+2+3+4+20)
+        ratio = (
+          (4*1 + 2*2 + 3*3 + 4*4 + 5*20).to_f / total
+        ).to_f / 5
+        positive = (total * ratio).floor
+        negative = total - positive
+
+        steam_game = create :steam_game,
+          positive_reviews_count: 99,
+          negative_reviews_count: 10
+
+        game = build :game, oculus_game: oculus_game, steam_game: steam_game
+        game.compute_ratings
+
+        expect(game.positive_ratings_count).to eq(99 + positive)
+        expect(game.negative_ratings_count).to eq(10 + negative)
+      end
+    end
+  end
+
+  describe '#compute_released_at' do
+    it 'should get the date from either Steam or Oculus (prioritise Steam)' do
+      oculus_game = create :oculus_game, released_at: 6.months.ago
+      steam_game = create :steam_game, released_at: 4.months.ago
+
+      game = build :game, oculus_game: oculus_game
+      game.compute_released_at
+      expect(game.released_at).to eq oculus_game.released_at
+
+      game = build :game, steam_game: steam_game
+      game.compute_released_at
+      expect(game.released_at).to eq steam_game.released_at
+
+      game = build :game, steam_game: steam_game, oculus_game: oculus_game
+      game.compute_released_at
+      expect(game.released_at).to eq steam_game.released_at
+    end
+  end
+
+  describe '#compute_flags' do
+    describe 'platform flags' do
+      it 'should be set to Windows if available on the Oculus store' do
+        oculus_game = create :oculus_game
+        game = create :game, oculus_game: oculus_game
+        game.compute_flags
+
+        expect(game.platforms).to eq [:win]
+      end
+
+      it 'should use the Steam game data' do
+        game = build_multigame oculus: {}, steam: { platforms: [:linux] }
+        game.compute_flags
+        expect(game.platforms).to match_array [:win, :linux]
+      end
+    end
+
+    describe 'controllers flags' do
+      it 'from Oculus should read touch and gamepad, ignore the rest' do
+        game = build_multigame oculus: {
+          vr_controllers: ['OCULUS_TOUCH', 'GAMEPAD', 'HYDRA', 'RACING_WHEEL']
+        }
+        game.compute_flags
+        expect(game.controllers).to match_array [:tracked, :gamepad]
+      end
+
+      it 'from Steam should read everything' do
+        game = build_multigame oculus: {
+          vr_controllers: ['OCULUS_TOUCH']
+        }, steam: {
+          vr_controllers: [:gamepad]
+        }
+        game.compute_flags
+        expect(game.controllers).to match_array [:tracked, :gamepad, :keyboard_mouse]
+      end
+
+      it 'should always add the keyboard and mouse if the game is not VR' do
+        game = build_multigame steam: {
+          vr_platforms: [],
+          vr_controllers: [],
+          controller_support: :no
+        }
+        game.compute_flags
+        expect(game.controllers).to match_array [:keyboard_mouse]
+      end
+
+      it 'should not add keyboad and mouse if the app is VR and it doesnt say so' do
+        game = build_multigame steam: {
+          vr_platforms: [:vive],
+          vr_controllers: [:gamepad, :tracked],
+          controller_support: :no
+        }
+        game.compute_flags
+        expect(game.controllers).to match_array [:gamepad, :tracked]
+      end
+
+      it 'should set controller support same as Steam' do
+        game = build_multigame steam: {
+          controller_support: :partial
+        }
+        game.compute_flags
+        expect(game.gamepad).to eq :partial
+      end
+
+      it 'should set controller support from Oculus' do
+        game = build_multigame oculus: {
+          vr_controllers: ['GAMEPAD']
+        }
+        game.compute_flags
+        expect(game.gamepad).to eq :full
+      end
+
+      it 'should prioritise the Steam information on controller support' do
+        game = build_multigame steam: {
+          controller_support: :partial
+        }, oculus: {
+          vr_controllers: ['GAMEPAD']
+        }
+        game.compute_flags
+        expect(game.gamepad).to eq :partial
+      end
+    end
+
+    describe 'VR platforms flags' do
+      it 'should read them from Steam' do
+        game = build_multigame steam: {
+          vr_platforms: [:vive, :rift, :osvr]
+        }
+        game.compute_flags
+        expect(game.vr_platforms).to eq [:vive, :rift, :osvr]
+      end
+
+      it 'should add Oculus if it has an Oculus game' do
+        game = build_multigame steam: {
+          vr_platforms: [:vive]
+        }, oculus: {}
+        game.compute_flags
+        expect(game.vr_platforms).to eq [:vive, :rift]
+      end
+    end
+
+    describe 'players flags' do
+      describe 'Steam game player flags' do
+        {
+          single_player:        [:single],
+          multi_player:         [:multi],
+          local_multi_player:   [:multi],
+          online_multi_player:  [:multi, :online],
+          co_op:                [:multi, :co_op],
+          online_co_op:         [:multi, :co_op, :online],
+          local_co_op:          [:multi, :co_op, :shared],
+          shared_screen:        [:multi, :shared],
+          cross_platform_multi: [:multi, :cross_platform]
+        }.each_pair do |source_flag, expectation|
+          it "should map Steam #{source_flag} to #{expectation} flag" do
+            game = build_multigame steam: {
+              players: [source_flag]
+            }
+            game.compute_players
+            expect(game.players).to match_array expectation
+          end
+        end
+      end
+
+      describe 'Oculus game player flags' do
+        {
+          'SINGLE_USER' => [:single],
+          'MULTI_USER' => [:multi],
+          'CO_OP' => [:multi, :co_op]
+        }.each_pair do |source_flag, expectation|
+          it "should map Oculus #{source_flag} to #{expectation} flag" do
+            game = build_multigame oculus: {
+              players: [source_flag]
+            }
+            game.compute_players
+            expect(game.players).to match_array expectation
+          end
         end
       end
     end
 
-    describe '#compute_sysreq_video_index' do
-      it 'should average the values from SysreqTokens' do
-        create :sysreq_token, name: 'nvidia8500', value: 700
-        create :sysreq_token, name: 'intel4000', value: 500
-        create :sysreq_token, name: '512mb', value: 100
-        create :sysreq_token, name: 'directx10', value: 150
-        g = create :game, sysreq_video_tokens: 'nvidia8500 intel4000 512mb directx10'
-        g.compute_sysreq_video_index
-        expect(g.sysreq_video_index).to eq ((700 + 700 + 500 + 500 + 100 + 100 + 150).to_f / 7).round
+    describe 'VR modes flags' do
+      describe 'Steam VR modes flags' do
+        it 'should read all the Steam flags' do
+          game = build_multigame steam: {
+            vr_mode: [:seated, :standing, :room_scale]
+          }
+          game.compute_vr_modes
+          expect(game.vr_modes).to match_array [:seated, :standing, :room_scale]
+        end
       end
-    end
 
-    describe '.compute_sysreq_index_centiles' do
-      it 'should assign a the system requirements percentile to each game' do
-        g0 = create :game, sysreq_video_index: 0
-        g1 = create :game, sysreq_video_index: 100
-        g2 = create :game, sysreq_video_index: 200
-        g3 = create :game, sysreq_video_index: 300
-        g4 = create :game, sysreq_video_index: 400
-        g5 = create :game, sysreq_video_index: 500
-        g6 = create :game, sysreq_video_index: 600
-        g7 = create :game, sysreq_video_index: 700
-        g8 = create :game, sysreq_video_index: 800
-        g9 = create :game, sysreq_video_index: 900
-        Game.compute_sysreq_index_centiles
-        g0.reload
-        g1.reload
-        g2.reload
-        g3.reload
-        g4.reload
-        g5.reload
-        g6.reload
-        g7.reload
-        g8.reload
-        g9.reload
-        expect(g0.sysreq_index_centile).to be_within(10).of(5)
-        expect(g1.sysreq_index_centile).to be_within(10).of(15)
-        expect(g2.sysreq_index_centile).to be_within(10).of(25)
-        expect(g3.sysreq_index_centile).to be_within(10).of(35)
-        expect(g4.sysreq_index_centile).to be_within(10).of(45)
-        expect(g5.sysreq_index_centile).to be_within(10).of(55)
-        expect(g6.sysreq_index_centile).to be_within(10).of(65)
-        expect(g7.sysreq_index_centile).to be_within(10).of(75)
-        expect(g8.sysreq_index_centile).to be_within(10).of(85)
-        expect(g9.sysreq_index_centile).to be_within(10).of(95)
+      describe 'Oculus VR modes flags' do
+        it 'should read all the Steam flags' do
+          game = build_multigame oculus: {
+            vr_mode: ['SITTING', 'STANDING', 'ROOM_SCALE']
+          }
+          game.compute_vr_modes
+          expect(game.vr_modes).to match_array [:seated, :standing, :room_scale]
+        end
       end
     end
   end
 
-  describe 'computed attributes' do
-    describe '#lowest_steam_price' do
-      it "should be the steam price if it's lower" do
-        g = create_from_steam_game price: 123, sale_price: 321
-        expect(g.lowest_steam_price).to eq 123
-      end
-
-      it "should be the sale price if it's on sale" do
-        g = create_from_steam_game price: 333, sale_price: 100
-        expect(g.lowest_steam_price).to eq 100
-      end
-
-      it "should be nil if neither exist" do
-        g = create_from_steam_game price: nil, sale_price: nil
-        expect(g.lowest_steam_price).to eq nil
-      end
-
-      it 'should be the steam price if the sale price is nil' do
-        g = create_from_steam_game price: 100, sale_price: nil
-        g.process_steam_game_data
-        expect(g.lowest_steam_price).to eq 100
-      end
-    end
-
-    describe '#steam_discount' do
-      it 'should be 0 if not on sale' do
-        g = create_from_steam_game price: 100, sale_price: nil
-        expect(g.steam_discount).to eq 0
-      end
-
-      it 'should be an integer from 1 to 100 if on sale' do
-        g = create_from_steam_game price: 10, sale_price: 3
-        expect(g.steam_discount).to eq 70
-      end
-    end
-
+  describe '#compute_playtime_stats' do
     describe '#playtime_mean' do
       it 'should be the mean value of the playtime' do
-        g = create_from_steam_game positive_reviews: [1,2,3,4,5], negative_reviews: []
-        expect(g.playtime_mean).to eq (1+2+3+4+5).to_f/5
+        game = build_multigame steam: {
+          positive_reviews: [1,2,3,4,5],
+          negative_reviews: []
+        }
+        game.compute_all
+        expect(game.playtime_mean).to eq (1+2+3+4+5).to_f/5
       end
     end
 
     describe '#playtime_median' do
       it 'should be the mean value of the playtime' do
-        g = create_from_steam_game positive_reviews: [1,2,5], negative_reviews: [3,4]
-        expect(g.playtime_median).to eq 3
+        game = build_multigame steam: {
+          positive_reviews: [1,2,5],
+          negative_reviews: [3,4]
+        }
+        game.compute_all
+        expect(game.playtime_median).to eq 3
       end
     end
 
     describe '#playtime_sd' do
       it 'should be the mean value of the playtime' do
-        g = create_from_steam_game positive_reviews: [1,2,5], negative_reviews: [3,4]
-        # Not matching for some reason, freaky
-        # expect(g.playtime_sd).to eq be_within(0.01).of(1.58)
+        game = build_multigame steam: {
+           positive_reviews: [1,2,5],
+           negative_reviews: [3,4]
+        }
+        game.compute_all
+        expect(game.playtime_sd.round(2)).to eq 1.41
       end
     end
 
     describe '#playtime_rsd' do
       it 'should be the mean value of the playtime' do
-        g = create_from_steam_game positive_reviews: [1,2,5], negative_reviews: [3,4]
-        expect(g.playtime_rsd).to be_within(1).of(47)
-      end
-    end
-
-    describe '#playtime_ils' do
-      it 'should be the mean value of the playtime' do
-        g = create_from_steam_game(
-          positive_reviews: (1..50).to_a,
-          negative_reviews: (51..100).to_a
-        )
-        expect(g.playtime_ils).to eq [6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 57, 61, 66, 71, 76, 81, 86, 91, 96]
+        game = build_multigame steam: {
+          positive_reviews: [1,2,5], negative_reviews: [3,4]
+        }
+        game.compute_all
+        expect(game.playtime_rsd).to be_within(1).of(47)
       end
     end
 
     describe '#playtime_mean_ftb' do
       it 'should return the mean playtime for the buck' do
-        g = create_from_steam_game(
+        game = build_multigame steam: {
           positive_reviews: [1,2,5],
           negative_reviews: [3,4,6],
           price: 400,
           sale_price: 300
-        )
+        }
+        game.compute_all
         mean = (1+2+3+4+5+6).to_f/6
-        expect(g.playtime_mean_ftb).to eq mean/3
+        expect(game.playtime_mean_ftb).to eq mean/3
       end
     end
 
-
     describe '#playtime_median_ftb' do
       it 'should return the median playtime for the buck' do
-        g = create_from_steam_game(
+        game = build_multigame steam: {
           positive_reviews: [1,2,5],
           negative_reviews: [3,4,6,7],
           price: 400,
           sale_price: 300
-        )
-        expect(g.playtime_median_ftb).to eq 4.0/3
+        }
+        game.compute_all
+        expect(game.playtime_median_ftb).to eq 4.0/3
       end
     end
   end
 
-  describe '.entil' do
-    context '2 il' do
-      it 'should return an array with the median value' do
-        create :game, lowest_steam_price: 10
-        create :game, lowest_steam_price: 10
-        create :game, lowest_steam_price: 30
-        create :game, lowest_steam_price: 10
-        create :game, lowest_steam_price: 100
-        create :game, lowest_steam_price: 500
-        create :game, lowest_steam_price: 1000
-        expect(Game.entil(:lowest_steam_price, 2)).to eq [30]
-      end
-    end
-
-    context '4 il' do
-      it 'should return an array with the quartiles' do
-        20.times.map.to_a.shuffle.each do |i|
-          create :game, lowest_steam_price: i
-        end
-        expect(Game.entil(:lowest_steam_price, 4)).to eq [5,10,15]
-      end
-    end
-  end
-
-  describe 'tags' do
+  describe '#compute_tags' do
     it 'should create new tags when assigning non-existing tags' do
-      g = create_from_steam_game tags: ['potato', 'galaxy']
+      game = build_multigame steam: {
+        tags: ['potato', 'galaxy']
+      }
+      game.compute_tags
       expect(Tag.pluck(:name)).to eq ['potato', 'galaxy']
-      expect(g.tags).to eq Tag.pluck(:id)
+      expect(game.tags).to eq Tag.pluck(:id)
     end
 
     it 'should reuse existing tags when assigning existing tags' do
       t1 = create :tag, name: 'galaxy'
-      g = create_from_steam_game tags: ['potato', 'galaxy']
+      game = build_multigame steam: {
+        tags: ['potato', 'galaxy']
+      }
+      game.compute_tags
       t2 = Tag.last
       expect(t2.name).to eq 'potato'
-      expect(g.tags).to eq [t2.id, t1.id]
+      expect(game.tags).to eq [t2.id, t1.id]
+    end
+
+    it 'should be case insensitive' do
+      t1 = create :tag, name: 'GALAXY'
+      game = build_multigame steam: {
+        tags: ['potato', 'galaxy']
+      }
+      game.compute_tags
+      t2 = Tag.last
+      expect(t2.name).to eq 'potato'
+      expect(game.tags).to eq [t2.id, t1.id]
+    end
+
+    it 'should also use the tags from Oculus' do
+      game = build_multigame oculus: {
+        genres: ['potato', 'galaxy']
+      }
+      game.compute_tags
+      expect(Tag.pluck(:name)).to eq ['potato', 'galaxy']
+      expect(game.tags).to eq Tag.pluck(:id)
+    end
+
+    it 'should intercalate Oculus and Steam tags if both are available' do
+      game = build_multigame steam: {
+        tags: ['orange', 'banana', 'kiwi', 'melon']
+      }, oculus: {
+        genres: ['potato', 'galaxy']
+      }
+      game.compute_tags
+
+      ids = ['orange', 'potato', 'banana', 'galaxy', 'kiwi', 'melon'].map do |name|
+        Tag.find_by_name(name).id
+      end
+
+      expect(game.tags).to eq ids
+    end
+
+    it 'should ignore repeated tags, and keep the first occurence' do
+      game = build_multigame steam: {
+        tags: ['potato']
+      }, oculus: {
+        genres: ['galaxy', 'potato']
+      }
+      game.compute_tags
+      expect(Tag.count).to eq 2
+      expect(game.tags.size).to eq 2
+      expect(game.tags).to eq([
+        Tag.find_by_name('potato').id,
+        Tag.find_by_name('galaxy').id
+      ])
+    end
+  end
+
+  describe '#compute_sysreq_string' do
+    it 'should save the video sysreq information from Steam and Oculus to #sysreq_gpu' do
+      game = build_multigame steam: {
+        system_requirements: {
+          minimum: { video_card: 'intel HD 4000' },
+          recommended: { video_card: 'nvidia 970' }
+        }
+      }, oculus: {
+        sysreq_gpu: 'geforce 970'
+      }
+      game.compute_sysreq_string
+      expect(game.sysreq_gpu_string).to eq 'intel HD 4000 | nvidia 970 | geforce 970'
+    end
+  end
+
+  describe '#compute_sysreq_tokens' do
+    it 'should use the VideoCardAnalyzer to extract tokens from the #sysreq_gpu_string' do
+      game = build_multigame
+      game.released_at = Time.parse('2015-06-04')
+      game.sysreq_gpu_string = 'intel HD 4000 | nvidia 970 | geforce 970'
+      game.compute_sysreq_tokens
+
+      expect(game.sysreq_gpu_tokens).to eq 'intel4000 nvidia970 year2015'
+    end
+  end
+
+  describe '.compute_sysreq_indexes' do
+    it 'should load the sysreq tokens of all games, calculate the values, and assign them' do
+      g1 = create :game, sysreq_gpu_tokens: "really does not matter"
+      g2 = create :game, sysreq_gpu_tokens: "other stuff"
+      g3 = create :game, sysreq_gpu_tokens: ""
+      g4 = create :game, sysreq_gpu_tokens: nil
+
+      known_tokens = {
+        'intel4000' => 800,
+        'nvidia970' => 1700,
+        'amd4000' => 1500
+      }
+
+      sysanal = double('SysreqAnalyzer')
+      expect(sysanal).to receive(:get_list_values_averages).and_return(
+        [1000, 300]
+      )
+
+      expect(Gpu).to receive(:get_tokens_hash).and_return(known_tokens)
+      expect(SysreqAnalyzer).to receive(:new).with(
+        [['really', 'does', 'not', 'matter'], ['other', 'stuff'], []],
+        known_tokens
+      ).and_return sysanal
+
+      Game.mass_compute_sysreq_index
+
+      g1.reload
+      g2.reload
+
+      expect(g1.sysreq_index).to eq 1000
+      expect(g2.sysreq_index).to eq 300
+      expect(g3.sysreq_index).to eq nil
+      expect(g4.sysreq_index).to eq nil
+    end
+  end
+
+  describe '.compute_percentiles' do
+    describe '#sysreq_index_pct' do
+      it 'should calculate the percentiles from #sysreq_index' do
+
+        games = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900].map do |val|
+          create :game, sysreq_index: val
+        end
+
+        Game.compute_percentiles
+
+        [5, 15, 25, 35, 45, 55, 65, 75, 85, 95].each_with_index do |val, i|
+          games[i].reload
+          expect(games[i].sysreq_index_pct).to be_within(10).of(val)
+        end
+      end
     end
   end
 end

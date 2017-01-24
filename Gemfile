@@ -32,13 +32,15 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 # Sexy HTML!
 gem 'haml-rails'
 # Statistics!
-gem 'descriptive-statistics'
+gem 'descriptive_statistics', '~> 2.4.0', require: 'descriptive_statistics/safe'
 # Pagination!
 gem 'kaminari'
 # Turn blanks to nils
 gem 'nilify_blanks'
 # Sendgrid emails
 gem 'sendgrid-ruby'
+# JSON schema validation
+gem 'json-schema'
 
 group :development, :test, :assets do
   # Use SCSS for stylesheets

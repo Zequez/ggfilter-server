@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122051037) do
+ActiveRecord::Schema.define(version: 20170124094640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20170122051037) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "name"
     t.string   "name_slug"
     t.float    "playtime_mean"
@@ -43,14 +43,39 @@ ActiveRecord::Schema.define(version: 20170122051037) do
     t.string   "playtime_ils"
     t.float    "playtime_mean_ftb"
     t.float    "playtime_median_ftb"
-    t.string   "sysreq_video_tokens",        default: "",   null: false
+    t.string   "sysreq_video_tokens",        default: "",    null: false
     t.integer  "sysreq_video_index"
     t.integer  "sysreq_index_centile"
     t.integer  "steam_game_id"
     t.integer  "lowest_steam_price"
     t.integer  "steam_discount"
-    t.string   "tags",                       default: "[]", null: false
+    t.string   "tags",                       default: "[]",  null: false
     t.text     "sysreq_video_tokens_values"
+    t.integer  "oculus_game_id"
+    t.integer  "steam_price"
+    t.integer  "steam_price_regular"
+    t.integer  "steam_price_discount"
+    t.integer  "oculus_price"
+    t.integer  "oculus_price_regular"
+    t.integer  "oculus_price_discount"
+    t.integer  "lowest_price"
+    t.integer  "ratings_count"
+    t.integer  "positive_ratings_count"
+    t.integer  "negative_ratings_count"
+    t.integer  "ratings_ratio"
+    t.datetime "released_at"
+    t.integer  "players",                    default: 0,     null: false
+    t.integer  "controllers",                default: 0,     null: false
+    t.integer  "vr_modes",                   default: 0,     null: false
+    t.integer  "vr_platforms",               default: 0,     null: false
+    t.integer  "gamepad",                    default: 0,     null: false
+    t.boolean  "vr_only",                    default: false, null: false
+    t.integer  "platforms",                  default: 0,     null: false
+    t.string   "sysreq_gpu_string"
+    t.string   "sysreq_gpu_tokens"
+    t.integer  "sysreq_index"
+    t.integer  "sysreq_index_pct"
+    t.index ["oculus_game_id"], name: "index_games_on_oculus_game_id", using: :btree
     t.index ["steam_game_id"], name: "index_games_on_steam_game_id", using: :btree
   end
 
@@ -59,6 +84,45 @@ ActiveRecord::Schema.define(version: 20170122051037) do
     t.integer "value",          null: false
     t.string  "tokenized_name"
     t.index ["tokenized_name"], name: "index_gpus_on_tokenized_name", using: :btree
+  end
+
+  create_table "oculus_games", force: :cascade do |t|
+    t.integer  "oculus_id",                         null: false
+    t.string   "name",                              null: false
+    t.integer  "price",                             null: false
+    t.integer  "price_regular"
+    t.text     "summary"
+    t.string   "version"
+    t.string   "category"
+    t.string   "genres",            default: "[]",  null: false
+    t.string   "languages",         default: "[]",  null: false
+    t.string   "age_rating"
+    t.string   "developer"
+    t.string   "publisher"
+    t.integer  "vr_mode",           default: 0,     null: false
+    t.integer  "vr_tracking",       default: 0,     null: false
+    t.integer  "vr_controllers",    default: 0,     null: false
+    t.integer  "players",           default: 0,     null: false
+    t.integer  "comfort",           default: 0,     null: false
+    t.integer  "internet",          default: 0,     null: false
+    t.boolean  "win10_required",    default: false, null: false
+    t.string   "sysreq_hdd"
+    t.string   "sysreq_cpu"
+    t.string   "sysreq_gpu"
+    t.string   "sysreq_ram"
+    t.string   "website_url"
+    t.integer  "rating_1",          default: 0,     null: false
+    t.integer  "rating_2",          default: 0,     null: false
+    t.integer  "rating_3",          default: 0,     null: false
+    t.integer  "rating_4",          default: 0,     null: false
+    t.integer  "rating_5",          default: 0,     null: false
+    t.string   "thumbnail"
+    t.text     "screenshots",       default: "[]",  null: false
+    t.string   "trailer_video"
+    t.string   "trailer_thumbnail"
+    t.datetime "released_at"
+    t.index ["name"], name: "index_oculus_games_on_name", unique: true, using: :btree
+    t.index ["oculus_id"], name: "index_oculus_games_on_oculus_id", unique: true, using: :btree
   end
 
   create_table "scrap_logs", force: :cascade do |t|
@@ -150,5 +214,6 @@ ActiveRecord::Schema.define(version: 20170122051037) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "games", "oculus_games"
   add_foreign_key "games", "steam_games"
 end

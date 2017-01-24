@@ -11,4 +11,11 @@
 #
 
 class Tag < ActiveRecord::Base
+  def self.find_or_create_by_name(name)
+    if ( tag = where('lower(name) = ?', name.downcase).first )
+      tag
+    else
+      create name: name
+    end
+  end
 end
