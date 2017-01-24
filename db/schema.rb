@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124131435) do
+ActiveRecord::Schema.define(version: 20170124160439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,18 +175,6 @@ ActiveRecord::Schema.define(version: 20170124131435) do
     t.datetime "steam_published_at"
     t.boolean  "vr_only",                default: false, null: false
     t.index ["steam_id"], name: "index_steam_games_on_steam_id", unique: true, using: :btree
-  end
-
-  create_table "sysreq_tokens", force: :cascade do |t|
-    t.string   "name",                          null: false
-    t.integer  "value"
-    t.integer  "token_type",    default: 0,     null: false
-    t.integer  "games_count",   default: 0,     null: false
-    t.boolean  "year_analysis", default: false, null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "linked_to"
-    t.integer  "source",        default: 0,     null: false
   end
 
   create_table "tags", force: :cascade do |t|
