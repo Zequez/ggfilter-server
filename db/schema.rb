@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124130732) do
+ActiveRecord::Schema.define(version: 20170124131435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170124130732) do
     t.text     "images"
     t.text     "videos"
     t.string   "thumbnail"
+    t.integer  "stores",                 default: 0,     null: false
     t.index ["oculus_game_id"], name: "index_games_on_oculus_game_id", using: :btree
     t.index ["steam_game_id"], name: "index_games_on_steam_game_id", using: :btree
   end

@@ -41,6 +41,7 @@ describe Game, type: :model do
   describe '#compute_all' do
     it 'should call all the compute methods' do
       game = create :game
+      expect(game).to receive :compute_stores
       expect(game).to receive :compute_prices
       expect(game).to receive :compute_ratings
       expect(game).to receive :compute_released_at
@@ -62,6 +63,26 @@ describe Game, type: :model do
       expect(game).to receive :compute_images
 
       game.compute_all
+    end
+  end
+
+  describe '#compute_store_availability' do
+    it 'sets the Steam store' do
+      game = build_multigame steam: {}
+      game.compute_stores
+      expect(game.stores).to match_array [:steam]
+    end
+
+    it 'sets the Oculus store' do
+      game = build_multigame oculus: {}
+      game.compute_stores
+      expect(game.stores).to match_array [:oculus]
+    end
+
+    it 'sets both stores' do
+      game = build_multigame steam: {}, oculus: {}
+      game.compute_stores
+      expect(game.stores).to match_array [:steam, :oculus]
     end
   end
 

@@ -42,6 +42,7 @@
 #  images                 :text
 #  videos                 :text
 #  thumbnail              :string
+#  stores                 :integer          default(0), not null
 #
 # Indexes
 #
@@ -75,6 +76,11 @@ class Game < ActiveRecord::Base
 
   ### Flag columns ###
   ####################
+
+  flag_column :stores, {
+    steam:  0b1,
+    oculus: 0b10
+  }
 
   flag_column :players, {
     single:         0b1,
@@ -177,6 +183,7 @@ class Game < ActiveRecord::Base
 
   def compute_all
     # Basic game data
+    compute_stores
     compute_prices
     compute_ratings
     compute_released_at
@@ -199,6 +206,13 @@ class Game < ActiveRecord::Base
     compute_thumbnail
     compute_videos
     compute_images
+  end
+
+  def compute_stores
+    stores = []
+    stores.push :steam if steam_game
+    stores.push :oculus if oculus_game
+    self.stores = stores
   end
 
   def compute_prices
