@@ -43,6 +43,7 @@
 #  videos                 :text
 #  thumbnail              :string
 #  stores                 :integer          default(0), not null
+#  ratings_pct            :integer
 #
 # Indexes
 #
