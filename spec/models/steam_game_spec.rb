@@ -1,24 +1,6 @@
 describe SteamGame, type: :model do
-  it 'should create a new Game with the same name after being created' do
-    create :steam_game, name: 'Potato Salad'
-    expect(Game.first.name).to eq('Potato Salad')
-  end
-
-  it 'should associate itself with a game if it already exist' do
-    g = create :game, name: 'Galaxy Simulator'
-    sg = create :steam_game, name: 'Galaxy Simulator'
-    expect(Game.count).to eq(1)
-    g.reload
-    expect(g.steam_game).to eq sg
-  end
-
-  it 'should make the Game loaded in the SteamGame' do
-    sg = create :steam_game, name: 'Potato Salad'
-    expect(sg.game).to_not be_nil
-  end
-
   describe '.get_for_reviews_scraping' do
-    let(:game){ create :steam_game }
+    let(:game){ create :steam_game, reviews_count: 10 }
 
     it 'should return nothing when there are no games' do
       SteamGame.get_for_reviews_scraping.should eq []

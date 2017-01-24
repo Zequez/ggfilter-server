@@ -88,7 +88,6 @@ describe OculusGame, type: :model do
         build_game!.save!
         g = OculusGame.first
         expect(g.send column).to eq original_value
-
       end
     end
 

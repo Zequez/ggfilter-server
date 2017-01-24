@@ -133,6 +133,10 @@ class Game < ActiveRecord::Base
       game.save!
     end
 
+    compute_all_globals
+  end
+
+  def self.compute_all_globals
     mass_compute_sysreq_index
     compute_percentiles
   end

@@ -54,8 +54,6 @@
 class SteamGame < Scrapers::Steam::SteamGame
   include GetForXScraping
 
-  has_one :game
-
   # If it was launched less than X ago,
   # then scrap it if Y time has passed since the last scraping
 
@@ -81,7 +79,11 @@ class SteamGame < Scrapers::Steam::SteamGame
   # end
 
   def propagate_to_game
-
+    game = Game.find_or_build_from_name name
+    game.oculus_game = self
+    game.compute_all
+    game.save!
+    game
   end
 
   # after_update :send_processing_signal
