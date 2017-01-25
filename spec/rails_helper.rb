@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'rspec/its'
 require 'factory_girl'
 require 'custom_logger'
+require 'webmock/rspec'
 
 include ActionDispatch::TestProcess
 

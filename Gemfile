@@ -82,6 +82,8 @@ group :development, :test do
   gem 'rspec-mocks'
   # Guard plugin for Rspec
   gem 'guard-rspec', require: false
+  # Requests mocks
+  gem 'webmock'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
