@@ -1,2 +1,2 @@
-require 'scraping_director'
-ScrapingDirector.tasks!
+require 'scraping_tasks_rake'
+ScrapingTasksRake.tasks!

@@ -128,12 +128,12 @@ class Game < ActiveRecord::Base
   end
 
   def self.re_compute_all
-    Game.all.in_batches do |game|
+    count = Game.count
+    Game.includes(:steam_game, :oculus_game).find_each.with_index do |game, i|
+      puts "Computing #{i+1}/#{count}"
       game.compute_all
       game.save!
     end
-
-    compute_all_globals
   end
 
   def self.compute_all_globals
@@ -167,6 +167,7 @@ class Game < ActiveRecord::Base
   end
 
   def self.compute_percentile_for(column, target_column)
+    puts "Computing percentiles for #{column}"
     ids, values = where.not(column => nil).pluck(:id, column).transpose
     stats = DescriptiveStatistics::Stats.new(values)
     values_pct = values.map{ |value| stats.percentile_rank value }
@@ -174,8 +175,10 @@ class Game < ActiveRecord::Base
   end
 
   def self.update_all_for_each(ids, attributes)
+    total = ids.size
     attributes.each_pair do |column, values|
       values.each_with_index do |value, i|
+        print "Saving #{column} #{i+1}/#{total}\r"
         where(id: ids[i]).update_all(column => value)
       end
     end
@@ -232,7 +235,11 @@ class Game < ActiveRecord::Base
   end
 
   def _discount(price, price_regular)
-    ((price_regular - price).to_f / price_regular * 100).to_i
+    if price && price_regular && price_regular > 0
+      ((price_regular - price).to_f / price_regular * 100).to_i
+    else
+      0
+    end
   end
 
   def compute_ratings
@@ -294,7 +301,7 @@ class Game < ActiveRecord::Base
     controllers = []
 
     if steam_game
-      self.gamepad = steam_game.controller_support
+      self.gamepad = steam_game.controller_support || :no
       controllers += steam_game.vr_controllers
       controllers.push :gamepad if steam_game.controller_support != :no
       controllers.push :keyboard_mouse if steam_game.vr_platforms.empty?

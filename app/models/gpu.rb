@@ -12,7 +12,7 @@
 #  index_gpus_on_tokenized_name  (tokenized_name)
 #
 
-class Gpu < Scrapers::Benchmarks::Gpu
+class Gpu < ActiveRecord::Base
   before_save do
     vca = VideoCardAnalyzer.new
     self.tokenized_name = vca.tokens(name).select{ |v| v =~ /intel|amd|nvidia/ }.first
@@ -35,5 +35,13 @@ class Gpu < Scrapers::Benchmarks::Gpu
     end
 
     tokens
+  end
+
+  def self.from_scraper!(attrs)
+    gpu = find_by_name(attrs[:name]) || new
+    gpu.name = attrs[:name]
+    gpu.value = attrs[:value]
+    gpu.save!
+    gpu
   end
 end

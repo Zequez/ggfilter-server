@@ -4,6 +4,8 @@ require "base64"
 
 class ErrorsReporter
   def initialize(task_name, config = {})
+    attr_accessor :errors, :errors_msg, :warnings
+
     @task_name = task_name
     @config = {
       filesystem: 'log/scrap_errors',
@@ -16,17 +18,7 @@ class ErrorsReporter
     @warnings = []
   end
 
-  def add_error(exception, additional_msg = nil)
-    @errors.push exception
-    @errors_msg.push additional_msg
-  end
-
-  def add_warning(msg)
-    @warnings.push msg
-  end
-
   def commit
-    L @config
     save! if @config[:filesystem]
     email! if @config[:email]
   end

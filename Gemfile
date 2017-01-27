@@ -60,7 +60,7 @@ end
 # Sluggification of attributes
 gem 'friendly_id'
 # Simple binary flags!
-# gem 'simple_flaggable_column'
+gem 'simple_flaggable_column'
 
 # Other
 #####################
@@ -82,8 +82,7 @@ group :development, :test do
   gem 'rspec-mocks'
   # Guard plugin for Rspec
   gem 'guard-rspec', require: false
-  # Requests mocks
-  gem 'webmock'
+
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -113,6 +112,8 @@ group :development do
 end
 
 group :test do
+  # Requests mocks
+  gem 'webmock'
 end
 
 # Production

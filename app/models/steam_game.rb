@@ -51,8 +51,82 @@
 #  index_steam_games_on_steam_id  (steam_id) UNIQUE
 #
 
-class SteamGame < Scrapers::Steam::SteamGame
+class JSONWithSymbolsSerializer
+  def self.load(str)
+    str.nil? ? nil : JSON.parse(str, symbolize_names: true)
+  end
+
+  def self.dump(data)
+    JSON.dump(data)
+  end
+end
+
+class SteamGame < ActiveRecord::Base
   include GetForXScraping
+  include SimpleFlaggableColumn
+  include SimpleEnum
+
+  has_one :game
+
+  flag_column :players, {
+    single_player:        0b1,
+    multi_player:         0b10,
+    co_op:                0b100,
+    local_co_op:          0b1000,
+    local_multi_player:   0b10000,
+    online_multi_player:  0b100000,
+    online_co_op:         0b1000000,
+    shared_screen:        0b10000000,
+    cross_platform_multi: 0b100000000
+  }
+
+  flag_column :features, {
+    steam_achievements:  0b000001,
+    steam_trading_cards: 0b000010,
+    # vr_support:          0b000100,
+    steam_workshop:      0b001000,
+    steam_cloud:         0b010000,
+    valve_anti_cheat:    0b100000
+  }
+
+  simple_enum_column :controller_support, {
+    no: 1,
+    partial: 2,
+    full: 3
+  }
+
+  flag_column :vr_platforms, {
+    vive:   0b1,
+    rift:   0b10,
+    osvr:   0b100
+  }
+
+  flag_column :vr_mode, {
+    seated: 0b001,
+    standing: 0b010,
+    room_scale: 0b100
+  }
+
+  flag_column :vr_controllers, {
+    tracked: 0b001,
+    gamepad: 0b010,
+    keyboard_mouse: 0b100
+  }
+
+  flag_column :platforms, {
+    win:   0b001,
+    mac:   0b010,
+    linux: 0b100
+  }
+
+  serialize :tags, JSON
+  serialize :audio_languages, JSON
+  serialize :subtitles_languages, JSON
+  serialize :videos, JSON
+  serialize :images, JSON
+  serialize :system_requirements, JSONWithSymbolsSerializer
+  serialize :positive_reviews, JSON
+  serialize :negative_reviews, JSON
 
   # If it was launched less than X ago,
   # then scrap it if Y time has passed since the last scraping
@@ -73,11 +147,6 @@ class SteamGame < Scrapers::Steam::SteamGame
     [         1.year]
   ]){ where(blacklist: false) }
 
-  # after_create :create_game_with_the_same_name
-  # def create_game_with_the_same_name
-  #   Game.create_from_steam_game self
-  # end
-
   def propagate_to_game
     game = Game.find_or_build_from_name name
     game.steam_game = self
@@ -86,15 +155,35 @@ class SteamGame < Scrapers::Steam::SteamGame
     game
   end
 
-  # after_update :send_processing_signal
-  # def send_processing_signal
-  #   if game
-  #     game.process_steam_game_data previous_changes.keys
-  #     game.save!
-  #   end
-  # end
+  def self.from_list_scraper!(attributes)
+    JSON::Validator.validate! Scrapers::Steam::List::SCHEMA, attributes
+    game = find_by_steam_id(attributes[:steam_id]) || new
+    game.assign_attributes attributes
+    game.list_scraped_at = Time.now
+    game.save!
+    game
+  end
 
-  def self.games_with_a_broken_community_hub_that_makes_no_sense
-    where('positive_reviews = ? AND negative_reviews = ?', '[]', '[]').where.not(reviews_count: 0).includes(:game)
+  def self.from_game_scraper!(attributes)
+    JSON::Validator.validate! Scrapers::Steam::Game::SCHEMA, attributes
+    game = find_by_steam_id(attributes[:steam_id])
+    game.assign_attributes attributes
+    game.game_scraped_at = Time.now
+    game.save!
+    game
+  end
+
+  def self.from_reviews_scraper!(attributes)
+    JSON::Validator.validate! Scrapers::Steam::Reviews::SCHEMA, attributes
+    game = find_by_steam_id(attributes[:steam_id])
+    game[:positive_reviews] = attributes[:positive]
+    game[:negative_reviews] = attributes[:negative]
+    game.reviews_scraped_at = Time.now
+    game.save!
+    game
+  end
+
+  def self.update_not_on_sale(on_sale_ids)
+    where.not(steam_id: on_sale_ids).update_all(sale_price: nil)
   end
 end

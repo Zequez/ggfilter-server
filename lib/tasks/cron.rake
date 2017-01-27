@@ -20,8 +20,8 @@ namespace :cron do
       'scrap:steam_list_on_sale',
       'scrap:steam_games',
       'scrap:steam_reviews',
-      'scrap:oculus',
-      'compute_all_globals'
+      'scrap:oculus_games',
+      'games:compute_all_globals'
   ]
 
   desc 'Daily cron that runs all the tasks and deep scrapings'
@@ -31,7 +31,7 @@ namespace :cron do
     'scrap:steam_list',
     'scrap:steam_games',
     'scrap:steam_reviews',
-    'scrap:oculus',
-    'compute_all_globals'
+    'scrap:oculus_games',
+    'games:compute_all_globals'
   ]
 end

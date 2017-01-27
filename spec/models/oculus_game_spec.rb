@@ -71,7 +71,8 @@ describe OculusGame, type: :model do
         "KEYBOARD_MOUSE",
         "FLIGHT_STICK",
         "RACING_WHEEL",
-        "HYDRA"
+        "HYDRA",
+        "OTHER"
       ],
       players: ["SINGLE_USER", "MULTI_USER", "CO_OP"]
     }.each_pair do |column, flags|

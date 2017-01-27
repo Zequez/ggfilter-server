@@ -69,6 +69,7 @@ class OculusGame < ApplicationRecord
     "FLIGHT_STICK" =>   0b10000,
     "RACING_WHEEL" =>   0b100000,
     "HYDRA" =>          0b1000000,
+    "OTHER" =>          0b10000000,
   }
 
   flag_column :players, {
@@ -87,14 +88,10 @@ class OculusGame < ApplicationRecord
 
   def self.from_scraper!(attributes)
     JSON::Validator.validate!(Scrapers::Oculus::SCHEMA, attributes)
-    game = OculusGame.where(oculus_id: attributes[:oculus_id]).first
-    if game
-      game.assign_attributes attributes
-      game.save!
-      game
-    else
-      OculusGame.create(attributes)
-    end
+    game = find_by_oculus_id(attributes[:oculus_id]) || new
+    game.assign_attributes attributes
+    game.save!
+    game
   end
 
   # after_create :find_game_or_create_one
