@@ -169,8 +169,20 @@ class Game < ActiveRecord::Base
   def self.compute_percentile_for(column, target_column)
     puts "Computing percentiles for #{column}"
     ids, values = where.not(column => nil).pluck(:id, column).transpose
+
     stats = DescriptiveStatistics::Stats.new(values)
-    values_pct = values.map{ |value| stats.percentile_rank value }
+    percentiles = (0..100).map{ |i| stats.percentile(i) }
+
+    upper_limit = percentiles.clone
+    upper_limit.shift
+    percentiles.pop
+    percentiles = percentiles.zip(upper_limit)
+
+    values_pct = values.map do |val|
+      percentiles
+        .find_index{ |i| val >= i[0] && val <= i[1] }
+    end
+
     update_all_for_each(ids, target_column => values_pct)
   end
 

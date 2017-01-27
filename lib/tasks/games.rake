@@ -8,4 +8,9 @@ namespace :games do
   task :compute_all_globals => :environment do
     Game.compute_all_globals
   end
+
+  desc 'Compute percentiles'
+  task :compute_percentiles => :environment do
+    Game.compute_percentiles
+  end
 end
