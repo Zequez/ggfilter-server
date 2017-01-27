@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :tags, only: :index
   resources :scrap_logs, only: :index
 
+  resources :enum, only: :index
+
   get '*path', to: 'app#index'
 
   root to: 'app#index'
