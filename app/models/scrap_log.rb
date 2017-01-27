@@ -2,13 +2,13 @@
 #
 # Table name: scrap_logs
 #
-#  id          :integer          not null, primary key
-#  started_at  :datetime         not null
-#  finished_at :datetime         not null
-#  scraper     :string           not null
-#  error       :boolean          default(FALSE), not null
-#  msg         :string           default(""), not null
-#  task_name   :string           default(""), not null
+#  id                  :integer          not null, primary key
+#  started_at          :datetime         not null
+#  finished_at         :datetime         not null
+#  error               :boolean          default(FALSE), not null
+#  msg                 :string           default(""), not null
+#  task_name           :string           default(""), not null
+#  scraper_finished_at :datetime
 #
 
 class ScrapLog < ApplicationRecord
@@ -19,16 +19,16 @@ class ScrapLog < ApplicationRecord
     get_for_cleanup.delete_all
   end
 
-  def self.build_from_report(scrap_report, task_name = nil)
-    new(
-      started_at: scrap_report.started_at,
-      finished_at: scrap_report.finished_at,
-      msg: (scrap_report.error? ?
-        scrap_report.exception.message
-        : scrap_report.scraper_report) || '',
-      error: scrap_report.error?,
-      scraper: scrap_report.scraper_name,
-      task_name: task_name || scrap_report.scraper_name
-    )
+  def apply_report(report)
+    self.finished_at = Time.now
+    self.scraper_finished_at = report.finished_at
+    self.error = report.errors?
+
+    msgs = [report.scraper_report]
+    msgs.push "#{report.errors.size} errors" if report.errors?
+    msgs.push "#{report.warnings.size} warnings" if report.warnings?
+    msgs.compact!
+
+    self.msg = msgs.join(' | ')
   end
 end

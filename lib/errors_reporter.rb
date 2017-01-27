@@ -1,11 +1,11 @@
 require 'json'
 require 'sendgrid-ruby'
-require "base64"
+require 'base64'
 
 class ErrorsReporter
-  def initialize(task_name, config = {})
-    attr_accessor :errors, :errors_msg, :warnings
+  attr_accessor :errors, :warnings
 
+  def initialize(task_name, config = {})
     @task_name = task_name
     @config = {
       filesystem: 'log/scrap_errors',
@@ -13,9 +13,16 @@ class ErrorsReporter
       email_from: 'noreply@ggfilter.com'
     }.merge(config)
 
-    @errors_msg = []
     @errors = []
     @warnings = []
+  end
+
+  def add_error(error)
+    @errors.push error
+  end
+
+  def add_warning(warning)
+    @warnings.push warning
   end
 
   def commit
@@ -47,8 +54,7 @@ class ErrorsReporter
         {
           msg: e.message,
           backtrace: e.backtrace,
-          url: (e.url if e.respond_to? :url),
-          additional_msg: @errors_msg[i]
+          url: (e.url if e.respond_to? :url)
         }
       end,
       warnings: @warnings
@@ -88,8 +94,6 @@ class ErrorsReporter
     mail = SendGrid::Mail.new(from, title, to, content)
 
     mail.attachments = files
-
-    L mail
 
     sg.client.mail._('send').post(request_body: mail.to_json)
   end

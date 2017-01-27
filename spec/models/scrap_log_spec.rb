@@ -2,10 +2,11 @@ describe ScrapLog, type: :model do
   subject{ build :scrap_log }
 
   it { expect(subject).to respond_to(:started_at) }
+  it { expect(subject).to respond_to(:scraper_finished_at) }
   it { expect(subject).to respond_to(:finished_at) }
-  it { expect(subject).to respond_to(:scraper) }
   it { expect(subject).to respond_to(:error) }
   it { expect(subject).to respond_to(:msg) }
+  it { expect(subject).to respond_to(:task_name) }
 
   describe '.get_for_cleanup' do
     it 'should get the scrap logs previous to the last week' do
@@ -47,37 +48,34 @@ describe ScrapLog, type: :model do
     end
   end
 
-  describe '.build_from_report' do
+  describe '.apply_report' do
     it 'should save the start and end time from the report' do
-      report = Scrapers::ScrapReport.new('super_scraper')
+      report = Scrapers::ScrapReport.new
       report.start
       report.finish
       report.scraper_report = '10 games or something'
+      scrap_log = ScrapLog.new
 
-      scrap_log = ScrapLog.build_from_report(report, 'super_scraper_lite')
+      scrap_log.apply_report report
 
-      expect(scrap_log.started_at).to eq report.started_at
-      expect(scrap_log.finished_at).to eq report.finished_at
+      expect(scrap_log.scraper_finished_at).to eq report.finished_at
+      expect(scrap_log.finished_at).to be_within(1.second).of Time.now
       expect(scrap_log.msg).to eq '10 games or something'
-      expect(scrap_log.scraper).to eq 'super_scraper'
-      expect(scrap_log.task_name).to eq 'super_scraper_lite'
       expect(scrap_log.error?).to eq false
     end
 
     it 'should save the error message for failed reports' do
-      report = Scrapers::ScrapReport.new('super_scraper')
+      report = Scrapers::ScrapReport.new
       report.start
       report.finish
       report.scraper_report = '10 games or something'
-      report.error! Scrapers::Errors::ScrapError.new('Oops')
+      report.errors.push StandardError.new 'arsars'
 
-      scrap_log = ScrapLog.build_from_report(report, 'faulty')
+      scrap_log = ScrapLog.new
+      scrap_log.apply_report report
 
-      expect(scrap_log.started_at).to eq report.started_at
-      expect(scrap_log.finished_at).to eq report.finished_at
-      expect(scrap_log.msg).to eq 'Oops'
-      expect(scrap_log.scraper).to eq 'super_scraper'
-      expect(scrap_log.task_name).to eq 'faulty'
+      expect(scrap_log.scraper_finished_at).to eq report.finished_at
+      expect(scrap_log.msg).to match(/10 games or something.*1 errors/)
       expect(scrap_log.error?).to eq true
     end
   end

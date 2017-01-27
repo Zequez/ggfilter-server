@@ -64,6 +64,12 @@ class ScrapingTask
   end
 
   def run
+    scrap_log = ScrapLog.new({
+      started_at: Time.now,
+      task_name: task_name
+    })
+
+
     @report = scraper.run # this should NEVER fail, all the errors on #errors
 
     begin
@@ -76,10 +82,14 @@ class ScrapingTask
     end
 
     if @report.errors?
+      scrap_log.error = true
       reporter = ErrorsReporter.new self.task_name
       reporter.errors = @report.errors
       reporter.warnings = @report.warnings
       reporter.commit
     end
+
+    scrap_log.apply_report(@report)
+    scrap_log.save!
   end
 end

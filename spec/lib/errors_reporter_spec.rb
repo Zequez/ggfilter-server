@@ -19,7 +19,7 @@ describe ErrorsReporter do
       message: 'WAKA WAKA'
 
     reporter.add_error scrap_error
-    reporter.add_error normal_exception, 'Extra message!'
+    reporter.add_error normal_exception
 
     stub_request(:post, 'https://api.sendgrid.com/v3/mail/send')
 
@@ -41,12 +41,10 @@ describe ErrorsReporter do
         msg: 'POP POP',
         backtrace: 'BACK BOO',
         url: 'http://example.com',
-        additional_msg: nil
       }.stringify_keys, {
         msg: 'WAKA WAKA',
         backtrace: 'BACK BACK!',
         url: nil,
-        additional_msg: 'Extra message!'
       }.stringify_keys],
       warnings: ["Yo this is a warning I'm warning you"]
     }.stringify_keys)
