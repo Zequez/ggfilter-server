@@ -131,10 +131,11 @@ class Game < ActiveRecord::Base
   def self.re_compute_all
     count = Game.count
     Game.includes(:steam_game, :oculus_game).find_each.with_index do |game, i|
-      puts "Computing #{i+1}/#{count}"
+      print "\rComputing #{i+1}/#{count}"
       game.compute_all
       game.save!
     end
+    puts ''
   end
 
   def self.compute_all_globals
