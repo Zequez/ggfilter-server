@@ -97,6 +97,7 @@ describe Game, type: :model do
         expect(game.oculus_price_discount).to eq 50
 
         expect(game.lowest_price).to eq 999
+        expect(game.best_discount).to eq 50
       end
     end
 
@@ -110,6 +111,7 @@ describe Game, type: :model do
         expect(game.steam_price_discount).to eq 50
 
         expect(game.lowest_price).to eq 999
+        expect(game.best_discount).to eq 50
       end
     end
 
@@ -121,6 +123,7 @@ describe Game, type: :model do
         game.compute_prices
 
         expect(game.lowest_price).to eq 499
+        expect(game.best_discount).to eq 75
       end
     end
   end

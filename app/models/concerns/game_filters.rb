@@ -32,6 +32,7 @@ module GameFilters
           :steam_price_regular,
           :steam_price_discount
         ]
+      register_filter :best_discount, :range_filter
 
       # Ratings
       register_filter :ratings_count, :range_filter

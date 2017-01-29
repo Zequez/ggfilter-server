@@ -44,6 +44,7 @@
 #  thumbnail              :string
 #  stores                 :integer          default(0), not null
 #  ratings_pct            :integer
+#  best_discount          :integer
 #
 # Indexes
 #
@@ -244,6 +245,7 @@ class Game < ActiveRecord::Base
     end
 
     self.lowest_price = [steam_price, oculus_price].compact.min
+    self.best_discount = [steam_price_discount, oculus_price_discount].compact.max
   end
 
   def _discount(price, price_regular)
