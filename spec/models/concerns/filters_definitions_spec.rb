@@ -108,12 +108,12 @@ describe FiltersDefinitions do
     end
 
     it 'should filter with AND' do
-      games = get_games({value: 0b101})
+      games = get_games({value: 0b101, mode: 'and'})
       expect(games).to match_array([@games[5], @games[6]])
     end
 
     it 'should filter with OR' do
-      games = get_games({or: true, value: 0b101})
+      games = get_games({value: 0b101, mode: 'or'})
       expect(games).to match_array([
         @games[0],
         @games[2],
@@ -125,12 +125,12 @@ describe FiltersDefinitions do
     end
 
     it 'should filter with XOR' do
-      games = get_games({xor: true, value: 0b101})
+      games = get_games({value: 0b101, mode: 'xor'})
       expect(games.pluck(:platforms)).to match_array([0b100, 0b001, 0b110, 0b011])
     end
 
     it 'should filter with XOR when using a single value' do
-      games = get_games({xor: true, value: 0b100})
+      games = get_games({value: 0b100, mode: 'xor'})
       expect(games.pluck(:platforms)).to match_array([0b100])
     end
   end

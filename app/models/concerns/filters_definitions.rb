@@ -54,6 +54,12 @@ module FiltersDefinitions
     # Input: value, "or" ("and" by default)
     def boolean_filter(column, filter)
       val = filter[:value]
+      mode = filter[:mode] || 'and'
+
+      # In case we decide to allow string values
+      # column_name = column.scan(/\.(.*)/).flatten.last
+      # flags_map = send :"#{column_name}_flags"
+      # val = val.map{ |v| flags_map[v.to_sym] }.compact.reduce{ |v, t| v & t }
 
       decompose = ->(flags) do
         vals = []
@@ -72,7 +78,7 @@ module FiltersDefinitions
 
       if val.kind_of?(Fixnum) and val > 0
 
-        if filter[:xor]
+        if mode == 'xor'
           vals = decompose.call(val)
           if vals.size > 1
             sql = vals.map{ |v, i|
@@ -83,7 +89,7 @@ module FiltersDefinitions
           else
             sql = "(#{column} = #{vals[0]})"
           end
-        elsif filter[:or]
+        elsif mode == 'or'
           sql = m.call(val)
         else
           vals = decompose.call(val)
