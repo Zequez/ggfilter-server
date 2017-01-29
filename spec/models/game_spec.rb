@@ -291,6 +291,14 @@ describe Game, type: :model do
         game.compute_controllers
         expect(game.gamepad).to eq :partial
       end
+
+      it 'should set the gamepad to :no if not available on Steam or Oculus' do
+        game = build_multigame oculus: {
+          vr_controllers: ['OCULUS_TOUCH']
+        }
+        game.compute_controllers
+        expect(game.gamepad).to eq :no
+      end
     end
 
     describe '#compute_vr_platforms' do

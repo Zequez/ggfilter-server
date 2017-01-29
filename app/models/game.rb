@@ -313,7 +313,7 @@ class Game < ActiveRecord::Base
     controllers = []
 
     if steam_game
-      self.gamepad = steam_game.controller_support || :no
+      self.gamepad = steam_game.controller_support
       controllers += steam_game.vr_controllers
       controllers.push :gamepad if steam_game.controller_support != :no
       controllers.push :keyboard_mouse if steam_game.vr_platforms.empty?
@@ -327,6 +327,8 @@ class Game < ActiveRecord::Base
       })
       self.gamepad = :full if controllers.include?(:gamepad) && !self.gamepad
     end
+
+    self.gamepad = self.gamepad || :no
 
     self.controllers = controllers
   end
