@@ -7,7 +7,8 @@ describe EnumController, type: :controller do
       "controllers",
       "vr_platforms",
       "vr_modes",
-      "platforms"
+      "platforms",
+      "gamepad"
     ])
   end
 end

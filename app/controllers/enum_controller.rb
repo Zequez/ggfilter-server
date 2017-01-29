@@ -6,7 +6,8 @@ class EnumController < ApplicationController
       controllers: Game.controllers_flags,
       vr_platforms: Game.vr_platforms_flags,
       vr_modes: Game.vr_modes_flags,
-      platforms: Game.platforms_flags
+      platforms: Game.platforms_flags,
+      gamepad: Game.gamepad_enum
     }
   end
 end
