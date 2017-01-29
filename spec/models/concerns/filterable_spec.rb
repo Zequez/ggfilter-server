@@ -52,8 +52,8 @@ describe Filterable do
       create :game, name: 'Potato'
 
       expect(Game).to receive(:exact_filter)
-        .with(:name, params)
-        .and_return(["name = ?", 'Potato'])
+        .with('games.name', params)
+        .and_return(["games.name = ?", 'Potato'])
 
       attrs = register_and_get_filter(:wakawaka, :exact_filter, {column: :name}, params)
       expect(attrs[0]['name']).to eq 'Potato'

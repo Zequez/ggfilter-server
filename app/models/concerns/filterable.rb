@@ -20,6 +20,8 @@ module Filterable
         association_table = reflections[options[:column][0].to_s].table_name
         options[:column] = "#{association_table}.#{options[:column][1]}"
         options[:as] ||= options[:name]
+      else
+        options[:column] = "#{table_name}.#{options[:column]}"
       end
 
       options[:select] = Array(options[:select])
@@ -56,7 +58,7 @@ module Filterable
       initialize_selected(filtered)
 
       filters.each_pair do |name, params|
-        if @@filters[name.to_sym]
+        if @@filters[name.to_sym] && params
           filtered = filtered.apply_filter(name, params)
         end
       end
