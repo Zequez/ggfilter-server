@@ -9,7 +9,7 @@ module GameFilters
       register_filter :name, :name_filter
       register_filter :stores, :boolean_filter
       register_filter :released_at, :relative_date_range_filter
-      register_filter :released_at_absolute, :date_range_filter, as: :released_at
+      register_filter :released_at_absolute, :date_range_filter, column: :released_at
 
       # IDs
       register_filter :steam_id, :exact_filter, column: [:steam_game, :steam_id]
@@ -57,11 +57,11 @@ module GameFilters
       # Flags
       register_filter :steam_features, :boolean_filter, column: [:steam_game, :features]
 
-      register_filter :controller_support, :boolean_filter
+      register_filter :gamepad, :boolean_filter
       register_filter :platforms, :boolean_filter
       register_filter :players, :boolean_filter
       register_filter :vr_platforms, :boolean_filter
-      register_filter :vr_mode, :boolean_filter
+      register_filter :vr_modes, :boolean_filter
       register_filter :controllers, :boolean_filter
 
       # Percentiles
