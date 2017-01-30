@@ -9,9 +9,13 @@ module ScrapingTasks
       Scrapers::Steam::Game::Runner.new(steam_ids: steam_ids)
     end
 
-    def save_each(attrs)
-      SteamGame.from_game_scraper!(attrs)
-        .propagate_to_game
+    def save(output); end
+
+    def partial_process(attrs)
+      rescue_save_fail do
+        SteamGame.from_game_scraper!(attrs)
+          .propagate_to_game
+      end
     end
   end
 

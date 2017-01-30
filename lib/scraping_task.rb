@@ -11,16 +11,19 @@ class ScrapingTask
 
   def initialize(instant_fail = false)
     @instant_fail = instant_fail
-    @max_saves_failure = 10
+    @max_saves_failure = 50
     @save_fail_count = 0
+    @errors = []
 
-    if @instant_fail
-      Scrapers::BasicRunner.instant_raise = true
-    end
+    Scrapers::BasicRunner.instant_raise = @instant_fail
   end
 
   def scraper
     raise 'Virtual method'
+  end
+
+  def partial_process(partial_output)
+
   end
 
   def process(output)
@@ -56,7 +59,7 @@ class ScrapingTask
     rescue StandardError => e
       raise if @instant_fail
       @save_fail_count += 1
-      @report.errors.push e
+      add_error e
       if @save_fail_count > @max_saves_failure
         raise "Saving aborted, too many errors"
       end
@@ -69,8 +72,12 @@ class ScrapingTask
       task_name: task_name
     })
 
-
-    @report = scraper.run # this should NEVER fail, all the errors on #errors
+    # This should NEVER fail, all the errors on #errors
+    @report = scraper.run do |partial_output|
+      rescue_save_fail do
+        partial_process(partial_output)
+      end
+    end
 
     begin
       if @report.output
@@ -78,10 +85,11 @@ class ScrapingTask
       end
     rescue StandardError => e
       raise if @instant_fail
-      @report.errors.push e
+      add_error e
     end
 
     if @report.errors?
+      Scrapers.logger.info 'There were errors, sending report'
       scrap_log.error = true
       reporter = ErrorsReporter.new self.task_name
       reporter.errors = @report.errors
@@ -91,5 +99,10 @@ class ScrapingTask
 
     scrap_log.apply_report(@report)
     scrap_log.save!
+  end
+
+  def add_error(e)
+    Scrapers.logger.error e.message
+    @errors.push e
   end
 end
