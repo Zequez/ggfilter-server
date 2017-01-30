@@ -98,6 +98,12 @@ describe Game, type: :model do
 
         expect(game.lowest_price).to eq 999
         expect(game.best_discount).to eq 50
+        expect(game.prices).to eq({
+          'oculus' => {
+            'current' => 999,
+            'regular' => 1999
+          }
+        })
       end
     end
 
@@ -112,6 +118,12 @@ describe Game, type: :model do
 
         expect(game.lowest_price).to eq 999
         expect(game.best_discount).to eq 50
+        expect(game.prices).to eq({
+          'steam' => {
+            'current' => 999,
+            'regular' => 1999
+          }
+        })
       end
     end
 
@@ -124,6 +136,16 @@ describe Game, type: :model do
 
         expect(game.lowest_price).to eq 499
         expect(game.best_discount).to eq 75
+        expect(game.prices).to eq({
+          'steam' => {
+            'current' => 999,
+            'regular' => 1999
+          },
+          'oculus' => {
+            'current' => 499,
+            'regular' => 1999
+          }
+        })
       end
     end
   end
@@ -677,6 +699,32 @@ describe Game, type: :model do
           expect(games[i].sysreq_index_pct).to be_within(10).of(val)
         end
       end
+    end
+  end
+
+  describe '.compute_urls' do
+    it 'should have the Oculus URL' do
+      game = build_multigame oculus: {
+        oculus_id: '123123123123123'
+      }
+      game.compute_urls
+      expect(game.urls).to eq({
+        'oculus' => "https://www.oculus.com/experiences/rift/123123123123123/"
+      })
+    end
+
+    it 'should have the Steam URL' do
+      game = build_multigame steam: {
+        steam_id: '321321'
+      }
+      game.compute_urls
+      expect(game.urls).to eq({
+        'steam' => "http://store.steampowered.com/app/321321/"
+      })
+    end
+
+    it 'should have both URLs' do
+
     end
   end
 end

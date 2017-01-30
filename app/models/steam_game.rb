@@ -186,4 +186,8 @@ class SteamGame < ActiveRecord::Base
   def self.update_not_on_sale(on_sale_ids)
     where.not(steam_id: on_sale_ids).update_all(sale_price: nil)
   end
+
+  def url
+    "http://store.steampowered.com/app/#{steam_id}/"
+  end
 end

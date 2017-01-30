@@ -107,4 +107,8 @@ class OculusGame < ApplicationRecord
   def ratings
     [rating_1, rating_2, rating_3, rating_4, rating_5]
   end
+
+  def url
+    "https://www.oculus.com/experiences/rift/#{oculus_id}/"
+  end
 end

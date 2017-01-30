@@ -6,7 +6,7 @@ module GameFilters
       include Filterable
       include FiltersDefinitions
 
-      register_filter :name, :name_filter
+      register_filter :name, :name_filter, select: [:name, :urls]
       register_filter :stores, :boolean_filter
       register_filter :released_at, :relative_date_range_filter
       register_filter :released_at_absolute, :date_range_filter, column: :released_at
@@ -68,9 +68,12 @@ module GameFilters
       # Percentiles
       register_filter :sysreq_index_pct, :range_filter
 
+      # Columns-only
       register_column :images
       register_column :videos
       register_column :thumbnail
+      register_column :urls
+      register_column :prices
     end
   end
 end

@@ -45,6 +45,8 @@
 #  stores                 :integer          default(0), not null
 #  ratings_pct            :integer
 #  best_discount          :integer
+#  urls                   :text             default({}), not null
+#  prices                 :text             default("{}"), not null
 #
 # Indexes
 #
@@ -75,6 +77,8 @@ class Game < ActiveRecord::Base
   serialize :tags, JSON
   serialize :images, JSON
   serialize :videos, JSON
+  serialize :urls, JSON
+  serialize :prices, JSON
 
   ### Flag columns ###
   ####################
@@ -223,6 +227,7 @@ class Game < ActiveRecord::Base
     compute_thumbnail
     compute_videos
     compute_images
+    compute_urls
   end
 
   def compute_stores
@@ -233,18 +238,29 @@ class Game < ActiveRecord::Base
   end
 
   def compute_prices
+    prices = {}
+
     if steam_game && steam_game.price
       self.steam_price = steam_game.sale_price || steam_game.price
       self.steam_price_regular = steam_game.price
       self.steam_price_discount = _discount(steam_price, steam_price_regular)
+      prices[:steam] = {
+        current: steam_price,
+        regular: steam_price_regular
+      }
     end
 
     if oculus_game
       self.oculus_price = oculus_game.price
       self.oculus_price_regular = oculus_game.price_regular || oculus_game.price
       self.oculus_price_discount = _discount(oculus_price, oculus_price_regular)
+      prices[:oculus] = {
+        current: oculus_price,
+        regular: oculus_price_regular
+      }
     end
 
+    self.prices = prices
     self.lowest_price = [steam_price, oculus_price].compact.min
     self.best_discount = [steam_price_discount, oculus_price_discount].compact.max
   end
@@ -547,6 +563,20 @@ class Game < ActiveRecord::Base
     end
 
     self.images = images
+  end
+
+  def compute_urls
+    urls = {}
+
+    if steam_game
+      urls['steam'] = steam_game.url
+    end
+
+    if oculus_game
+      urls['oculus'] = oculus_game.url
+    end
+
+    self.urls = urls
   end
 
   ### Tags ###
