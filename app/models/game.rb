@@ -132,12 +132,13 @@ class Game < ActiveRecord::Base
     where(name_slug: name.to_s.parameterize).first || new(name: name)
   end
 
-  def self.re_compute_all
-    count = Game.count
-    Game.includes(:steam_game, :oculus_game).find_each.with_index do |game, i|
+  def self.re_compute_all(limit = false)
+    count = self.count
+    includes(:steam_game, :oculus_game).find_each.with_index do |game, i|
       print "\rComputing #{i+1}/#{count}"
       game.compute_all
       game.save!
+      break if limit && i+1 >= limit
     end
     puts ''
   end
@@ -587,7 +588,7 @@ class Game < ActiveRecord::Base
   def tags=(value)
     super value.map{|v|
       if v.kind_of? String
-        Tag.find_or_create_by_name(v).id
+        Tag.get_id_from_name(v)
       elsif v.kind_of? Fixnum
         v
       else

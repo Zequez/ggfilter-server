@@ -504,6 +504,10 @@ describe Game, type: :model do
   end
 
   describe '#compute_tags' do
+    after :each do
+      Tag.delete_tags_cache
+    end
+
     it 'should create new tags when assigning non-existing tags' do
       game = build_multigame steam: {
         tags: ['potato', 'galaxy']
