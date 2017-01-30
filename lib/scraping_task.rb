@@ -103,6 +103,7 @@ class ScrapingTask
 
   def add_error(e)
     Scrapers.logger.error e.message
+    Scrapers.logger.error e.backtrace
     @errors.push e
   end
 end
