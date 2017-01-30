@@ -291,7 +291,9 @@ class Game < ActiveRecord::Base
     end
 
     self.ratings_count = positive + negative
-    self.ratings_ratio = positive / self.ratings_count if self.ratings_count > 0
+    if ratings_count > 0
+      self.ratings_ratio = (positive.to_f / ratings_count * 100).round
+    end
     self.positive_ratings_count = positive
     self.negative_ratings_count = negative
   end

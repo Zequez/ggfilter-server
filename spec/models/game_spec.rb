@@ -171,6 +171,9 @@ describe Game, type: :model do
 
         expect(game.positive_ratings_count).to eq positive
         expect(game.negative_ratings_count).to eq negative
+        expect(game.ratings_ratio).to eq(
+          (positive.to_f / (positive + negative) * 100).round
+        )
       end
     end
 
@@ -184,6 +187,8 @@ describe Game, type: :model do
 
         expect(game.positive_ratings_count).to eq 99
         expect(game.negative_ratings_count).to eq 10
+
+        expect(game.ratings_ratio).to eq (99.to_f / (10 + 99) * 100).round
       end
     end
 
@@ -212,6 +217,9 @@ describe Game, type: :model do
 
         expect(game.positive_ratings_count).to eq(99 + positive)
         expect(game.negative_ratings_count).to eq(10 + negative)
+        expect(game.ratings_ratio).to eq(
+          ((99 + positive).to_f / (99 + positive + 10 + negative) * 100).round
+        )
       end
     end
   end
