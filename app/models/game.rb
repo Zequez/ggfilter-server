@@ -170,27 +170,49 @@ class Game < ActiveRecord::Base
   end
 
   def self.compute_percentiles
-    compute_percentile_for :sysreq_index, :sysreq_index_pct
+    compute_percentile_for_to :sysreq_index, :sysreq_index_pct
+    compute_average_percentile_for_to [:ratings_ratio, :ratings_count], :ratings_pct
   end
 
-  def self.compute_percentile_for(column, target_column)
+  def self.compute_average_percentile_for_to(columns, target_column)
+    percentiles = {}
+    columns.each do |column|
+      ids, values_pct = compute_percentile_for column
+      if ids
+        ids.each_with_index do |id, i|
+          percentiles[id] ||= []
+          percentiles[id].push values_pct[i]
+        end
+      end
+    end
+
+    ids = []
+    attributes = []
+    percentiles.each_pair do |id, values|
+      ids.push id
+      attributes.push (values.reduce(&:+).to_f / values.size).round
+    end
+
+    update_all_for_each ids, target_column => attributes
+  end
+
+  def self.compute_percentile_for_to(column, target_column)
+    ids, values_pct = compute_percentile_for(column)
+    if ids
+      update_all_for_each(ids, target_column => values_pct)
+    end
+  end
+
+  def self.compute_percentile_for(column)
     puts "Computing percentiles for #{column}"
     ids, values = where.not(column => nil).pluck(:id, column).transpose
 
-    stats = DescriptiveStatistics::Stats.new(values)
-    percentiles = (0..100).map{ |i| stats.percentile(i) }
-
-    upper_limit = percentiles.clone
-    upper_limit.shift
-    percentiles.pop
-    percentiles = percentiles.zip(upper_limit)
-
-    values_pct = values.map do |val|
-      percentiles
-        .find_index{ |i| val >= i[0] && val <= i[1] }
+    if ids
+      values_pct = Percentiles.rank_of_values(values)
+      [ids, values_pct]
+    else
+      [nil, nil]
     end
-
-    update_all_for_each(ids, target_column => values_pct)
   end
 
   def self.update_all_for_each(ids, attributes)
