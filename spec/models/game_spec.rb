@@ -714,15 +714,17 @@ describe Game, type: :model do
   describe '.compute_percentiles' do
     describe '#sysreq_index_pct' do
       it 'should calculate the percentiles from #sysreq_index' do
-        games = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900].map do |val|
+        values = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+        games = values.map do |val|
           create :game, sysreq_index: val
         end
 
         Game.compute_percentiles
+        values_pct = Percentiles.rank_of_values(values)
 
-        [0, 11, 22, 33, 44, 55, 66, 77, 88, 99].each_with_index do |val, i|
+        values_pct.each_with_index do |val, i|
           games[i].reload
-          expect(games[i].sysreq_index_pct).to be_within(2).of(val)
+          expect(games[i].sysreq_index_pct).to eq val
         end
       end
     end
