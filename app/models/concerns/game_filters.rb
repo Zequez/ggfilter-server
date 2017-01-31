@@ -34,7 +34,7 @@ module GameFilters
       register_filter :ratings_ratio, :range_filter,
         select: [:ratings_ratio, :ratings_count]
       register_filter :ratings_pct, :range_filter,
-        select: [:ratings_ratio, :ratings_count]
+        select: [:ratings_pct, :ratings_ratio, :ratings_count]
       register_filter :metacritic, :range_filter, column: [:steam_game, :metacritic]
 
       # Tags
