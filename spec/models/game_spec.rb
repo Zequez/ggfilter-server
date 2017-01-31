@@ -175,6 +175,21 @@ describe Game, type: :model do
           (positive.to_f / (positive + negative) * 100).round
         )
       end
+
+      it 'should not be an issue with no ratings' do
+        oculus_game = create :oculus_game,
+          rating_1: 0,
+          rating_2: 0,
+          rating_3: 0,
+          rating_4: 0,
+          rating_5: 0
+        game = build :game, oculus_game: oculus_game
+        game.compute_ratings
+
+        expect(game.positive_ratings_count).to eq 0
+        expect(game.negative_ratings_count).to eq 0
+        expect(game.ratings_ratio).to eq nil
+      end
     end
 
     context 'Steam game only' do
@@ -713,7 +728,7 @@ describe Game, type: :model do
     end
 
     describe '#ratings_pct' do
-      fit 'should calculate the percentiles averages from #ratings_count and #ratings_ratio' do
+      it 'should calculate the percentiles averages from #ratings_count and #ratings_ratio' do
         counts = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900]
         ratios = [nil, 20, 50, 80, 99, 99, 80, 70, 60, 86]
 

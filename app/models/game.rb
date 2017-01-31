@@ -323,6 +323,7 @@ class Game < ActiveRecord::Base
 
   def _star_to_positive_negative(stars)
     count = stars.reduce(:+)
+    return [0, 0] if count == 0
     total = 0
     stars.each_with_index{ |s, i| total += s * (i + 1) }
 
