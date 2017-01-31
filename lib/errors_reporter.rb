@@ -93,8 +93,18 @@ class ErrorsReporter
     content = SendGrid::Content.new(type: 'text/plain', value: body)
     mail = SendGrid::Mail.new(from, title, to, content)
 
-    mail.attachments = files
+    files = self.files
+    if files.size > 0
+      mail.attachments = files
+    end
 
-    sg.client.mail._('send').post(request_body: mail.to_json)
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    status_code = response.status_code.to_i
+    if status_code >= 200 && status_code < 300
+      Scrapers.logger.info 'Email sent successfully'
+    else
+      Scrapers.logger.error 'Email failed to be sent'
+      puts response.body
+    end
   end
 end
