@@ -1,5 +1,15 @@
 FactoryGirl.define do
   factory :filter do
-    filter "{}"
+    sequence(:ip_address){ |n| "127.0.0.#{n}" }
+  end
+
+  factory :filter_for_create, class: Filter do
+    controls_list([])
+    controls_hl_mod({})
+    controls_config({})
+    columns_list([])
+    columns_config({})
+    sorting({})
+    global_config({})
   end
 end

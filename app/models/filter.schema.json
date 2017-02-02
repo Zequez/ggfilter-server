@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "text": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "boolean": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "columns": [
+      "name",
+      "stores",
+      "released_at"
+    ]
+  },
+  "title": "Filter",
+  "description": "A filter that can be applied by the front end",
+  "type": "object",
+  "properties": {
+    "controls": {
+      "type": "object",
+      "properties": {
+        "name": { "$ref": "#/definitions/text" },
+        "stores": { "$ref": "#/definitions/boolean" }
+      }
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": []
+      }
+    },
+    "sorting": {
+      "type": "object",
+      "properties": {
+        "column": {
+          "type": "string",
+          "enum": []
+        },
+        "asc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "oculus_id": {
+      "description": "The Oculus ID in the Oculus Store",
+      "type": "integer"
+    },
+  "required": ["controls", "columns", "sorting"]
+}

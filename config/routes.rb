@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'auth/current_user', to: 'sessions#show'
   end
 
-  # resources :filters
+  resources :filters
   resources :games, only: [:index, :show]
   # resources :sysreq_tokens, only: [:index, :show, :update]
   resources :tags, only: :index

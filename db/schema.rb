@@ -10,25 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130042114) do
+ActiveRecord::Schema.define(version: 20170202154930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "filters", force: :cascade do |t|
-    t.string   "sid",                          null: false
+    t.string   "sid",                             null: false
     t.string   "name"
-    t.string   "user_slug"
+    t.string   "name_slug"
     t.integer  "user_id"
-    t.text     "filter",        default: "{}", null: false
-    t.integer  "visits",        default: 0,    null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "official_slug"
-    t.index ["official_slug"], name: "index_filters_on_official_slug", unique: true, using: :btree
+    t.integer  "visits",           default: 0,    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "global_slug"
+    t.text     "sorting",          default: "{}", null: false
+    t.string   "secret"
+    t.integer  "front_page"
+    t.text     "controls_list",    default: "[]", null: false
+    t.text     "controls_hl_mode", default: "{}", null: false
+    t.text     "controls_config",  default: "{}", null: false
+    t.text     "columns_list",     default: "[]", null: false
+    t.text     "columns_config",   default: "{}", null: false
+    t.text     "global_config",    default: "{}", null: false
+    t.string   "ip_address"
+    t.index ["global_slug"], name: "index_filters_on_global_slug", unique: true, using: :btree
+    t.index ["name_slug"], name: "index_filters_on_name_slug", using: :btree
     t.index ["sid"], name: "index_filters_on_sid", unique: true, using: :btree
     t.index ["user_id"], name: "index_filters_on_user_id", using: :btree
-    t.index ["user_slug"], name: "index_filters_on_user_slug", using: :btree
   end
 
   create_table "games", force: :cascade do |t|

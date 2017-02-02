@@ -2,63 +2,131 @@
 #
 # Table name: filters
 #
-#  id            :integer          not null, primary key
-#  sid           :string           not null
-#  name          :string
-#  user_slug     :string
-#  user_id       :integer
-#  filter        :text             default("{}"), not null
-#  visits        :integer          default(0), not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  official_slug :string
+#  id               :integer          not null, primary key
+#  sid              :string           not null
+#  name             :string
+#  name_slug        :string
+#  user_id          :integer
+#  visits           :integer          default(0), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  global_slug      :string
+#  sorting          :text             default("{}"), not null
+#  secret           :string
+#  front_page       :integer
+#  controls_list    :text             default("[]"), not null
+#  controls_hl_mode :text             default("{}"), not null
+#  controls_config  :text             default("{}"), not null
+#  columns_list     :text             default("[]"), not null
+#  columns_config   :text             default("{}"), not null
+#  global_config    :text             default("{}"), not null
+#  ip_address       :string
 #
 # Indexes
 #
-#  index_filters_on_official_slug  (official_slug) UNIQUE
-#  index_filters_on_sid            (sid) UNIQUE
-#  index_filters_on_user_id        (user_id)
-#  index_filters_on_user_slug      (user_slug)
+#  index_filters_on_global_slug  (global_slug) UNIQUE
+#  index_filters_on_name_slug    (name_slug)
+#  index_filters_on_sid          (sid) UNIQUE
+#  index_filters_on_user_id      (user_id)
 #
 
 class Filter < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged, slug_column: :name_slug
+
+  def normalize_friendly_id(string)
+    super[0..49]
+  end
+
   belongs_to :user
 
-  nilify_blanks only: [:name, :user_slug, :official_slug], before: :validation
+  nilify_blanks only: [:name, :name_slug, :global_slug], before: :validation
 
   validates :name,
     allow_nil: true,
     allow_blank: false,
     length: { maximum: 140 }
-  validates :user_slug,
+  validates :name_slug,
     allow_nil: true,
     allow_blank: false,
-    uniqueness: { scope: :user_id },
-    format: { with: /\A[a-zA-Z0-9\-]+\Z/ },
     length: { maximum: 50 }
-  validates :user_id,
-    presence: true,
-    if: :user_slug
-  validates :official_slug,
+  validates :global_slug,
     allow_nil: true,
     allow_blank: false,
     uniqueness: true,
     format: { with: /\A[a-zA-Z0-9\-]+\Z/ },
     length: { maximum: 50 }
-  validate :validates_filter_json_object
+  validates :ip_address, presence: true
 
-  def validates_filter_json_object
-    begin
-      JSON.parse(self.filter)
-    rescue JSON::ParserError
-      errors.add(:filter, 'Should be a valid filter object')
+  serialize :controls_list, JSON
+  serialize :controls_hl_mode, JSON
+  serialize :controls_config, JSON
+  serialize :columns_list, JSON
+  serialize :columns_config, JSON
+  serialize :sorting, JSON
+  serialize :global_config, JSON
+
+  validate :ip_address_flooding
+
+  def ip_address_flooding
+    count = Filter
+      .where('ip_address = ? AND created_at > ?', ip_address, 1.hour.ago)
+      .count
+
+    if count >= 30
+      errors.add(
+        :ip_address,
+        :too_many_posts,
+        message: "You're doing this too much, please wait"
+      )
     end
+  end
+
+  validate :validates_serialized_objects
+
+  def validates_serialized_objects
+    [:controls_list, :columns_list].each do |attr|
+      val = send attr
+      unless val.kind_of? Array
+        errors.add(attr, message: 'Must be an array')
+      end
+    end
+
+    [:controls_hl_mode, :controls_config,
+      :columns_config, :sorting, :global_config].each do |attr|
+      val = send attr
+      unless val.kind_of? Hash
+        errors.add(attr, message: 'Must be a hash')
+      end
+    end
+
+
+    # begin
+    #   JSON.parse(self.filter)
+    # rescue JSON::ParserError
+    #   errors.add(:filter, 'Should be a valid filter object')
+    # end
   end
 
   before_validation :generate_sid, if: :new_record?
 
   def generate_sid
-    self.sid = SecureRandom.urlsafe_base64(6, false)
+    self.sid = SecureRandom.urlsafe_base64(6, false) # 6 * 4/3
     generate_sid if Filter.find_by_sid(self.sid)
+  end
+
+  before_validation :generate_secret, if: :new_record?
+
+  def generate_secret
+    self.secret = SecureRandom.urlsafe_base64(37, false) # 37 * 4/3
+    generate_sid if Filter.find_by_sid(self.sid)
+  end
+
+  def to_json_create
+    to_json except: [:id]
+  end
+
+  def to_json_normal
+    to_json except: [:id, :secret]
   end
 end

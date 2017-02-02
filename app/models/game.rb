@@ -46,7 +46,7 @@
 #  ratings_pct            :integer
 #  best_discount          :integer
 #  urls                   :text             default({}), not null
-#  prices                 :text             default("{}"), not null
+#  prices                 :text             default({}), not null
 #
 # Indexes
 #

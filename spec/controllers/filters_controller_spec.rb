@@ -1,44 +1,106 @@
-# describe FiltersController, type: :controller do
-#   as_json = { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
-#
-#   context 'logged out users' do
-#     describe '#create' do
-#       it 'should allow only filter and name' do
-#         post :create, {
-#           filter: {
-#             filter: {potato: "salad"}.to_json,
-#             name: 'qqq',
-#             official_slug: 'aaa',
-#             user_slug: 'neio'
-#           },
-#         }, as_json
-#         f = Filter.first
-#         expect(f.filter).to eq '{"potato":"salad"}'
-#         expect(f.name).to eq 'qqq'
-#         expect(f.official_slug).to eq nil
-#         expect(f.user_slug).to eq nil
-#         expect(f.user).to eq nil
-#       end
-#     end
-#
-#     describe '#update' do
-#       it 'should not allow' do
-#         f = create :filter
-#         patch :update, id: f.sid, filter: { name: 'Potato' }
-#         expect(response.status).to eq 401
-#       end
-#     end
-#
-#     describe '#destroy' do
-#       it 'should not allow' do
-#         f = create :filter
-#         delete :destroy, id: f.sid
-#         expect(response.status).to eq 401
-#         expect(Filter.find_by_sid(f.sid)).to eq f
-#       end
-#     end
-#   end
-#
+describe FiltersController, type: :controller do
+  def payload(attrs)
+    {
+      params: {
+        payload: attrs
+      }
+    }
+  end
+
+  context 'logged out users' do
+    describe '#create' do
+      it 'should allow only filter and name' do
+        post :create, payload(attributes_for(:filter_for_create,
+          controls_list: ['prices'],
+          name: 'Potato',
+          front_page: 5,
+          ip_address: 'woo',
+          global_slug: 'nope',
+          sid: '1234'
+        )), format: :json
+        f = Filter.first
+        expect(f.controls_list).to eq ['prices']
+        expect(f.name).to eq 'Potato'
+        expect(f.name_slug).to eq 'potato'
+        expect(f.global_slug).to eq nil
+        expect(f.sid).to_not eq '1234'
+        expect(f.ip_address).to eq '0.0.0.0'
+        expect(f.front_page).to eq nil
+
+        expect(response_json['secret']).to eq f.secret
+      end
+    end
+
+    describe '#update' do
+      it 'should not allow without the secret' do
+        f = create :filter, name: 'Potato'
+        patch :update, {params: {
+          id: f.sid,
+          secret: 'WRONG',
+          payload: {
+            name: 'Nope'
+          }
+        }}, format: :json
+        expect(response).to have_http_status(:unauthorized)
+      end
+
+      it 'should allow with the secret' do
+        f = create :filter, name: 'Potato'
+        old_secret = f.secret
+        patch :update, {params: {
+          id: f.sid,
+          secret: old_secret,
+          payload: {
+            name: 'Yes!',
+            secret: 'Nope'
+          }
+        }}, format: :json
+        expect(response).to have_http_status(:success)
+        f.reload
+        expect(f.name).to eq 'Yes!'
+        expect(f.secret).to eq old_secret
+      end
+    end
+
+    describe '#destroy' do
+      it 'should not allow it without a secret' do
+        f = create :filter
+        delete :destroy, {params: {id: f.sid}}
+        expect(response).to have_http_status(:unauthorized)
+        expect(Filter.find_by_sid(f.sid)).to eq f
+      end
+
+      it 'should allow it with the secret' do
+        f = create :filter
+        delete :destroy, {params: {id: f.sid, secret: f.secret}}
+        expect(response).to have_http_status(:success)
+        expect(Filter.find_by_sid(f.sid)).to eq nil
+      end
+    end
+
+    describe '#show' do
+      it 'should display the filter, but without the secret' do
+        f = create :filter
+        get :show, {params: {id: f.sid}}
+        fj = response_json
+        expect(fj.keys).to match_array [
+          'created_at', 'updated_at',
+          'sid', 'name', 'name_slug',
+          'user_id', 'visits', 'ip_address',
+          'global_slug', 'front_page',
+          'sorting',
+          'controls_list',
+          'controls_hl_mode',
+          'controls_config',
+          'columns_list',
+          'columns_config',
+          'global_config',
+        ]
+      end
+    end
+  end
+end
+
 #   context 'non-admin logged-in users' do
 #     before :each do
 #       @u = create :user
