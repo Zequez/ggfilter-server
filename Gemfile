@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.0'
 
 # Scrapers!
 gem 'scrapers', git: "https://bitbucket.org/Zequez/ggfilter-scrapers.git"
@@ -10,7 +10,7 @@ gem 'ggfilter_client', git: "https://bitbucket.org/Zequez/ggfilter-client-gem.gi
 # gem 'ggfilter_client', path: '../client/gem'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.0.1'
 # Use Posgtres as the database for Active Record
 gem 'pg'
 # See https://github.com/rails/execjs#readme for more supported runtimes
