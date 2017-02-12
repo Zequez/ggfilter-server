@@ -24,6 +24,12 @@ describe Filter, type: :model do
           expect(create(:filter, name: 'Potato Galaxy').name_slug)
             .to eq 'potato-galaxy'
         end
+
+        it 'should allow it to be repeated' do
+          f1 = create :filter, name: 'potato galaxy'
+          f2 = create :filter, name: 'potato galaxy'
+          expect(f1.name_slug).to eq f2.name_slug
+        end
       end
 
       describe '#global_slug' do
@@ -124,10 +130,10 @@ describe Filter, type: :model do
   describe 'all serialized objects' do
     it 'should validate them' do
       expect(build :filter, controls_list: {}).to be_invalid
-      expect(build :filter, controls_hl_mode: []).to be_invalid
-      expect(build :filter, controls_config: []).to be_invalid
+      expect(build :filter, controls_hl_mode: {}).to be_invalid
+      expect(build :filter, controls_params: []).to be_invalid
       expect(build :filter, columns_list: {}).to be_invalid
-      expect(build :filter, columns_config: []).to be_invalid
+      expect(build :filter, columns_params: []).to be_invalid
       expect(build :filter, sorting: 'sup').to be_invalid
       expect(build :filter, global_config: []).to be_invalid
     end

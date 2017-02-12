@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202154930) do
+ActiveRecord::Schema.define(version: 20170209015413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20170202154930) do
     t.string   "secret"
     t.integer  "front_page"
     t.text     "controls_list",    default: "[]", null: false
-    t.text     "controls_hl_mode", default: "{}", null: false
-    t.text     "controls_config",  default: "{}", null: false
+    t.text     "controls_hl_mode", default: "[]", null: false
+    t.text     "controls_params",  default: "{}", null: false
     t.text     "columns_list",     default: "[]", null: false
-    t.text     "columns_config",   default: "{}", null: false
+    t.text     "columns_params",   default: "{}", null: false
     t.text     "global_config",    default: "{}", null: false
     t.string   "ip_address"
     t.index ["global_slug"], name: "index_filters_on_global_slug", unique: true, using: :btree

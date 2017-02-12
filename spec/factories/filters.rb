@@ -5,10 +5,10 @@ FactoryGirl.define do
 
   factory :filter_for_create, class: Filter do
     controls_list([])
-    controls_hl_mod({})
-    controls_config({})
+    controls_hl_mod([])
+    controls_params({})
     columns_list([])
-    columns_config({})
+    columns_params({})
     sorting({})
     global_config({})
   end

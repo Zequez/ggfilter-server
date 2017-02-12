@@ -11,15 +11,15 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  global_slug      :string
-#  sorting          :text             default("{}"), not null
+#  sorting          :text             default({}), not null
 #  secret           :string
 #  front_page       :integer
-#  controls_list    :text             default("[]"), not null
-#  controls_hl_mode :text             default("{}"), not null
-#  controls_config  :text             default("{}"), not null
-#  columns_list     :text             default("[]"), not null
-#  columns_config   :text             default("{}"), not null
-#  global_config    :text             default("{}"), not null
+#  controls_list    :text             default([]), not null
+#  controls_hl_mode :text             default([]), not null
+#  controls_params  :text             default({}), not null
+#  columns_list     :text             default([]), not null
+#  columns_params   :text             default({}), not null
+#  global_config    :text             default({}), not null
 #  ip_address       :string
 #
 # Indexes
@@ -31,14 +31,15 @@
 #
 
 class Filter < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, use: :slugged, slug_column: :name_slug
-
-  def normalize_friendly_id(string)
-    super[0..49]
-  end
-
   belongs_to :user
+
+  serialize :controls_list, JSON
+  serialize :controls_hl_mode, JSON
+  serialize :controls_params, JSON
+  serialize :columns_list, JSON
+  serialize :columns_params, JSON
+  serialize :sorting, JSON
+  serialize :global_config, JSON
 
   nilify_blanks only: [:name, :name_slug, :global_slug], before: :validation
 
@@ -49,6 +50,7 @@ class Filter < ActiveRecord::Base
   validates :name_slug,
     allow_nil: true,
     allow_blank: false,
+    uniqueness: false,
     length: { maximum: 50 }
   validates :global_slug,
     allow_nil: true,
@@ -57,14 +59,6 @@ class Filter < ActiveRecord::Base
     format: { with: /\A[a-zA-Z0-9\-]+\Z/ },
     length: { maximum: 50 }
   validates :ip_address, presence: true
-
-  serialize :controls_list, JSON
-  serialize :controls_hl_mode, JSON
-  serialize :controls_config, JSON
-  serialize :columns_list, JSON
-  serialize :columns_config, JSON
-  serialize :sorting, JSON
-  serialize :global_config, JSON
 
   validate :ip_address_flooding
 
@@ -85,15 +79,15 @@ class Filter < ActiveRecord::Base
   validate :validates_serialized_objects
 
   def validates_serialized_objects
-    [:controls_list, :columns_list].each do |attr|
+    [:controls_list, :columns_list, :controls_hl_mode].each do |attr|
       val = send attr
       unless val.kind_of? Array
         errors.add(attr, message: 'Must be an array')
       end
     end
 
-    [:controls_hl_mode, :controls_config,
-      :columns_config, :sorting, :global_config].each do |attr|
+    [:controls_params,
+      :columns_params, :sorting, :global_config].each do |attr|
       val = send attr
       unless val.kind_of? Hash
         errors.add(attr, message: 'Must be a hash')
@@ -120,6 +114,10 @@ class Filter < ActiveRecord::Base
   def generate_secret
     self.secret = SecureRandom.urlsafe_base64(37, false) # 37 * 4/3
     generate_sid if Filter.find_by_sid(self.sid)
+  end
+
+  before_create do
+    self.name_slug = name.downcase.gsub(/\s+/, '-').strip[0..49] if name
   end
 
   def to_json_create

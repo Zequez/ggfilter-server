@@ -63,18 +63,36 @@ class FiltersController < ApplicationController
   # end
 
   def anonymous_filter_params
-    params
-      .required('payload')
-      .permit(
-        'name',
-        'controls_list' => [],
-        'controls_hl_mode' => {},
-        'controls_config' => {},
-        'columns_list' => [],
-        'columns_config' => {},
-        'sorting' => {},
-        'global_config' => {}
-      )
+    p = params.required('payload')
+    # p.permit!('controls_params')
+    # p.permit!('columns_params')
+    # p.permit!('sorting')
+    # p.permit!('global_config')
+    p.permit(
+      'name',
+      'controls_list' => [],
+      'controls_hl_mode' => [],
+      'controls_params' => {},
+      'columns_list' => [],
+      'columns_params' => {},
+      'sorting' => {},
+      'global_config' => {}
+    ).merge(permit_hashes(p, [
+      'controls_params',
+      'columns_params',
+      'sorting',
+      'global_config'
+    ]))
+  end
+
+  def permit_hashes(p, names)
+    result = {}
+    names.each do |name|
+      if p[name] && p[name].respond_to?(:to_h)
+        result[name] = p[name].permit!.to_h
+      end
+    end
+    result
   end
 
 

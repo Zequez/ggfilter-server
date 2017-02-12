@@ -1,9 +1,10 @@
 describe FiltersController, type: :controller do
-  def payload(attrs)
+  def payload(attrs, other = {})
     {
       params: {
         payload: attrs
-      }
+      }.merge(other),
+      as: :json
     }
   end
 
@@ -12,14 +13,16 @@ describe FiltersController, type: :controller do
       it 'should allow only filter and name' do
         post :create, payload(attributes_for(:filter_for_create,
           controls_list: ['prices'],
+          controls_params: {'prices' => {'gt' => 123}},
           name: 'Potato',
           front_page: 5,
           ip_address: 'woo',
           global_slug: 'nope',
           sid: '1234'
-        )), format: :json
+        ))
         f = Filter.first
         expect(f.controls_list).to eq ['prices']
+        expect(f.controls_params).to eq({'prices' => {'gt' => 123}})
         expect(f.name).to eq 'Potato'
         expect(f.name_slug).to eq 'potato'
         expect(f.global_slug).to eq nil
@@ -34,27 +37,17 @@ describe FiltersController, type: :controller do
     describe '#update' do
       it 'should not allow without the secret' do
         f = create :filter, name: 'Potato'
-        patch :update, {params: {
-          id: f.sid,
-          secret: 'WRONG',
-          payload: {
-            name: 'Nope'
-          }
-        }}, format: :json
+        patch :update, payload({name: 'Nope'}, {id: f.sid, secret: 'WRONG'})
         expect(response).to have_http_status(:unauthorized)
       end
 
       it 'should allow with the secret' do
         f = create :filter, name: 'Potato'
         old_secret = f.secret
-        patch :update, {params: {
-          id: f.sid,
-          secret: old_secret,
-          payload: {
-            name: 'Yes!',
-            secret: 'Nope'
-          }
-        }}, format: :json
+        patch :update, payload({
+          name: 'Yes!',
+          secret: 'Nope'
+        }, {id: f.sid, secret: old_secret})
         expect(response).to have_http_status(:success)
         f.reload
         expect(f.name).to eq 'Yes!'
@@ -65,14 +58,14 @@ describe FiltersController, type: :controller do
     describe '#destroy' do
       it 'should not allow it without a secret' do
         f = create :filter
-        delete :destroy, {params: {id: f.sid}}
+        delete :destroy, {params: {id: f.sid}, as: :json}
         expect(response).to have_http_status(:unauthorized)
         expect(Filter.find_by_sid(f.sid)).to eq f
       end
 
       it 'should allow it with the secret' do
         f = create :filter
-        delete :destroy, {params: {id: f.sid, secret: f.secret}}
+        delete :destroy, {params: {id: f.sid, secret: f.secret}, as: :json}
         expect(response).to have_http_status(:success)
         expect(Filter.find_by_sid(f.sid)).to eq nil
       end
@@ -81,7 +74,7 @@ describe FiltersController, type: :controller do
     describe '#show' do
       it 'should display the filter, but without the secret' do
         f = create :filter
-        get :show, {params: {id: f.sid}}
+        get :show, {params: {id: f.sid}, as: :json}
         fj = response_json
         expect(fj.keys).to match_array [
           'created_at', 'updated_at',
@@ -91,9 +84,9 @@ describe FiltersController, type: :controller do
           'sorting',
           'controls_list',
           'controls_hl_mode',
-          'controls_config',
+          'controls_params',
           'columns_list',
-          'columns_config',
+          'columns_params',
           'global_config',
         ]
       end
