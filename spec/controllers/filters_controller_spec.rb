@@ -90,6 +90,30 @@ describe FiltersController, type: :controller do
           'global_config',
         ]
       end
+
+      it "should display the filter by frontPage if a short integer given" do
+        f1 = create :filter, front_page: 0
+        f2 = create :filter, front_page: 1
+        get :show, {params: {id: 0}, as: :json}
+        expect(response_json['sid']).to eq f1.sid
+        get :show, {params: {id: 1}, as: :json}
+        expect(response_json['sid']).to eq f2.sid
+      end
+    end
+
+    describe '#index' do
+      it 'should display the front page filters' do
+        f1 = create :filter, front_page: 0
+        create :filter
+        f2 = create :filter, front_page: 2
+        create :filter
+        f3 = create :filter, front_page: 1
+        get :index, {params: {front_page: true}, as: :json}
+        expect(response_json.size).to eq 3
+        expect(response_json[0]['sid']).to eq f1.sid
+        expect(response_json[1]['sid']).to eq f3.sid
+        expect(response_json[2]['sid']).to eq f2.sid
+      end
     end
   end
 end

@@ -1,12 +1,14 @@
 class FiltersController < ApplicationController
-  # def index
-  #   if params[:user_id]
-  #     @filters = Filter.where(user_id: params[:user_id])
-  #   else
-  #     @filters = Filter.where.not(official_slug: nil).order('visits DESC')
-  #   end
-  #   render json: @filters
-  # end
+  def index
+    if params[:front_page]
+      @filters = Filter.front_page
+    elsif params[:user_id]
+      @filters = Filter.where(user_id: params[:user_id])
+    else
+      []
+    end
+    render json: @filters
+  end
 
   def create
     @filter = Filter.new(anonymous_filter_params)
@@ -30,7 +32,11 @@ class FiltersController < ApplicationController
   end
 
   def show
-    @filter = Filter.find_by_sid!(params[:id])
+    if params[:id] =~ /\A[0-9]{1,2}\Z/
+      @filter = Filter.find_by_front_page!(params[:id])
+    else
+      @filter = Filter.find_by_sid!(params[:id])
+    end
     # @filter = if params[:id] != '0'
     #   Filter.find_by_sid!(params[:id])
     # elsif params[:official_slug]

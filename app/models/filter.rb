@@ -62,6 +62,8 @@ class Filter < ActiveRecord::Base
 
   validate :ip_address_flooding
 
+  scope :front_page, ->{ where.not(front_page: nil).order('front_page ASC') }
+
   def ip_address_flooding
     count = Filter
       .where('ip_address = ? AND created_at > ?', ip_address, 1.hour.ago)
@@ -117,7 +119,9 @@ class Filter < ActiveRecord::Base
   end
 
   before_create do
-    self.name_slug = name.downcase.gsub(/\s+/, '-').strip[0..49] if name
+    if name
+      self.name_slug = name.parameterize.strip[0..49]
+    end
   end
 
   def to_json_create
