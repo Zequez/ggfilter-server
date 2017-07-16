@@ -24,3 +24,5 @@
 
 # Ignore application configuration
 /public/assets/*
+
+latest.dump
