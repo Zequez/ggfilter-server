@@ -22,7 +22,9 @@ namespace :dist do
 
   desc 'Deploy to Heroku'
   task :deploy do
-    `git push heroku master && heroku run rake db:migrate && heroku restart`
+    Bundler.with_clean_env do
+      `git push heroku master && heroku run rake db:migrate && heroku restart`
+    end
   end
 
   desc 'Update deps and deploy'
