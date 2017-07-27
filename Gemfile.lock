@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-scrapers.git
-  revision: 4ce70c854a17e805d752271812ea713d463e265b
+  revision: 842188cdf6a87ff014ca16cf92ffdf6c943b4fab
   specs:
     scrapers (1.0.0)
       activerecord (>= 4.2)
@@ -185,7 +185,7 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.8.6)
-    i18n_data (0.7.0)
+    i18n_data (0.8.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -216,7 +216,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
-    minitest (5.10.2)
+    minitest (5.10.3)
     multi_json (1.12.1)
     mustermann (1.0.0)
     nenv (0.3.0)
@@ -241,7 +241,7 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.4)
     puma (3.6.2)
-    rack (2.0.1)
+    rack (2.0.3)
     rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
@@ -362,7 +362,7 @@ GEM
       ref
     thor (0.19.4)
     thread_safe (0.3.6)
-    tilt (2.0.5)
+    tilt (2.0.8)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
     tzinfo (1.2.3)
