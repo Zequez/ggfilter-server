@@ -184,7 +184,10 @@ class SteamGame < ActiveRecord::Base
   end
 
   def self.update_not_on_sale(on_sale_ids)
-    where.not(steam_id: on_sale_ids).update_all(sale_price: nil)
+    previously_on_sale_query = where.not(steam_id: on_sale_ids, sale_price: nil)
+    previously_on_sale = previously_on_sale_query.to_a
+    previously_on_sale_query.update_all(sale_price: nil)
+    previously_on_sale.each{ |g| g.propagate_to_game }
   end
 
   def url
