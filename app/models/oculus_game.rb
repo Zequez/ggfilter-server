@@ -62,14 +62,15 @@ class OculusGame < ApplicationRecord
   }
 
   flag_column :vr_controllers, {
-    "OCULUS_TOUCH" =>   0b1,
-    "OCULUS_REMOTE" =>  0b10,
-    "GAMEPAD" =>        0b100,
-    "KEYBOARD_MOUSE" => 0b1000,
-    "FLIGHT_STICK" =>   0b10000,
-    "RACING_WHEEL" =>   0b100000,
-    "HYDRA" =>          0b1000000,
-    "OTHER" =>          0b10000000,
+    "OCULUS_TOUCH" =>      0b1,
+    "OCULUS_REMOTE" =>     0b10,
+    "GAMEPAD" =>           0b100,
+    "KEYBOARD_MOUSE" =>    0b1000,
+    "FLIGHT_STICK" =>      0b10000,
+    "RACING_WHEEL" =>      0b100000,
+    "HYDRA" =>             0b1000000,
+    "OTHER" =>             0b10000000,
+    "GAMEPAD_VIA_TOUCH" => 0b100000000
   }
 
   flag_column :players, {
