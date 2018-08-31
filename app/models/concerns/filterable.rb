@@ -40,7 +40,7 @@ module Filterable
 
     def sort_by_column(sort)
       name = sort[:column]
-      if name.in?(@@columns)
+      if @@columns.include? name.to_sym
         name = name.to_sym
         direction = sort[:asc] ? 'ASC NULLS FIRST' : 'DESC NULLS LAST'
         all.order("#{name} #{direction}")
