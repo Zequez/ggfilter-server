@@ -122,7 +122,10 @@ module FiltersDefinitions
     def tags_filter(column, filter)
       tags = filter[:tags]
       if tags.kind_of? Array
-        tags.reject!{ |t| !t.kind_of?(Fixnum) }
+        ids = tags.select{ |t| t.kind_of? Fixnum }
+        names = tags.select{ |t| t.kind_of? String }
+        ids += Tag.ids_by_names(names) unless names.empty?
+        ids.uniq!
         tags.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
         tags.map{ |id| "games.tags ~ '#{id}'" }.join(' AND ')
       else

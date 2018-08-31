@@ -42,4 +42,8 @@ class Tag < ActiveRecord::Base
       create name: name
     end
   end
+
+  def self.ids_by_names(names)
+    where('lower(name) IN ?', names.map(&:downcase)).pluck(:id)
+  end
 end
