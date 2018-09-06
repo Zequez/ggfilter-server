@@ -138,19 +138,40 @@ describe FiltersDefinitions do
   describe '.filter_by_tags' do
     use_filter :tags_filter, :tags
 
+    before :each do
+      @t1 = create :tag
+      @t2 = create :tag
+      @t3 = create :tag
+      @g1 = create :game, tags: [@t1.id, @t3.id]
+      @g2 = create :game, tags: [@t1.id, @t2.id]
+      @g3 = create :game, tags: [@t2.id, @t3.id]
+      @g4 = create :game, tags: [@t2.id]
+      @g5 = create :game, tags: [@t2.id, @t3.id, @t1.id]
+    end
+
     it 'should return games with the given tags ids' do
-      t1 = create :tag
-      t2 = create :tag
-      t3 = create :tag
-      g1 = create :game, tags: [t1.id, t3.id]
-      _g2 = create :game, tags: [t1.id, t2.id]
-      _g3 = create :game, tags: [t2.id, t3.id]
-      _g4 = create :game, tags: [t2.id]
-      g5 = create :game, tags: [t2.id, t3.id, t1.id]
+      games = get_games({ tags: [@t1.id, @t3.id] })
+      expect(games).to match_array [@g1, @g5]
+    end
 
-      games = get_games({ tags: [t1.id, t3.id] })
+    it 'should return games with the given tags names' do
+      games = get_games({ tags: [@t1.name, @t3.name] })
+      expect(games).to match_array [@g1, @g5]
+    end
 
-      expect(games).to match_array [g1, g5]
+    it 'should reject games with the given reject names' do
+      games = get_games({ tags: [@t1.name], reject: [@t3.id] })
+      expect(games).to match_array [@g2]
+    end
+
+    it 'should select tags with OR instead of AND too' do
+      games = get_games({ tags: [@t1.name, @t3.name], mode: 'or' })
+      expect(games).to match_array [@g1, @g2, @g3, @g5]
+    end
+
+    it 'should select tags with OR instead of AND, but respect rejections always' do
+      games = get_games({ tags: [@t2.name, @t3.name], reject: [@t1.name], mode: 'or' })
+      expect(games).to match_array [@g3, @g4]
     end
   end
 end

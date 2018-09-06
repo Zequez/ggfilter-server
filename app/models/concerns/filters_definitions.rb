@@ -21,14 +21,14 @@ module FiltersDefinitions
     def range_filter(column, filter, date_mode = false, relative_time_mode = false)
       vals = []
       conds = []
-      gt = filter[:gt]
-      lt = filter[:lt]
+      gt = filter[:gt] || filter[:gte]
+      lt = filter[:lt] || filter[:lte]
 
       if gt.kind_of? Numeric
         if date_mode
           gt = relative_time_mode ? Time.now - gt : Time.at(gt)
         end
-        conds << "#{column} >= ?"
+        conds << (filter[:gte] ? "#{column} >= ?" : "#{column} > ?")
         vals << gt
       end
 
@@ -36,7 +36,7 @@ module FiltersDefinitions
         if date_mode
           lt = relative_time_mode ? Time.now - lt : Time.at(lt)
         end
-        conds << "#{column} <= ?"
+        conds << (filter[:lte] ? "#{column} <= ?" : "#{column} < ?")
         vals << lt
       end
 
@@ -120,16 +120,30 @@ module FiltersDefinitions
     end
 
     def tags_filter(column, filter)
-      tags = filter[:tags]
-      if tags.kind_of? Array
+      tags = filter[:tags] || []
+      reject = filter[:reject] || []
+      mode = filter[:mode] || 'and'
+      if tags.empty? && reject.empty?
+        nil
+      else
+        reject_ids = reject.select{ |t| t.kind_of? Fixnum }
+        reject_names = reject.select{ |t| t.kind_of? String }
+        reject_ids += Tag.ids_by_names(reject_names) unless reject_names.empty?
+        reject_ids.uniq!
+        reject_ids.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
+        reject_conditions = reject_ids.map{ |id| "NOT (games.tags ~ '#{id}')" }
+        reject_conditions = reject_conditions.join(' AND ')
+
         ids = tags.select{ |t| t.kind_of? Fixnum }
         names = tags.select{ |t| t.kind_of? String }
         ids += Tag.ids_by_names(names) unless names.empty?
         ids.uniq!
-        tags.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
-        tags.map{ |id| "games.tags ~ '#{id}'" }.join(' AND ')
-      else
-        nil
+        ids.map!{ |id| "[,\\[]#{id}[,\\]]" } # [,[] id [,]]
+        tags_condition = ids.map{ |id| "games.tags ~ '#{id}'" }
+        tags_condition = tags_condition.join(mode == 'and' ? ' AND ' : ' OR ')
+        tags_condition = "(#{tags_condition})" unless tags_condition.empty?
+
+        [tags_condition, reject_conditions].reject(&:empty?).join(' AND ')
       end
     end
 

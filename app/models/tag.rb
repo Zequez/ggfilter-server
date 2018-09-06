@@ -44,6 +44,6 @@ class Tag < ActiveRecord::Base
   end
 
   def self.ids_by_names(names)
-    where('lower(name) IN ?', names.map(&:downcase)).pluck(:id)
+    where('lower(name) IN (?)', names.map(&:downcase)).pluck(:id)
   end
 end
