@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # resources :sysreq_tokens, only: [:index, :show, :update]
   resources :tags, only: :index
   resources :scrap_logs, only: :index
+  resources :percentiles, only: :index
 
   resources :enum, only: :index
 
