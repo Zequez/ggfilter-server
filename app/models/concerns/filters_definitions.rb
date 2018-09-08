@@ -18,24 +18,18 @@ module FiltersDefinitions
     end
 
     # Input: gt, lt
-    def range_filter(column, filter, date_mode = false, relative_time_mode = false)
+    def range_filter(column, filter)
       vals = []
       conds = []
       gt = filter[:gt] || filter[:gte]
       lt = filter[:lt] || filter[:lte]
 
       if gt.kind_of? Numeric
-        if date_mode
-          gt = relative_time_mode ? Time.now - gt : Time.at(gt)
-        end
         conds << (filter[:gte] ? "#{column} >= ?" : "#{column} > ?")
         vals << gt
       end
 
       if lt.kind_of? Numeric
-        if date_mode
-          lt = relative_time_mode ? Time.now - lt : Time.at(lt)
-        end
         conds << (filter[:lte] ? "#{column} <= ?" : "#{column} < ?")
         vals << lt
       end
@@ -44,11 +38,43 @@ module FiltersDefinitions
     end
 
     def date_range_filter(column, filter)
-      range_filter(column, filter, true, false)
-    end
+      vals = []
+      conds = []
 
-    def relative_date_range_filter(column, filter)
-      range_filter(column, filter, true, true)
+      gt = filter[:gt] || filter[:gte]
+      lt = filter[:lt] || filter[:lte]
+
+      if gt.kind_of? String
+        gt = gt.split('-')
+        gt[1] ||= 1
+        gt[2] ||= 1
+        gt.map!(&:to_i)
+        gt = Date.civil(gt[0], gt[1], gt[2])
+      elsif gt.kind_of? Numeric
+        gt = Time.now + gt
+      end
+
+      if lt.kind_of? String
+        lt = lt.split('-')
+        lt[1] ||= -1
+        lt[2] ||= -1
+        lt.map!(&:to_i)
+        lt = Date.civil(lt[0], lt[1], lt[2])
+      elsif lt.kind_of? Numeric
+        lt = Time.now + lt
+      end
+
+      if gt
+        conds << (filter[:gte] ? "#{column} >= ?" : "#{column} > ?")
+        vals << gt
+      end
+
+      if lt
+        conds << (filter[:lte] ? "#{column} <= ?" : "#{column} < ?")
+        vals << lt
+      end
+
+      conds.empty? ? nil : [conds.join(' AND '), *vals]
     end
 
     # Input: value, "or" ("and" by default)

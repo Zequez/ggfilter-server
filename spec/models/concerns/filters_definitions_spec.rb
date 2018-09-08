@@ -61,35 +61,39 @@ describe FiltersDefinitions do
     end
   end
 
-  describe '.date_range_filter' do
+  describe '.date_range_filter', focus: true do
     use_filter :date_range_filter, :released_at
 
-    it 'should accept date-columns and filter from unix timestamps' do
-      create :game, released_at: 1.years.ago
-      g2 = create :game, released_at: 3.years.ago
-      g3 = create :game, released_at: 4.years.ago
-      create :game, released_at: 7.years.ago
-
-      expect(get_games(
-        gt: 5.years.ago.to_i,
-        lt: 2.years.ago.to_i,
-      )).to match_array [g2, g3]
+    before :each do
+      @g1 = create :game, released_at: 1.years.ago
+      @g2 = create :game, released_at: 3.years.from_now
+      @g3 = create :game, released_at: Date.parse('2000-07-20')
+      @g4 = create :game, released_at: Date.parse('2001-03-03')
     end
-  end
 
-  describe '.relative_date_range_filter' do
-    use_filter :relative_date_range_filter, :released_at
+    it 'should accept absolute dates with years only' do
+      expect(get_games(gte: '2000', lte: '2001'))
+      .to match_array [@g3, @g4]
+    end
 
-    it 'should accept date-columns and filter from time in seconds relative to now' do
-      create :game, released_at: 1.years.ago
-      g2 = create :game, released_at: 3.years.ago
-      g3 = create :game, released_at: 4.years.ago
-      create :game, released_at: 7.years.ago
+    it 'should accept absolute dates with years and months' do
+      expect(get_games(gte: '2000-08', lte: '2001'))
+      .to match_array [@g4]
+    end
 
-      expect(get_games(
-        gt: 5.years.to_i,
-        lt: 2.years.to_i,
-      )).to match_array [g2, g3]
+    it 'should accept absolute dates with years, months and days' do
+      expect(get_games(gte: '2000-07-19', lte: '2001-03-02'))
+      .to match_array [@g3]
+    end
+
+    it 'should accept relative dates into the past in seconds' do
+      expect(get_games(gte: -2.years.to_i, lte: 0))
+      .to match_array [@g1]
+    end
+
+    it 'should accept relative dates into the future in seconds' do
+      expect(get_games(gte: 0, lte: 5.years.to_i))
+      .to match_array [@g2]
     end
   end
 

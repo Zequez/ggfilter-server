@@ -8,8 +8,7 @@ module GameFilters
 
       register_filter :name, :name_filter
       register_filter :stores, :boolean_filter
-      register_filter :released_at, :relative_date_range_filter
-      register_filter :released_at_absolute, :date_range_filter, column: :released_at
+      register_filter :released_at, :date_range_filter
 
       # IDs
       register_filter :steam_id, :exact_filter
