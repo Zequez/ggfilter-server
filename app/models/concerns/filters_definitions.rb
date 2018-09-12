@@ -34,6 +34,8 @@ module FiltersDefinitions
         vals << lt
       end
 
+      conds << "#{column} IS NOT NULL"
+
       conds.empty? ? nil : [conds.join(' AND '), *vals]
     end
 
