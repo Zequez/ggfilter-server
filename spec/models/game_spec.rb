@@ -728,34 +728,6 @@ describe Game, type: :model do
         end
       end
     end
-
-    describe '#ratings_pct' do
-      it 'should calculate the percentiles averages from #ratings_count and #ratings_ratio' do
-        counts = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900]
-        ratios = [nil, 20, 50, 80, 99, 99, 80, 70, 60, 86]
-
-        counts_pct = Percentiles.rank_of_values(counts)
-        ratios_pct = Percentiles.rank_of_values(ratios.reject{|a| a == nil})
-        ratios_pct.unshift(nil)
-
-        games = counts.each_with_index.map do |count, i|
-          create :game, ratings_count: count, ratings_ratio: ratios[i]
-        end
-
-        Game.compute_percentiles
-
-        games.each_with_index do |g, i|
-          g.reload
-          count_pct = counts_pct[i]
-          ratio_pct = ratios_pct[i]
-          if ratio_pct != nil
-            expect(g.ratings_pct).to eq(((count_pct + ratio_pct).to_f / 2).round)
-          else
-            expect(g.ratings_pct).to eq(count_pct)
-          end
-        end
-      end
-    end
   end
 
   describe '.compute_urls' do

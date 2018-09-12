@@ -24,7 +24,9 @@ module GameFilters
 
       # Ratings
       register_filter :ratings_count, :range_filter
+      register_filter :ratings_count_pct, :range_filter
       register_filter :ratings_ratio, :range_filter
+      register_filter :ratings_ratio_pct, :range_filter
       register_filter :ratings_pct, :range_filter
       register_filter :metacritic, :range_filter
 
@@ -33,10 +35,17 @@ module GameFilters
 
       # Playtime
       register_filter :playtime_mean, :range_filter
+      register_filter :playtime_mean_pct, :range_filter
       register_filter :playtime_median, :range_filter
+      register_filter :playtime_median_pct, :range_filter
+      register_filter :playtime_sd, :range_filter
+      register_filter :playtime_sd_pct, :range_filter
       register_filter :playtime_rsd, :range_filter
+      register_filter :playtime_rsd_pct, :range_filter
       register_filter :playtime_mean_ftb, :range_filter
+      register_filter :playtime_mean_ftb_pct, :range_filter
       register_filter :playtime_median_ftb, :range_filter
+      register_filter :playtime_median_ftb_pct, :range_filter
 
       # Other
       # register_filter :steam_early_access, :exact_filter

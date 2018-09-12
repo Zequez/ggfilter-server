@@ -4,8 +4,8 @@ class Percentiles
       sorted_vals = values.sort
       values_count = values.size
       values.map do |val|
-        index = sorted_vals.rindex(val).to_f + 1
-        (index / values_count * 100).round
+        index = sorted_vals.rindex(val).to_f
+        (index / values_count * 100).floor
       end
     end
   end

@@ -2,51 +2,59 @@
 #
 # Table name: games
 #
-#  id                     :integer          not null, primary key
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  name                   :string
-#  name_slug              :string
-#  playtime_mean          :float
-#  playtime_median        :float
-#  playtime_sd            :float
-#  playtime_rsd           :float
-#  playtime_mean_ftb      :float
-#  playtime_median_ftb    :float
-#  steam_game_id          :integer
-#  tags                   :string           default([]), not null
-#  oculus_game_id         :integer
-#  steam_price            :integer
-#  steam_price_regular    :integer
-#  steam_price_discount   :integer
-#  oculus_price           :integer
-#  oculus_price_regular   :integer
-#  oculus_price_discount  :integer
-#  lowest_price           :integer
-#  ratings_count          :integer
-#  positive_ratings_count :integer
-#  negative_ratings_count :integer
-#  ratings_ratio          :integer
-#  released_at            :datetime
-#  players                :integer          default(0), not null
-#  controllers            :integer          default(0), not null
-#  vr_modes               :integer          default(0), not null
-#  vr_platforms           :integer          default(0), not null
-#  gamepad                :integer          default(0), not null
-#  vr_only                :boolean          default(FALSE), not null
-#  platforms              :integer          default(0), not null
-#  sysreq_gpu_string      :string
-#  sysreq_gpu_tokens      :string
-#  sysreq_index           :integer
-#  sysreq_index_pct       :integer
-#  images                 :text
-#  videos                 :text
-#  thumbnail              :string
-#  stores                 :integer          default(0), not null
-#  ratings_pct            :integer
-#  best_discount          :integer
-#  urls                   :text             default({}), not null
-#  prices                 :text             default({}), not null
+#  id                      :integer          not null, primary key
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  name                    :string
+#  name_slug               :string
+#  playtime_mean           :float
+#  playtime_median         :float
+#  playtime_sd             :float
+#  playtime_rsd            :float
+#  playtime_mean_ftb       :float
+#  playtime_median_ftb     :float
+#  steam_game_id           :integer
+#  tags                    :string           default([]), not null
+#  oculus_game_id          :integer
+#  steam_price             :integer
+#  steam_price_regular     :integer
+#  steam_price_discount    :integer
+#  oculus_price            :integer
+#  oculus_price_regular    :integer
+#  oculus_price_discount   :integer
+#  lowest_price            :integer
+#  ratings_count           :integer
+#  positive_ratings_count  :integer
+#  negative_ratings_count  :integer
+#  ratings_ratio           :integer
+#  released_at             :datetime
+#  players                 :integer          default(0), not null
+#  controllers             :integer          default(0), not null
+#  vr_modes                :integer          default(0), not null
+#  vr_platforms            :integer          default(0), not null
+#  gamepad                 :integer          default(0), not null
+#  vr_only                 :boolean          default(FALSE), not null
+#  platforms               :integer          default(0), not null
+#  sysreq_gpu_string       :string
+#  sysreq_gpu_tokens       :string
+#  sysreq_index            :integer
+#  sysreq_index_pct        :integer
+#  images                  :text
+#  videos                  :text
+#  thumbnail               :string
+#  stores                  :integer          default(0), not null
+#  ratings_pct             :integer
+#  best_discount           :integer
+#  urls                    :text             default({}), not null
+#  prices                  :text             default({}), not null
+#  playtime_mean_pct       :integer
+#  playtime_median_pct     :integer
+#  playtime_sd_pct         :integer
+#  playtime_rsd_pct        :integer
+#  ratings_count_pct       :integer
+#  ratings_ratio_pct       :integer
+#  playtime_median_ftb_pct :integer
+#  playtime_mean_ftb_pct   :integer
 #
 # Indexes
 #
@@ -166,64 +174,74 @@ class Game < ActiveRecord::Base
 
     values = sysana.get_list_values_averages
 
-    update_all_for_each ids, sysreq_index: values
+    updates = {}
+    ids.each_with_index do |id, i|
+      updates[id] = {sysreq_index: values[i]} if values[i]
+    end
+    bulk_update updates
   end
 
   def self.compute_percentiles
-    compute_percentile_for_to :sysreq_index, :sysreq_index_pct
-    compute_average_percentile_for_to [:ratings_ratio, :ratings_count], :ratings_pct
-  end
+    base_ratings_condition = where.not(ratings_ratio: [nil, 0, 100])
+    percentiles = {
+      sysreq_index: all,
+      ratings_count: base_ratings_condition,
+      ratings_ratio: base_ratings_condition,
+      playtime_median: base_ratings_condition,
+      playtime_mean: base_ratings_condition,
+      playtime_sd: base_ratings_condition,
+      playtime_rsd: base_ratings_condition,
+      playtime_median_ftb: base_ratings_condition,
+      playtime_mean_ftb: base_ratings_condition,
+    }
 
-  def self.compute_average_percentile_for_to(columns, target_column)
-    percentiles = {}
-    columns.each do |column|
-      ids, values_pct = compute_percentile_for column
-      if ids
-        ids.each_with_index do |id, i|
-          percentiles[id] ||= []
-          percentiles[id].push values_pct[i]
-        end
+    updates = {}
+    percentiles.each_pair do |column, conditions|
+      ids, values = compute_percentile_for(column, conditions)
+      ids.each_with_index do |id, i|
+        updates[id] ||= {}
+        updates[id]["#{column}_pct"] = values[i]
       end
     end
 
-    ids = []
-    attributes = []
-    percentiles.each_pair do |id, values|
-      ids.push id
-      attributes.push (values.reduce(&:+).to_f / values.size).round
-    end
-
-    update_all_for_each ids, target_column => attributes
+    bulk_update updates
   end
 
-  def self.compute_percentile_for_to(column, target_column)
-    ids, values_pct = compute_percentile_for(column)
-    if ids
-      update_all_for_each(ids, target_column => values_pct)
-    end
-  end
-
-  def self.compute_percentile_for(column)
+  def self.compute_percentile_for(column, games)
     puts "Computing percentiles for #{column}"
-    ids, values = where.not(column => nil).pluck(:id, column).transpose
+
+    ids, values = games.where.not(column => nil).pluck(:id, column).transpose
 
     if ids
       values_pct = Percentiles.rank_of_values(values)
       [ids, values_pct]
     else
-      [nil, nil]
+      [[], []]
     end
   end
 
-  def self.update_all_for_each(ids, attributes)
-    total = ids.size
-    attributes.each_pair do |column, values|
-      values.each_with_index do |value, i|
-        print "Saving #{column} #{i+1}/#{total}\r"
-        where(id: ids[i]).update_all(column => value)
-      end
+  def self.bulk_update(updates)
+    queries = updates.each_pair.map do |id, update_hash|
+      assignments = update_hash.each_pair.map{|col, val| "#{col} = #{val}"}.join(', ')
+      "UPDATE games SET #{assignments} WHERE games.id = #{id}"
     end
+
+    puts "Submitting bulk update to the DB for #{queries.size} records"
+    ActiveRecord::Base.logger.silence do
+      ActiveRecord::Base.connection.execute(queries.join(';'))
+    end
+    puts 'Done!'
   end
+
+  # def self.update_all_for_each(ids, attributes)
+  #   total = ids.size
+  #   attributes.each_pair do |column, values|
+  #     values.each_with_index do |value, i|
+  #       print "Saving #{column} #{i+1}/#{total}\r"
+  #       where(id: ids[i]).update_all(column => value)
+  #     end
+  #   end
+  # end
 
   def compute_all
     # Basic game data
