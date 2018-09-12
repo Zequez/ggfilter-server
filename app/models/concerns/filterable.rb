@@ -9,7 +9,8 @@ module Filterable
       options = {
         name: name,
         type: type,
-        column: name
+        column: name,
+        stores: false
       }.merge(options)
 
       # options[:joins] = Array(options[:joins])
@@ -65,16 +66,24 @@ module Filterable
 
       filters.each_pair do |name, params|
         if @@filters[name.to_sym] && params
-          filtered = filtered.apply_filter(name, params)
+          filtered = filtered.apply_filter(name, params, filters[:stores])
         end
       end
 
       filtered
     end
 
-    def apply_filter(name, params)
+    def apply_filter(name, params, stores = nil)
       filter = @@filters[name.to_sym]
       raise "No such filter #{name}" unless filter
+
+      if filter[:stores]
+        if stores
+          stores = SimpleFlaggableColumn.flags_to_symbols(stores[:value], Game.stores_flags)
+        else
+          stores = Game.stores_flags.keys
+        end
+      end
 
       scope = all#.joins_filter_tables(filter[:name])
 
@@ -82,7 +91,11 @@ module Filterable
 
       if params.kind_of?(Hash)
         params = params.symbolize_keys
-        condition = method(filter[:type]).call(filter[:column], params)
+        condition = if filter[:stores]
+          method(filter[:type]).call(filter[:column], params, stores)
+        else
+          method(filter[:type]).call(filter[:column], params)
+        end
         if (condition)
           if params[:hl]
             condition_str = condition.kind_of?(Array) ? sanitize_sql_array(condition) : condition

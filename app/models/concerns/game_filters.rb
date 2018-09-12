@@ -15,6 +15,9 @@ module GameFilters
       register_filter :oculus_id, :exact_filter
 
       # Prices
+      register_filter :price, :range_filter, stores: true
+      register_filter :price_regular, :range_filter, stores: true
+      register_filter :price_discount, :range_filter, stores: true
       register_filter :steam_price, :range_filter
       register_filter :steam_price_discount, :range_filter
       register_filter :oculus_price, :range_filter

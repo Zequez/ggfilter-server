@@ -18,25 +18,30 @@ module FiltersDefinitions
     end
 
     # Input: gt, lt
-    def range_filter(column, filter)
+    def range_filter(column, filter, stores = nil)
       vals = []
       conds = []
       gt = filter[:gt] || filter[:gte]
       lt = filter[:lt] || filter[:lte]
 
-      if gt.kind_of? Numeric
-        conds << (filter[:gte] ? "#{column} >= ?" : "#{column} > ?")
-        vals << gt
+      prefixes = stores ? stores.map{ |s| "#{s}_" } : ['']
+      prefixes.each do |prefix|
+        store_conds = []
+        if gt.kind_of? Numeric
+          store_conds << (filter[:gte] ? "#{prefix}#{column} >= ?" : "#{prefix}#{column} > ?")
+          vals << gt
+        end
+
+        if lt.kind_of? Numeric
+          store_conds << (filter[:lte] ? "#{prefix}#{column} <= ?" : "#{prefix}#{column} < ?")
+          vals << lt
+        end
+
+        store_conds << "#{prefix}#{column} IS NOT NULL"
+        conds << "(#{store_conds.join(' AND ')})"
       end
 
-      if lt.kind_of? Numeric
-        conds << (filter[:lte] ? "#{column} <= ?" : "#{column} < ?")
-        vals << lt
-      end
-
-      conds << "#{column} IS NOT NULL"
-
-      conds.empty? ? nil : [conds.join(' AND '), *vals]
+      conds.empty? ? nil : [conds.join(' OR '), *vals]
     end
 
     def date_range_filter(column, filter)

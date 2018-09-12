@@ -47,80 +47,16 @@ describe Filterable do
       games.map(&:attributes)
     end
 
-    it 'should allow you to register a filter with a different column name' do
+    it 'should allow you to register a filter with a different column name'  do
       params = {value: 'Potato'}
-      create :game, name: 'Potato'
+      g = create :game, name: 'Potato'
 
       expect(Game).to receive(:exact_filter)
-        .with('games.name', params)
-        .and_return(["games.name = ?", 'Potato'])
+        .with(:name, params)
+        .and_return(["name = ?", 'Potato'])
 
       attrs = register_and_get_filter(:wakawaka, :exact_filter, {column: :name}, params)
-      expect(attrs[0]['name']).to eq 'Potato'
-    end
-
-    it 'should allow you to register a filter with a column of a different table' do
-      steam_game = create :steam_game, steam_id: 1234
-      create :game, name: 'Potato', steam_game: steam_game
-      attrs = register_and_get_filter(:wololo, :exact_filter,
-        {joins: :steam_game, column: [:steam_game, :steam_id]},
-        {value: 1234}
-      )
-      expect(attrs[0]['wololo']).to eq 1234
-    end
-
-    it 'should allow you to rename the column returned' do
-      steam_game = create :steam_game, steam_id: 1234
-      create :game, name: steam_game.name, steam_game: steam_game
-      attrs = register_and_get_filter(:wololo, :exact_filter,
-        {joins: :steam_game, column: [:steam_game, :steam_id], as: :steam_id_bitch},
-        {value: 1234}
-      )
-      expect(attrs[0]['steam_id']).to eq nil
-      expect(attrs[0]['steam_id_bitch']).to eq 1234
-    end
-
-    it 'should allow you to select multiple columns' do
-      steam_game = create :steam_game, steam_id: 1234, positive_reviews_count: 321
-      create :game, steam_game: steam_game
-      attrs = register_and_get_filter(:wololo, :exact_filter,
-        {
-          joins: :steam_game,
-          column: [:steam_game, :steam_id],
-          select: ['steam_games.steam_id as potato', 'steam_games.positive_reviews_count as galaxy']
-        },
-        {value: 1234}
-      )
-      expect(attrs[0]['potato']).to eq 1234
-      expect(attrs[0]['galaxy']).to eq 321
-    end
-
-    it 'should add the AS column to the selectors even if there is already a select' do
-      steam_game = create :steam_game, steam_id: 1234, positive_reviews_count: 321
-      create :game, steam_game: steam_game
-      attrs = register_and_get_filter(:wololo, :exact_filter,
-        {
-          joins: :steam_game,
-          column: [:steam_game, :steam_id],
-          as: 'potato',
-          select: ['steam_games.positive_reviews_count as galaxy']
-        },
-        {value: 1234}
-      )
-      expect(attrs[0]['potato']).to eq 1234
-      expect(attrs[0]['galaxy']).to eq 321
-    end
-
-    it 'should allow you to provide the column with an association and join it automatically' do
-      steam_game = create :steam_game, steam_id: 1234
-      create :game, steam_game: steam_game
-      attrs = register_and_get_filter(:wololo, :exact_filter,
-        {
-          column: [:steam_game, :steam_id]
-        },
-        {value: 1234}
-      )
-      expect(attrs[0]['wololo']).to eq 1234
+      expect(attrs[0]['id']).to eq g.id
     end
   end
 end
