@@ -108,6 +108,9 @@ module FiltersDefinitions
         "(#{column} & #{v} > 0)"
       end
 
+      if val.kind_of?(Array) && val.all?{|v| v.is_a? String}
+        val = SimpleFlaggableColumn.symbols_to_flags(val.map(&:to_sym), Game.send(:"#{column}_flags"), false)
+      end
 
       if val.kind_of?(Fixnum) and val > 0
 

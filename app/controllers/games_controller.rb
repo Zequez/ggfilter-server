@@ -38,6 +38,7 @@ class GamesController < ApplicationController
     end
   end
 
+  FLAGS_COLUMNS = [:stores, :players, :controllers, :vr_platforms, :vr_modes, :platforms, :gamepad]
   def index
     @games = Game
       .apply_filters(filter[:params] || {})
@@ -47,6 +48,16 @@ class GamesController < ApplicationController
 
     response.headers['X-Pagination-Count'] = @games.total_count.to_s
     games = @games.map(&:attributes)
+
+    selected_flags_columns = FLAGS_COLUMNS & filter[:columns].map(&:to_sym)
+    unless selected_flags_columns.empty?
+      games.each_with_index do |game, i|
+        selected_flags_columns.each do |col|
+          game[col] = @games[i].send(col)
+        end
+      end
+    end
+
     render json: games
   end
 
