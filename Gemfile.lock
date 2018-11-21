@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-client-gem.git
-  revision: 1e223ded586968be707b4c66ee2ea46903eeefbc
+  revision: c19f9aaddeb9a123044d86a962b739a8420575fb
   specs:
-    ggfilter_client (1.2.0)
+    ggfilter_client (1.2.1)
 
 GIT
   remote: https://bitbucket.org/Zequez/ggfilter-scrapers.git
