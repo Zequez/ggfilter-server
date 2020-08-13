@@ -5,9 +5,10 @@ database is outdated.
 
 Can browse for demo purposes on [GGFilter.com](http://ggfilter.com/)
 
-Maybe I'll transform it to JAMStack only.
-
-
+Honestly I'm more interested in the decentralized web and JAMStack architecture
+nowdays. And I would probably move away from RoR if done again, maybe even
+a lambda function would do if a backend was neccesary, it is literally
+a single endpoint for all the filters.
 
 ## Deployment
 

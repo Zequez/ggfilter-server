@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  match '*path', to: 'application#handle_options_request', via: [:options]
+  match "*path", to: "application#handle_options_request", via: [:options]
 
   # devise_for :users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
 
-  devise_for :users, path: 'auth', controllers: { sessions: 'sessions' }
+  devise_for :users, path: "auth", controllers: { sessions: "sessions" }
   devise_scope :user do
-    get 'auth/current_user', to: 'sessions#show'
+    get "auth/current_user", to: "sessions#show"
   end
 
   resources :filters
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :enum, only: :index
 
-  get '*path', to: 'app#index'
+  get "*path", to: "app#index"
 
-  root to: 'app#index'
+  root to: "app#index"
 end
