@@ -6,15 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta property="og:image" content="<%= image_url 'icon.png' %>" />
+  <meta property="og:image" content="<%= image_url "icon.png" %>" />
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'app/app' %>
-  <%= favicon_link_tag 'app/favicon1.png' %>
+  <%= stylesheet_link_tag "app/app" %>
+  <%= favicon_link_tag "app/favicon1.png" %>
 </head>
 <body>
   <div id='loading-spinner' className='loading'></div>
+  <div class="warning-deprecated" style="position: absolute; line-height: 24px; top: 16px; left: 16px; right: 16px; padding: 16px; background: #bb6666; border: #aa6666; border-radius: 4px; box-shadow: 0 0 3px 0 #000; z-index: 999; color: white;">
+    <div class="close" onclick="this.parentElement.remove()" style="float: right; color:black; display: inline-block; text-align: center; cursor: pointer; background: white; border-radius: 50%; width: 24px; height: 24px;">&times;</div>
+    Hey look this app is unmaintained, the web scrapers broke at some point and I haven't updated
+    them in quite some time, so the data is very outdated. I'll try to open source the whole thing
+    shortly. It's only here for showcase at this point, since the interface is quite interesting.
+  </div>
   <div id="app"></div>
-  <%= javascript_include_tag 'app/app' %>
+  <%= javascript_include_tag "app/app" %>
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('create', 'UA-88008276-1', 'auto');
