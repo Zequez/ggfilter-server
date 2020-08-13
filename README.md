@@ -1,5 +1,14 @@
 # GGFilter
 
+⚠ This project is outdated and unmaintained, the scrapers aren't working and the
+database is outdated.
+
+Can browse for demo purposes on [GGFilter.com](http://ggfilter.com/)
+
+Maybe I'll transform it to JAMStack only.
+
+
+
 ## Deployment
 
 After deploying a new client to the Bitbucket repo run the following to update this
