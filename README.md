@@ -1,9 +1,8 @@
 # GGFilter
 
-⚠ This project is outdated and unmaintained, the scrapers aren't working and the
-database is outdated.
+⚠ This project is outdated and unmaintained; server is down
 
-Can browse for demo purposes on [GGFilter.com](http://ggfilter.com/)
+Along with this repo there was the [ggfilter-client](https://github.com/zequez/ggfilter-client) and the [ggfilter-scrapers](https://github.com/zequez/ggfilter-scrapers).
 
 Honestly I'm more interested in the decentralized web and JAMStack architecture
 nowdays. And I would probably move away from RoR if done again, maybe even
